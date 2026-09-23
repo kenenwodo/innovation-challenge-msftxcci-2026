@@ -1,0 +1,1638 @@
+[
+  {
+    "policy_name": "Fixed Period of Admission for F Nonimmigrants",
+    "affected_groups": [
+      "F–1 nonimmigrant students"
+    ],
+    "current_policy": "F–1 nonimmigrant students are admitted for Duration of Status (D/S), meaning the length necessary to complete the course of study without a fixed end date, with opportunities for program extensions granted by DSOs.",
+    "proposed_change": "DHS proposes to change admission of F–1 nonimmigrants from D/S to a fixed period of admission, limited to the length of the student's educational program, not to exceed 4 years. Extensions of stay (EOS) applications must be adjudicated by immigration officers who would review compliance with visa status requirements and admissibility.",
+    "plain_english": "Instead of letting F–1 students stay in the U.S. for as long as their studies take, DHS wants to limit their stay to a fixed time (up to 4 years), after which they must apply for extensions that DHS officers will review more closely.",
+    "allowed": [
+      "Program extensions recommended by DSOs",
+      "EOS applications adjudicated by DHS officers",
+      "Continuation in full course of study",
+      "Medical or academic reasons for extension with proper adjudication"
+    ],
+    "restricted_or_prohibited": [
+      "Unlimited enrollment through repeated program extensions without DHS review",
+      "DSOs solely granting program extensions without DHS adjudication"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Fixed admission period up to 4 years",
+      "Extensions beyond initial fixed period require DHS adjudication"
+    ],
+    "cfr_references": [
+      "8 CFR 214.3(g)(1), (g)(2)",
+      "8 CFR 214.4(a)(2)"
+    ],
+    "evidence_quote": "DHS believes it can mitigate fraud risks in part through, as this rule proposes, setting the authorized admission and extension periods for F nonimmigrants as the length of the F nonimmigrant’s specific program, not to exceed a 4-year period. It would establish a mechanism for immigration officers to assess these nonimmigrants at defined periods (such as when applying for an EOS in the United States beyond a 4-year admission period) and determine whether they are complying with the conditions of their classification.",
+    "source_page": 8
+  },
+  {
+    "policy_name": "Fixed Period of Admission for J Nonimmigrants",
+    "affected_groups": [
+      "J–1 exchange visitors"
+    ],
+    "current_policy": "J–1 exchange visitors are admitted for Duration of Status (D/S), meaning the duration of their exchange visitor program without a fixed end date, with program extensions authorized by Responsible Officers (ROs) under Department of State regulations, and USCIS adjudicates EOS applications based on those extensions.",
+    "proposed_change": "DHS proposes to change the admission of J–1 exchange visitors from D/S to a fixed period of admission limited to the length of the exchange visitor’s specific program, not to exceed 4 years, requiring immigration officers to adjudicate EOS applications and verify compliance.",
+    "plain_english": "J–1 exchange visitors will be admitted for a limited fixed time (up to 4 years) instead of as long as their program lasts, so DHS officers can periodically check if they are complying with visa conditions.",
+    "allowed": [
+      "Program extensions recommended by ROs",
+      "EOS applications adjudicated by DHS officers",
+      "Continuation of exchange program within fixed period"
+    ],
+    "restricted_or_prohibited": [
+      "Unlimited D/S admission without defined expiration",
+      "Extensions beyond maximum without proper adjudication"
+    ],
+    "exceptions": [
+      "Extensions beyond maximum durations must be approved by DOS"
+    ],
+    "time_limits_or_durations": [
+      "Fixed admission period up to 4 years",
+      "Maximum program durations per 22 CFR: 5 years for professors and research scholars, 7 years for alien physicians"
+    ],
+    "cfr_references": [
+      "22 CFR 62.20(i)(1)",
+      "8 CFR 214.2(i)"
+    ],
+    "evidence_quote": "DHS believes that the national security risks posed by D/S admissions for individuals admitted under the J classification are similar to those posed by the F classification. ... setting the length of the J nonimmigrant’s specific program to not exceed a 4-year period would establish a mechanism for immigration officers to assess these nonimmigrants at defined periods (such as when applying for an EOS in the United States beyond a 4-year admission period) and determine whether they are complying with the conditions of their classification.",
+    "source_page": 9
+  },
+  {
+    "policy_name": "Fixed Period of Admission for I Nonimmigrants",
+    "affected_groups": [
+      "I nonimmigrant representatives of foreign information media"
+    ],
+    "current_policy": "I nonimmigrant foreign media representatives are admitted for Duration of Status (D/S) tied to the duration of their employment, except those with passports from the People’s Republic of China, who have different rules. Changes to D/S admissions were proposed in 2020 but withdrawn in 2021.",
+    "proposed_change": "DHS proposes to replace admission for D/S with admission for a fixed period of admission for I nonimmigrants, similar to F and J nonimmigrants, requiring periodic DHS adjudication to extend stay based on program continuation and compliance.",
+    "plain_english": "Foreign media representatives will be admitted for a specific fixed time period instead of simply for as long as they work, so DHS can regularly check if they meet admission conditions.",
+    "allowed": [
+      "Employment-related stay within fixed admission period",
+      "Extensions upon DHS review and approval"
+    ],
+    "restricted_or_prohibited": [
+      "D/S admission without fixed end date"
+    ],
+    "exceptions": [
+      "Current exception for PRC passport holders noted but no change detailed"
+    ],
+    "time_limits_or_durations": [
+      "Fixed admission period with specific duration to be set"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(i)"
+    ],
+    "evidence_quote": "Through its administration of the regulations authorizing I nonimmigrants admission for duration of employment, DHS currently admits all I nonimmigrants for D/S with the exception of those presenting a passport issued by the People’s Republic of China (other than a Hong Kong Special Administrative Region (SAR) passport or a Macau SAR passport). Changes to D/S were proposed for I foreign media representatives in 2020, but the proposal was withdrawn in 2021.",
+    "source_page": 7
+  },
+  {
+    "policy_name": "Separation of Program Extension and Extension of Stay (EOS) Adjudications",
+    "affected_groups": [
+      "F–1 students",
+      "J–1 exchange visitors"
+    ],
+    "current_policy": "DSOs (for F–1) and ROs (for J–1) have authority to grant program extensions (academic or exchange visitor program) and report to DHS. DHS currently does not adjudicate the extension of stay as a separate immigration benefit except when USCIS approves EOS applications for J–1.",
+    "proposed_change": "DHS proposes to separate the determination of program extension (recommended by DSOs/ROs) from adjudicating an extension of stay application by immigration officers. The immigration officers will have discretion to verify eligibility and compliance before approving EOS.",
+    "plain_english": "Schools and sponsors will still recommend extensions to programs, but DHS immigration officers will make the final decision to allow foreign students or visitors to stay longer, giving DHS direct oversight and the ability to verify compliance.",
+    "allowed": [
+      "DSO/RO recommendation of program extension",
+      "Immigration officer adjudication of EOS applications"
+    ],
+    "restricted_or_prohibited": [
+      "DSO/RO sole authority to extend stay without DHS review"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 214.1(a)(3)"
+    ],
+    "evidence_quote": "DHS believes that the determinations of program extension and EOS should be separated, with the DSO’s and RO’s recommendation being one factor an immigration officer reviews while adjudicating an application for EOS. Changing to a fixed period of admission would give immigration officers a mechanism to make this evaluation at reasonably frequent intervals.",
+    "source_page": 7
+  },
+  {
+    "policy_name": "Increased Biometrics and Admissibility Checks at EOS Application for F and J Nonimmigrants",
+    "affected_groups": [
+      "F–1 students",
+      "J–1 exchange visitors"
+    ],
+    "current_policy": "F–1 students admitted under D/S do not generally apply for or have their EOS applications adjudicated by DHS and may lack biometrics or admissibility adjudications during program extensions by DSOs. J–1 extensions handled by DOS sponsors and USCIS adjudicates EOS applications based on approved program extensions.",
+    "proposed_change": "DHS proposes to collect biometrics and conduct admissibility checks at EOS application for F and J nonimmigrants under fixed admission periods. Failure to meet admissibility grounds will result in denial of EOS.",
+    "plain_english": "When F–1 and J–1 students or visitors want to extend their stay beyond the fixed admission period, they will have to provide biometrics and prove they are admissible, helping DHS identify and prevent fraud or security risks.",
+    "allowed": [
+      "EOS applications subject to DHS biometrics and admissibility checks"
+    ],
+    "restricted_or_prohibited": [
+      "Program extensions without DHS biometric or admissibility review"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "24 to 48 months, generally up to 4 years initial period before requiring EOS adjudication"
+    ],
+    "cfr_references": [
+      "8 CFR 214.1(a)(3)"
+    ],
+    "evidence_quote": "Significantly, under the proposed changes to the period of admission of F nonimmigrants and the applicable EOS process, DHS would collect biometrics and other information (such as evidence of financial resources to cover expenses and evidence of any criminal activity) from F nonimmigrant students more frequently, thereby enhancing the Government’s oversight and monitoring of these aliens.",
+    "source_page": 9
+  },
+  {
+    "policy_name": "Fixed Admission Period for F and J Nonimmigrants",
+    "affected_groups": [
+      "F nonimmigrants (academic students)",
+      "J nonimmigrants (exchange visitors)"
+    ],
+    "current_policy": "F and J nonimmigrants are admitted for Duration of Status (D/S) without a fixed period.",
+    "proposed_change": "Replace Duration of Status admissions with a fixed admission period of up to 4 years or the specified program end date on Form I–20 or DS–2019, whichever is shorter, plus 30 days arrival and 30 days departure periods. Aliens must apply for an extension of stay (EOS) to remain beyond this period. Specific rules govern admission when aliens depart and later seek readmission.",
+    "plain_english": "Students and exchange visitors will no longer get indefinite stay linked to their program status; instead, they'll be allowed to stay for a set time (up to 4 years) plus some extra days before and after. To stay longer, they have to apply for an extension.",
+    "allowed": [
+      "Admission up to 4 years or program end date, whichever is shorter",
+      "30-day period before program start date for arrival",
+      "30-day period after program end date for preparation/departure",
+      "Applying for an EOS to extend stay",
+      "Admission after absence up to 30 days in contiguous territory or adjacent islands (visa revalidation)"
+    ],
+    "restricted_or_prohibited": [
+      "Admission for Duration of Status (D/S) removed",
+      "Unlawful presence accrual begins after fixed admission period expires",
+      "Failure to apply for EOS when staying beyond period",
+      "Relying exclusively on Responsible Officials for program extensions"
+    ],
+    "exceptions": [
+      "F and J nonimmigrants admitted for D/S on the final rule’s effective date may continue until program end date on Form I–20 or DS–2019 up to 4 years plus respective departure periods (transition provision)",
+      "Specific provisions for aliens applying for admission while EOS applications are pending",
+      "Aliens in F status filing timely applications for post-completion OPT or STEM OPT within 6 months after rule effective date are not required to file EOS for employment authorization during transition"
+    ],
+    "time_limits_or_durations": [
+      "Maximum 4-year fixed admission period or program end date on Form I–20/DS–2019, whichever is shorter",
+      "30 days before program start date for arrival",
+      "30-day period after program end date for departure",
+      "60 days departure period for F nonimmigrants after admission period",
+      "30 days departure period for J nonimmigrants after admission period"
+    ],
+    "cfr_references": [
+      "8 CFR 214.1(a)(4)(i)-(iii)",
+      "8 CFR 214.2(f)(5)",
+      "8 CFR 214.2(j)(1)(ii)",
+      "8 CFR 214.1(c)(8)",
+      "8 CFR 214.1(m)(1)"
+    ],
+    "evidence_quote": "DHS proposes changes to the admission provisions for these particular nonimmigrant classifications, including replacing admissions for \"duration of status\" with a fixed admission period... Under this proposal, aliens applying for admission in either F or J status would be eligible to be admitted for a maximum period of 4 years or the length of program as specified on Form I–20 or DS–2019, whichever is shorter, or the end date of the approved employment authorization for post-completion OPT and Science Technology Engineering and Mathematics (STEM) OPT, as applicable, plus additional 30 day periods for arrival and a 30-day period to prepare for departure... See proposed 8 CFR 214.1(a)(4)(i) through (iii); and 8 CFR 214.2(f)(5) and (j)(1)(ii).",
+    "source_page": 12
+  },
+  {
+    "policy_name": "Fixed Admission Period for J Exchange Visitors (College and University Students)",
+    "affected_groups": [
+      "J–1 college and university students (exchange visitors)"
+    ],
+    "current_policy": "J–1 exchange visitor students are admitted for Duration of Status (D/S); program extensions handled by Responsible Officers without DHS adjudication or admissibility checks.",
+    "proposed_change": "Require J–1 college and university students to be admitted for a fixed period instead of D/S, matching the fixed admission period approach for F–1 students (up to 4 years). EOS applications would require DHS adjudication including admissibility checks and biometrics collection.",
+    "plain_english": "College and university students on J–1 visas will get a set stay period instead of indefinite status. They must apply to DHS to extend their stay, allowing DHS to do background checks and confirm the student’s legitimacy.",
+    "allowed": [
+      "Admission for fixed period up to 4 years or program length",
+      "Collection of biometrics during EOS",
+      "DHS vetting and admissibility determinations upon EOS"
+    ],
+    "restricted_or_prohibited": [
+      "Admission for Duration of Status (D/S) removed for J–1 students",
+      "Responsibility for program extensions shifted from Responsible Officers to DHS",
+      "Extension of program without DHS review no longer allowed"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Up to 4 years or program end date, whichever is shorter",
+      "30-day periods before start and after program end for arrival and departure respectively"
+    ],
+    "cfr_references": [
+      "8 CFR 214.1(a)(4)",
+      "8 CFR 214.2(j)(1)(ii)"
+    ],
+    "evidence_quote": "By requiring the same fixed period of admission for F–1s and J–1s, J–1 college and university students in exchange visitor programs would be unable to circumvent the intent of this proposed rule... Switching from D/S to a fixed period of admission would permit immigration officers the opportunity to determine whether an alien is eligible for an additional period of time. ... Under the proposed changes to the period of admission of J exchange visitors and the applicable EOS process, DHS would more frequently collect biometrics and other information from J exchange visitors, enhancing the Government’s oversight and monitoring of these aliens.",
+    "source_page": 11
+  },
+  {
+    "policy_name": "Fixed Admission Period and Extension of Stay for I Nonimmigrants",
+    "affected_groups": [
+      "I nonimmigrants (representatives of foreign information media)"
+    ],
+    "current_policy": "I nonimmigrants and their dependents admitted for Duration of Status (D/S).",
+    "proposed_change": "Replace D/S with fixed admission period for I nonimmigrants. Individuals wishing to remain beyond the authorized stay must apply for an Extension of Stay (EOS) with USCIS and submit specified evidence supporting the EOS request.",
+    "plain_english": "Foreign media representatives will now be admitted for a set time, not an indefinite period matching their ‘status duration.’ To stay longer, they must apply for an extension with DHS and provide evidence of their eligible activities.",
+    "allowed": [
+      "Admission for a fixed period",
+      "Applying for EOS with DHS",
+      "Providing evidence supporting the purpose of stay during EOS"
+    ],
+    "restricted_or_prohibited": [
+      "Admission for Duration of Status (D/S) removed",
+      "Staying beyond fixed admitted period without approved EOS prohibited"
+    ],
+    "exceptions": [
+      "The proposed changes to additional evidentiary requirements would apply to a nonimmigrant in the United States who requests to change to I nonimmigrant status."
+    ],
+    "time_limits_or_durations": [],
+    "cfr_references": [],
+    "evidence_quote": "The Department believes admitting aliens temporarily in the United States for a fixed period would strengthen vetting and information collection and help immigration officers ensure that the I nonimmigrants are, and will be, engaged in activities that are permissible under INA 101(a)(15)(I). In addition, this rulemaking proposes to require individuals who wish to remain in I nonimmigrant status beyond the end date for their authorized stay to apply for an EOS with USCIS, at which point immigration officers can review their activities in the United States. It also clarifies what DHS would require these individuals to present as evidence supporting their EOS request.",
+    "source_page": 11
+  },
+  {
+    "policy_name": "Extension of Stay Procedure and Requirements for F, J, and I Nonimmigrants",
+    "affected_groups": [
+      "F nonimmigrants",
+      "J exchange visitors",
+      "I nonimmigrants"
+    ],
+    "current_policy": "F and J nonimmigrants not required to file for EOS to extend stay; program extensions handled by DSOs or Responsible Officers without DHS adjudication and without biometric requirements. I nonimmigrants admitted with D/S and also not required to file EOS.",
+    "proposed_change": "Require F, J, and I nonimmigrants to file an EOS with USCIS if they wish to remain beyond their fixed admission date. The regulatory text will remove references exempting F and J from EOS filing requirements. USCIS will require biometric collection and may require interviews as part of EOS adjudication. Also, references to specific forms (I–129, I–539) replaced with general applicable language to allow form changes without rulemaking.",
+    "plain_english": "Students, exchange visitors, and foreign media representatives must now file for an extension with DHS if they want to stay beyond a set period, and they will have to provide biometrics and possibly go to interviews.",
+    "allowed": [
+      "Application for EOS using forms designated by USCIS",
+      "Biometric collection and possible interviews as part of EOS",
+      "USCIS adjudication of EOS including admissibility review"
+    ],
+    "restricted_or_prohibited": [
+      "F and J nonimmigrants exempted from EOS filing no longer exempt",
+      "Failure to file EOS when required will result in status violation",
+      "No appeal allowed of EOS denial"
+    ],
+    "exceptions": [
+      "Certain nonimmigrants admitted for D/S like A–1 and A–2 representatives of foreign governments and their families remain ineligible to file EOS and thus exempt"
+    ],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 214.1(c)(2)",
+      "8 CFR 214.1(c)(3)(v)",
+      "8 CFR 214.1(c)(5)",
+      "8 CFR 103.16",
+      "8 CFR 103.2(b)(9)"
+    ],
+    "evidence_quote": "Therefore, DHS proposes to use this language in 8 CFR 214.1(c)(2) and to strike the current phrase exempting F and J nonimmigrants from the requirement to file an EOS, as they would be required to file an EOS if they wish to remain in the United States beyond their specified date of admission. ... As part of the EOS application, USCIS requires biometric collection and will require such collection from F, J, and I nonimmigrants under the proposed rule. ... USCIS may require such an interview as part of the screening and adjudication process that helps confirm an individual’s identity, elicit information to assess the eligibility for an immigration benefit, and screen for any national security or fraud concerns.",
+    "source_page": 13
+  },
+  {
+    "policy_name": "EOS Application Abandonment and Admission Upon Departure and Readmission",
+    "affected_groups": [
+      "F, J, and I nonimmigrants who file EOS"
+    ],
+    "current_policy": "EOS applications are generally not considered abandoned upon departure; an alien may remain in status under D/S until the EOS is adjudicated.",
+    "proposed_change": "If an alien in F, J, or I status timely files an EOS and departs before USCIS approves it, and then applies for admission to continue stay for the balance of the previously authorized admission period, the EOS application generally is NOT considered abandoned. However, if the alien departs and applies for admission while EOS is pending and is admitted for a new fixed admission period based on a new Form I–20 or DS–2019, the pending EOS will be considered abandoned, and the CBP-issued admission period controls.",
+    "plain_english": "Flying out after filing to stay longer usually doesn’t cancel the extension request, unless the person comes back and is admitted for a new stay period based on a new program document; then the old extension request is canceled.",
+    "allowed": [
+      "Leaving U.S. after timely EOS filing without abandoning EOS in some cases",
+      "Reapplying for admission for balance of previously authorized stay"
+    ],
+    "restricted_or_prohibited": [
+      "EOS considered abandoned if alien is admitted for a new fixed period during pending EOS",
+      "Not responding timely to Requests for Evidence (RFE) while abroad can lead to denial for abandonment"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 214.1(c)(8)(i)",
+      "8 CFR 214.1(c)(8)(ii)"
+    ],
+    "evidence_quote": "Where an alien in F, J, or I status timely files an application for EOS, leaves the United States before USCIS approves that EOS application, and applies for admission to continue his or her activities for the balance of the previously authorized admission period, USCIS would generally not consider the EOS application abandoned. ... Where the alien leaves the United States and applies for admission while his or her EOS application is pending and is admitted based on a new Form I–20 or DS–2019 after his or her previously authorized admission has expired, the pending EOS is deemed abandoned. In this case, the admit until date provided by CBP on the alien’s I–94 would govern.",
+    "source_page": 14
+  },
+  {
+    "policy_name": "Transition Period for F and J Nonimmigrants Currently Admitted for D/S",
+    "affected_groups": [
+      "F and J nonimmigrants admitted for Duration of Status (D/S) on the final rule’s effective date"
+    ],
+    "current_policy": "Such nonimmigrants admitted for D/S remain in status until program completion without fixed admission period and without EOS filing.",
+    "proposed_change": "Allow these F and J nonimmigrants to remain in status without filing EOS until the program end date on their Form I–20 or DS–2019 in effect on the rule’s effective date, not to exceed 4 years from the effective date, plus 60 days (F) or 30 days (J) to depart. After departure, admission would be with fixed admission periods and EOS requirements. Timely filed applications for post-completion OPT or STEM OPT within 6 months after the effective date are not required to file EOS during transition.",
+    "plain_english": "People already here under the old system can stay until their current program’s end date (up to 4 years maximum) plus some extra days. After they leave and try to come back, they must follow the new fixed stay rules.",
+    "allowed": [
+      "Remaining in status without filing EOS until program end date or 4 years from effective date plus departure periods",
+      "Filing post-completion OPT or STEM OPT employment authorization applications without EOS in certain transition circumstances"
+    ],
+    "restricted_or_prohibited": [
+      "Failure to file timely EOS after transition period ends",
+      "Departing and reentering triggers fixed admission periods and EOS rules"
+    ],
+    "exceptions": [
+      "F–1 nonimmigrants present 60 days after final rule publication and timely filing applications for post-completion OPT or STEM OPT within 6 months after effective date need not file EOS immediately"
+    ],
+    "time_limits_or_durations": [
+      "Up to 4 years from final rule effective date",
+      "60-day departure period for F nonimmigrants",
+      "30-day departure period for J nonimmigrants"
+    ],
+    "cfr_references": [
+      "8 CFR 214.1(m)(1)",
+      "8 CFR 214.1(m)(2)",
+      "8 CFR 214.2(f)(11)(i)(B)(2)",
+      "8 CFR 214.2(f)(11)(i)(C)"
+    ],
+    "evidence_quote": "DHS proposes to generally allow all F and J nonimmigrants present in the United States on the final rule’s effective date who are validly maintaining that status and who were admitted for D/S to remain in the United States in F or J status, without filing an EOS request, up to the program end date reflected on their Form I–20 or DS–2019 that is valid on the Final Rule’s effective date, for a period not to exceed 4 years from the effective date of the Final Rule, plus an additional 60 days for these F nonimmigrants and 30 days for J nonimmigrants to depart the country. ... For those aliens in F–1 status... timely filed on or before 6 months after the effective date of the final rule for an application for post-completion OPT or a STEM OPT extension, there would not be a requirement to file an EOS application, and, instead, they would be required to file the application for employment authorization for post-completion OPT or a STEM OPT extension.",
+    "source_page": 15
+  },
+  {
+    "policy_name": "Change of Language and Discretion in Visa Revalidation for Contiguous Travel",
+    "affected_groups": [
+      "F, J, and M nonimmigrants traveling in contiguous territory or adjacent islands for up to 30 days"
+    ],
+    "current_policy": "Visa revalidation provisions use the word ‘shall’ regarding DHS admitting aliens and extending visa validity automatically for contiguous territory travel, potentially implying mandatory admission.",
+    "proposed_change": "Change regulatory language from ‘shall’ to ‘may’ in visa revalidation provisions to clarify that CBP officers have discretionary authority to decide admissibility and period of admission, including automatic visa validity extension upon re-entry from contiguous territory or adjacent islands for excursions not exceeding 30 days.",
+    "plain_english": "CBP officers will have discretion to decide whether to admit nonimmigrants who return automatically from nearby travel even if the visa is expired, rather than being required to admit them.",
+    "allowed": [
+      "Automatic extension of visa validity at port of entry for absence of up to 30 days in contiguous territory or adjacent islands",
+      "CBP discretion in admitting aliens and determining period of admission"
+    ],
+    "restricted_or_prohibited": [
+      "Remove any implication that CBP must admit aliens automatically"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Absence not exceeding 30 days in contiguous territory or adjacent islands"
+    ],
+    "cfr_references": [
+      "8 CFR 214.1(b)(1)",
+      "22 CFR 41.112(d)"
+    ],
+    "evidence_quote": "DHS proposes to change the admission language in the provision relating to extension of visa validity in limited situations from \"shall\" to \"may\" to clarify that CBP always maintains the discretion to determine whether an alien is admissible and the appropriate period of admission. ... These provisions apply when, for example, a nonimmigrant finds himself or herself applying for re-entry after going to Mexico on spring break without realizing that his or her visa had expired. Instead of having to get a new visa, CBP may admit the nonimmigrant, whose visa validity is automatically extended by operation of DOS regulations. See 22 CFR 41.112(d).",
+    "source_page": 13
+  },
+  {
+    "policy_name": "Removal of References to Obsolete or Inapplicable Immigration Classifications and Terms",
+    "affected_groups": [
+      "F, J, and M nonimmigrants",
+      "Immigration regulatory text"
+    ],
+    "current_policy": "Regulations reference the obsolete INA 101(a)(15)(Q)(ii) classification and include references to Duration of Status in admission provisions.",
+    "proposed_change": "Strike the reference to INA 101(a)(15)(Q)(ii), which no longer exists, and remove references to Duration of Status in 8 CFR 214.1(b)(1), 214.2(f)(5)(vii), 214.2(f)(18)(iii), and 274a.12(b)(6)(v).",
+    "plain_english": "The rule removes outdated immigration category references and the use of 'Duration of Status' which will no longer apply under the proposed changes.",
+    "allowed": [],
+    "restricted_or_prohibited": [
+      "Use of obsolete INA 101(a)(15)(Q)(ii) classification",
+      "References to 'Duration of Status' in certain regulations"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 214.1(b)(1)",
+      "8 CFR 214.2(f)(5)(vii)",
+      "8 CFR 214.2(f)(18)(iii)",
+      "8 CFR 274a.12(b)(6)(v)"
+    ],
+    "evidence_quote": "DHS proposes to strike the reference to INA 101(a)(15)(Q)(ii) and reserve it, as that program no longer exists and is no longer in the INA. ... DHS proposes to strike the reference to \"duration of status\" in 8 CFR 214.1(b)(1), 214.2(f)(5)(vii), 214.2(f)(18)(iii), and 274a.12(b)(6)(v).",
+    "source_page": 13
+  },
+  {
+    "policy_name": "Transition from Duration of Status (D/S) to Fixed Admission Period for F and J Nonimmigrants",
+    "affected_groups": [
+      "F nonimmigrants",
+      "J nonimmigrants"
+    ],
+    "current_policy": "F and J nonimmigrants admitted for D/S can remain lawfully in the U.S. for the duration of their program plus any authorized practical training and a subsequent grace period.",
+    "proposed_change": "DHS proposes to eliminate D/S admissions, replacing them with a fixed admission period that uses the program end date on the Form I–20 or DS–2019, with a maximum period not to exceed 4 years, plus an additional 60 days for F nonimmigrants and 30 days for J nonimmigrants to remain in the U.S. without filing an extension of stay (EOS). Nonimmigrants wishing to extend stay beyond this fixed period or the program end date must file an EOS or depart and reapply at a port of entry.",
+    "plain_english": "Instead of letting students stay in the U.S. for 'duration of status,' they will get a fixed admission end date based on their program end date with some extra days. If they want to stay longer, they must apply for an extension or leave and come back legally.",
+    "allowed": [
+      "Remaining in the U.S. until program end date + 60 days (F) or +30 days (J) without EOS application",
+      "Applying for EOS to extend stay beyond fixed admission period"
+    ],
+    "restricted_or_prohibited": [
+      "Remaining indefinitely in the U.S. under D/S without fixed end date",
+      "Retaining D/S admission after expiration of fixed admission period without approved EOS"
+    ],
+    "exceptions": [
+      "Certain J-1 research scholars and alien physicians with programs longer than 4 years need to apply for EOS before the 4-year limit expires",
+      "Transition procedures do not apply to aliens outside the U.S. or in violation of status at effective date"
+    ],
+    "time_limits_or_durations": [
+      "Fixed admission not to exceed 4 years",
+      "Plus 60 days for F nonimmigrants",
+      "Plus 30 days for J nonimmigrants"
+    ],
+    "cfr_references": [
+      "8 CFR 214.1(m) (proposed)",
+      "8 CFR 214.2(f)(5)(i) (proposed)"
+    ],
+    "evidence_quote": "DHS’s proposal is to transition all F and J nonimmigrants to a fixed admission date by using the program end date noted on their Form I–20 or DS–2019 (with the exception of F students engaging in post-completion or a STEM OPT extension who would use their EAD’s expiration date), not to exceed 4 years, plus an additional 60 days for F nonimmigrants and 30 days for J nonimmigrants as provided in their previous admission.",
+    "source_page": 16
+  },
+  {
+    "policy_name": "Automatic Extension and Extension of Stay (EOS) Procedures for I Nonimmigrants",
+    "affected_groups": [
+      "I nonimmigrants (foreign media representatives, journalists)"
+    ],
+    "current_policy": "I nonimmigrants admitted under D/S have indefinite duration; must file EOS via Form I-539 if sought.",
+    "proposed_change": "DHS proposes an automatic extension of I nonimmigrants' admission up to 240 days past the expiration date to complete activities, based on a filing of extension of stay request. If an extension is denied, the individual must cease employment and depart immediately with no grace period.",
+    "plain_english": "I nonimmigrants will get automatic extra time (up to 240 days) to finish their assignment if they file for an extension, but must leave immediately if the extension is denied.",
+    "allowed": [
+      "Automatic 240-day extension of stay following expiration of status with timely filed extension request",
+      "Working during extension period pending approval"
+    ],
+    "restricted_or_prohibited": [
+      "Continuing employment or stay after denial of extension request",
+      "Departure grace period after denial"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Up to 240 days automatic extension"
+    ],
+    "cfr_references": [
+      "8 CFR 214.1(m)(3) (proposed)",
+      "8 CFR 274a.12(b)(20)"
+    ],
+    "evidence_quote": "DHS proposes an automatic extension of the length of time it takes the alien to complete his or her activity, for a period of up to 240 days. See proposed 8 CFR 214.1(m)(3).",
+    "source_page": 16
+  },
+  {
+    "policy_name": "Admission Period for F Nonimmigrants Limited to 4 Years",
+    "affected_groups": [
+      "F-1 nonimmigrants (students)"
+    ],
+    "current_policy": "F nonimmigrants admitted for Duration of Status (D/S), allowing stay for the length of their program plus authorized practical training and grace periods without a fixed maximum time limit.",
+    "proposed_change": "DHS proposes to eliminate D/S and admit F nonimmigrants for the length of their program up to a maximum of 4 years. Students must apply for EOS if they wish to remain beyond that.",
+    "plain_english": "F-1 students will have their stay limited to a maximum of 4 years per admission; to stay longer, they need to apply for an extension.",
+    "allowed": [
+      "Enrollment in programs up to 4 years",
+      "Applying for extension of stay beyond 4 years"
+    ],
+    "restricted_or_prohibited": [
+      "Admission for D/S (no fixed end date)",
+      "Stay beyond 4 years without EOS application"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Up to 4 years admission period"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(i)",
+      "8 CFR 214.2(f)(7)(vi) (proposed)"
+    ],
+    "evidence_quote": "DHS is proposing to strike the existing regulation that allows F nonimmigrants to be admitted for D/S. DHS would replace it with a provision allowing F nonimmigrants to be granted status for the length of their program, not to exceed 4 years. See proposed 8 CFR 214.2(f)(5)(i) and (f)(7)(vi).",
+    "source_page": 17
+  },
+  {
+    "policy_name": "Aggregate Language Study Limit of 24 Months for F-1 Students in Language Training Programs",
+    "affected_groups": [
+      "F-1 students enrolled in language training programs"
+    ],
+    "current_policy": "No aggregate limit on length of language study for F-1 students.",
+    "proposed_change": "DHS proposes limiting F-1 students attending language training programs to a maximum aggregate of 24 months including breaks and vacations to prevent abusive long-term enrollment in language schools.",
+    "plain_english": "F-1 students can study English or other language training for up to 24 months total; after that, they cannot remain in F-1 status for language training.",
+    "allowed": [
+      "Aggregate language study up to 24 months"
+    ],
+    "restricted_or_prohibited": [
+      "Language training in F-1 status beyond 24 months aggregate"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "24 months aggregate limit for language study"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(i)(A) (proposed)"
+    ],
+    "evidence_quote": "F–1 students in a language training program would be restricted to an aggregate of 24 months of language study, which would include breaks and an annual vacation. See proposed 8 CFR 214.2(f)(5)(i)(A).",
+    "source_page": 17
+  },
+  {
+    "policy_name": "Retention of Authorized Stay for F-1 Students with Pending EAD Applications Beyond EAD Expiration",
+    "affected_groups": [
+      "F-1 students with post-completion or STEM OPT pending EAD applications"
+    ],
+    "current_policy": "F-1 students must maintain valid EAD to remain authorized for employment and lawful status.",
+    "proposed_change": "F-1 students with pending EAD applications who cease employment due to EAD expiration before the program end date may remain in authorized stay until the fixed admission end date noted on their Form I-94, unless they violate status.",
+    "plain_english": "F-1 students waiting on employment authorization can stay lawfully in the U.S. beyond their EAD expiration until their program end date or fixed admission end date.",
+    "allowed": [
+      "Remaining authorized to stay from EAD expiration to fixed admission end date if EAD renewal is pending"
+    ],
+    "restricted_or_prohibited": [
+      "Employment without valid EAD",
+      "Violating terms of authorized stay"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Period from EAD expiration to fixed admission end date"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(i)(D) (proposed)"
+    ],
+    "evidence_quote": "F–1 students with pending employment authorization applications who are admitted based on the DSO’s recommended employment end date for post-completion OPT or STEM OPT specified on their Form I–20 ... be considered to be in the United States in a period of authorized stay from the date of the expiration noted on their EAD until the fixed date of admission as noted on their I–94 (unless the student violates the terms of the authorized stay).",
+    "source_page": 17
+  },
+  {
+    "policy_name": "F-1 Dependents' Stay Limited to Principal's Authorized Stay",
+    "affected_groups": [
+      "F-2 dependents"
+    ],
+    "current_policy": "F-2 dependents' authorized period of stay is tied to that of the principal F-1 alien but not explicitly included in regulatory text.",
+    "proposed_change": "DHS proposes expressly adding a requirement that F-2 dependents' authorized stay not exceed that of the principal F-1 alien in regulation.",
+    "plain_english": "F-2 dependents cannot stay longer than the F-1 student they depend on.",
+    "allowed": [
+      "Authorized stay concurrent with principal F-1 alien"
+    ],
+    "restricted_or_prohibited": [
+      "Period of stay for F-2 dependents exceeding principal's stay"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Not to exceed principal F-1 alien's stay"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(i)(E) (proposed)"
+    ],
+    "evidence_quote": "The authorized period of stay for F–2 dependents will continue to not be able to exceed the authorized period of stay of the principal F–1 alien. DHS proposes adding this requirement to 8 CFR 214.2(f)(5)(i)(E).",
+    "source_page": 17
+  },
+  {
+    "policy_name": "Restrictions on Change of Educational Objectives and Transfers for F-1 Students",
+    "affected_groups": [
+      "F-1 students"
+    ],
+    "current_policy": "All changes in education level or multiple degrees within the same level are considered maintaining status with no limits.",
+    "proposed_change": "DHS proposes to restrict school transfers and changes in educational objectives within the first academic year unless authorized by SEVP, prohibit graduate-level F-1 students from changing educational objectives or transferring within the U.S., disallow maintaining F-1 status after completion of a program at one educational level through enrollment in same or lower-level programs, allow progress only to higher educational levels, and require EOS application for changes in education level that require extension.",
+    "plain_english": "F-1 students will have limits on transferring schools or changing majors especially within the first year, cannot downgrade education levels, and must progress upward academically to keep status.",
+    "allowed": [
+      "Transfers or changes after first academic year with SEVP authorization",
+      "Progressing to a higher educational level program"
+    ],
+    "restricted_or_prohibited": [
+      "Transfers or changes within first academic year without authorization",
+      "Transferring or changing educational objectives for graduate students within U.S.",
+      "Maintaining status by enrolling in same or lower educational level after program completion"
+    ],
+    "exceptions": [
+      "Exceptions authorized by SEVP for extenuating circumstances (e.g., school closure, prolonged inability to hold classes)"
+    ],
+    "time_limits_or_durations": [
+      "First academic year restriction period"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(ii)(A)",
+      "8 CFR 214.2(f)(5)(ii)(B)",
+      "8 CFR 214.2(f)(5)(ii)(C)",
+      "8 CFR 214.2(f)(5)(ii)(D) (proposed)"
+    ],
+    "evidence_quote": "DHS proposes to restrict school transfers and changes of educational objectives within a student’s first academic year of a program of study, unless an exception is authorized by SEVP, and to prohibit F–1 students in a graduate level program of study from changing educational objectives or transferring from within the United States... An alien who has completed a program as an F–1 nonimmigrant at one educational level would be unable to maintain F–1 status...through a program at the same educational level or a lower educational level.",
+    "source_page": 18
+  },
+  {
+    "policy_name": "Reduction of Departure Preparation Period for F-1 Students from 60 Days to 30 Days",
+    "affected_groups": [
+      "F-1 students"
+    ],
+    "current_policy": "F-1 students are granted 60 days after completion of studies or practical training to prepare for departure, apply for extensions, or change status.",
+    "proposed_change": "DHS proposes reducing the post-completion departure preparation period for F-1 students from 60 to 30 days to align more closely with J and M nonimmigrant categories and establish uniformity. This time can be used to prepare for departure or file for EOS or change of status.",
+    "plain_english": "F-1 students will now have 30 days instead of 60 days after finishing studies to get ready to leave the U.S. or apply for extensions or status changes.",
+    "allowed": [
+      "Using 30-day period to prepare for departure",
+      "Seeking timely extensions of stay or change of status during period"
+    ],
+    "restricted_or_prohibited": [
+      "Departure preparation beyond 30 days without extension approval"
+    ],
+    "exceptions": [
+      "Current 15-day departure period retained for students authorized to withdraw from classes"
+    ],
+    "time_limits_or_durations": [
+      "30 days after Form I-94 or EAD expiration"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(v) (proposed)"
+    ],
+    "evidence_quote": "DHS believes that the time allotted for F students to prepare for departure should be revised from 60 to 30 days. See 8 CFR 214.2(f)(5)(iv) and proposed 8 CFR 214.2(f)(5)(v).",
+    "source_page": 19
+  },
+  {
+    "policy_name": "Reduction of post-completion grace period for F-1 students",
+    "affected_groups": [
+      "F-1 nonimmigrant students"
+    ],
+    "current_policy": "F-1 students have 60 days to maintain legal status or depart the United States after completing their program or post-completion OPT",
+    "proposed_change": "Reduce the 60-day period to 30 days after completion of studies or authorized practical training",
+    "plain_english": "After finishing their studies or training, F-1 students would have 30 days to either apply for extensions or leave instead of the current 60 days",
+    "allowed": [
+      "Take steps necessary to maintain legal status or depart the United States within 30 days"
+    ],
+    "restricted_or_prohibited": [
+      "Use of 60-day grace period"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "30 days after completion of studies or post-completion OPT"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(iv)",
+      "proposed 8 CFR 214.2(f)(5)(v)"
+    ],
+    "evidence_quote": "Per existing regulations, after completing their program or post-completion OPT, F–1 students have 60 days (which DHS is proposing to change to 30 days) to take the steps necessary to maintain legal status or depart the United States.",
+    "source_page": 21
+  },
+  {
+    "policy_name": "Automatic extension of F-1 status and employment authorization during EOS application pendency",
+    "affected_groups": [
+      "F-1 nonimmigrant students with timely filed EOS applications"
+    ],
+    "current_policy": "F-1 students admitted for duration of status and their employment authorizations generally expire with the period of admission. On-campus employment can continue under DSO authorization; however, employment authorizations require separate approval.",
+    "proposed_change": "Authorize automatic extension of F-1 status and related employment authorization (including on-campus employment and off-campus employment based on severe economic hardship) for up to 240 days while EOS applications are pending",
+    "plain_english": "If an F-1 student files for an extension of stay before their status expires, their status and some types of employment authorization would automatically extend up to 240 days during processing",
+    "allowed": [
+      "On-campus employment up to 240 days during EOS pendency",
+      "Off-campus employment for severe economic hardship up to 240 days during EOS pendency",
+      "SSR employment authorization extended automatically up to the Federal Register notice end date or 240 days, whichever is earlier"
+    ],
+    "restricted_or_prohibited": [
+      "Employment authorization ceases if EOS pending beyond 240 days"
+    ],
+    "exceptions": [
+      "SSR employment limited not to exceed the F-1 student’s academic program end date"
+    ],
+    "time_limits_or_durations": [
+      "240 days automatic extension period"
+    ],
+    "cfr_references": [
+      "proposed 8 CFR 214.2(f)(5)(viii)"
+    ],
+    "evidence_quote": "DHS proposes to allow aliens in F–1 status to continue to be authorized for on-campus employment while their EOS applications with USCIS are pending, not to exceed a period of 240 days... DHS is proposing an automatic extension of off-campus employment authorization for up to 240-days during the pendency of the EOS application... DHS proposes to automatically extend SSR authorization if an F–1 alien has a timely-filed EOS pending for up to the end date stated in the Federal Register notice..., or 240 days, whichever is earlier.",
+    "source_page": 21
+  },
+  {
+    "policy_name": "Requirement for F-1 students to file EOS applications with USCIS for program extensions instead of DSO approval alone",
+    "affected_groups": [
+      "F-1 nonimmigrant students seeking program extensions"
+    ],
+    "current_policy": "DSOs may grant program extensions based on a standard of 'normal progress' with no USCIS adjudication",
+    "proposed_change": "Eliminate 'normal progress' standard and require F-1 students to obtain a DSO recommendation AND submit an EOS application to USCIS with proof of compelling academic reasons, documented medical illness, or exceptional circumstances beyond the student's control for an extension beyond approved admission period",
+    "plain_english": "Instead of just getting approval from their school official, F-1 students must now file an extension request with USCIS supported by documented reasons (such as medical issues or emergencies) for extra time to complete their studies",
+    "allowed": [
+      "Extension requests based on compelling academic reasons",
+      "Extension requests based on documented medical conditions",
+      "Extension requests based on exceptional circumstances beyond control (e.g., natural disasters, school closures)"
+    ],
+    "restricted_or_prohibited": [
+      "Program extensions solely based on undefined 'normal progress'",
+      "Program extensions for students repeatedly failing classes",
+      "Extensions for students without proper authorization for reduced course loads"
+    ],
+    "exceptions": [
+      "Exceptions exist for students authorized to drop below full course of study and those reinstated after loss of status"
+    ],
+    "time_limits_or_durations": [
+      "Extensions may not exceed 4 years except for border commuters, language training students, or public high school attendees"
+    ],
+    "cfr_references": [
+      "proposed 8 CFR 214.2(f)(7)(i)",
+      "proposed 8 CFR 214.2(f)(7)(ii)",
+      "proposed 8 CFR 214.2(f)(7)(iii)"
+    ],
+    "evidence_quote": "Therefore, DHS proposes not to use a 'normal progress' standard with respect to seeking a program extension of an authorized period of stay... Instead, an alien... would be required to file an EOS application to request additional time... only if the additional time needed is due to a compelling academic reason, documented medical illness or medical condition, or circumstance that was beyond the student’s control.",
+    "source_page": 22
+  },
+  {
+    "policy_name": "Direct USCIS adjudication for F-1 status extensions with evidence requirements",
+    "affected_groups": [
+      "F-1 nonimmigrant students applying for extensions of stay"
+    ],
+    "current_policy": "DSOs grant program extensions; USCIS does not directly adjudicate extension requests except for reinstatements",
+    "proposed_change": "USCIS would directly adjudicate EOS applications for program extensions requiring supporting evidence such as medical documentation, transcripts, and proof of financial support; USCIS may request additional information and grants extensions only when eligibility criteria are met",
+    "plain_english": "USCIS officers will now review and decide on F-1 status extensions with submitted evidence, ensuring students meet requirements and are maintaining lawful status",
+    "allowed": [
+      "Requests supported by medical documentation from licensed professionals",
+      "Requests supported by evidence of sufficient financial resources for study"
+    ],
+    "restricted_or_prohibited": [
+      "Extensions denied if student fails to maintain status, fails classes repeatedly, or lacks required evidence"
+    ],
+    "exceptions": [
+      "Students properly authorized to reduce course load and those reinstated may still be eligible"
+    ],
+    "time_limits_or_durations": [
+      "Extensions up to 4 years generally"
+    ],
+    "cfr_references": [
+      "proposed 8 CFR 214.2(f)(7)(i)(C)",
+      "proposed 8 CFR 214.2(f)(7)(iii)(A)"
+    ],
+    "evidence_quote": "Immigration officers thereby would be able to conduct appropriate background and security checks... and directly review the proffered evidence... DHS proposes to codify standards already included in 8 CFR 214.2(f)(6)(iii)(B), which require a student to provide medical documentation from a licensed medical doctor... Applicants would need to submit evidence of sufficient funds to cover expenses.",
+    "source_page": 23
+  },
+  {
+    "policy_name": "Requirement for timely filing of EOS applications by F-1 students and their dependents",
+    "affected_groups": [
+      "F-1 nonimmigrant students and F-2 dependents"
+    ],
+    "current_policy": "DSO program extensions do not require USCIS filing; dependents may not have separate EOS filing requirements",
+    "proposed_change": "F-1 students must timely file EOS applications with USCIS on or before expiration of the authorized period including the 30-day grace period; F-2 dependents seeking to accompany the student must also file EOS or reinstatement applications as applicable",
+    "plain_english": "Students and their dependents must file extension requests with USCIS before their current status expires to maintain legal status",
+    "allowed": [
+      "Inclusion of dependents in primary EOS application or separate EOS applications with corresponding fees"
+    ],
+    "restricted_or_prohibited": [
+      "Late filing requires reinstatement applications; failure to maintain status results in ineligibility for EOS"
+    ],
+    "exceptions": [
+      "Late filing may be excused at USCIS discretion for extraordinary circumstances"
+    ],
+    "time_limits_or_durations": [
+      "On or before expiration of current authorized period including 30-day departure preparation period"
+    ],
+    "cfr_references": [
+      "proposed 8 CFR 214.2(f)(7)(iii)(B)",
+      "proposed 8 CFR 214.2(f)(7)(iv)",
+      "proposed 8 CFR 214.2(f)(7)(viii)"
+    ],
+    "evidence_quote": "F–1 applicants generally would need to timely file their EOS application—meaning that USCIS would need to receive the application on or before the date the authorized admission period expires... F–2 dependents seeking to accompany the F–1 principal student would need to file applications for an EOS or reinstatement, as applicable.",
+    "source_page": 24
+  },
+  {
+    "policy_name": "Immediate departure required after EOS denial without grace period",
+    "affected_groups": [
+      "F-1 students and F-2 dependents whose EOS applications are denied"
+    ],
+    "current_policy": "No explicit mention of grace period; F nonimmigrants currently have a 60-day grace period after program completion",
+    "proposed_change": "If USCIS denies an EOS application and the admission period has expired, the student and dependents must immediately depart the United States without any additional preparation time",
+    "plain_english": "If extension applications are denied after status expires, students and their dependents must leave the country immediately with no extra days allowed",
+    "allowed": [],
+    "restricted_or_prohibited": [
+      "Any stay beyond denial and expiration is prohibited and may result in unlawful presence"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "No grace period; immediate departure upon EOS denial and admission expiration"
+    ],
+    "cfr_references": [
+      "proposed 8 CFR 214.2(f)(7)(vii)"
+    ],
+    "evidence_quote": "If USCIS denies the request... and the period of admission for the student and his or her dependents has expired, then the student and his or her dependents would need to immediately depart the United States. As with other nonimmigrant classifications, they would not be given any period of time to prepare for departure...",
+    "source_page": 24
+  },
+  {
+    "policy_name": "F-1 Student School Transfer and Program Change Conditions",
+    "affected_groups": [
+      "F-1 students"
+    ],
+    "current_policy": "Aliens need to begin classes at the transfer school within 5 months of transferring or program completion date on Form I–20; must resume classes within 5 months if authorized for post-completion OPT. Failure to pursue a full course of study renders alien ineligible to change programs or transfer schools.",
+    "proposed_change": "Retain the 5-month start class requirement post-transfer or program completion; clarify failure to pursue full course of study includes repeated inability or unwillingness; render ineligible for change of program or transfer if not maintaining full course load; clarify change to higher education level per transfer procedures; require EOS application if new program duration exceeds authorized admission period.",
+    "plain_english": "F-1 students transferring schools or changing programs must start new classes within 5 months and maintain a full course load. If they don't, they're not allowed to change schools or programs without reinstatement. If new programs exceed the allowed stay, they must apply for an extension.",
+    "allowed": [
+      "Transfer to new program within 5 months",
+      "Changes to higher education level following transfer procedures",
+      "Authorized participation in post-completion OPT with resume classes in 5 months"
+    ],
+    "restricted_or_prohibited": [
+      "Changing programs or transferring schools without full course of study",
+      "Using academic probation or suspension as a reason for program extension or failure to maintain full course load"
+    ],
+    "exceptions": [
+      "Reinstatement may be filed if eligible after failure to pursue full course of study"
+    ],
+    "time_limits_or_durations": [
+      "5 months to begin classes after transfer or program completion",
+      "5 months to resume classes after OPT or changing programs",
+      "Program duration must not exceed authorized admission period unless EOS applied"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(8)(i)(E)",
+      "8 CFR 214.2(f)(8)(i)(F)",
+      "8 CFR 214.2(f)(8)(ii)",
+      "8 CFR 214.2(f)(8)(iii)",
+      "8 CFR 214.2(f)(8)(iv)"
+    ],
+    "evidence_quote": "First, as is the case currently, aliens would need to begin classes at the transfer school or program within 5 months of transferring out of the current school or within 5 months of the program completion date on his or her current Form I–20; and second, if the alien is authorized to engage in post-completion OPT, he or she must be able to resume classes within 5 months of changing programs or transferring out of the school that recommended OPT or the date the OPT authorization ends, whichever is earlier. [...] DHS is proposing to retain the current provisions rendering aliens who do not pursue a full course of study ineligible to change programs or transfer schools, and is clarifying that failure to pursue a full course of study includes, but is not limited to, a student whose pattern of behavior demonstrates a repeated inability or unwillingness to complete his or her course of study. [...] Next, if the new program to which the student changes or transfers will not be completed within the authorized admission period established in paragraphs (f)(5)(i) of 8 CFR 214.2, then [...] the F–1 student would need to apply for EOS in the manner and on the form designated by USCIS, [...], with a valid, properly endorsed Form I–20 indicating the new program end date, and would need to provide biometrics as authorized by 8 CFR 103.16, if required.",
+    "source_page": 26
+  },
+  {
+    "policy_name": "Elimination of Duration of Status (D/S) for Border Commuter Students",
+    "affected_groups": [
+      "F border commuter students"
+    ],
+    "current_policy": "Duration of status (D/S) does not apply to border commuter students.",
+    "proposed_change": "Strike the provision referencing D/S is inapplicable to border commuter students due to elimination of D/S for all F nonimmigrants.",
+    "plain_english": "Border commuter students will no longer be under the D/S rule because D/S is removed for all F visa holders.",
+    "allowed": [],
+    "restricted_or_prohibited": [
+      "D/S is eliminated for all F nonimmigrants including border commuter students"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 214.2(f)(18)(iii)"
+    ],
+    "evidence_quote": "DHS proposes to strike the sentence referencing how ‘‘duration of status’’ is inapplicable to border commuter students because DHS is proposing to eliminate D/S for all F nonimmigrants.",
+    "source_page": 26
+  },
+  {
+    "policy_name": "Maximum 4-Year Admission Period for J-1 Exchange Visitors",
+    "affected_groups": [
+      "J-1 exchange visitors"
+    ],
+    "current_policy": "Varied permissible initial time periods up to 5 years depending on category; program extensions possible with DOS approval.",
+    "proposed_change": "Implement a uniform maximum initial period of admission not to exceed 4 years for all J-1 categories, aligning with F nonimmigrant maximum period.",
+    "plain_english": "All J-1 visitors will have a maximum 4-year admission period regardless of category, similar to F visa holders.",
+    "allowed": [
+      "Initial admission up to 4 years for all J-1 categories"
+    ],
+    "restricted_or_prohibited": [
+      "Admission periods exceeding 4 years"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Maximum of 4 years admission period"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(j)(1)(ii)(A)"
+    ],
+    "evidence_quote": "Under proposed 8 CFR 214.2(j)(1), J exchange visitors would be able to receive an initial period of admission not to exceed the program end date as stated on the Form DS–2019, up to a period of 4 years. [...] DHS is implementing the same 4-year maximum period of admission.",
+    "source_page": 26
+  },
+  {
+    "policy_name": "30-Day Preparation for Departure Period for J-1 Exchange Visitors",
+    "affected_groups": [
+      "J-1 exchange visitors"
+    ],
+    "current_policy": "Current regulations provide a 30-day period for travel or designated purposes before program start or after program end.",
+    "proposed_change": "Retain 30-day period post-program end or 4-year maximum period, clarifying it is for departure or seeking to maintain lawful status (including filing EOS).",
+    "plain_english": "J-1 visitors get 30 days after their program or 4-year limit to prepare to leave or apply to extend their stay.",
+    "allowed": [
+      "30 days after program end or 4-year max for departure or status maintenance"
+    ],
+    "restricted_or_prohibited": [],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "30-day period from program end date or 4-year max period, whichever is earlier"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(j)(1)(ii)(C)"
+    ],
+    "evidence_quote": "DHS proposes to retain the 30-day period that J nonimmigrants are provided before the report date or start of the approved program listed on the DS–2019 and the 30-day period for preparation for departure. [...] the Department proposes to revise the language [...] to instead read ‘‘a period of 30 days from the program end date or the 4-year maximum period of admission, whichever is earlier, for the purposes of departure or to otherwise seek to maintain lawful status.’’",
+    "source_page": 26
+  },
+  {
+    "policy_name": "Limit on J-2 Dependent Extensions to Principal J-1 Period of Admission",
+    "affected_groups": [
+      "J-2 spouses and children of J-1 principals"
+    ],
+    "current_policy": "Initial admission for J-2 dependents may not exceed principal J-1's authorized admission period.",
+    "proposed_change": "Codify that extension of stay for J-2 dependents may not exceed the authorized admission period of the principal J-1.",
+    "plain_english": "J-2 family members can only stay as long as the J-1 principal is authorized to stay.",
+    "allowed": [
+      "Extensions for J-2 dependents up to principal J-1's admission period"
+    ],
+    "restricted_or_prohibited": [
+      "Extension beyond principal J-1's authorized admission period"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "No longer than principal J-1's authorized period"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(j)(1)(ii)(B)"
+    ],
+    "evidence_quote": "DHS proposes to codify the policy that extensions for spouses or children who are granted J–2 status based on their derivative relationship as a spouse or child of the principal J–1 nonimmigrant may not exceed the period of authorized admission of the principal J–1. [...] the authorized period of initial admission for J–2 dependents would be subject to the same requirements as the J–1 exchange visitor and may not exceed the period of authorized admission of the principal J–1 exchange visitor.",
+    "source_page": 27
+  },
+  {
+    "policy_name": "J-1 Exchange Visitor Extension of Stay (EOS) Application Process and Employment Authorization",
+    "affected_groups": [
+      "J-1 exchange visitors and J-2 dependents"
+    ],
+    "current_policy": "J-1 extensions require RO and DOS approval; J-2 employment requires separate USCIS authorization; current provisions allow certain extensions and employment during pending EOS.",
+    "proposed_change": "Require EOS application filed with USCIS with fee, form, and biometrics; J-1 program extensions through sponsor followed by EOS with USCIS; allow J–1s with timely filed EOS to continue authorized employment/training up to 240 days post-admission expiration; J–2 employment requires separate authorization with employment limited to supporting recreational/cultural activities, not J–1; deny J–2 EOS if J–1 EOS denied; allow J–1/J–2 travel without abandonment of EOS; require prompt departure upon EOS denial.",
+    "plain_english": "J-1 visitors must apply to extend their stay with USCIS after sponsor approval; they can continue working while extension is pending; J-2 family can work only with permission and cannot support the J-1; if extension is denied, all must leave immediately; traveling while extension is pending does not cancel the application.",
+    "allowed": [
+      "Continuation of employment/training for J-1 up to 240 days post admission expiration if EOS timely filed",
+      "J-1 program extension requests through RO and DOS",
+      "J-2 employment with USCIS authorization",
+      "Travel during pending EOS without abandonment"
+    ],
+    "restricted_or_prohibited": [
+      "J-2 employment to support J-1",
+      "J-2 EOS exceeding principal J-1 admission period",
+      "Employment after EOS denial"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Up to 240 days employment authorization extension during pending EOS",
+      "EOS application must be filed within 30 days of DOS's reinstatement decision",
+      "EOS applications must be timely filed on or before expiration"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(j)(1)(iv)(A)",
+      "8 CFR 214.2(j)(1)(iv)(D)",
+      "8 CFR 214.2(j)(1)(iv)(E)",
+      "8 CFR 214.2(j)(1)(v)",
+      "8 CFR 274a.12(b)(20)",
+      "8 CFR 214.2(j)(1)(vii)",
+      "8 CFR 214.1(c)(8)"
+    ],
+    "evidence_quote": "Like other nonimmigrants applying for EOS, they would need to file an EOS application on the form and in the manner designated by USCIS, with the required fee and in accordance with filing instructions, including any biometrics required by 8 CFR 103.16. [...] J–1 nonimmigrants seeking a program extension will continue to first request such an extension through the RO [...]. If such a program extension is recommended by the RO and approved by DOS, if necessary, the J–1 must apply for an EOS with USCIS to remain in the U.S. beyond the status expiration date on their I–94. [...] If an alien’s J–1 status has expired, but he or she timely filed an EOS application, DHS proposes to allow the alien to continue engaging in activities consistent with the terms and conditions of the alien’s program, including any employment authorization, beginning on the day after the admission period expires, for up to 240 days. [...] Unlike J–1 exchange visitors, J–2 spouses and eligible children may only engage in employment with authorization by USCIS. [...] DHS proposes to retain the current restriction on the J–2 dependent’s income described in 8 CFR 214.2(j)(1)(v)(A); the J–2 nonimmigrant’s income may be used to support the family’s customary recreational and cultural activities and related travel, among other things, but not to support the J–1. [...] A dependent J–2 spouse and children seeking to accompany the J–1 exchange visitor [...] would either need to be included on the primary applicant’s request for extension or file their own EOS applications [...]. If a J–1 exchange visitor is denied EOS, then the J–2 family members will also be denied EOS, and all will be required to leave the United States immediately. [...] DHS is using general terms [...] DHS proposes to allow J–1 nonimmigrants to continue employment or authorized training while an EOS application is pending with USCIS. Specifically, DHS proposes to allow J–1s who have properly filed an EOS on or before 6 months after the effective date of the final rule, to engage in the activities consistent with pursuing the terms and conditions of the exchange program objectives, including authorized training, while the EOS is pending, up to the DS–2019 end date filed with the EOS application. [...] DHS proposes not to consider travel during the time the EOS is pending to constitute abandonment of the EOS application.",
+    "source_page": 27
+  },
+  {
+    "policy_name": "J-1 Reporting Requirements Update",
+    "affected_groups": [
+      "J-1 exchange visitors and Responsible Officers (ROs)"
+    ],
+    "current_policy": "J-1 exchange visitors must report address changes within 10 calendar days; ROs update SEVIS within 21 days; term 'Service' used instead of USCIS.",
+    "proposed_change": "Replace 'Service' with 'USCIS'; require J-1 exchange visitors to report changes of name and address within 10 calendar days; require ROs to update SEVIS within 10 business days; strike sentence referencing non-SEVIS programs.",
+    "plain_english": "J-1 visitors must report address/name changes within 10 days; ROs must update SEVIS within 10 business days. Terminology updated to USCIS. Non-SEVIS program references removed.",
+    "allowed": [],
+    "restricted_or_prohibited": [],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "10 calendar days to report changes by J-1",
+      "10 business days for ROs to update SEVIS"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(j)(1)(ix)"
+    ],
+    "evidence_quote": "DHS proposes conforming amendments [...] replacing the term ‘Service’ with ‘USCIS’ and clarifying the number of days during which changes need to be reported by revising from 10 days to 10 ‘calendar’ days for exchange visitors to report changes in their names and addresses and from 21 days to 10 business days for the RO to update SEVIS, in order to conform with existing DOS regulations. [...] DHS proposes to strike the sentence which references non-SEVIS programs, as SEVIS enrollment is now a mandatory requirement.",
+    "source_page": 27
+  },
+  {
+    "policy_name": "Definition and Eligibility Criteria for I Nonimmigrant Classification",
+    "affected_groups": [
+      "I nonimmigrants (representatives of foreign information media)"
+    ],
+    "current_policy": "No codified regulatory definition requiring home office abroad for media organizations; long-standing practice distinguishes journalistic information from entertainment content.",
+    "proposed_change": "Define foreign media organization as an entity engaged in regular gathering, production, or dissemination of journalistic information with a home office in a foreign country; codify that content must be primarily journalistic, not entertainment or promotional; require evidence (employment letter or attestation) verifying employment, work, remuneration, and foreign home office; clarify that content by bloggers must be on behalf of a qualifying foreign media organization to qualify as I nonimmigrant.",
+    "plain_english": "To qualify for an I visa, you must work for a foreign media organization with a home office abroad and produce mainly news or educational content, not entertainment; you must provide proof of employment or freelance work meeting these criteria.",
+    "allowed": [
+      "Representation of foreign media organizations with confirmed home office abroad",
+      "Content that is primarily journalistic, informational or educational",
+      "Freelance/self-employed with proper attestation"
+    ],
+    "restricted_or_prohibited": [
+      "Content primarily for entertainment (e.g., reality TV)",
+      "Personal blogs without representation by qualifying media organization",
+      "Promotional or marketing content"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 214.2(i)(1)",
+      "8 CFR 214.2(i)(2)"
+    ],
+    "evidence_quote": "DHS proposes to define a foreign media organization as ‘‘an organization engaged in the regular gathering, production or dissemination via print, radio, television, internet distribution, or other media, of journalistic information and has a home office in a foreign country.’’ [...] DHS is proposing to clarify and codify the DOS and USCIS long-standing practice interpreting ‘‘foreign information media’’ [...] as ‘‘journalistic information.’’ [...] In order to be granted I classification, an alien would need to meet his or her burden of proof [...] with a letter from the employing foreign media organization verifying the employment, the work to be performed, and the remuneration involved. [...] Where an alien is self-employed or freelancing, the alien must provide an attestation that verifies the employment, establishes that he or she is a representative of a qualifying foreign media organization that meets the foreign home office requirement, and describes the remuneration and work to be performed.",
+    "source_page": 28
+  },
+  {
+    "policy_name": "Admission and Extension of Stay Periods for I Nonimmigrants with Special Conditions for PRC Passport Holders",
+    "affected_groups": [
+      "I nonimmigrants, including those with passports from the People's Republic of China (PRC)"
+    ],
+    "current_policy": "No codified admission or extension period limits expressed as 240 or 90 days; employment authorized pending applications under specific conditions.",
+    "proposed_change": "Set initial admission and EOS periods up to 240 days or until completion of assignment, whichever is shorter; for PRC passport holders (excluding Hong Kong and Macau SAR passports), admission and EOS periods limited to 90 days or assignment completion; allow continuation of activities consistent with I classification during timely EOS pending period up to 240/90 days; impose work cessation if EOS pending beyond authorized period unless approved; require timely filing of EOS applications to maintain status; deny extensions result in immediate departure without grace period and accrual of unlawful presence; dependents may be eligible for EOS under same conditions; multiple EOS applications allowed but work must cease pending approvals.",
+    "plain_english": "I visa holders can stay up to 240 days (or 90 days for most PRC passport holders) per admission or extension; must file EOS timely to continue work; must stop work if extension not approved; failing to leave after denial starts unlawful stay. Dependents follow same rules.",
+    "allowed": [
+      "Admission and extension up to 240 days or activity completion",
+      "Admission and extension up to 90 days for PRC passport holders (except HK/Macau)",
+      "Continue activities consistent with I classification during timely EOS pending periods",
+      "Multiple consecutive EOS applications if timely filed"
+    ],
+    "restricted_or_prohibited": [
+      "Work continuation beyond pending EOS period without prior approval",
+      "Extension periods exceeding set limits",
+      "Failure to leave immediately after EOS denial"
+    ],
+    "exceptions": [
+      "PRC passport holders (except HK/Macau SAR passports) limited to 90 days"
+    ],
+    "time_limits_or_durations": [
+      "Initial admission and EOS periods up to 240 days or activity completion",
+      "90 days admission/EOS for PRC passport holders except HK/Macau SAR",
+      "Timely filing required prior to expiration of current authorization"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(i)(3)(i)",
+      "8 CFR 214.2(i)(3)(ii)",
+      "8 CFR 214.2(i)(5)(i)",
+      "8 CFR 214.2(i)(5)(iii)",
+      "8 CFR 214.2(i)(6)"
+    ],
+    "evidence_quote": "DHS is proposing that aliens in I nonimmigrant classification have admission periods not to exceed 240 days or the period of time necessary to complete their activities, whichever is shorter [...]. However, I nonimmigrants presenting passports from the PRC (other than a Hong Kong SAR passport or Macau SAR passport) would be given admission and extension of stay periods of up to 90 days or until the activities or assignments consistent with the I classification are completed, whichever is shorter. [...] DHS proposes allowing an I nonimmigrant to continue activities consistent with the I classification while the timely application for EOS is pending, as provided for in 8 CFR 274a.12(b)(20), for a period not to exceed 240 days or the actual additional time requested on the EOS application, whichever is shorter (with the exception of an I nonimmigrant submitting a passport from the PRC [...], who can request extensions of up to 90 days). [...] If an EOS remains pending at the end of this period [...], DHS proposes the I nonimmigrant may remain so long as the EOS application is pending, and he or she has filed a subsequent EOS request [...] But DHS proposes that the alien cease working until his or her initial/preceding EOS application is approved. [...] The denial of an extension application requires the alien to cease work activities and depart the United States immediately. [...] Aliens applying for an EOS currently file a Form I–539 [...] DHS proposes that the dependents of an I nonimmigrant may be eligible for an EOS, under the same conditions and subject to the same restrictions as the principal I nonimmigrant.",
+    "source_page": 29
+  },
+  {
+    "policy_name": "Fixed Period of Admission for F, J, and I Nonimmigrants",
+    "affected_groups": [
+      "F nonimmigrants",
+      "J nonimmigrants",
+      "I nonimmigrants",
+      "DSOs",
+      "ROs",
+      "foreign media representatives"
+    ],
+    "current_policy": "F, J, and I nonimmigrants are admitted with duration of status (D/S) on Form I-94.",
+    "proposed_change": "Replace D/S admission with a fixed period of admission tied to the program end date for F, J, and I nonimmigrants. The admission period will not exceed 4 years plus 30 days for departure or to seek lawful status. Unlawful presence will start accruing after the expiration of the fixed period of admission.",
+    "plain_english": "Instead of staying in the U.S. for as long as their program lasts, certain visa holders will be allowed to stay only for a set time tied to their program end date plus a short grace period, with penalties for overstaying.",
+    "allowed": [
+      "Entry up to the program end date plus 30 days grace period for F and J nonimmigrants who changed status before the final rule",
+      "Potential to request Extensions of Stay (EOS)"
+    ],
+    "restricted_or_prohibited": [
+      "Admission for indefinite duration (D/S) no longer allowed",
+      "Accrual of unlawful presence after fixed admission period expires"
+    ],
+    "exceptions": [
+      "Aliens granted change to F or J status before the final rule may be admitted per former practice up to the program end date plus 30 days",
+      "Underlying petitions with a pending change of status application may still be approved even if status change application is abandoned due to travel"
+    ],
+    "time_limits_or_durations": [
+      "Maximum 4 years admission plus 30 days grace period",
+      "Fixed periods replacing D/S admission"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(i)(7)",
+      "8 CFR 248.1(e)"
+    ],
+    "evidence_quote": "DHS proposes to apply the same fixed period of admission applicable to aliens seeking to change from a different nonimmigrant status to, if eligible, I status. See proposed 8 CFR 214.2(i)(7)...aliens who were granted a change to F or J status before the effective date of the final rule, and are applying for admission as an F or J after the final rule’s effective date may be admitted up to the program end date as noted on the Form I–20 or DS–2019...not to exceed 4 years, plus a period of 30 days following their program end date...",
+    "source_page": 31
+  },
+  {
+    "policy_name": "Abandonment of Change of Status Applications Upon Departure",
+    "affected_groups": [
+      "Aliens applying for change of status",
+      "USCIS"
+    ],
+    "current_policy": "Nonimmigrants can file applications to change status and may remain in the U.S. while application is pending. Departure during pendency may have unclear impact.",
+    "proposed_change": "Codify longstanding policy that if an alien timely files a change of status application but departs the U.S. while the application is pending, USCIS will consider the application abandoned.",
+    "plain_english": "If you apply to change your visa status but leave the U.S. before the decision is made, your application will be treated as if you gave up.",
+    "allowed": [
+      "Underlying petitions filed along with the change of status may still be approved",
+      "Alien may obtain visa at U.S. Embassy/Consulate abroad to apply for admission in the new classification"
+    ],
+    "restricted_or_prohibited": [
+      "Change of status application considered abandoned if alien leaves U.S. while pending"
+    ],
+    "exceptions": [
+      "Approval of underlying petition notwithstanding abandonment of the change of status application"
+    ],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 248.1(f)"
+    ],
+    "evidence_quote": "DHS is proposing to codify the long-standing policy that, when an alien timely files an application to change to another nonimmigrant status, including F or J status, but departs the United States while the application is pending, USCIS will consider the application abandoned.",
+    "source_page": 31
+  },
+  {
+    "policy_name": "Employment Authorization for I Nonimmigrants",
+    "affected_groups": [
+      "I nonimmigrants",
+      "Foreign media representatives"
+    ],
+    "current_policy": "I nonimmigrants may be employed only for the sponsoring foreign news agency or bureau as stated in 8 CFR 274a.12(b)(10).",
+    "proposed_change": "Cross-reference language in proposed 8 CFR 214.2(i) clarifying that I nonimmigrants may be employed in freelance or self-employment situations without a sponsoring news agency, provided they meet the requirements of working for a qualifying foreign media organization.",
+    "plain_english": "Foreign media visa holders can work freelance or for themselves if they prove they work for a qualifying foreign media organization, even if they don't have a formal sponsor.",
+    "allowed": [
+      "Employment for sponsoring foreign news agency or bureau",
+      "Freelance and self-employment for qualifying foreign media organizations"
+    ],
+    "restricted_or_prohibited": [],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 274a.12(b)(10)",
+      "8 CFR 214.2(i)"
+    ],
+    "evidence_quote": "DHS proposes to cross-reference language in proposed 8 CFR 214.2(i) for I nonimmigrants, which clarifies that limitations currently in the provision... allow for freelance and self-employment situations where the I nonimmigrant may not have a 'sponsoring' foreign news agency or bureau...",
+    "source_page": 31
+  },
+  {
+    "policy_name": "Biometrics Requirement for Extensions of Stay",
+    "affected_groups": [
+      "Nonimmigrants filing Form I-539",
+      "USCIS"
+    ],
+    "current_policy": "Applicants filing Form I-539 may be required to submit biometrics, but details vary among classifications.",
+    "proposed_change": "Applicants filing for an extension of stay (EOS), including for the I nonimmigrant status, might be required to submit biometrics under proposed 8 CFR 214.2(i)(5).",
+    "plain_english": "People applying to extend their stay might need to provide fingerprints or other biometric data.",
+    "allowed": [
+      "Filing of Form I-539 with biometrics as required"
+    ],
+    "restricted_or_prohibited": [],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 214.2(i)(5)"
+    ],
+    "evidence_quote": "And, as with other applicants who file a Form I–539, under the proposed rule applicants might be required to submit biometrics. See proposed 8 CFR 214.2(i)(5).",
+    "source_page": 31
+  },
+  {
+    "policy_name": "Elimination of Duration of Status Admission for F, J, and I Nonimmigrants",
+    "affected_groups": [
+      "F nonimmigrant students",
+      "J exchange visitors",
+      "I nonimmigrant representatives of foreign information media",
+      "F-2 and J-2 family members"
+    ],
+    "current_policy": "F-1, J-1, and I nonimmigrants are admitted for Duration of Status (D/S), allowing them to remain in the U.S. for the duration of their program without a fixed end date.",
+    "proposed_change": "DHS proposes to eliminate the practice of admitting F-1, J-1, and I nonimmigrant classifications for Duration of Status (D/S). Instead, these nonimmigrants will be admitted for a fixed period required to complete their academic program, foreign information media employment, or exchange program, not exceeding the periods defined in the new rule. Extensions of stay beyond the admission period granted at entry will require filing for extension with USCIS.",
+    "plain_english": "Students and exchange visitors will no longer be allowed to stay in the U.S. indefinitely while their program is ongoing. They will be given a fixed period of time based on their program length and will need to apply to extend their stay if needed.",
+    "allowed": [
+      "Admission for period necessary to complete program, up to fixed maximums",
+      "Extension of stay by application to USCIS"
+    ],
+    "restricted_or_prohibited": [
+      "Admission for Duration of Status (D/S) no longer allowed for F, J, and I nonimmigrants"
+    ],
+    "exceptions": [
+      "Transition provisions allow aliens maintaining status before effective date to remain until the later of EAD expiration or program end date, up to 4 years; extensions permitted via application"
+    ],
+    "time_limits_or_durations": [
+      "F nonimmigrants can be admitted up to 4 years or the length of the program as specified on Form I-20, whichever is shorter",
+      "30 days before program start and 30 days after program end (not counted toward max stay)",
+      "F-1 students in English language training limited to 24 months plus 30-day departure period",
+      "Public high school F-1 students limited to 12 months total",
+      "Transition period for aliens admitted for D/S on date 60 days after publication: continue status until expiration of EAD or Form I-20 program end date, not to exceed 4 years from effective date, plus departure period (60 days for F, 30 days for J)",
+      "I nonimmigrants authorized to remain for necessary period to complete activity, not to exceed 300 days (or 150 days for certain passports) from effective date",
+      "Extensions required beyond these fixed periods"
+    ],
+    "cfr_references": [
+      "8 CFR 214.1(a)(4)",
+      "8 CFR 214.1(c)(8)",
+      "8 CFR 214.1(m)",
+      "8 CFR 214.2(f)(5)",
+      "8 CFR 214.2(j)(1)(ii)"
+    ],
+    "evidence_quote": "DHS proposes to amend its regulations to eliminate the practice of admitting F–1 nonimmigrant students, I nonimmigrant representatives of information media, and J–1 exchange visitors (and F–2/J–2 family members) for D/S. The proposed rule would provide for nonimmigrants seeking entry under F, J, or I visas to be admitted for the period required to complete their academic program, foreign information media employment, or exchange program, not to exceed the periods of time defined in this proposed rule. The proposed rule would also require nonimmigrants seeking to continue their studies, foreign information media employment, or exchange program beyond the admission period granted at entry to apply for extension.",
+    "source_page": 36
+  },
+  {
+    "policy_name": "Fixed Admission Periods and Extension Procedures for F Nonimmigrants",
+    "affected_groups": [
+      "F nonimmigrant students and their F-2 dependents"
+    ],
+    "current_policy": "F nonimmigrants are admitted for Duration of Status and may change educational objectives during their programs more freely.",
+    "proposed_change": "F-1 students will be admitted for a fixed period necessary to complete the course of study as specified on Form I-20, not to exceed 4 years. English language training F-1 students limited to 24 months, public high school F-1 students capped at 12 months. Extensions require filing extension applications with USCIS. Educational objective changes are restricted: no changes in the first academic year unless SEVP authorizes exceptions; graduate students may not change programs during studies; return to the same or lower educational level is disallowed. Penalty for departures while extension applications are pending are detailed, including abandonment criteria.",
+    "plain_english": "F-1 students will get a fixed time to study instead of an open-ended status. They will need to apply for extensions to continue beyond that. Changing programs or majors will be more limited.",
+    "allowed": [
+      "Admission up to fixed program length (max 4 years)",
+      "30 days before start date and 30 days after end date for arrival/departure",
+      "Extensions of stay via USCIS application",
+      "Limited exceptions for educational objective changes as approved by SEVP"
+    ],
+    "restricted_or_prohibited": [
+      "No admission for Duration of Status",
+      "English language F-1 capped at 24 months",
+      "Public high school F-1 capped at 12 months",
+      "Graduate level F-1 students cannot change programs during study",
+      "F-1 students cannot maintain or be admitted for same or lower educational level after completing a program",
+      "Changes of program restricted in first academic year (except approved exceptions)"
+    ],
+    "exceptions": [
+      "SEVP may authorize exceptions for change of educational objectives due to extenuating circumstances",
+      "DHS may delay or suspend application of program change restrictions"
+    ],
+    "time_limits_or_durations": [
+      "Admission for fixed period up to 4 years or program length on Form I-20",
+      "Additional 30 days before and after program for arrival/departure",
+      "24 months maximum for English language program students",
+      "12 months aggregate maximum for public high school students",
+      "Transition period allowing those maintaining status before effective date to remain up to 4 years",
+      "Must apply timely for post-completion OPT and STEM OPT extension",
+      "30 days departure period after post-completion OPT or STEM OPT"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(i)",
+      "8 CFR 214.1(c)(8)",
+      "8 CFR 214.2(f)(5)(ii)"
+    ],
+    "evidence_quote": "An F–1 student is admitted for a fixed period of time, which is the period necessary to complete the course of study indicated on the Form I–20, or successor form, not to exceed a period of 4 years, plus additional times noted in this paragraph... An F–1 student at any level below the graduate degree level may not change programs or educational objectives... An F–1 student at the graduate degree level or above may not change programs at any point during a program of study... An alien who has completed a program... may not maintain, be admitted, or otherwise be provided F–1 status through a program at the same educational level or a lower educational level.",
+    "source_page": 38
+  },
+  {
+    "policy_name": "New Rules for Admission and Extension of Stay for J Nonimmigrants",
+    "affected_groups": [
+      "J-1 exchange visitors and their J-2 dependents"
+    ],
+    "current_policy": "J-1 nonimmigrants are admitted for Duration of Status.",
+    "proposed_change": "J-1 nonimmigrants will be admitted for the period specified in 8 CFR 214.2(j)(1)(ii) related to the program end date. Admissions with pending extension applications may be for the unexpired period before departure plus 30 days. Extensions of stay require application to USCIS. The admission period is fixed and requires applying for extension to remain longer. Transition provisions similarly allow those maintaining J status on the effective date to remain until program end date plus a 30-day departure period.",
+    "plain_english": "Exchange visitors will be admitted for a fixed time based on their program, not for open-ended status. They must apply to extend if they want to stay longer after that time.",
+    "allowed": [
+      "Admission up to program length per Form DS-2019",
+      "Extensions allowed by USCIS application",
+      "30-day departure period after program end"
+    ],
+    "restricted_or_prohibited": [
+      "Admission for Duration of Status (D/S) no longer allowed"
+    ],
+    "exceptions": [
+      "Transition period for those maintaining status on effective date to remain until program end date plus 30 days"
+    ],
+    "time_limits_or_durations": [
+      "Admission as per 8 CFR 214.2(j)(1)(ii) for program end date",
+      "30 days additional for arrival and departure",
+      "Transition period up to 4 years plus 30 days, effective date plus departure period"
+    ],
+    "cfr_references": [
+      "8 CFR 214.1(a)(4)(ii)",
+      "8 CFR 214.2(j)(1)(ii)",
+      "8 CFR 214.1(m)(1)"
+    ],
+    "evidence_quote": "Aliens seeking admission to the United States, including those seeking admission with a properly filed, pending application for an extension of stay as a J nonimmigrant after a previously authorized period of admission as a J nonimmigrant expired, may be admitted for the period specified in 8 CFR 214.2(j)(1)(ii)... Subject to 8 CFR 274a.14, any authorized employment or training continues until the program end date on such F or J nonimmigrant’s Form I–20 or DS–2019, as applicable and as endorsed... Aliens with F or J status who are properly maintaining their status on [effective date] and who were admitted for duration of status are authorized to remain... not to exceed a period of 4 years... plus the departure period of 60 days for F nonimmigrants... and 30 days for J nonimmigrants.",
+    "source_page": 36
+  },
+  {
+    "policy_name": "Abandonment Rules for Extension of Stay and Employment Authorization Applications for F, I, and J Nonimmigrants",
+    "affected_groups": [
+      "F, I, and J nonimmigrants filing for extensions of stay or employment authorization"
+    ],
+    "current_policy": "No explicit regulation about abandonment tied to departure while extension or employment authorization applications are pending is described.",
+    "proposed_change": "USCIS will not consider extension of stay applications abandoned if the alien departs the U.S. while the application is pending, provided the alien seeks admission for the balance of previously authorized period. Applications may be deemed abandoned if the alien leaves and seeks admission with a program end date beyond previously authorized period while the extension application is pending. Employment authorization applications will not be considered abandoned.",
+    "plain_english": "If students or exchange visitors apply to extend their stay and leave the U.S. while the application is pending, USCIS will keep their application active if they return within their authorized stay. If they try to return beyond the originally authorized stay before an extension is approved, the application may be abandoned.",
+    "allowed": [
+      "Continuation of extension applications if alien departs and returns within authorized period",
+      "Employment authorization applications not abandoned by such departure"
+    ],
+    "restricted_or_prohibited": [
+      "Abandonment of extension application if alien departs and seeks admission beyond authorized period with a new Form I-20 or DS-2019 while application is pending"
+    ],
+    "exceptions": [
+      "Employment authorization applications linked to extension applications are not considered abandoned"
+    ],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 214.1(c)(8)"
+    ],
+    "evidence_quote": "(c)(8) Abandonment of extension of stay and pending employment authorization applications for F, I, and J nonimmigrant aliens. (i) If an alien in F, I, or J nonimmigrant status timely files an application for an extension of stay, USCIS will not consider the application abandoned if the alien departs the United States while the application is pending, provided that when the alien seeks admission, the previously authorized period of admission has not expired, and the alien seeks admission for the balance of the previously authorized admission period. (ii) An application for extension of stay... may be deemed abandoned if an alien departs the United States and seeks admission with a Form I–20 or DS–2019 for a program end date beyond their previously authorized period of admission while the application for an extension of stay is pending. USCIS will not consider as abandoned any corresponding applications for employment authorization.",
+    "source_page": 38
+  },
+  {
+    "policy_name": "F-1 Student 30-day Grace Period and Departure Rules",
+    "affected_groups": [
+      "F-1 students"
+    ],
+    "current_policy": null,
+    "proposed_change": "F-1 students have a 30-day period after program end date, 4-year max period of admission, or employment authorization end date to prepare for departure or maintain lawful status, including filing extension or change of status applications timely. The 30-day period is reflected on Form I-94. Withdrawn students have 15 days to depart. Failure to maintain full course work means no additional departure time.",
+    "plain_english": "After finishing their studies or training, F-1 students get 30 days to leave the U.S. or seek to stay legally, except if they withdraw, then they have 15 days.",
+    "allowed": [
+      "30-day departure period",
+      "Timely filing of extensions/change of status"
+    ],
+    "restricted_or_prohibited": [
+      "No extra departure time if out of status or failed to maintain full course"
+    ],
+    "exceptions": [
+      "15-day departure if withdrawn by designated school official"
+    ],
+    "time_limits_or_durations": [
+      "30-day grace period",
+      "15-day withdrawal departure period"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(v)"
+    ],
+    "evidence_quote": "The 30-day period will be reflected on the F–1 student’s Arrival-Departure Record, Form I–94, or successor form. An F–1 student authorized by the designated school official to withdraw from classes will be allowed a 15-day period from the date of the withdrawal to depart the United States. An F–1 student who fails to maintain a full course of study or otherwise fails to maintain status is not eligible for any additional period of time for departure.",
+    "source_page": 41
+  },
+  {
+    "policy_name": "Automatic Extension of F-1 Stay and Employment Authorization",
+    "affected_groups": [
+      "F-1 students"
+    ],
+    "current_policy": null,
+    "proposed_change": "An F-1 student with expired status who has timely filed an extension of stay application is in authorized stay during the pending decision. On-campus employment, CPT, and severe economic hardship employment authorizations are automatically extended during pendency, but not beyond 240 days from period end date noted on I-94. If extension is filed during the 30-day grace period after program end, no automatic employment extension is granted and student must wait for approvals before working.",
+    "plain_english": "F-1 students who apply on time for an extension can keep their status and work permissions automatically extended for up to 240 days while waiting for a decision, except if application is filed during the 30-day grace period when no automatic work extension applies.",
+    "allowed": [
+      "Automatic employment authorization extension up to 240 days",
+      "Continued authorized stay during pending extension"
+    ],
+    "restricted_or_prohibited": [
+      "No automatic employment extension if application filed during the 30-day grace period after program end"
+    ],
+    "exceptions": [
+      "Severe economic hardship employment authorization under emergent circumstances may have different extension periods"
+    ],
+    "time_limits_or_durations": [
+      "Up to 240 days automatic extension",
+      "30-day grace period limitation"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(5)(viii)",
+      "8 CFR 274a.12(b)(6)(i),(iii)",
+      "8 CFR 274a.12(c)(3)(iii)"
+    ],
+    "evidence_quote": "An F–1 student whose status as indicated on the Arrival-Departure Record, Form I–94, or successor form has expired will be considered to be in a period of authorized stay if he or she has timely filed an extension of stay application pursuant to paragraph (f)(7) of this section until USCIS issues a decision on the extension of stay application. Subject to paragraphs (f)(9)(i), (f)(9)(ii) and (f)(10)(i) of this section and 8 CFR 274a.12(b)(6)(i) and (iii) and 8 CFR 274a.12(c)(3)(iii), any F–1 student’s current on-campus, curricular practical training (CPT), and severe economic hardship authorized employment is automatically extended during the pendency of the extension of stay application, but such automatic extension may not exceed 240 days beginning from the end date of his or her period of admission as indicated on the alien’s Arrival-Departure Record, Form I–94, or successor form.",
+    "source_page": 41
+  },
+  {
+    "policy_name": "F-1 Student Extension of Stay Eligibility and Application Process",
+    "affected_groups": [
+      "F-1 students"
+    ],
+    "current_policy": null,
+    "proposed_change": "USCIS may grant extension of stay to F-1 students who maintain status but cannot complete program within authorized period. Eligibility requires continuous lawful status, current full course of study, and a valid new Form I-20 certifying eligibility. Extensions can be granted for compelling academic reasons, documented illness, or uncontrollable circumstances. Applications must be timely filed before expiration of authorized period including 30-day grace. Extensions up to 4 years, not counting 30-day pre and post periods.",
+    "plain_english": "Students who maintain good standing but need more time to complete studies can apply for extensions for valid reasons like research problems or illness, with a process involving a new school certification and filing USCIS forms on time.",
+    "allowed": [
+      "Extension for compelling academic reasons, medical reasons, uncontrollable circumstances",
+      "Extension up to 4 years"
+    ],
+    "restricted_or_prohibited": [
+      "Extensions not allowed for academic probation or repeated inability/unwillingness to complete studies"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Up to 4 years extension",
+      "Must file on or before authorized stay expires including 30-day grace"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(7)"
+    ],
+    "evidence_quote": "USCIS may grant an extension of stay to an F–1 student who has maintained his or her F–1 status, but who is unable to complete his or her program by the end of his or her authorized period of admission. Such student may be eligible for an extension if the designated school official issues a new Form I–20 or successor form certifying that the student is eligible under this paragraph... Delays including, but not limited to, those caused by academic probation or suspension or a student’s repeated inability or unwillingness to complete his or her course of study are not acceptable reasons for an extension...",
+    "source_page": 41
+  },
+  {
+    "policy_name": "Extension of Stay Application Filing and Timing Rules for F-1 Students and Dependents",
+    "affected_groups": [
+      "F-1 students and F-2 dependents"
+    ],
+    "current_policy": null,
+    "proposed_change": "Extension applications must be filed with updated endorsed Form I-20 and supporting evidence including financial proof and biometrics, with fees. F-2 dependents must file their own or be included in the principal's application and must maintain status with no unauthorized employment. Applications must be timely filed on or before expiration of authorized stay including 30-day grace. Late reinstate applications required if extension entered in SEVIS after end date.",
+    "plain_english": "Students and their spouses/children must apply for extensions on time with proper documents and fees, and dependents must also prove eligibility. Late extensions may require reinstatement applications.",
+    "allowed": [
+      "Filing extension of stay applications with supporting documents and fees",
+      "Including dependents in principal’s application"
+    ],
+    "restricted_or_prohibited": [
+      "Unauthorized employment disqualifies",
+      "Late extensions require reinstatement requests"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "On or before expiration of stay including 30-day grace",
+      "Reinstatement needed if extension entered after end date"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(7)(iii)",
+      "8 CFR 248.1(a)"
+    ],
+    "evidence_quote": "An F–1 student must file an extension of stay application using the form and in the manner designated by USCIS, including submitting the updated, properly endorsed Form I–20 or successor form; submitting evidence of sufficient funds to cover expenses; appearing for any biometrics collection required by 8 CFR 103.16; and remitting the appropriate fee... The F–2 dependents must demonstrate the qualifying relationship with the principal F–1 student, be maintaining his or her status, and must not have engaged in any unauthorized employment.",
+    "source_page": 41
+  },
+  {
+    "policy_name": "F-1 Student School Transfer and Change of Educational Objective Procedures",
+    "affected_groups": [
+      "F-1 students"
+    ],
+    "current_policy": null,
+    "proposed_change": "F-1 students may transfer or change educational objectives if maintaining status and meeting requirements like completion of academic year at initial school, no academic probation or suspension, beginning classes within 5 months of transfer, and not being in graduate study unless SEVP exception applies. Transfer requires notifying current school and follow SEVIS transfer procedure including release date specifications. For new program exceeding stay, extension of stay must be applied for. Denials result in out of status and SEVIS termination.",
+    "plain_english": "F-1 students can transfer schools or change majors if they follow rules like being in good standing, finishing required time at current school, and starting new classes within 5 months, with schools updating records accordingly. If more time is needed, they must apply for an extension.",
+    "allowed": [
+      "Transfer to SEVP-certified schools",
+      "Change educational objectives under conditions",
+      "Cancellation of transfer request before release date"
+    ],
+    "restricted_or_prohibited": [
+      "No transfer if on academic probation",
+      "No graduate program enrollment without exception",
+      "Missed 5-month transfer window"
+    ],
+    "exceptions": [
+      "SEVP authorized exceptions for graduate program"
+    ],
+    "time_limits_or_durations": [
+      "Begin classes at transfer school within 5 months of transfer or program completion",
+      "Extension of stay application required if new program exceeds current stay"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(8)"
+    ],
+    "evidence_quote": "An F–1 student may change educational objectives or transfer to SEVP-certified schools if he or she is maintaining status... The student will begin classes at the transfer school or program within 5 months of transferring out of the current school or within 5 months of the program completion date on his or her current Form I–20, or successor form, whichever is earlier... Upon notification by the student, the transfer-out school will update the student’s record in SEVIS as a 'transfer-out'... If the new program to which the student transferred will not be completed within the authorized period of stay... the F–1 student must apply to USCIS for an extension of stay.",
+    "source_page": 42
+  },
+  {
+    "policy_name": "Post-Completion OPT Extension of Stay and Employment Authorization Requirements",
+    "affected_groups": [
+      "F-1 students seeking post-completion OPT"
+    ],
+    "current_policy": null,
+    "proposed_change": "F-1 students recommended for post-completion OPT must apply for an extension of stay and employment authorization, and may not engage in OPT unless authorization is granted. Upon approval, a 30-day extension is provided following expiration of authorized OPT status.",
+    "plain_english": "Students who want to work after graduation through OPT need to apply and get an extension and work authorization before working. After OPT ends, they get a 30-day grace period.",
+    "allowed": [
+      "Extension of stay and employment authorization for post-completion OPT",
+      "30-day grace period after OPT expiration"
+    ],
+    "restricted_or_prohibited": [
+      "Work prior to authorization not allowed"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "30-day period following expiration of OPT authorized status"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(f)(10)(ii)(D)"
+    ],
+    "evidence_quote": "Unless described in section 214.1(m)(1)(i), an F–1 student recommended for post-completion OPT must apply for an extension of stay and employment authorization and may not engage in post-completion OPT unless such employment authorization is granted. If the application for an extension of stay and post-completion OPT are granted, the student will receive an additional 30-day period provided in paragraph (f)(5)(v) of this section following the expiration of the status approved to complete post-completion OPT.",
+    "source_page": 42
+  },
+  {
+    "policy_name": "I Nonimmigrant Representatives of Foreign Media Admission and Extension Rules",
+    "affected_groups": [
+      "Foreign media aliens with I nonimmigrant status"
+    ],
+    "current_policy": null,
+    "proposed_change": "I nonimmigrant aliens may be admitted up to 240 days or the time needed to complete assignments, whichever is shorter. Those with passports from People's Republic of China (excluding Hong Kong and Macau SAR passport holders) are limited to 90 days maximum. Extensions of stay are allowed up to 240 days or 90 days respectively, with eligibility determined by timely filings and proper application with fees and biometrics. Expired status with timely filed extension permits continuing activities for up to 240 or 90 days depending on passport. Work must cease if extension not approved before deadlines. Dependents may apply for extensions not exceeding principal’s admission period.",
+    "plain_english": "Foreign media workers usually get up to 240 days in the U.S., except Chinese passport holders who get up to 90 days. They can extend their stay if they apply on time, and can keep working while waiting for a decision for some time. Dependents can extend their stay too.",
+    "allowed": [
+      "Admission up to 240 days (90 days for certain Chinese passport holders)",
+      "Extension of stay applications with fees and biometrics",
+      "Continuing activities while extension is pending up to 240/90 days"
+    ],
+    "restricted_or_prohibited": [
+      "Change of employer or media medium without USCIS permission",
+      "Work must cease if extension not approved after period"
+    ],
+    "exceptions": [
+      "Exclusion of Hong Kong and Macau SAR passport holders from 90-day rule"
+    ],
+    "time_limits_or_durations": [
+      "Admission up to 240 days",
+      "China passport holders 90 days max",
+      "Extension up to 240/90 days",
+      "Continuing activities for 240/90 days after expiration if extension timely filed"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(i)"
+    ],
+    "evidence_quote": "Generally, aliens seeking admission in I nonimmigrant status may be admitted for a period of time necessary to complete the planned activities or assignments consistent with the I classification, not to exceed 240 days unless paragraph (i)(3)(ii) of this section applies... An alien who presents a passport from the People’s Republic of China (with the exception of Hong Kong Special Administrative Region passport holders and Macau Special Administrative Region passport holders), may be admitted... not to exceed 90 days... An alien whose I nonimmigrant status, as indicated on the alien’s Arrival/Departure Record, Form I–94, has expired but who has timely filed an extension of stay application is authorized to continue engaging in activities consistent with the I classification on the day after the Form I–94 expired, for a period of up to 240 days... USCIS will deny the extension of stay application if the alien did not cease working after the 240-day period and before the extension of stay request was approved.",
+    "source_page": 43
+  },
+  {
+    "policy_name": "J-1 Exchange Visitors Admission, Extension, and Employment Authorization Rules",
+    "affected_groups": [
+      "J-1 exchange visitors and J-2 dependents"
+    ],
+    "current_policy": null,
+    "proposed_change": "J-1 exchange visitors may be admitted for up to 4 years or program end date on Form DS-2019, with 30 days before start and 30 days after program end for departure or status maintenance. Extensions require filing an extension application with USCIS including the valid DS-2019. Timely filing must be on or before expiration including 30-day grace. Dependents must file own or be included on applications showing qualifying relationship, maintaining status, no unauthorized work; extensions may not exceed principal's admission. J-2 employment requires separate USCIS authorization, employment dates cannot exceed J-1 principal's stay dates, and income restrictions apply. USCIS may extend J-1 status in cases of pending H-1B to complete adjudication. Pending extensions allow continuation up to 240 days beyond expiration with timely filings; pending extensions beyond program end date allow continued participation with further timely filings. Extensions can be renewed in 6-month increments by Federal Register notice. Failure to file timely or revocation requires immediate departure.",
+    "plain_english": "J-1 visitors can stay for up to 4 years plus 30-day grace periods before and after their program. They must apply to extend before their stay expires and include any dependents. Spouses and children can work only if authorized. J-1 status can be extended automatically if applying for H-1B. Pending extensions let visitors stay and participate for certain time frames while waiting for decisions, but they must keep applying on time. If denied, they must leave immediately.",
+    "allowed": [
+      "Admission up to 4 years",
+      "30-day grace before and after program",
+      "Extension applications with DS-2019 and fees",
+      "J-2 employment with USCIS authorization",
+      "Automatic extension for H-1B petition beneficiaries"
+    ],
+    "restricted_or_prohibited": [
+      "J-2 employment only with approval",
+      "No employment for J-2 if not authorized",
+      "Departure required if extension denied"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Admission and extension up to 4 years",
+      "30 days before and after program date",
+      "Up to 240 days extension authorized stay post expiration",
+      "Extensions in 6-month increments by Federal Register notice"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(j)"
+    ],
+    "evidence_quote": "A J–1 exchange visitor may be admitted for the duration of the exchange visitor program, as stated by the program end date noted on Form DS–2019 or successor form, not to exceed a period of 4 years.... A J–1 exchange visitor and J–2 accompanying dependents may remain in the United States for a period of 30 days from the program end date or the 4-year maximum period of admission, whichever is earlier, for the purposes of departure or to otherwise seek to maintain lawful status.... To request an extension of stay, an alien in J status must file an extension of stay application on the form and in the manner designated by USCIS, including submitting the valid Form DS–2019 or successor form, appearing for any biometrics collection required by 8 CFR 103.16, and remitting the appropriate fee.... The accompanying spouse or unmarried children under the age of 21 of a J–1 exchange visitor may only engage in employment if authorized by USCIS.... An extension made under this paragraph also applies to the J–2 dependent alien.... An alien whose J–1 status... has expired but who has timely filed an extension of stay application is authorized to continue engaging in activities... for a period of up to 240 days as provided in 8 CFR 274a.12(b)(20).",
+    "source_page": 43
+  },
+  {
+    "policy_name": "J-1 Exchange Visitor Reporting Requirements",
+    "affected_groups": [
+      "J-1 exchange visitors"
+    ],
+    "current_policy": null,
+    "proposed_change": "J-1 exchange visitors must notify DHS and their program officer of any legal name change or change of address within 10 calendar days of the change in a manner prescribed by the program sponsor. The program sponsor updates SEVIS within 10 business days of notification. If physical address differs from mailing address, the visitor must provide the actual physical address. Sponsors must maintain records and provide on request the actual physical location.",
+    "plain_english": "J-1 visitors have to report address or name changes quickly to their program, which then updates the system. They must tell their real living address if different from mailing address.",
+    "allowed": [
+      "Address and legal name changes reported within 10 days"
+    ],
+    "restricted_or_prohibited": [],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "10 calendar days for the exchange visitor to notify",
+      "10 business days for sponsor to update SEVIS"
+    ],
+    "cfr_references": [
+      "8 CFR 214.2(j)(1)(ix)"
+    ],
+    "evidence_quote": "A J–1 exchange visitor must inform DHS and the responsible officer of the exchange visitor program of any legal changes to his or her name or of any change of address within 10 calendar days of the change, in a manner prescribed by the program sponsor... The exchange visitor program sponsor is responsible for maintaining a record of, and must provide upon request from USCIS, the actual physical location of residence.",
+    "source_page": 45
+  },
+  {
+    "policy_name": "Admission of aliens under section 101(a)(15)(F) and (J) with previously granted duration of status",
+    "affected_groups": [
+      "aliens granted a change to F or J status who depart the United States and seek re-admission"
+    ],
+    "current_policy": null,
+    "proposed_change": "Aliens who were granted a change to F or J status prior to a date to be inserted (60 days after final rule publication) and who departed the U.S. and apply for admission on or after that date will be inspected and may be admitted up to the program end date on the Form I–20 or Form DS–2019 associated with the pre-departure change of status approval, not to exceed 4 years. Admission requires eligibility and possession of valid passport, visa if required, and valid Form I–20 or DS–2019 or successor form.",
+    "plain_english": "People who changed to F or J status before a certain date and then left the US can be allowed back in up to the end of their program date listed on their documents, for a maximum of 4 years, if they have all proper documents.",
+    "allowed": [
+      "Admission up to program end date on Form I–20 or DS–2019, not to exceed 4 years"
+    ],
+    "restricted_or_prohibited": [],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Not to exceed a period of 4 years",
+      "Dates to be inserted 60 days after final rule publication"
+    ],
+    "cfr_references": [
+      "8 CFR 248.1(e)"
+    ],
+    "evidence_quote": "Aliens who were granted a change to F or J status prior to [DHS WILL INSERT DATE 60 DAYS AFTER DATE OF PUBLICATION OF THE FINAL RULE] and who departed the United States and are applying for admission on or after [DHS WILL INSERT DATE 60 DAYS AFTER DATE OF PUBLICATION OF THE FINAL RULE] will be inspected and may be admitted into the United States up to the program end date as noted on the Form I–20 or Form DS–2019 that accompanied the change of status application that was approved prior to the alien’s departure, not to exceed a period of 4 years.",
+    "source_page": 46
+  },
+  {
+    "policy_name": "Abandonment of change of status application upon departure during pendency",
+    "affected_groups": [
+      "aliens who file change of status applications and depart the United States while application is pending"
+    ],
+    "current_policy": null,
+    "proposed_change": "If an alien timely files an application to change to another nonimmigrant status but departs the United States while the application is pending, USCIS will consider the change of status application abandoned.",
+    "plain_english": "If you apply to change your visa status but leave the U.S. before a decision is made, your application will be considered given up and will not be processed further.",
+    "allowed": [],
+    "restricted_or_prohibited": [
+      "Filing a change of status and then departing the U.S. during pendency leads to abandonment of application"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 248.1(f)"
+    ],
+    "evidence_quote": "If an alien timely files an application to change to another nonimmigrant status but departs the United States while the application is pending, USCIS will consider the change of status application abandoned.",
+    "source_page": 46
+  },
+  {
+    "policy_name": "Employment authorization for foreign information media representatives",
+    "affected_groups": [
+      "foreign information media representatives in I status",
+      "dependents of such representatives"
+    ],
+    "current_policy": null,
+    "proposed_change": "An alien who is a foreign information media representative in I status under 8 CFR 214.2(i) may be employed pursuant to the requirements of 8 CFR 214.2(i). Employment authorization does not extend to their dependents.",
+    "plain_english": "Foreign media representatives in I status can be employed as per regulations, but their family members cannot get work authorization.",
+    "allowed": [
+      "Employment for foreign information media representatives in I status under 8 CFR 214.2(i)"
+    ],
+    "restricted_or_prohibited": [
+      "Employment authorization does not extend to dependents of foreign information media representatives"
+    ],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 274a.12(b)(10)"
+    ],
+    "evidence_quote": "An alien who is a foreign information media representative in I status under 8 CFR 214.2(i) may be employed pursuant to the requirements of 8 CFR 214.2(i). Employment authorization does not extend to the dependents of a foreign information media representative.",
+    "source_page": 46
+  },
+  {
+    "policy_name": "Automatic extension of Employment Authorization Document based on severe economic hardship for F-1/M-1 students",
+    "affected_groups": [
+      "F-1 and M-1 students seeking employment due to severe economic hardship"
+    ],
+    "current_policy": null,
+    "proposed_change": "An alien seeking employment because of severe economic hardship under 8 CFR 214.2(f)(9)(ii)(C) with a pending timely filed application for employment authorization and extension of stay may be authorized to work starting the expiration date of the prior Employment Authorization Document until USCIS issues a decision on the current application, not to exceed 240 days. The Employment Authorization Document is automatically extended during this period and considered unexpired if combined with a Form I–20 or successor endorsed by the Designated School Official recommending the extension.",
+    "plain_english": "Students who apply for work permission because of severe financial difficulty and have a pending application can keep working automatically for up to 240 days beyond their current permit expiration while waiting for USCIS decision.",
+    "allowed": [
+      "Work authorization during pendency of employment authorization and extension of stay applications",
+      "Automatic extension of EAD for up to 240 days"
+    ],
+    "restricted_or_prohibited": [],
+    "exceptions": [],
+    "time_limits_or_durations": [
+      "Not to exceed 240 days"
+    ],
+    "cfr_references": [
+      "8 CFR 274a.12(c)(3)(iii)",
+      "8 CFR 214.2(f)(9)(ii)(C)"
+    ],
+    "evidence_quote": "…is authorized to engage in employment beginning on the expiration date of the Employment Authorization Document issued under paragraph (c)(3)(i)(B) of this section and ending on the date of USCIS’ written decision on the current Application for Employment Authorization, Form I–765, or successor form, but not to exceed 240 days. For this same period, such Employment Authorization Document, Form I–766 or successor form, is automatically extended and is considered unexpired when combined with a Certificate of Eligibility for Nonimmigrant (F–1/M–1) Students, Form I–20 or successor form, endorsed by the Designated School Official recommending such an extension.",
+    "source_page": 46
+  },
+  {
+    "policy_name": "Technical amendment to citation in employment authorization rules",
+    "affected_groups": [
+      "regulated aliens under 8 CFR 274a.12(b)(6)(v)"
+    ],
+    "current_policy": "Paragraph (b)(6)(v) references 8 CFR 214.2(f)(5)(vi)",
+    "proposed_change": "Remove the words \"8 CFR 214.2(f)(5)(vi)\" and replace them with \"8 CFR 214.2(f)(5)(vii)\"",
+    "plain_english": "Fix an incorrect regulation citation in a specific employment authorization rule.",
+    "allowed": [],
+    "restricted_or_prohibited": [],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 274a.12(b)(6)(v)"
+    ],
+    "evidence_quote": "Revising paragraph (b)(6)(v) to remove the words \"8 CFR 214.2(f)(5)(vi)\" and add, in their place, the words \"8 CFR 214.2(f)(5)(vii)\"",
+    "source_page": 46
+  },
+  {
+    "policy_name": "Removal of the words 'duration of' from employment authorization",
+    "affected_groups": [
+      "aliens under 8 CFR 274a.12(b)(6)(v)"
+    ],
+    "current_policy": "The phrase 'duration of' is used in paragraph (b)(6)(v)",
+    "proposed_change": "Remove the words 'duration of' in paragraph (b)(6)(v)",
+    "plain_english": "Delete the phrase 'duration of' to presumably clarify or adjust the text related to employment authorization.",
+    "allowed": [],
+    "restricted_or_prohibited": [],
+    "exceptions": [],
+    "time_limits_or_durations": [],
+    "cfr_references": [
+      "8 CFR 274a.12(b)(6)(v)"
+    ],
+    "evidence_quote": "Revising paragraph (b)(6)(v) to remove the words \"duration of\"",
+    "source_page": 46
+  }
+]
