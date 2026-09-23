@@ -5,7 +5,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
-
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+OUTPUT_DIR = PROJECT_DIR / "output"
 # --------------------------------------------------
 # 1. CONFIGURATION
 # --------------------------------------------------
@@ -25,11 +26,11 @@ MODEL = os.environ["AZURE_OPENAI_MODEL"]
 # --------------------------------------------------
 
 main_policies = json.loads(
-    Path("output/proposed_policies.json").read_text(encoding="utf-8")
+    (OUTPUT_DIR / "proposed_policies.json").read_text(encoding="utf-8")
 )
 
 chunk1_policies = json.loads(
-    Path("output/chunk1_policies.json").read_text(encoding="utf-8")
+    (OUTPUT_DIR / "chunk1_policies.json").read_text(encoding="utf-8")
 )
 
 all_policies = chunk1_policies + main_policies
@@ -276,7 +277,7 @@ for number, policy in enumerate(final_policies, start=1):
 # 5. SAVE FINAL JSON
 # --------------------------------------------------
 
-json_output = Path("output/proposed_policies_final.json")
+json_output = OUTPUT_DIR / "proposed_policies_final.json"
 
 json_output.write_text(
     json.dumps(final_policies, indent=2, ensure_ascii=False),
@@ -381,7 +382,7 @@ for i, policy in enumerate(final_policies, start=1):
     lines.extend(["---", ""])
 
 
-markdown_output = Path("output/proposed_policies_final.md")
+markdown_output = OUTPUT_DIR / "proposed_policies_final.md"
 
 markdown_output.write_text(
     "\n".join(lines),

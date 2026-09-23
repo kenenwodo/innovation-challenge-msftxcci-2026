@@ -23,13 +23,16 @@ def extract_pdf_text(pdf_path: str) -> str:
 
 
 if __name__ == "__main__":
-    pdf_path = "data/2025-16554.pdf"
+    project_dir = Path(__file__).resolve().parent.parent
+
+    pdf_path = project_dir / "data" / "2025-16554.pdf"
+    output_path = project_dir / "output" / "extracted_text.txt"
 
     print("Reading PDF...")
 
-    text = extract_pdf_text(pdf_path)
+    text = extract_pdf_text(str(pdf_path))
 
-    output_path = Path("output/extracted_text.txt")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(text, encoding="utf-8")
 
     print(f"Extracted {len(text):,} characters.")

@@ -20,11 +20,12 @@ client = OpenAI(
 
 MODEL = os.environ["AZURE_OPENAI_MODEL"]
 
-INPUT_FILE = Path("output/extracted_text.txt")
-#JSON_OUTPUT = Path("output/proposed_policies.json")
-JSON_OUTPUT = Path("output/chunk1_policies.json")
-#MARKDOWN_OUTPUT = Path("output/proposed_policies.md")
-MARKDOWN_OUTPUT = Path("output/chunk1_policies.md")
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+OUTPUT_DIR = PROJECT_DIR / "output"
+
+INPUT_FILE = OUTPUT_DIR / "extracted_text.txt"
+JSON_OUTPUT = OUTPUT_DIR / "proposed_policies.json"
+MARKDOWN_OUTPUT = OUTPUT_DIR / "proposed_policies.md"
 
 # --------------------------------------------------
 # 2. SPLIT EXTRACTED TEXT INTO PDF PAGES
