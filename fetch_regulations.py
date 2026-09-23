@@ -236,9 +236,12 @@ def write_csv(jsonl_path, csv_path):
     with jsonl_path.open() as src, csv_path.open("w", newline="") as dst:
         writer = csv.DictWriter(dst, fieldnames=CSV_FIELDS, extrasaction="ignore")
         writer.writeheader()
+        count = 0
         for line in src:
             if line.strip():
                 writer.writerow(json.loads(line))
+                count += 1
+    return count
 
 
 def main():
@@ -254,7 +257,21 @@ def main():
              "an attachment is skipped.",
     )
     parser.add_argument("--limit", type=int, help="Process at most N new comments (for testing)")
+    parser.add_argument(
+        "--export-csv", action="store_true",
+        help="Only rebuild text_comments.csv from the comments downloaded so far (no API calls). "
+             "Don't run it while a fetch is in progress.",
+    )
     args = parser.parse_args()
+
+    if args.export_csv:
+        out_dir = args.out_dir or Path("data") / args.document_id
+        kept_path = out_dir / "text_comments.jsonl"
+        if not kept_path.exists():
+            sys.exit(f"No comments downloaded yet: {kept_path} not found")
+        count = write_csv(kept_path, out_dir / "text_comments.csv")
+        log(f"Wrote {count} comments to {out_dir / 'text_comments.csv'}")
+        return
 
     if not args.api_key:
         args.api_key = load_dotenv(args.env_file).get("REGULATIONS_API_KEY") or "DEMO_KEY"
