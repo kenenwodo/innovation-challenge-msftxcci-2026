@@ -1,0 +1,16 @@
+# Demo set: 10 videos about the DHS duration of status rule (ICEB-2025-0001)
+# 5 Facebook (law firms, attorney, consultancy, individual creator) + 5 YouTube
+
+# Facebook (added by hand; dates come from the page)
+https://www.facebook.com/BethelLawImm/videos/a-federal-judge-in-massachusetts-has-postponed-a-dhs-rule-that-was-set-to-take-e/1405856235086952/
+https://www.facebook.com/MavenConsultingServices/videos/usa-visa-changemp4-edited/1402030935241396/
+https://www.facebook.com/NovaLawInfo/videos/-breaking-news-for-f-1-students-j-exchange-visitors-i-visa-holdersa-federal-cour/1088712917225108/
+https://www.facebook.com/FjdizaUSImmigrationAttorney/videos/big-update-for-international-students-and-exchange-visitorsthe-dhs-rule-that-wou/1598856874948750/
+https://www.facebook.com/gautham.kolluri/videos/%EF%B8%8F-major-us-immigration-changes-could-affect-thousands-of-foreign-workers-and-int/1082728481141518/
+
+# YouTube (from find_videos.py)
+https://www.youtube.com/watch?v=bhfTiZPVdgM 2025-10-10   # GoElite | 375 views | 3.8 min | proposal era: checked against v1, shows what changed in v2
+https://www.youtube.com/watch?v=ONXytyxMyoM 2026-07-17   # Bloomberg Television | 69,795 views | 3.4 min | major news outlet, final rule day
+https://www.youtube.com/watch?v=8wwO343OOzI 2026-08-06   # CSULB CIE | 285 views | 3.4 min | university international office
+https://www.youtube.com/watch?v=pm9dk_1i4Jc 2026-08-13   # Law Office of Louis S. Haskell | 165,541 views | 7.0 min | highest reach in the set
+https://www.youtube.com/watch?v=BpgN9dlK3es 2026-09-14   # Visa Guide USA | 344 views | 7.2 min | says D/S "is ending" on the day the court postponed it
