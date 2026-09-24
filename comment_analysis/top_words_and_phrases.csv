@@ -1,0 +1,301 @@
+ngram_type,term,count
+unigram,students,40521
+unigram,international,22478
+unigram,u.s,19530
+unigram,rule,12862
+unigram,proposed,11677
+unigram,research,10453
+unigram,not,10438
+unigram,academic,10025
+unigram,status,8768
+unigram,education,8701
+unigram,programs,8220
+unigram,dhs,8134
+unigram,these,7564
+unigram,talent,6773
+unigram,visa,6557
+unigram,more,6429
+unigram,years,6411
+unigram,duration,6304
+unigram,many,5877
+unigram,student,5867
+unigram,program,5660
+unigram,global,5508
+unigram,policy,5261
+unigram,economy,5233
+unigram,time,5161
+unigram,fixed,5099
+unigram,states,5090
+unigram,united,5001
+unigram,period,4949
+unigram,system,4933
+unigram,innovation,4851
+unigram,proposal,4845
+unigram,universities,4707
+unigram,second,4682
+unigram,degree,4562
+unigram,economic,4446
+unigram,american,4403
+unigram,graduate,4393
+unigram,while,4316
+unigram,admission,4258
+unigram,already,4183
+unigram,degrees,4141
+unigram,but,4137
+unigram,work,4061
+unigram,urge,4050
+unigram,security,4035
+unigram,also,3941
+unigram,higher,3928
+unigram,such,3854
+unigram,than,3831
+unigram,like,3733
+unigram,f-1,3665
+unigram,phd,3626
+unigram,institutions,3597
+unigram,often,3570
+unigram,should,3557
+unigram,extension,3484
+unigram,master,3338
+unigram,study,3336
+unigram,changes,3335
+unigram,current,3323
+unigram,only,3271
+unigram,without,3233
+unigram,stem,3194
+unigram,pursue,3166
+unigram,science,3142
+unigram,new,3112
+unigram,change,3086
+unigram,national,3068
+unigram,jobs,3052
+unigram,immigration,3010
+unigram,could,2982
+unigram,through,2969
+unigram,competitiveness,2969
+unigram,unnecessary,2951
+unigram,educational,2947
+unigram,uscis,2940
+unigram,ability,2933
+unigram,uncertainty,2921
+unigram,administrative,2914
+unigram,contribute,2911
+unigram,may,2871
+unigram,countries,2823
+unigram,scholars,2811
+unigram,oppose,2794
+unigram,other,2786
+unigram,stay,2767
+unigram,flexibility,2744
+unigram,over,2711
+unigram,fields,2696
+unigram,both,2657
+unigram,extensions,2625
+unigram,level,2624
+unigram,america,2619
+unigram,can,2612
+unigram,create,2600
+unigram,strongly,2596
+unigram,periods,2584
+unigram,grace,2547
+unigram,opt,2535
+bigram,international students,15341
+bigram,proposed rule,5484
+bigram,united states,4813
+bigram,duration status,4695
+bigram,higher education,3284
+bigram,grace period,2279
+bigram,urge dhs,2270
+bigram,students scholars,1971
+bigram,u.s economy,1929
+bigram,second master,1889
+bigram,not only,1774
+bigram,global talent,1716
+bigram,fixed admission,1693
+bigram,four years,1620
+bigram,but also,1527
+bigram,admission periods,1496
+bigram,graduate students,1482
+bigram,international student,1436
+bigram,strongly oppose,1435
+bigram,more than,1433
+bigram,oppose proposed,1428
+bigram,rather than,1354
+bigram,visa holders,1350
+bigram,these students,1252
+bigram,u.s higher,1217
+bigram,students contribute,1167
+bigram,exchange visitors,1159
+bigram,national security,1147
+bigram,second degrees,1146
+bigram,homeland security,1139
+bigram,f-1 students,1138
+bigram,opposition proposed,1119
+bigram,day grace,1098
+bigram,does not,1096
+bigram,other countries,1075
+bigram,current duration,1002
+bigram,u.s universities,981
+bigram,pursue second,977
+bigram,dhs withdraw,964
+bigram,fixed time,961
+bigram,students pursuing,937
+bigram,proposed changes,923
+bigram,foreign students,919
+bigram,phd students,919
+bigram,hundreds thousands,899
+bigram,students exchange,897
+bigram,dhs should,884
+bigram,department homeland,870
+bigram,pursuing second,866
+bigram,students pursue,850
+bigram,master degree,818
+bigram,international talent,808
+bigram,status fixed,784
+bigram,u.s competitiveness,780
+bigram,students contributed,777
+bigram,domestic students,763
+bigram,computer science,760
+bigram,many students,755
+bigram,phd programs,750
+bigram,stem fields,745
+bigram,strongly urge,736
+bigram,academic programs,715
+bigram,same lower,712
+bigram,these reasons,711
+bigram,time period,700
+bigram,omb control,697
+bigram,administrative burden,696
+bigram,control number,696
+bigram,admission period,691
+bigram,education research,689
+bigram,respectfully urge,689
+bigram,second degree,681
+bigram,u.s institutions,674
+bigram,period admission,661
+bigram,years complete,658
+bigram,period days,656
+bigram,replace duration,654
+bigram,research innovation,640
+bigram,local economies,640
+bigram,eliminate duration,638
+bigram,economic growth,624
+bigram,strong opposition,621
+bigram,practical training,618
+bigram,many international,614
+bigram,global competitiveness,611
+bigram,master degrees,609
+bigram,not just,606
+bigram,administrative burdens,599
+bigram,students already,584
+bigram,iceb-2 omb,575
+bigram,students not,569
+bigram,international graduate,569
+bigram,academic progress,568
+bigram,ability international,568
+bigram,extension stay,556
+bigram,status framework,546
+bigram,students often,544
+bigram,attract retain,537
+bigram,withdraw proposal,537
+bigram,around world,536
+trigram,international students scholars,1622
+trigram,u.s higher education,1213
+trigram,fixed admission periods,1205
+trigram,day grace period,1085
+trigram,international students contribute,1005
+trigram,urge dhs withdraw,915
+trigram,current duration status,904
+trigram,students exchange visitors,885
+trigram,oppose proposed rule,842
+trigram,department homeland security,824
+trigram,strongly oppose proposed,820
+trigram,duration status fixed,769
+trigram,international students contributed,752
+trigram,omb control number,696
+trigram,opposition proposed rule,650
+trigram,fixed time period,646
+trigram,grace period days,634
+trigram,replace duration status,581
+trigram,iceb-2 omb control,574
+trigram,duration status framework,544
+trigram,respectfully urge dhs,537
+trigram,second master degree,508
+trigram,many international students,498
+trigram,international students pursue,491
+trigram,time period admission,490
+trigram,international graduate students,482
+trigram,eliminate duration status,481
+trigram,strong opposition proposed,471
+trigram,second master degrees,461
+trigram,national science foundation,458
+trigram,billion u.s economy,456
+trigram,students pursuing second,437
+trigram,students pursue second,424
+trigram,optional practical training,422
+trigram,urge dhs reconsider,411
+trigram,hundreds thousands students,392
+trigram,than four years,391
+trigram,ability international students,389
+trigram,international students pursuing,379
+trigram,pursue second degrees,377
+trigram,countries like canada,371
+trigram,status fixed admission,369
+trigram,same lower level,368
+trigram,dhs withdraw proposal,365
+trigram,strongly urge dhs,360
+trigram,contributions international students,358
+trigram,proposed rule replace,358
+trigram,international students exchange,353
+trigram,preserve current duration,352
+trigram,duration status system,349
+trigram,practical training opt,347
+trigram,annually u.s economy,344
+trigram,pursuing second master,342
+trigram,discourage international students,340
+trigram,system international students,337
+trigram,u.s risks losing,329
+trigram,eliminating duration status,320
+trigram,fixed admission period,320
+trigram,express strong opposition,319
+trigram,establishing fixed time,318
+trigram,higher education system,317
+trigram,duration status policy,317
+trigram,proposed rule eliminate,314
+trigram,students scholars study,314
+trigram,rule eliminate duration,313
+trigram,duration status rules,313
+trigram,foreign information media,311
+trigram,rule replace duration,311
+trigram,international students not,310
+trigram,scholars study work,309
+trigram,designated school officials,303
+trigram,opt stem opt,298
+trigram,nonimmigrant academic students,292
+trigram,these reasons urge,291
+trigram,second master programs,291
+trigram,top global talent,289
+trigram,international students bring,288
+trigram,students contributed billion,288
+trigram,period admission extension,287
+trigram,coming united states,286
+trigram,representatives foreign information,280
+trigram,changes duration status,274
+trigram,urge department homeland,269
+trigram,proposed changes duration,269
+trigram,world international students,267
+trigram,status rules continue,267
+trigram,students but also,266
+trigram,rules continue provide,266
+trigram,extension stay eos,265
+trigram,students scholars coming,263
+trigram,visa status renewals,258
+trigram,make major contributions,257
+trigram,students scholars make,257
+trigram,withdraw proposed rule,256
+trigram,pursuing second degrees,256
+trigram,degrees same lower,255
+trigram,scholars around world,255
+trigram,periods permission remain,255
+trigram,forcing visa status,255
+trigram,status renewals more,255
