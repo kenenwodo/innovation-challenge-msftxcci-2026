@@ -225,3 +225,152 @@ This is the structured output intended for the rest of the application.
 The generated policy descriptions are **AI-assisted interpretations** of the source document. The official Federal Register text remains authoritative. Evidence quotes and source-page references are retained to support human review.
 
 If you only need the existing policy analysis for another component of the application, use `proposed_policies_final.json`; you do not need to rerun the pipeline.
+
+# Proposed Rule Policy Extraction
+
+The `policy_analysis/` module extracts and analyzes proposed policy changes from the Federal Register proposed rule used in this project.
+
+**Document:** Federal Register 2025-16554
+**Docket:** ICEB-2025-0001
+**Model:** GPT-4.1-mini through Microsoft Azure AI Foundry
+
+The pipeline converts the proposed-rule PDF into structured policy provisions, including the proposed change, affected groups, restrictions, exceptions, time limits, CFR references, supporting evidence, and source pages.
+
+## How It Works
+
+```text
+Federal Register PDF
+        ↓
+extract_pdf.py
+        ↓
+Page-aware extracted text
+        ↓
+extract_policies.py
+        ↓
+Candidate policy provisions
+        ↓
+consolidate_policies.py
+        ↓
+Final policy dataset
+```
+
+The final analysis consolidated the extracted provisions into **13 distinct policy areas**.
+
+## Important Files
+
+```text
+policy_analysis/
+├── data/
+│   └── 2025-16554.pdf
+│
+├── src/
+│   ├── extract_pdf.py          # Extracts page-aware text from the PDF
+│   ├── extract_policies.py     # Uses GPT-4.1-mini to identify policy changes
+│   ├── consolidate_policies.py # Deduplicates and quality-checks policies
+│   ├── models.py               # Defines the policy data structure
+│   └── test_azure.py           # Tests the Azure connection
+│
+├── output/
+│   ├── extracted_text.txt
+│   ├── proposed_policies_final.json
+│   └── proposed_policies_final.md
+│
+└── requirements.txt
+```
+
+For downstream application development, use:
+
+```text
+policy_analysis/output/proposed_policies_final.json
+```
+
+The Markdown version is available for human review:
+
+```text
+policy_analysis/output/proposed_policies_final.md
+```
+
+## Setup
+
+Run the following commands from the repository root.
+
+### 1. Create and activate a virtual environment
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r policy_analysis/requirements.txt
+```
+
+### 3. Configure Azure AI Foundry
+
+Create a `.env` file in the repository root:
+
+```env
+AZURE_OPENAI_ENDPOINT=YOUR_ENDPOINT
+AZURE_OPENAI_API_KEY=YOUR_API_KEY
+AZURE_OPENAI_MODEL=gpt-4.1-mini
+```
+
+Do not commit `.env` or API keys to GitHub.
+
+### 4. Test the Azure connection
+
+```bash
+python policy_analysis/src/test_azure.py
+```
+
+## Run the Pipeline
+
+Run the scripts in this order:
+
+### Step 1 — Extract text from the PDF
+
+```bash
+python policy_analysis/src/extract_pdf.py
+```
+
+This reads:
+
+```text
+policy_analysis/data/2025-16554.pdf
+```
+
+and creates page-aware extracted text.
+
+### Step 2 — Extract proposed policy changes
+
+```bash
+python policy_analysis/src/extract_policies.py
+```
+
+This uses GPT-4.1-mini to identify concrete proposed regulatory changes and their supporting evidence.
+
+### Step 3 — Consolidate and quality-check the policies
+
+```bash
+python policy_analysis/src/consolidate_policies.py
+```
+
+This merges duplicate descriptions of the same underlying policy change while preserving distinct requirements, restrictions, exceptions, time limits, evidence, and source pages.
+
+### Step 4 — Use the final output
+
+```text
+policy_analysis/output/proposed_policies_final.json
+```
+
+This is the structured output intended for the rest of the application.
+
+## Important Notes
+
+`extract_policies.py` and `consolidate_policies.py` make calls to the Azure-hosted GPT-4.1-mini model and may consume Azure credits. `extract_pdf.py` runs locally and does not use the model.
+
+The generated policy descriptions are **AI-assisted interpretations** of the source document. The official Federal Register text remains authoritative. Evidence quotes and source-page references are retained to support human review.
+
+If you only need the existing policy analysis for another component of the application, use `proposed_policies_final.json`; you do not need to rerun the pipeline.
