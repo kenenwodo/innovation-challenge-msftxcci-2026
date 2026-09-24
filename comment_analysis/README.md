@@ -1,166 +1,142 @@
 # Comment Analysis
 
-This folder contains the outputs from the comment analysis pipeline. The analysis includes **sentiment analysis, emotion detection, toxicity analysis, TF-IDF analysis, word/phrase frequency analysis, and BERTopic topic modeling**.
+This directory contains the public-comment analysis pipeline and its committed
+outputs. The pipeline covers sentiment, emotion, toxicity, word and phrase
+frequency, TF-IDF, NMF themes, and BERTopic topic modeling.
 
-## Comment Analysis Scripts
+The analysis uses `comments_no_pii.csv` as the cleaned, de-identified input.
 
-This folder contains two scripts for analyzing cleaned comment data.
+## Primary concern labels
 
-### `comment_sentiment_emotion_toxicity.py`
+Each row in `comments_with_bertopic.csv` now includes a `Primary_Concern`
+column. The value is a reviewed, human-readable summary of the comment's
+BERTopic category. It is assigned from the comment's `Topic` ID, so comments in
+the same topic receive the same primary-concern label.
 
-Runs transformer-based analysis on each comment and produces:
+The labels were reviewed against the topic keywords and representative comments
+in `bertopic_topic_info.csv`:
 
-* Sentiment scores and labels
-* Emotion scores and labels
-* Toxicity scores
-* A combined comment-level CSV containing all model outputs
-* Summary CSV files for sentiment, emotion, and toxicity
+| Topic | Comments | Primary concern |
+| ----: | -------: | --------------- |
+| `-1` | 679 | Mixed or unclassified international student and research concerns |
+| `0` | 7,152 | Fixed visa limits and loss of duration of status |
+| `1` | 1,085 | Restrictions on second or same-level degrees |
+| `2` | 472 | Economic and institutional impacts of international student restrictions |
+| `3` | 192 | Loss of global talent and U.S. competitiveness |
+| `4` | 135 | Disruption to physician training and patient care |
+| `5` | 91 | Visa program integrity, security, and domestic worker protections |
+| `6` | 69 | Foreign journalist visa limits and press freedom |
+| `7` | 66 | Concern provided in an attached file |
+| `8` | 58 | Clean energy research and workforce impacts |
 
-The script is GPU-enabled and will automatically use CUDA when available.
+Topic `-1` is BERTopic's outlier category. Its comments do not form one
+sufficiently distinct topic, so the label intentionally identifies them as
+mixed or unclassified.
 
-**Input:**
-`comments_no_pii_clean.csv`
+## Main files
 
-**Main output:**
-[`comments_analysis_output.csv`](https://github.com/kenenwodo/innovation-challenge-msftxcci-2026/blob/main/comment_analysis/comments_analysis_output.csv)
+| File | Description |
+| ---- | ----------- |
+| `comments.csv` | Source comment export before PII cleaning |
+| `comments_no_pii.csv` | Cleaned input used by the analysis scripts |
+| `comments_analysis_output.csv` | Comment-level sentiment, emotion, toxicity, and text metrics |
+| `comments_with_bertopic.csv` | Comment-level BERTopic assignment, confidence, keywords, and primary concern |
+| `bertopic_topic_info.csv` | Topic counts, keywords, representative comments, and primary-concern labels |
+| `tfidf_top_terms_overall.csv` | Corpus-wide TF-IDF term rankings |
+| `top_words_and_phrases.csv` | Most frequent unigrams, bigrams, and trigrams |
+| `sentiment_distribution.png` | Sentiment-label distribution |
+| `emotion_distribution.png` | Dominant-emotion distribution |
+| `toxicity_distribution.png` | Toxicity-score distribution |
 
----
+## Scripts
 
-### `comment_words_phrases_bertopic.py`
+### Sentiment, emotion, and toxicity
 
-Performs lexical and topic analysis on the cleaned comments and produces:
+`comment_sentiment_emotion_toxicity.py` runs transformer models over the
+cleaned comments. It uses CUDA when available and automatically reduces the
+batch size after a CUDA out-of-memory error.
 
-* Most frequent words
-* Most frequent bigrams and trigrams
-* TF-IDF term rankings
-* BERTopic topic information
-* BERTopic topic assignments for each comment
+From this directory, run:
 
-**Input:**
-`comments_no_pii_clean.csv`
+```bash
+python comment_sentiment_emotion_toxicity.py \
+  --input comments_no_pii.csv \
+  --output-dir part_a_outputs
+```
 
-**Main outputs:**
+Useful options:
 
-* `top_words_and_phrases.csv`
-* `bertopic_topic_info.csv`
-* `comments_with_bertopic.csv`
+- `--batch-size N` sets the initial inference batch size (default: `128`).
+- `--min-rows N` changes the input-size safety check; use `0` to disable it.
+- `--skip-sentiment`, `--skip-emotion`, and `--skip-toxicity` omit individual
+  model stages.
 
-## Files
+The main generated file is
+`part_a_outputs/comments_part_a_analysis.csv`. The directory also contains
+summary CSVs, stage checkpoints, and plots.
 
-### `comments_analysis_output.csv`
+### Lexical analysis and topic modeling
 
-Main comment-level analysis dataset containing sentiment, emotion, toxicity, and text-level metrics.
+`comment_topics_bertopic.py` generates word and phrase counts, TF-IDF results,
+NMF themes and word clouds, BERTopic assignments, and the reviewed
+`Primary_Concern` labels.
 
-| Column                    | Description                                                        |
-| ------------------------- | ------------------------------------------------------------------ |
-| `comment_id`              | Unique identifier for the comment                                  |
-| `comment_url`             | URL associated with the comment                                    |
-| `title`                   | Title associated with the source comment                           |
-| `posted_date`             | Date the comment was posted                                        |
-| `comment_clean`           | Cleaned comment text used for analysis                             |
-| `sentiment_negative`      | Predicted negative sentiment score                                 |
-| `sentiment_neutral`       | Predicted neutral sentiment score                                  |
-| `sentiment_positive`      | Predicted positive sentiment score                                 |
-| `sentiment_label`         | Predicted sentiment category                                       |
-| `sentiment_confidence`    | Confidence of the predicted sentiment label                        |
-| `sentiment_signed`        | Signed sentiment score representing negative-to-positive direction |
-| `sentiment_continuous`    | Continuous sentiment score                                         |
-| `emotion_neutral`         | Neutral emotion score                                              |
-| `emotion_sadness`         | Sadness score                                                      |
-| `emotion_anger`           | Anger score                                                        |
-| `emotion_disgust`         | Disgust score                                                      |
-| `emotion_fear`            | Fear score                                                         |
-| `emotion_surprise`        | Surprise score                                                     |
-| `emotion_joy`             | Joy score                                                          |
-| `emotion_label`           | Predicted dominant emotion                                         |
-| `emotion_confidence`      | Confidence of the predicted emotion                                |
-| `toxicity_toxic`          | Toxicity score                                                     |
-| `toxicity_severe_toxic`   | Severe toxicity score                                              |
-| `toxicity_obscene`        | Obscene-language score                                             |
-| `toxicity_threat`         | Threat score                                                       |
-| `toxicity_insult`         | Insult score                                                       |
-| `toxicity_identity_hate`  | Identity-hate score                                                |
-| `toxicity_flag_0_5`       | Binary toxicity flag using a 0.5 threshold                         |
-| `comment_word_count`      | Number of words in the cleaned comment                             |
-| `is_exact_duplicate_text` | Indicates whether the same comment text appears elsewhere          |
-| `toxicity`                | Overall toxicity value                                             |
+```bash
+python comment_topics_bertopic.py \
+  --input comments_no_pii.csv \
+  --output-dir topic_lloom_outputs
+```
 
----
+Useful options:
+
+- `--skip-bertopic` runs the lexical, TF-IDF, and NMF stages without BERTopic.
+- `--lloom` enables LLooM concept induction and requires `OPENAI_API_KEY`.
+- `--lloom-full` also scores the full corpus with LLooM.
+
+BERTopic uses CUDA for sentence embeddings when a compatible GPU is available.
+The primary BERTopic outputs are
+`topic_lloom_outputs/bertopic_topic_info.csv` and
+`topic_lloom_outputs/comments_with_bertopic.csv`.
+
+## Output schemas
 
 ### `comments_with_bertopic.csv`
 
-Contains BERTopic topic-modeling results for individual comments.
-
-| Column                    | Description                                                              |
-| ------------------------- | ------------------------------------------------------------------------ |
-| `_original_index`         | Original row/index of the comment                                        |
-| `comment_id`              | Unique identifier for the comment                                        |
-| `Topic`                   | BERTopic-assigned topic ID                                               |
-| `Name`                    | Automatically generated topic name                                       |
-| `Primary_Concern`         | Reviewed, human-readable summary of the topic's primary concern          |
-| `Top_n_words`             | Top words associated with the topic                                      |
-| `Probability`             | Probability/confidence of the topic assignment                           |
-
----
+| Column | Description |
+| ------ | ----------- |
+| `_original_index` | Original row index in the cleaned input |
+| `comment_id` | Regulations.gov comment identifier |
+| `Topic` | BERTopic topic ID |
+| `Name` | Automatically generated keyword-based topic name |
+| `Primary_Concern` | Reviewed, human-readable summary of the assigned topic |
+| `Top_n_words` | Highest-ranking words and phrases for the topic |
+| `Probability` | Confidence of the topic assignment |
 
 ### `bertopic_topic_info.csv`
 
-Summary of the topics discovered by BERTopic.
+| Column | Description |
+| ------ | ----------- |
+| `Topic` | BERTopic topic ID |
+| `Count` | Number of comments assigned to the topic |
+| `Name` | Automatically generated keyword-based topic name |
+| `Primary_Concern` | Reviewed primary-concern label |
+| `Representation` | Highest-ranking topic keywords and phrases |
+| `Representative_Docs` | Comments that best represent the topic |
 
-| Column                | Description                                    |
-| --------------------- | ---------------------------------------------- |
-| `Topic`               | BERTopic topic ID                              |
-| `Count`               | Number of comments assigned to the topic       |
-| `Name`                | Automatically generated topic name             |
-| `Primary_Concern`     | Reviewed, human-readable primary concern label |
-| `Representation`      | Most representative keywords for the topic     |
-| `Representative_Docs` | Example comments that best represent the topic |
+### `comments_analysis_output.csv`
 
-> Topic `-1` represents comments BERTopic classified as outliers rather than assigning to a specific topic.
+This file contains comment metadata and the following analysis groups:
 
----
+- sentiment probabilities, dominant label, confidence, and continuous scores;
+- emotion probabilities, dominant label, and confidence;
+- toxicity-category scores and the `toxicity_flag_0_5` threshold flag; and
+- comment word count and exact-duplicate indicator.
 
-### `tfidf_top_terms_overall.csv`
+## Interpreting the results
 
-Contains TF-IDF results identifying terms that are important across the comment corpus.
-
-| Column           | Description                                      |
-| ---------------- | ------------------------------------------------ |
-| `term`           | Word or term identified by TF-IDF                |
-| `mean_tfidf`     | Average TF-IDF score for the term                |
-| `document_count` | Number of comments/documents containing the term |
-
----
-
-### `top_words_and_phrases.csv`
-
-Contains the most frequently occurring words and phrases in the comments.
-
-| Column       | Description                                        |
-| ------------ | -------------------------------------------------- |
-| `ngram_type` | Type of term, such as unigram or multi-word phrase |
-| `term`       | Word or phrase                                     |
-| `count`      | Number of occurrences in the corpus                |
-
----
-
-## Visualizations
-
-The folder also contains distribution plots generated from the comment analysis:
-
-* `sentiment_distribution.png` — distribution of predicted sentiment labels
-* `emotion_distribution.png` — distribution of predicted emotion labels
-* `toxicity_distribution.png` — distribution of toxicity results
-
-## Analysis Overview
-
-The outputs in this folder can be used to examine:
-
-* Overall sentiment toward the analyzed topic
-* Emotional patterns within public comments
-* Toxic or harmful language
-* Common words and phrases
-* Important terms using TF-IDF
-* Recurring themes and discussion topics identified through BERTopic
-
-This version is ready to save directly as `comment_analysis/README.md`.
+BERTopic categories summarize recurring patterns in the corpus; they do not
+prove that every sentence in a comment concerns only that topic. Likewise,
+`Primary_Concern` is a topic-level interpretation rather than a separate model
+prediction for each comment. Use the original cleaned text, assignment
+probability, topic keywords, and representative comments when reviewing
+borderline or high-impact cases.
