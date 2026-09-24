@@ -52,15 +52,10 @@ Contains BERTopic topic-modeling results for individual comments.
 | ------------------------- | ------------------------------------------------------------------------ |
 | `_original_index`         | Original row/index of the comment                                        |
 | `comment_id`              | Unique identifier for the comment                                        |
-| `comment_clean`           | Cleaned comment text                                                     |
-| `Document`                | Text provided to BERTopic                                                |
 | `Topic`                   | BERTopic-assigned topic ID                                               |
 | `Name`                    | Automatically generated topic name                                       |
-| `Representation`          | Keywords representing the topic                                          |
-| `Representative_Docs`     | Example documents that best represent the topic                          |
 | `Top_n_words`             | Top words associated with the topic                                      |
 | `Probability`             | Probability/confidence of the topic assignment                           |
-| `Representative_document` | Indicates whether the comment is a representative document for the topic |
 
 ---
 
