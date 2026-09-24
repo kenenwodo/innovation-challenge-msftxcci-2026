@@ -43,7 +43,7 @@ Performs lexical and topic analysis on the cleaned comments and produces:
 
 * `top_words_and_phrases.csv`
 * `bertopic_topic_info.csv`
-* `comments_with_bertopic_categories.csv`
+* `comments_with_bertopic.csv`
 
 ## Files
 
@@ -97,6 +97,7 @@ Contains BERTopic topic-modeling results for individual comments.
 | `comment_id`              | Unique identifier for the comment                                        |
 | `Topic`                   | BERTopic-assigned topic ID                                               |
 | `Name`                    | Automatically generated topic name                                       |
+| `Primary_Concern`         | Reviewed, human-readable summary of the topic's primary concern          |
 | `Top_n_words`             | Top words associated with the topic                                      |
 | `Probability`             | Probability/confidence of the topic assignment                           |
 
@@ -111,6 +112,7 @@ Summary of the topics discovered by BERTopic.
 | `Topic`               | BERTopic topic ID                              |
 | `Count`               | Number of comments assigned to the topic       |
 | `Name`                | Automatically generated topic name             |
+| `Primary_Concern`     | Reviewed, human-readable primary concern label |
 | `Representation`      | Most representative keywords for the topic     |
 | `Representative_Docs` | Example comments that best represent the topic |
 

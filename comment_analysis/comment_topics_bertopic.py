@@ -51,6 +51,23 @@ N_NMF_THEMES = 8
 RUN_BERTOPIC = True
 N_BERTOPIC_CATEGORIES = 10
 
+# Human-readable summaries of the BERTopic categories in
+# bertopic_topic_info.csv. These labels turn the model's keyword-based topic
+# names into a concise primary concern for each comment.
+PRIMARY_CONCERN_BY_TOPIC = {
+    -1: "Mixed or unclassified international student and research concerns",
+    0: "Fixed visa limits and loss of duration of status",
+    1: "Restrictions on second or same-level degrees",
+    2: "Economic and institutional impacts of international student restrictions",
+    3: "Loss of global talent and U.S. competitiveness",
+    4: "Disruption to physician training and patient care",
+    5: "Visa program integrity, security, and domestic worker protections",
+    6: "Foreign journalist visa limits and press freedom",
+    7: "Concern provided in an attached file",
+    8: "Clean energy research and workforce impacts",
+}
+UNKNOWN_PRIMARY_CONCERN = "Other or emerging concern"
+
 # Part C
 # Keep False until OPENAI_API_KEY is configured.
 RUN_LLOOM = False
@@ -114,6 +131,19 @@ def tokenize_for_topics(text, min_len=3):
 
 def clean_for_topics(text):
     return " ".join(tokenize_for_topics(text))
+
+
+def get_primary_concern(topic_id):
+    """Return the reviewed, human-readable concern for a BERTopic ID."""
+    try:
+        normalized_topic_id = int(topic_id)
+    except (TypeError, ValueError):
+        return UNKNOWN_PRIMARY_CONCERN
+
+    return PRIMARY_CONCERN_BY_TOPIC.get(
+        normalized_topic_id,
+        UNKNOWN_PRIMARY_CONCERN,
+    )
 
 
 def load_clean_comments(input_csv):
@@ -441,6 +471,12 @@ def run_part_b(df, output_dir, run_bertopic=True):
         )
 
         topic_info = bertopic_model.get_topic_info()
+        primary_concerns = topic_info["Topic"].map(get_primary_concern)
+        topic_info.insert(
+            topic_info.columns.get_loc("Name") + 1,
+            "Primary_Concern",
+            primary_concerns,
+        )
         topic_info.to_csv(
             output_dir / "bertopic_topic_info.csv",
             index=False,
@@ -448,6 +484,11 @@ def run_part_b(df, output_dir, run_bertopic=True):
 
         doc_info = bertopic_model.get_document_info(
             bertopic_docs.tolist()
+        )
+        doc_info.insert(
+            doc_info.columns.get_loc("Name") + 1,
+            "Primary_Concern",
+            doc_info["Topic"].map(get_primary_concern),
         )
 
         doc_info.insert(
@@ -471,7 +512,7 @@ def run_part_b(df, output_dir, run_bertopic=True):
         )
 
         bertopic_assignments.to_csv(
-            output_dir / "comments_with_bertopic_categories.csv",
+            output_dir / "comments_with_bertopic.csv",
             index=False,
         )
 
