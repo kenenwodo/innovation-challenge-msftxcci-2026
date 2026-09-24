@@ -1,5 +1,9 @@
 """
-Parse the Federal Register HTML of the proposed rule into a section tree.
+Parse the Federal Register HTML of a rule into a section tree.
+
+Works on both versions of the rule (see DOCUMENTS below):
+  python extract_html.py                        # proposed rule (default)
+  python extract_html.py --document final       # final rule
 
 content.html is the GPO text version of the rule inside a <pre> block.
 Unlike extract_pdf.py, which flattens each PDF page into plain text, this
@@ -13,11 +17,12 @@ keeps the structure the GPO text carries:
     regulatory text, ...)
   - CFR citations for paragraphs of regulatory text, e.g. 8 CFR 214.2(f)(5)(v)
 
-Outputs:
+Outputs (proposed rule; the final rule's files start with final_rule_):
   output/rule_sections.jsonl   one JSON object per section, in document order
   output/rule_sections.md      the same content, for human review
 """
 
+import argparse
 import html
 import json
 import re
@@ -29,25 +34,57 @@ from pathlib import Path
 # --------------------------------------------------
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
-
-HTML_PATH = PROJECT_DIR / "data" / "content.html"
+REPO_DIR = PROJECT_DIR.parent
 OUTPUT_DIR = PROJECT_DIR / "output"
-JSONL_OUTPUT = OUTPUT_DIR / "rule_sections.jsonl"
-MARKDOWN_OUTPUT = OUTPUT_DIR / "rule_sections.md"
 
-# Source type of each preamble section, matched by the longest section-ID
-# prefix. Sections after the preamble get their type from their structure.
-SOURCE_TYPES = {
-    "I": "procedural",            # Public Participation
-    "II": "procedural",           # Acronyms and Abbreviations
-    "III": "agency_explanation",  # Executive Summary
-    "III.C": "cost_analysis",     # Summary of the Costs and Benefits
-    "IV": "agency_explanation",   # Background and Purpose
-    "V": "agency_explanation",    # Discussion of the Proposed Rule
-    "VI": "procedural",           # Statutory and Regulatory Requirements
-    "VI.A": "cost_analysis",      # E.O. 12866 regulatory impact analysis
-    "VI.B": "cost_analysis",      # Regulatory Flexibility Act
-    "VI.E": "cost_analysis",      # Paperwork Reduction Act burden
+# The two versions of the rule number their outlines differently and have
+# different preamble sections, so each gets its own settings.
+#
+#   outline           token style of each heading level: the proposed rule
+#                     nests V.E.iii.1, the final rule nests IV.B.2.a
+#   acronyms_section  the section that lists one acronym per line
+#   source_types      source type of each preamble section, matched by the
+#                     longest section-ID prefix. Sections after the preamble
+#                     get their type from their structure.
+DOCUMENTS = {
+    "proposed": {
+        "title": "Proposed Rule",
+        "html": PROJECT_DIR / "data" / "content.html",
+        "output_stem": "rule_sections",
+        "outline": ["upper_roman", "upper", "roman", "digit"],
+        "acronyms_section": "II",
+        "source_types": {
+            "I": "procedural",            # Public Participation
+            "II": "procedural",           # Acronyms and Abbreviations
+            "III": "agency_explanation",  # Executive Summary
+            "III.C": "cost_analysis",     # Summary of the Costs and Benefits
+            "IV": "agency_explanation",   # Background and Purpose
+            "V": "agency_explanation",    # Discussion of the Proposed Rule
+            "VI": "procedural",           # Statutory and Regulatory Requirements
+            "VI.A": "cost_analysis",      # E.O. 12866 regulatory impact analysis
+            "VI.B": "cost_analysis",      # Regulatory Flexibility Act
+            "VI.E": "cost_analysis",      # Paperwork Reduction Act burden
+        },
+    },
+    "final": {
+        "title": "Final Rule",
+        "html": REPO_DIR / "data" / "ICEB-2025-0001-21962" / "document" / "content.html",
+        "output_stem": "final_rule_sections",
+        "outline": ["upper_roman", "upper", "digit", "lower"],
+        "acronyms_section": "I",
+        "source_types": {
+            "I": "procedural",            # Acronyms and Abbreviations
+            "II": "agency_explanation",   # Executive Summary
+            "II.B": "comment_response",   # Public Participation--Overview of Comments
+            "II.D": "cost_analysis",      # Summary of the Costs and Benefits
+            "III": "agency_explanation",  # Background and Purpose
+            "IV": "comment_response",     # Response to Public Comments on the Proposed Rule
+            "V": "agency_explanation",    # Discussion of the Final Rule
+            "VI": "procedural",           # Statutory and Regulatory Requirements
+            "VI.A": "cost_analysis",      # E.O. 12866 regulatory impact analysis
+            "VI.B": "cost_analysis",      # Final Regulatory Flexibility Act analysis
+        },
+    },
 }
 
 BULLET = "\u2022"  # GPO writes <bullet>
@@ -73,12 +110,16 @@ FOOTNOTE_START_RE = re.compile(r"^\s+\\(\d+)\\\s?")
 FOOTNOTE_REF_RE = re.compile(r"\\(\d+)\\")
 TABLE_TITLE_RE = re.compile(r"^ +Table \d+--")
 TABLE_RULE_RE = re.compile(r"^-{80,}$")
+# The final rule lists what a CFR section contains in tables such as
+# "Table 1 to Sec. 214.2--Section Contents", one "(5) Period of stay" row per line
+CONTENTS_TABLE_RE = re.compile(r"^ +Table \d+ to .+--(?:Section|Paragraph) Contents$")
+CONTENTS_ROW_RE = re.compile(r"^ +\(\w{1,5}\) [^.]{1,90}$")
 
 FRONT_LABEL_RE = re.compile(
     r"^(AGENCY|ACTION|SUMMARY|DATES|ADDRESSES|"
     r"FOR FURTHER INFORMATION CONTACT|SUPPLEMENTARY INFORMATION): ?"
 )
-NUMBERED_HEADING_RE = re.compile(r"^([IVX]+|[A-Z]|[ivx]+|\d+)\. (\S.*)$")
+NUMBERED_HEADING_RE = re.compile(r"^([IVX]+|[A-Z]|[ivx]+|[a-z]|\d+)\. (\S.*)$")
 
 PART_RE = re.compile(r"^PART (\w+)--(.+)$")
 CFR_SECTION_RE = re.compile(r"^Sec\.\s+(\d+\w*\.\d+)\s+(.*)$")
@@ -191,6 +232,19 @@ def next_roman(current):
     return ROMAN[ROMAN.index(current.lower()) + 1] if current else "i"
 
 
+def expected_tokens(style, current):
+    """The heading tokens that may follow current at a level of this style."""
+    if style == "upper_roman":
+        return [next_roman(current).upper()]
+    if style == "roman":
+        position = ROMAN.index(current) if current else -1
+        return ROMAN[position + 1:position + 3]   # the proposed rule skips V.E.vi
+    if style == "digit":
+        return [str(int(current) + 1 if current else 1)]
+    first = "A" if style == "upper" else "a"
+    return [chr(ord(current) + 1) if current else first]
+
+
 # --------------------------------------------------
 # 5. CFR PARAGRAPH CITATIONS
 # --------------------------------------------------
@@ -262,6 +316,9 @@ def place_designator(stack, token, after_gap, after_stub):
                 return stack[:depth] + [(kind, token, True)], True
         if not stack and "lower" in kinds:
             return [("lower", token, True)], True
+        # A child whose earlier siblings were omitted: (b) ... * * * * * (2)
+        if stack and CHILD_KIND[stack[-1][0]] in kinds:
+            return stack + [(CHILD_KIND[stack[-1][0]], token, True)], True
 
     # 5. Irregular nesting, e.g. (f)(7)(i) followed by (1): keep but flag it
     if stack and not after_gap:
@@ -278,8 +335,11 @@ def place_designator(stack, token, after_gap, after_stub):
 
 class RuleParser:
 
-    def __init__(self, lines):
+    def __init__(self, lines, document):
         self.lines = lines
+        self.outline_styles = document["outline"]
+        self.acronyms_section = [document["acronyms_section"]]
+        self.source_types = document["source_types"]
         self.sections = []
         self.section = None
         self.paragraph = None
@@ -394,7 +454,8 @@ class RuleParser:
                 rest = rest[inline.end():]
 
             self.after_gap = False
-            self.after_stub = bool(STUB_RE.match(text))
+            # "(f) * * *" or, inline, "(j) Exchange visitors--(1) * * *"
+            self.after_stub = text.endswith("* * *")
 
             if not placed:
                 self.unplaced_designators.append(record["para_id"])
@@ -449,6 +510,31 @@ class RuleParser:
         self.flush_paragraph()
         return end + 1
 
+    def read_contents_table(self, i):
+        """
+        Keep a CFR contents table as one table. Its rows look like paragraph
+        designators and would otherwise be cited as regulatory text.
+        """
+        self.flush_paragraph()
+        end = last_row = i
+        while end + 1 < len(self.lines):
+            raw = self.lines[end + 1][0]
+            if OMISSION_RE.match(raw.strip()):
+                end += 1
+            elif CONTENTS_ROW_RE.match(raw) and not STUB_RE.match(raw.strip()):
+                end = last_row = end + 1
+            else:
+                break
+
+        # a trailing "* * * * *" belongs to the regulatory text, not the table
+        block = self.lines[i:last_row + 1]
+        self.paragraph = {
+            "kind": "table", "marker": None,
+            "raw": [raw for raw, _ in block], "pages": [page for _, page in block],
+        }
+        self.flush_paragraph()
+        return last_row + 1
+
     def read_heading_lines(self, i):
         """A heading continues onto the next line when GPO wrapped it."""
         end = i
@@ -460,7 +546,7 @@ class RuleParser:
 
     def numbered_heading_level(self, text):
         """
-        Return 1-4 if text is the next outline heading (I. / A. / i. / 1.).
+        Return the level if text is the next outline heading (I. / A. / i. / 1.).
         Checking the expected sequence tells letter I apart from roman I and
         avoids mistaking a wrapped line like "C. 1101" for a heading.
         """
@@ -471,16 +557,12 @@ class RuleParser:
         token = match.group(1)
         o = self.outline
 
-        if token == next_roman(o[0] if o else None).upper():
-            return 1
-        if len(o) >= 1 and token == (chr(ord(o[1]) + 1) if len(o) > 1 else "A"):
-            return 2
-        if len(o) >= 2 and token in ROMAN:
-            current = ROMAN.index(o[2]) if len(o) > 2 else -1
-            if ROMAN.index(token) in (current + 1, current + 2):   # the rule skips V.E.vi
-                return 3
-        if len(o) >= 3 and token.isdigit() and int(token) == (int(o[3]) + 1 if len(o) > 3 else 1):
-            return 4
+        for level, style in enumerate(self.outline_styles, start=1):
+            if len(o) < level - 1:
+                break
+            current = o[level - 1] if len(o) >= level else None
+            if token in expected_tokens(style, current):
+                return level
         return None
 
     def is_unnumbered_heading(self, i):
@@ -510,7 +592,7 @@ class RuleParser:
         parent_id = ".".join(self.outline[:-1]) or None
 
         self.new_section(section_id, f"{token}. {heading}", heading, level, parent_id,
-                         source_type_for(section_id), self.lines[i][1])
+                         source_type_for(section_id, self.source_types), self.lines[i][1])
         return next_i
 
     def read_unnumbered_heading(self, i, parent_id, level, source_type):
@@ -547,14 +629,14 @@ class RuleParser:
             if level:
                 return self.read_numbered_heading(i, level)
 
-            if self.outline != ["II"] and self.is_unnumbered_heading(i):
+            if self.outline != self.acronyms_section and self.is_unnumbered_heading(i):
                 numbered_id = ".".join(self.outline)
                 return self.read_unnumbered_heading(i, numbered_id, len(self.outline) + 1,
-                                                    source_type_for(numbered_id))
+                                                    source_type_for(numbered_id, self.source_types))
 
         if not col0:
             self.start_paragraph(raw, page)
-        elif may_be_heading and self.outline == ["II"]:
+        elif may_be_heading and self.outline == self.acronyms_section:
             self.start_paragraph(raw, page, kind="list_item")   # one acronym per line
         elif self.paragraph and not self.prev_blank:
             self.continue_paragraph(raw, page)
@@ -604,7 +686,9 @@ class RuleParser:
                                      kind="list_item", marker=marker)
             return i + 1
 
-        cfr_section = CFR_SECTION_RE.match(text) if col0 else None
+        # A wrapped cross-reference can also start a line with "Sec. 214.1"
+        starts_line = col0 and (self.prev_blank or not is_wrapped(self.prev_raw))
+        cfr_section = CFR_SECTION_RE.match(text) if starts_line else None
         if cfr_section:
             heading_text, next_i = self.read_heading_lines(i)
             number, heading = CFR_SECTION_RE.match(heading_text).groups()
@@ -664,6 +748,11 @@ class RuleParser:
                 self.prev_raw, self.prev_blank = "", False
                 continue
 
+            if CONTENTS_TABLE_RE.match(raw):
+                i = self.read_contents_table(i)
+                self.prev_raw, self.prev_blank = "", False
+                continue
+
             if SEPARATOR_RE.match(raw):
                 self.flush_paragraph()
                 i += 1
@@ -688,12 +777,12 @@ def clean_text_table(raw_lines):
     return "\n".join(lines).replace("``", '"').replace("''", '"')
 
 
-def source_type_for(section_id):
+def source_type_for(section_id, source_types):
     parts = section_id.split(".")
     for n in range(len(parts), 0, -1):
         prefix = ".".join(parts[:n])
-        if prefix in SOURCE_TYPES:
-            return SOURCE_TYPES[prefix]
+        if prefix in source_types:
+            return source_types[prefix]
     return "agency_explanation"
 
 
@@ -744,11 +833,11 @@ def format_pages(item, volume, start_key="fr_page_start", end_key="fr_page_end")
     return f"{prefix}{start}" if start == end else f"{prefix}{start}\u2013{end}"
 
 
-def save_markdown(sections, volume):
+def save_markdown(sections, volume, title, path):
     lines = [
-        "# Proposed Rule: Parsed Sections",
+        f"# {title}: Parsed Sections",
         "",
-        "> Parsed from the GPO HTML text of the proposed rule by extract_html.py.",
+        f"> Parsed from the GPO HTML text of the {title.lower()} by extract_html.py.",
         "> Page numbers are official Federal Register pages.",
         "> Bracketed citations on regulatory paragraphs are computed by the parser;",
         "> a trailing ? means the paragraph nesting was irregular and should be checked.",
@@ -790,26 +879,34 @@ def save_markdown(sections, volume):
         for footnote in section["footnotes"]:
             lines.extend([f"[^{footnote['number']}]: {footnote['text']}", ""])
 
-    MARKDOWN_OUTPUT.write_text("\n".join(lines), encoding="utf-8")
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def save_outputs(sections, volume, document, output_dir):
+    """Write <stem>.jsonl and <stem>.md; return their paths."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    jsonl_path = output_dir / f"{document['output_stem']}.jsonl"
+    markdown_path = output_dir / f"{document['output_stem']}.md"
+
+    with jsonl_path.open("w", encoding="utf-8") as fh:
+        for section in sections:
+            fh.write(json.dumps(section, ensure_ascii=False) + "\n")
+    save_markdown(sections, volume, document["title"], markdown_path)
+    return jsonl_path, markdown_path
 
 
 # --------------------------------------------------
 # 8. MAIN PROGRAM
 # --------------------------------------------------
 
-def main():
-    print("Reading HTML...")
+def parse_rule(html_path, document):
+    """Parse one rule document. Returns (sections, volume, parser)."""
+    lines, volume = load_lines(Path(html_path))
+    parser = RuleParser(lines, document)
+    return parser.run(), volume, parser
 
-    lines, volume = load_lines(HTML_PATH)
-    parser = RuleParser(lines)
-    sections = parser.run()
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    with JSONL_OUTPUT.open("w", encoding="utf-8") as fh:
-        for section in sections:
-            fh.write(json.dumps(section, ensure_ascii=False) + "\n")
-    save_markdown(sections, volume)
-
+def print_report(sections, parser):
     paragraphs = [p for s in sections for p in s["paragraphs"]]
     footnotes = [f for s in sections for f in s["footnotes"]]
     cited = [p for p in paragraphs if p["cfr_citation"]]
@@ -839,8 +936,25 @@ def main():
     for para_id in parser.unplaced_designators:
         print(f"WARNING: could not place CFR designator in {para_id}")
 
-    print(f"Saved to {JSONL_OUTPUT}")
-    print(f"Saved to {MARKDOWN_OUTPUT}")
+
+def main():
+    arg_parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    arg_parser.add_argument("--document", choices=DOCUMENTS, default="proposed",
+                            help="which version of the rule to parse (default: proposed)")
+    arg_parser.add_argument("--html", type=Path,
+                            help="content.html to parse (default: set per document in DOCUMENTS)")
+    arg_parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
+    args = arg_parser.parse_args()
+
+    document = DOCUMENTS[args.document]
+    print("Reading HTML...")
+
+    sections, volume, parser = parse_rule(args.html or document["html"], document)
+    jsonl_path, markdown_path = save_outputs(sections, volume, document, args.output_dir)
+    print_report(sections, parser)
+
+    print(f"Saved to {jsonl_path}")
+    print(f"Saved to {markdown_path}")
 
 
 if __name__ == "__main__":

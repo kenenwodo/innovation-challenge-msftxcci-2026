@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Fetch a Regulations.gov document and its text-only public comments.
 
+With --final-rule, fetch the final rule published in the same docket instead
+(document files only; a final rule takes no comments), so it can be diffed
+against the proposed rule.
+
 Uses the Regulations.gov v4 API (https://open.gsa.gov/api/regulationsgov/).
 
 Outputs (in --out-dir):
@@ -10,6 +14,7 @@ Outputs (in --out-dir):
   text_comments.jsonl      Comments kept, one JSON object per line
   skipped_comments.jsonl   Comments skipped, with the reason
   text_comments.csv        Flat CSV of the kept comments
+  rule_versions.json       (--final-rule only) proposed -> final rule link
 
 Runs are resumable: already-processed comment IDs are skipped on restart.
 
@@ -17,6 +22,8 @@ Usage:
   # Put your key in a .env file next to this script:
   #   REGULATIONS_API_KEY=your_key   (get one at https://open.gsa.gov/api/regulationsgov/)
   python3 fetch_regulations.py ICEB-2025-0001-0001
+  python3 fetch_regulations.py ICEB-2025-0001-0001 --final-rule   # -> data/ICEB-2025-0001-21962
+  python3 fetch_regulations.py ICEB-2025-0001-21962 --document-only
 """
 
 import argparse
@@ -159,6 +166,41 @@ def fetch_document(client, document_id, out_dir):
     return attrs
 
 
+def find_final_rule(client, document_id):
+    """Return (proposed_attrs, final_id, final_attrs) for the final rule in document_id's docket."""
+    proposed = client.get(f"/documents/{document_id}")["data"]["attributes"]
+    docket_id = proposed["docketId"]
+    resp = client.get("/documents", {
+        "filter[docketId]": docket_id,
+        "filter[documentType]": "Rule",
+        "sort": "-postedDate",
+        "page[size]": 25,
+    })
+    rules = resp["data"]
+    if not rules:
+        sys.exit(f"No final rule (documentType 'Rule') posted yet in docket {docket_id}")
+    if len(rules) > 1:
+        others = ", ".join(r["id"] for r in rules[1:])
+        log(f"Docket {docket_id} has {len(rules)} rules; using the latest ({rules[0]['id']}). Others: {others}")
+    return proposed, rules[0]["id"], rules[0]["attributes"]
+
+
+def write_rule_versions(path, proposed_id, proposed, proposed_dir, final_id, final, final_dir):
+    def entry(doc_id, attrs, doc_dir):
+        return {
+            "id": doc_id,
+            "documentType": attrs.get("documentType"),
+            "frDocNum": attrs.get("frDocNum"),
+            "postedDate": attrs.get("postedDate"),
+            "dir": str(doc_dir),
+        }
+    path.write_text(json.dumps({
+        "docketId": final.get("docketId"),
+        "proposed": entry(proposed_id, proposed, proposed_dir),
+        "final": {**entry(final_id, final, final_dir), "effectiveDate": final.get("effectiveDate")},
+    }, indent=2))
+
+
 def list_comment_ids(client, object_id, cache_path):
     """Return all comment IDs on a document, paging past the 5000-result cap
     by re-querying with filter[lastModifiedDate][ge] (per the API docs)."""
@@ -256,6 +298,16 @@ def main():
              "more than an 'see attached' placeholder. By default any comment with "
              "an attachment is skipped.",
     )
+    parser.add_argument(
+        "--document-only", action="store_true",
+        help="Fetch only the document metadata and files; skip comments.",
+    )
+    parser.add_argument(
+        "--final-rule", action="store_true",
+        help="Treat document_id as the proposed rule, find the final rule in the same "
+             "docket, and fetch that instead (implies --document-only). Also writes "
+             "rule_versions.json linking the two for v1-vs-v2 diffs.",
+    )
     parser.add_argument("--limit", type=int, help="Process at most N new comments (for testing)")
     parser.add_argument(
         "--export-csv", action="store_true",
@@ -278,11 +330,24 @@ def main():
     if args.api_key == "DEMO_KEY":
         log(f"WARNING: using DEMO_KEY (10 requests/hour). Set REGULATIONS_API_KEY in {args.env_file}.")
 
+    client = Client(args.api_key)
+    proposed_id = args.document_id
+    if args.final_rule:
+        proposed, args.document_id, _ = find_final_rule(client, proposed_id)
+        args.document_only = True
+        log(f"Final rule for {proposed_id}: {args.document_id}")
+
     out_dir = args.out_dir or Path("data") / args.document_id
     out_dir.mkdir(parents=True, exist_ok=True)
-    client = Client(args.api_key)
 
     doc_attrs = fetch_document(client, args.document_id, out_dir)
+    if args.final_rule:
+        write_rule_versions(out_dir / "rule_versions.json", proposed_id, proposed,
+                            Path("data") / proposed_id, args.document_id, doc_attrs, out_dir)
+    if args.document_only:
+        log(f"Done (document only). {client.requests_made} API requests this run. Output in {out_dir}/")
+        return
+
     comment_ids = list_comment_ids(client, doc_attrs["objectId"], out_dir / "comment_ids.json")
 
     kept_path = out_dir / "text_comments.jsonl"

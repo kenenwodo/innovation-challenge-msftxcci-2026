@@ -1,0 +1,535 @@
+{
+  "about": "Atomic facts about DHS rule ICEB-2025-0001 (proposed 2025-16554, final 2026-14439) that news coverage repeats most often. The fact-checker checks claims against these first, then against the full evidence index. Quotes must appear verbatim in the parsed rule text; build_evidence_index.py finds the paragraph for each quote and fails loudly if one is missing.",
+  "status": "DRAFT written by Claude from the rule text on 2026-09-24. Quotes are machine-verified; statements, values and common_misreadings are AI interpretation and need analyst review (set reviewed_by when done).",
+  "fields": {
+    "claim_type": "rule_provision | timeline | agency_rationale | agency_estimate | comment_record",
+    "applies_to": "which versions of the rule the statement is true of",
+    "allowed_tiers": "evidence tiers that may support this fact (default AB); see TIERS in build_evidence_index.py",
+    "values": "numbers and dates for deterministic comparison with claims",
+    "change_from_proposed": "null if the final rule kept the proposal; otherwise what changed",
+    "common_misreadings": "claims that sound like this fact but are not supported by the text"
+  },
+  "topics": {
+    "ds_elimination": "Ending duration of status (D/S)",
+    "admission_period": "Fixed admission periods and the 4-year maximum",
+    "grace_period": "Departure (grace) periods after a program ends",
+    "extension_of_stay": "Extension of stay (EOS) applications to USCIS",
+    "unlawful_presence": "When unlawful presence accrues",
+    "program_changes": "Transfers, changes of educational objective and level",
+    "language_training": "English language training programs",
+    "high_school": "Public high school students",
+    "employment_opt": "OPT, STEM OPT and employment authorization",
+    "transition": "People already in the US on D/S when the rule takes effect",
+    "i_visa_media": "I visas for foreign media representatives",
+    "biometrics_fees": "Biometrics and fees",
+    "timeline": "Publication, comment period and effective dates",
+    "comments": "The public comment record",
+    "costs": "DHS cost estimates",
+    "rationale": "DHS's stated purpose"
+  },
+  "facts": [
+    {
+      "fact_id": "KF-DS-01",
+      "topic": "ds_elimination",
+      "claim_type": "rule_provision",
+      "statement": "The rule ends admission for 'duration of status' (D/S) for F students, J exchange visitors and I foreign-media representatives, replacing it with admission for a fixed time period.",
+      "applies_to": ["proposed", "final"],
+      "evidence": [
+        {"doc": "final", "quote": "amending its regulations to change the admission period in the F, J, and I classifications from duration of status to an admission for a fixed time period"},
+        {"doc": "final", "quote": "Striking all references to D/S for F, J, and I nonimmigrants"},
+        {"doc": "proposed", "quote": "Striking all references to D/S for F, J, and I nonimmigrants"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-ADMIT-01",
+      "topic": "admission_period",
+      "claim_type": "rule_provision",
+      "statement": "An F-1 student is admitted for the length of the program on the Form I-20, up to a maximum of 4 years per admission.",
+      "applies_to": ["proposed", "final"],
+      "values": {"max_admission_years": 4},
+      "evidence": [
+        {"doc": "final", "quote": "An F-1 student is admitted for a fixed period of time, which is the period necessary to complete the course of study indicated on the Form I-20, or successor form, not to exceed a period of 4 years"},
+        {"doc": "final", "quote": "Setting the authorized admission and extension periods for F and J nonimmigrants up to the program length, not to exceed a 4-year period"},
+        {"doc": "proposed", "quote": "An F-1 student is admitted for a fixed period of time, which is the period necessary to complete the course of study indicated on the Form I-20, or successor form, not to exceed a period of 4 years"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": [
+        "The 4 years is a hard or lifetime cap: students can apply to USCIS for an extension of stay (KF-EOS-01).",
+        "Every student gets 4 years: the admission period is the program length when that is shorter."
+      ]
+    },
+    {
+      "fact_id": "KF-ADMIT-02",
+      "topic": "admission_period",
+      "claim_type": "rule_provision",
+      "statement": "A J-1 exchange visitor is admitted for the program length on the Form DS-2019, up to a maximum of 4 years.",
+      "applies_to": ["proposed", "final"],
+      "values": {"max_admission_years": 4},
+      "evidence": [
+        {"doc": "final", "quote": "A J-1 exchange visitor may be admitted for the duration of the exchange visitor program, as stated by the program end date noted on Form DS-2019 or successor form, not to exceed a period of 4 years."},
+        {"doc": "proposed", "quote": "A J-1 exchange visitor may be admitted for the duration of the exchange visitor program, as stated by the program end date noted on Form DS-2019 or successor form, not to exceed a period of 4 years."}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-ADMIT-03",
+      "topic": "admission_period",
+      "claim_type": "rule_provision",
+      "statement": "F-1 students may be admitted up to 30 days before their program start date. The 30 days before the program and the 30 days after it do not count toward the 4-year maximum.",
+      "applies_to": ["proposed", "final"],
+      "values": {"days_before_start": 30},
+      "evidence": [
+        {"doc": "final", "quote": "may be admitted for a period of up to 30 days before the indicated report date or program start date"},
+        {"doc": "final", "quote": "do not count toward the maximum length of stay"},
+        {"doc": "proposed", "quote": "may be admitted for a period of up to 30 days before the indicated report date or program start date"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-ADMIT-04",
+      "topic": "admission_period",
+      "claim_type": "rule_provision",
+      "statement": "F-2 and J-2 dependents cannot be admitted for longer than the principal F-1 student or J-1 exchange visitor.",
+      "applies_to": ["final"],
+      "evidence": [
+        {"doc": "final", "quote": "The authorized period of stay for F-2 dependents may not exceed the authorized period of stay of the principal F-1 student."},
+        {"doc": "final", "quote": "The authorized period of initial admission for a J-2 spouse and unmarried children under the age of 21 may not exceed the period of authorized admission of the principal J-1 exchange visitor."}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-GRACE-01",
+      "topic": "grace_period",
+      "claim_type": "rule_provision",
+      "statement": "The time F-1 students have to prepare to leave after finishing their studies or post-completion practical training drops from 60 days to 30 days.",
+      "applies_to": ["proposed", "final"],
+      "values": {"previous_days": 60, "new_days": 30},
+      "evidence": [
+        {"doc": "final", "quote": "Decreasing the period allowed for F-1 nonimmigrants to prepare to depart from the United States after completion of a course of study or an authorized period of post-completion practical training from 60 to 30 days"},
+        {"doc": "final", "quote": "will be allowed an additional 30-day period from the program end date or the 4 year maximum period of admission"},
+        {"doc": "proposed", "quote": "Decreasing from 60 to 30 days the allowed period for F-1 nonimmigrants to prepare to depart from the United States after completion of a course of study"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": [
+        "Students already in the US on D/S on September 15, 2026 also get only 30 days: transitioning F students keep a 60-day departure period (KF-TRANS-01)."
+      ]
+    },
+    {
+      "fact_id": "KF-GRACE-02",
+      "topic": "grace_period",
+      "claim_type": "rule_provision",
+      "statement": "An F-1 student who ends study or training early must, within 30 days of the end date, leave the US or take steps to maintain lawful status.",
+      "applies_to": ["final"],
+      "values": {"days": 30},
+      "evidence": [
+        {"doc": "final", "quote": "if the F-1 student ends his or her study or training prior to expiration of his or her period of admission, the F-1 student, and any eligible dependents, must, within 30 days from the end date of the study or training, depart the United States or otherwise seek to maintain lawful status"}
+      ],
+      "change_from_proposed": "Added in the final rule (final rule section V.A).",
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-GRACE-03",
+      "topic": "grace_period",
+      "claim_type": "rule_provision",
+      "statement": "An F-1 student who withdraws from classes with the school official's authorization gets 15 days to leave. A student who fails to maintain status gets no departure period and must leave immediately.",
+      "applies_to": ["final"],
+      "values": {"withdrawal_days": 15},
+      "evidence": [
+        {"doc": "final", "quote": "will be allowed a 15-day period from the date of the withdrawal to depart the United States"},
+        {"doc": "final", "quote": "is not eligible for any additional period of time for departure and must leave the country immediately"}
+      ],
+      "change_from_proposed": "The final rule adds that such a student 'must leave the country immediately' (final rule section V.A).",
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-GRACE-04",
+      "topic": "grace_period",
+      "claim_type": "rule_provision",
+      "statement": "J-1 exchange visitors and J-2 dependents have 30 days after the program end date, or after the 4-year maximum if that comes first, to leave or seek to maintain lawful status.",
+      "applies_to": ["proposed", "final"],
+      "values": {"days": 30},
+      "evidence": [
+        {"doc": "final", "quote": "may remain in the United States for a period of 30 days from the program end date or the 4-year maximum period of admission, whichever is earlier"},
+        {"doc": "proposed", "quote": "may remain in the United States for a period of 30 days from the program end date or the 4-year maximum period of admission, whichever is earlier"}
+      ],
+      "change_from_proposed": "The final rule adds that the 30 days also run from a shortened program end date (final rule section V.A).",
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-EOS-01",
+      "topic": "extension_of_stay",
+      "claim_type": "rule_provision",
+      "statement": "F-1 students who cannot finish within their admission period can apply to USCIS for an extension of stay, after the school official issues a new Form I-20.",
+      "applies_to": ["proposed", "final"],
+      "evidence": [
+        {"doc": "final", "quote": "USCIS may grant an extension of stay to an F-1 student who has maintained his or her F-1 status, but who is unable to complete his or her program by the end of his or her authorized period of admission."},
+        {"doc": "final", "quote": "Such student may be eligible for an extension if the designated school official issues a new Form I-20 or successor form certifying that the student is eligible"},
+        {"doc": "proposed", "quote": "USCIS may grant an extension of stay to an F-1 student who has maintained his or her F-1 status, but who is unable to complete his or her program by the end of his or her authorized period of admission."}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": [
+        "Students must leave the US and reapply for a visa to continue: the rule provides an extension of stay application to USCIS from inside the US."
+      ]
+    },
+    {
+      "fact_id": "KF-EOS-02",
+      "topic": "extension_of_stay",
+      "claim_type": "rule_provision",
+      "statement": "To get an extension, a student must have maintained status, be pursuing a full course of study, and have either a current I-20 showing time left in the program or documentation of a compelling academic or medical reason or circumstances beyond their control. Delays caused by academic probation, suspension, or a student's repeated inability or unwillingness to finish are not acceptable reasons. USCIS 'may' grant the extension: it is discretionary.",
+      "applies_to": ["proposed", "final"],
+      "evidence": [
+        {"doc": "final", "quote": "A currently issued Form I-20, or successor form, indicating additional time is left to complete his or her program of study"},
+        {"doc": "final", "quote": "A compelling academic reason, such as a change of major or research topic or unexpected research problems"},
+        {"doc": "final", "quote": "those caused by academic probation or suspension or a student's repeated inability or unwillingness to complete his or her course of study are not acceptable reasons for an extension"},
+        {"doc": "proposed", "quote": "A currently issued Form I-20, or successor form, indicating additional time is left to complete his or her program of study"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": [
+        "Extensions are only for emergencies: a current I-20 showing time left in the program also meets the reason requirement."
+      ]
+    },
+    {
+      "fact_id": "KF-EOS-03",
+      "topic": "biometrics_fees",
+      "claim_type": "rule_provision",
+      "statement": "An extension of stay application requires the endorsed I-20, evidence of sufficient funds, any required biometrics, and a fee.",
+      "applies_to": ["proposed", "final"],
+      "evidence": [
+        {"doc": "final", "quote": "submitting evidence of sufficient funds to cover expenses; appearing for any biometrics collection required by 8 CFR 103.16; and remitting the appropriate fee"},
+        {"doc": "final", "quote": "Providing for collection of biometric information in conjunction with an EOS application for F, J, and I nonimmigrants as may be required by 8 CFR 103.16"},
+        {"doc": "proposed", "quote": "Providing for collection of biometric information in conjunction with an EOS application for F, J, and I nonimmigrants as may be required by 8 CFR 103.16"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-EOS-04",
+      "topic": "extension_of_stay",
+      "claim_type": "rule_provision",
+      "statement": "An F-1 student who files an extension of stay on time stays in a period of authorized stay, and may keep studying full time, until USCIS decides the application.",
+      "applies_to": ["final"],
+      "evidence": [
+        {"doc": "final", "quote": "will be considered to be in a period of authorized stay if he or she has timely filed an extension of stay application pursuant to paragraph (f)(7) of this section until USCIS issues a decision on the extension of stay application"},
+        {"doc": "final", "quote": "will be authorized to continue pursuing a full course of study after the expiration of the admission period until USCIS adjudicates the EOS application"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": [
+        "Students fall out of status as soon as their admission date passes while waiting for USCIS: a timely filing keeps them in authorized stay until a decision."
+      ]
+    },
+    {
+      "fact_id": "KF-EOS-05",
+      "topic": "employment_opt",
+      "claim_type": "rule_provision",
+      "statement": "While a timely extension application is pending, an F-1 student's on-campus, CPT and severe-economic-hardship work authorization is automatically extended for up to 240 days. A student who files during the 30-day departure period gets no automatic extension.",
+      "applies_to": ["final"],
+      "values": {"max_auto_extension_days": 240},
+      "evidence": [
+        {"doc": "final", "quote": "such automatic extension may not exceed 240 days beginning from the end date of his or her period of admission"},
+        {"doc": "final", "quote": "If an F-1 student files an extension of stay application during the 30-day period provided in paragraph (f)(5)(v) of this section, he or she does not receive an automatic extension of authorized employment"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-EOS-06",
+      "topic": "unlawful_presence",
+      "claim_type": "rule_provision",
+      "statement": "If an extension is denied after the admission period has expired, the student and dependents must leave immediately. DHS says such people generally begin to accrue unlawful presence the day after the denial.",
+      "applies_to": ["final"],
+      "evidence": [
+        {"doc": "final", "quote": "If an F-1 student's extension of stay application is denied and the F-1 student's authorized admission period has expired, the F-1 student and his or her dependents must immediately depart the United States."},
+        {"doc": "final", "quote": "such aliens generally will begin to accrue unlawful presence the day after the issuance of the denial"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-UP-01",
+      "topic": "unlawful_presence",
+      "claim_type": "agency_rationale",
+      "statement": "DHS says that under D/S, F and J nonimmigrants generally did not accrue unlawful presence until a status violation was formally found. With fixed admission periods, someone found to have overstayed or violated status will accrue unlawful presence.",
+      "applies_to": ["final"],
+      "evidence": [
+        {"doc": "final", "quote": "Under current policy, F and J nonimmigrants admitted for D/S do not accrue unlawful presence until the day after USCIS formally finds a nonimmigrant status violation"},
+        {"doc": "final", "quote": "If immigration officers discover a nonimmigrant in one of these classifications has overstayed or otherwise violated his or her status, the alien will accrue unlawful presence"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-PROG-01",
+      "topic": "program_changes",
+      "claim_type": "rule_provision",
+      "statement": "F-1 students at the graduate level or above may not change educational objectives at any point in their program, and may transfer schools only with an SEVP exception for extenuating circumstances.",
+      "applies_to": ["proposed", "final"],
+      "evidence": [
+        {"doc": "final", "quote": "Prohibiting F-1 students at the graduate education level or above from changing educational objectives at any point during a program of study"},
+        {"doc": "final", "quote": "Prohibiting F-1 students at the graduate education level or above from transferring at any point during their program of study, unless an exception is authorized by SEVP for extenuating circumstances"},
+        {"doc": "proposed", "quote": "Prohibiting F-1 students at the graduate education level from changing programs at any point during a program of study"}
+      ],
+      "change_from_proposed": "The proposal said graduate students could not 'change programs'. The final rule treats changes of educational objective and school transfers separately, and allows transfers with an SEVP exception. Section V.A describes this as a clarification.",
+      "common_misreadings": [
+        "Graduate students can never transfer schools: transfers are allowed with an SEVP exception for extenuating circumstances."
+      ]
+    },
+    {
+      "fact_id": "KF-PROG-02",
+      "topic": "program_changes",
+      "claim_type": "rule_provision",
+      "statement": "An F-1 student who wants to transfer or change educational objectives must first complete the first academic year at the school that issued the original I-20, unless SEVP authorizes an exception.",
+      "applies_to": ["proposed", "final"],
+      "evidence": [
+        {"doc": "final", "quote": "requiring that the student complete his or her first academic year of a program of study at the school that initially issued his or her Form I-20 or successor form, unless an exception is authorized by SEVP"},
+        {"doc": "proposed", "quote": "requiring that the student complete his or her first academic year of a program of study at the school that initially issued his or her Form I-20 or successor form, unless an exception is authorized by SEVP"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-PROG-03",
+      "topic": "program_changes",
+      "claim_type": "rule_provision",
+      "statement": "After completing a program, a person can start another F-1 program only at a higher educational level, not the same or a lower one. In the final rule this applies to programs completed after the effective date.",
+      "applies_to": ["proposed", "final"],
+      "evidence": [
+        {"doc": "final", "quote": "Requiring any nonimmigrant who has completed a program at one educational level to only be allowed to begin another program at a higher educational level as an F-1 student"},
+        {"doc": "final", "quote": "applies to those aliens who have completed a program after the effective date of this final rule"},
+        {"doc": "proposed", "quote": "Requiring any nonimmigrant who has completed a program at one educational level to only be allowed to begin another program at a higher educational level while in F-1 status"}
+      ],
+      "change_from_proposed": "The final rule states that the restriction applies only to programs completed after the effective date (final rule section V.A).",
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-PROG-04",
+      "topic": "program_changes",
+      "claim_type": "rule_provision",
+      "statement": "Until September 14, 2028, DHS may delay or suspend the restrictions on transfers and changes of educational objective or level, and must announce any delay in the Federal Register.",
+      "applies_to": ["final"],
+      "values": {"delay_authority_ends": "2028-09-14"},
+      "evidence": [
+        {"doc": "final", "quote": "Until September 14, 2028, DHS may delay or suspend the implementation of"},
+        {"doc": "final", "quote": "DHS will make an announcement of the delay or suspension by publication of a notice in the Federal Register"}
+      ],
+      "change_from_proposed": "The final rule limits the delay authority to two years and adds the Federal Register notice (final rule section V.A).",
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-LANG-01",
+      "topic": "language_training",
+      "claim_type": "rule_provision",
+      "statement": "Students in English language training programs are limited to 24 months in total, including breaks and vacation, plus a 30-day departure period.",
+      "applies_to": ["proposed", "final"],
+      "values": {"max_months": 24},
+      "evidence": [
+        {"doc": "final", "quote": "F-1 students whose course of study is in an English language training program are restricted to a maximum of admission period of 24 months"},
+        {"doc": "final", "quote": "Limiting language training students to an aggregate 24-month period of stay, including breaks and an annual vacation"},
+        {"doc": "proposed", "quote": "Limiting language training students to an aggregate 24-month period of stay, including breaks and an annual vacation"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-HS-01",
+      "topic": "high_school",
+      "claim_type": "rule_provision",
+      "statement": "F-1 students at a public high school are limited to 12 months in total. The final rule clarifies that this can include charter schools funded by US taxpayers.",
+      "applies_to": ["final"],
+      "values": {"max_months": 12},
+      "evidence": [
+        {"doc": "final", "quote": "are restricted to an aggregate of no more than 12 months to complete their course of study"},
+        {"doc": "final", "quote": "which may also include a charter school or other similar school funded by U.S. taxpayers"}
+      ],
+      "change_from_proposed": "The charter-school clarification was added in the final rule (final rule section V.A).",
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-OPT-01",
+      "topic": "employment_opt",
+      "claim_type": "rule_provision",
+      "statement": "Students transitioning from D/S who apply for post-completion OPT or STEM OPT work authorization by March 18, 2027 do not also have to file an extension of stay (Form I-539). DHS may extend this exemption in 6-month increments.",
+      "applies_to": ["proposed", "final"],
+      "values": {"exemption_deadline": "2027-03-18"},
+      "evidence": [
+        {"doc": "final", "quote": "on or before March 18, 2027, is not required to file an Application to Extend/Change Nonimmigrant Status, Form I-539"},
+        {"doc": "final", "quote": "in 6-month increments by publication of a notification in the Federal Register"},
+        {"doc": "proposed", "quote": "is not required to file an Application to Extend/Change Nonimmigrant Status, Form I-539, or successor form for the requested period of post-completion OPT"}
+      ],
+      "change_from_proposed": "The proposal left the deadline as a placeholder (six months after the effective date). The final rule sets March 18, 2027.",
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-TRANS-01",
+      "topic": "transition",
+      "claim_type": "rule_provision",
+      "statement": "F and J nonimmigrants already in the US on D/S and maintaining status on September 15, 2026 may stay until their program end date or EAD expiration, whichever is later, up to 4 years from September 15, 2026. After that, F students get a 60-day departure period (to November 14, 2030) and J visitors 30 days (to October 15, 2030). Staying longer requires an extension of stay.",
+      "applies_to": ["proposed", "final"],
+      "values": {"transition_start": "2026-09-15", "f_latest": "2030-11-14", "j_latest": "2030-10-15", "f_departure_days": 60, "j_departure_days": 30},
+      "evidence": [
+        {"doc": "final", "quote": "not to exceed a period of 4 years from September 15, 2026, plus the departure period of 60 days for F nonimmigrants, which is November 14, 2030, and 30 days for J nonimmigrants, which is October 15, 2030"},
+        {"doc": "proposed", "quote": "who were admitted for duration of status are authorized to remain in the United States in F or J nonimmigrant status until the later date of either the expiration date on an Employment Authorization Document"}
+      ],
+      "change_from_proposed": "The proposal left the dates as placeholders tied to the final rule's publication.",
+      "common_misreadings": [
+        "Current students must leave or reapply on the effective date: they keep their program end date, up to 4 years.",
+        "Current students get only a 30-day grace period: transitioning F students keep 60 days."
+      ]
+    },
+    {
+      "fact_id": "KF-TRANS-02",
+      "topic": "transition",
+      "claim_type": "rule_provision",
+      "statement": "I nonimmigrants already in the US on D/S on September 15, 2026 may stay until May 13, 2027. Those with People's Republic of China passports may stay until December 14, 2026.",
+      "applies_to": ["final"],
+      "values": {"i_latest": "2027-05-13", "i_prc_latest": "2026-12-14"},
+      "evidence": [
+        {"doc": "final", "quote": "not to exceed May 13, 2027"},
+        {"doc": "final", "quote": "not to exceed December 14, 2026"}
+      ],
+      "change_from_proposed": "The proposal left the dates as placeholders.",
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-I-01",
+      "topic": "i_visa_media",
+      "claim_type": "rule_provision",
+      "statement": "Foreign media representatives (I visas) are admitted for the time needed for their assignment, up to 240 days, and can apply for extensions of up to 240 days each.",
+      "applies_to": ["proposed", "final"],
+      "values": {"max_admission_days": 240, "max_extension_days": 240},
+      "evidence": [
+        {"doc": "final", "quote": "not to exceed 240 days unless paragraph (i)(3)(ii) of this section applies"},
+        {"doc": "final", "quote": "may be eligible for extensions of stay, each of up to 240 days"},
+        {"doc": "proposed", "quote": "not to exceed 240 days (with the exception of some I aliens from the People's Republic of China)"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-I-02",
+      "topic": "i_visa_media",
+      "claim_type": "rule_provision",
+      "statement": "I-visa holders with People's Republic of China passports are admitted for up to 90 days, with extensions of up to 90 days each. Hong Kong and Macau passport holders are excluded from this limit.",
+      "applies_to": ["proposed", "final"],
+      "values": {"max_admission_days": 90},
+      "evidence": [
+        {"doc": "final", "quote": "may be admitted until the activities or assignments consistent with the I classification are completed, not to exceed 90 days"},
+        {"doc": "final", "quote": "with the exception of Hong Kong Special Administrative Region passport holders and Macau Special Administrative Region passport holders"},
+        {"doc": "proposed", "quote": "may be admitted until the activities or assignments consistent with the I classification are completed, not to exceed 90 days"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": [
+        "All Chinese journalists get 90 days: Hong Kong and Macau passport holders are excluded."
+      ]
+    },
+    {
+      "fact_id": "KF-DATE-01",
+      "topic": "timeline",
+      "claim_type": "timeline",
+      "statement": "The proposed rule was published on August 28, 2025, and comments were due by September 29, 2025.",
+      "applies_to": ["proposed", "final"],
+      "values": {"nprm_published": "2025-08-28", "comments_due": "2025-09-29"},
+      "evidence": [
+        {"doc": "final", "quote": "the proposed rule covering this topic that was published in the Federal Register on August 28, 2025"},
+        {"doc": "proposed", "quote": "Comments must be received on or before September 29, 2025."}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-DATE-02",
+      "topic": "timeline",
+      "claim_type": "timeline",
+      "statement": "The final rule was published in the Federal Register on July 17, 2026 (91 FR 44976).",
+      "applies_to": ["final"],
+      "allowed_tiers": "X",
+      "values": {"final_published": "2026-07-17"},
+      "evidence": [
+        {"doc": "final", "quote": "[Federal Register Volume 91, Number 136 (Friday, July 17, 2026)]"},
+        {"doc": "final", "quote": "[Pages 44976-45131]"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-DATE-03",
+      "topic": "timeline",
+      "claim_type": "timeline",
+      "statement": "The final rule's effective date is September 15, 2026. It is a major rule subject to congressional review. Under the Congressional Review Act it takes effect at least 60 days after Congress receives DHS's report or 60 days after publication, whichever is later. If the date changes after review, DHS will publish a notice.",
+      "applies_to": ["final"],
+      "values": {"effective_date": "2026-09-15"},
+      "evidence": [
+        {"doc": "final", "quote": "This rule has been classified as a major rule subject to congressional review. The effective date is September 15, 2026."},
+        {"doc": "final", "quote": "if the effective date has been changed, DHS will publish a document in the Federal Register to establish the actual effective date or to terminate the rule"},
+        {"doc": "final", "quote": "will be effective at least 60 days after the date on which Congress receives a report submitted by DHS under the Congressional Review Act, or 60 days after the final rule's publication, whichever is later"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": [
+        "The rule needs Congress to approve it: the text gives a fixed effective date and says only that DHS will publish a notice if review changes it. Claims about a congressional vote go beyond the rule text.",
+        "No implementation date has been announced: the rule sets September 15, 2026."
+      ]
+    },
+    {
+      "fact_id": "KF-COMM-01",
+      "topic": "comments",
+      "claim_type": "comment_record",
+      "statement": "The public had 32 days to comment on the proposed rule, and DHS received close to 22,000 comments.",
+      "applies_to": ["final"],
+      "allowed_tiers": "D",
+      "values": {"comment_days": 32, "comments_received_approx": 22000},
+      "evidence": [
+        {"doc": "final", "quote": "The public was given 32 days to comment on the proposed rule"},
+        {"doc": "final", "quote": "DHS received close to 22,000 public comments."}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-COMM-02",
+      "topic": "comments",
+      "claim_type": "rule_provision",
+      "statement": "DHS says it made several changes after considering public comments but adopted most of what it proposed.",
+      "applies_to": ["final"],
+      "evidence": [
+        {"doc": "final", "quote": "most of the changes proposed in the NPRM have been adopted"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": []
+    },
+    {
+      "fact_id": "KF-COST-01",
+      "topic": "costs",
+      "claim_type": "agency_estimate",
+      "statement": "DHS estimates annualized costs of $443.1 million to $448.6 million (3% and 7% discount rates) over 2027 to 2036, of which $119.9 million to $125.1 million falls on US parties.",
+      "applies_to": ["final"],
+      "allowed_tiers": "C",
+      "values": {"annual_cost_musd": [443.1, 448.6], "annual_cost_us_parties_musd": [119.9, 125.1]},
+      "evidence": [
+        {"doc": "final", "quote": "The rule will have an annualized cost ranging from $443.1 million to $448.6 million"},
+        {"doc": "final", "quote": "When considering U.S. parties only, annual costs range from $119.9 million to $125.1 million"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": [
+        "Treating the estimate as a measured cost: it is DHS's projection."
+      ]
+    },
+    {
+      "fact_id": "KF-PURPOSE-01",
+      "topic": "rationale",
+      "claim_type": "agency_rationale",
+      "statement": "DHS's stated purpose is to add protections and oversight and to let DHS better evaluate whether these nonimmigrants are maintaining status. This is DHS's rationale, not a verified effect.",
+      "applies_to": ["final"],
+      "evidence": [
+        {"doc": "final", "quote": "will provide additional protections and oversight of these nonimmigrant categories and will allow DHS to better evaluate whether these nonimmigrants are maintaining status while temporarily in the United States"}
+      ],
+      "change_from_proposed": null,
+      "common_misreadings": [
+        "Stating as fact that the rule will reduce fraud or overstays: the rule text supports only that DHS says so."
+      ]
+    }
+  ]
+}
