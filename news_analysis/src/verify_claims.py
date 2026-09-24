@@ -12,41 +12,66 @@ CHECKABLE_TYPES = {"policy", "government_position", "interpretation"}
 VERDICTS = {"supported", "partially_supported", "contradicted", "not_verifiable"}
 VERIFY_BATCH_SIZE = 8
 
-# The first three events come from the indexed rule documents. The court event
-# is status context only: the court order is not yet part of the evidence index.
 POLICY_TIMELINE = [
     {
         "date": "2025-08-28",
+        "available_date": "2025-08-28",
         "event": "proposed_rule_published",
         "description": "DHS published proposed rule 2025-16554.",
         "source_scope": "indexed_policy_document",
     },
     {
         "date": "2026-07-17",
+        "available_date": "2026-07-17",
         "event": "final_rule_published",
         "description": "DHS published final rule 2026-14439.",
         "source_scope": "indexed_policy_document",
     },
     {
         "date": "2026-09-14",
+        "available_date": "2026-09-14",
         "event": "effective_date_postponed",
         "description": (
             "A preliminary injunction postponed the final rule's effective date; "
             "the existing duration-of-status framework remained in effect."
         ),
-        "source_scope": "status_context_only_court_order_not_indexed",
+        "source_scope": "indexed_court_order",
         "case": "Presidents' Alliance v. DHS, No. 1:26-cv-13799-FDS",
+        "evidence_id": "court_order:dkt51:p2",
     },
     {
         "date": "2026-09-15",
+        "available_date": "2026-07-17",
         "event": "scheduled_effective_date",
-        "description": "The final rule was scheduled to take effect but was postponed.",
-        "source_scope": "indexed_date_plus_external_status_context",
+        "description": "The final rule was scheduled to take effect on this date.",
+        "source_scope": "indexed_policy_document",
     },
 ]
 
-COURT_WORDS = re.compile(
-    r"\b(court|judge|lawsuit|injunction|enjoin|blocked|halted|postponed|stayed)\b",
+COURT_ACTOR_WORDS = re.compile(r"\b(court|judge|judicial)\b", re.IGNORECASE)
+COURT_STATUS_WORDS = re.compile(
+    r"\b(injunction|enjoin(?:ed|s|ing)?|block(?:ed|s|ing)?|halt(?:ed|s|ing)?|"
+    r"postpon(?:e|ed|es|ing)|sta(?:y|yed|ys|ying)|paus(?:e|ed|es|ing)|suspend(?:ed|s|ing)?|"
+    r"restrain(?:ed|s|ing)?|barred|preliminary relief|vacat(?:e|ed|es|ur)|struck down|"
+    r"set aside|did not take effect|will not take effect|not currently operative)\b",
+    re.IGNORECASE,
+)
+COURT_REASONING_WORDS = re.compile(
+    r"\b(found|held|concluded|determined|ruled|reasoning|judgment|opinion|memorandum|"
+    r"said|wrote|noted|characteri[sz]ed|described|dismissive|dismissed|rejected|"
+    r"criticized|arbitrary|capricious|irreparable|likelihood of success|"
+    r"statutory authority|public interest)\b",
+    re.IGNORECASE,
+)
+COURT_PROCESS_WORDS = re.compile(
+    r"\b(lawsuit|sued|complaint|appeal(?:ed|s|ing)?|hearing|plaintiffs? argued|"
+    r"defendants? argued|motion)\b",
+    re.IGNORECASE,
+)
+POLICY_DETAIL_WORDS = re.compile(
+    r"\b(\d+|one|two|three|four|thirty|sixty|year|years|day|days|cap|maximum|"
+    r"duration of status|d/s|extension|grace period|transfer|degree|program|opt|"
+    r"sevis|requirement|restriction)\b",
     re.IGNORECASE,
 )
 PROPOSAL_WORDS = re.compile(r"\b(proposal|proposed|nprm|draft rule)\b", re.IGNORECASE)
@@ -54,7 +79,7 @@ FINAL_WORDS = re.compile(
     r"\b(final rule|finalized|effective date|takes? effect|took effect)\b", re.IGNORECASE
 )
 
-VERIFICATION_SYSTEM_PROMPT = """You verify news claims using only the supplied policy evidence.
+VERIFICATION_SYSTEM_PROMPT = """You verify news claims using only the supplied primary-source evidence.
 
 Verdicts:
 - supported: all material parts of the claim are directly supported
@@ -64,8 +89,12 @@ Verdicts:
 
 Treat each claim atomically. Pay special attention to qualifiers, dates, numbers,
 program length, transition rules, extensions, and whether text is proposed or final.
-The key facts are retrieval aids, not citations. Cite only evidence_id values from
-the supplied primary passages. Do not use outside knowledge."""
+For court evidence, distinguish an operative order from the court's reasoning and
+from party arguments quoted in the memorandum. Preliminary relief is not a final
+merits judgment. Postponing or enjoining a rule is not the same as vacating or
+permanently invalidating it. The key facts are retrieval aids, not citations. Cite
+only evidence_id values from the supplied primary passages. Do not use outside
+knowledge."""
 
 VERIFICATION_SCHEMA = {
     "type": "object",
@@ -91,13 +120,48 @@ VERIFICATION_SCHEMA = {
 
 
 def route_claim(claim: dict[str, Any], article: dict[str, Any]) -> dict[str, Any]:
-    """Choose proposed/final evidence using claim wording before article metadata."""
+    """Choose rule or court evidence using claim wording before article metadata."""
     text = f"{claim.get('claim_text', '')} {claim.get('source_quote', '')}"
-    if COURT_WORDS.search(text):
+    court_status = bool(COURT_STATUS_WORDS.search(text))
+    court_reasoning = bool(COURT_ACTOR_WORDS.search(text) and COURT_REASONING_WORDS.search(text))
+    court_process = bool(COURT_PROCESS_WORDS.search(text))
+    court_reference = bool(COURT_ACTOR_WORDS.search(text) or court_status or court_process)
+
+    if court_reference:
+        court_documents = []
+        if court_status:
+            court_documents.append("court_order")
+        if court_reasoning:
+            court_documents.append("court_memo")
+        if not court_documents:
+            return {
+                "documents": [],
+                "tiers": [],
+                "review_required": True,
+                "reason": (
+                    "The claim concerns litigation activity not established by the indexed "
+                    "September 14 ruling."
+                ),
+            }
+
+        rule_documents = []
+        if court_status and POLICY_DETAIL_WORDS.search(text):
+            if PROPOSAL_WORDS.search(text):
+                rule_documents.append("proposed")
+            else:
+                rule_documents.append("final")
+
+        documents = list(dict.fromkeys(court_documents + rule_documents))
+        mixed_sources = bool(rule_documents) or len(court_documents) > 1
         return {
-            "documents": [],
-            "review_required": True,
-            "reason": "Court-status source is not included in the policy evidence index.",
+            "documents": documents,
+            "tiers": ["J", *(["A", "B"] if rule_documents else [])],
+            "review_required": mixed_sources or court_process,
+            "reason": (
+                "Claim combines court and rule details; both primary sources were searched."
+                if rule_documents
+                else "Claim was routed to the indexed court ruling."
+            ),
         }
 
     mentions_proposal = bool(PROPOSAL_WORDS.search(text))
@@ -105,18 +169,21 @@ def route_claim(claim: dict[str, Any], article: dict[str, Any]) -> dict[str, Any
     if mentions_proposal and not mentions_final:
         return {
             "documents": ["proposed"],
+            "tiers": ["A", "B"],
             "review_required": False,
             "reason": "Claim explicitly describes a proposal or NPRM.",
         }
     if mentions_final and not mentions_proposal:
         return {
             "documents": ["final"],
+            "tiers": ["A", "B"],
             "review_required": False,
             "reason": "Claim explicitly describes the final rule or effective date.",
         }
     if mentions_proposal and mentions_final:
         return {
             "documents": ["proposed", "final"],
+            "tiers": ["A", "B"],
             "review_required": True,
             "reason": "Claim refers to both proposed and final rule stages.",
         }
@@ -125,27 +192,70 @@ def route_claim(claim: dict[str, Any], article: dict[str, Any]) -> dict[str, Any
     if window in {"nprm_published", "nprm_published_docket", "comment_deadline"}:
         return {
             "documents": ["proposed"],
+            "tiers": ["A", "B"],
             "review_required": False,
             "reason": "Article belongs to a proposed-rule collection window.",
         }
-    if window in {"final_rule", "injunction"}:
+    if window == "final_rule":
         return {
             "documents": ["final"],
+            "tiers": ["A", "B"],
             "review_required": False,
             "reason": "Article belongs to a final-rule collection window.",
         }
+    if window == "injunction":
+        return {
+            "documents": ["final", "court_order"],
+            "tiers": ["A", "B", "J"],
+            "review_required": True,
+            "reason": "Claim wording is ambiguous within an injunction-period article.",
+        }
     return {
         "documents": ["proposed", "final"],
+        "tiers": ["A", "B"],
         "review_required": True,
         "reason": "Rule version is ambiguous, so both versions were searched.",
     }
 
 
-def retrieve_claim(index: Any, claim: dict[str, Any], route: dict[str, Any]) -> dict[str, Any]:
+def article_date(article: dict[str, Any]) -> str | None:
+    """Convert a GDELT timestamp into the date used for evidence availability."""
+    value = article.get("seendate", "")
+    if re.match(r"^\d{8}", value):
+        return f"{value[:4]}-{value[4:6]}-{value[6:8]}"
+    return None
+
+
+def retrieve_claim(
+    index: Any,
+    claim: dict[str, Any],
+    route: dict[str, Any],
+    article: dict[str, Any],
+) -> dict[str, Any]:
     query = claim["claim_text"]
     documents = route["documents"]
-    facts = index.search_facts(query, docs=documents, k=3)
-    keyword_hits = index.search(query, docs=documents, tiers=("A", "B"), k=5)
+    as_of = article_date(article)
+    policy_documents = [doc for doc in documents if doc in {"proposed", "final"}]
+    court_documents = [doc for doc in documents if doc in {"court_memo", "court_order"}]
+    facts = index.search_facts(query, docs=policy_documents, k=3) if policy_documents else []
+
+    groups = []
+    if policy_documents:
+        groups.append((policy_documents, ("A", "B")))
+    if court_documents:
+        groups.append((court_documents, ("J",)))
+    hits_per_group = 3 if court_documents else 5
+    keyword_hits = []
+    for group_documents, tiers in groups:
+        keyword_hits.extend(
+            index.search(
+                query,
+                docs=group_documents,
+                tiers=tiers,
+                k=hits_per_group,
+                as_of=as_of,
+            )
+        )
 
     # Promote one machine-verified primary paragraph per matched key fact, then
     # fill the remaining slots with keyword hits. Key-fact prose is never cited.
@@ -155,7 +265,7 @@ def retrieve_claim(index: Any, claim: dict[str, Any], route: dict[str, Any]) -> 
         matches = [
             match
             for evidence in fact.get("evidence", [])
-            if evidence["doc"] in documents
+            if evidence["doc"] in policy_documents
             for match in evidence.get("matches", [])
             if match["tier"] in {"A", "B"}
         ]
@@ -167,8 +277,10 @@ def retrieve_claim(index: Any, claim: dict[str, Any], route: dict[str, Any]) -> 
     passages.extend(
         passage for passage in keyword_hits if passage["evidence_id"] not in seen_ids
     )
-    passages = passages[:5]
+    passage_limit = 6 if len(groups) > 1 else (3 if court_documents else 5)
+    passages = passages[:passage_limit]
     return {
+        "evidence_as_of": as_of,
         "key_facts": [
             {
                 "fact_id": fact["fact_id"],
@@ -185,6 +297,11 @@ def retrieve_claim(index: Any, claim: dict[str, Any], route: dict[str, Any]) -> 
                 "heading": passage["heading"],
                 "cfr_citation": passage.get("cfr_citation"),
                 "fr_cite": passage.get("fr_cite"),
+                "court_citation": passage.get("court_citation"),
+                "source_type": passage.get("source_type"),
+                "filed_date": passage.get("filed_date"),
+                "page": passage.get("page"),
+                "source_url": passage.get("source_url"),
                 "text": passage["text"],
             }
             for passage in passages
@@ -193,13 +310,19 @@ def retrieve_claim(index: Any, claim: dict[str, Any], route: dict[str, Any]) -> 
 
 
 def verification_prompt(article: dict[str, Any], batch: list[dict[str, Any]]) -> str:
+    as_of = article_date(article)
     payload = {
         "article": {
             "title": article["title"],
             "published": article.get("seendate"),
             "collection_window": article.get("window"),
         },
-        "status_timeline": POLICY_TIMELINE,
+        "evidence_as_of": as_of,
+        "status_timeline": [
+            event
+            for event in POLICY_TIMELINE
+            if as_of is None or event["available_date"] <= as_of
+        ],
         "claims": [
             {
                 "claim_id": item["claim_id"],
@@ -245,7 +368,14 @@ def citation_for(passage: dict[str, Any]) -> dict[str, Any]:
     return {
         "evidence_id": passage["evidence_id"],
         "doc": passage["doc"],
-        "citation": passage.get("cfr_citation") or passage.get("fr_cite") or passage["heading"],
+        "citation": (
+            passage.get("court_citation")
+            or passage.get("cfr_citation")
+            or passage.get("fr_cite")
+            or passage["heading"]
+        ),
+        "source_type": passage.get("source_type"),
+        "source_url": passage.get("source_url"),
         "text": passage["text"],
     }
 
@@ -289,7 +419,9 @@ def apply_model_result(item: dict[str, Any], result: dict[str, Any] | None) -> N
         "verdict": verdict,
         "reason": reason.strip(),
         "documents_searched": route["documents"],
-        "review_required": route["review_required"],
+        "evidence_as_of": item.get("evidence_as_of"),
+        "review_required": route["review_required"]
+        or verdict in {"partially_supported", "not_verifiable"},
         "key_fact_ids": [fact["fact_id"] for fact in item["retrieval"]["key_facts"]],
         "retrieved_evidence_ids": list(by_id),
         "evidence": citations,
@@ -357,6 +489,7 @@ def verify_article(
     model: str | None = None,
 ) -> None:
     prepared = []
+    as_of = article_date(article)
     for number, claim in enumerate(article.get("claims", []), start=1):
         if claim["claim_type"] not in CHECKABLE_TYPES:
             claim["verification"] = {
@@ -364,6 +497,7 @@ def verify_article(
                 "verdict": None,
                 "reason": f"{claim['claim_type']} claims are excluded from policy grounding scores.",
                 "documents_searched": [],
+                "evidence_as_of": as_of,
                 "review_required": False,
                 "key_fact_ids": [],
                 "retrieved_evidence_ids": [],
@@ -378,18 +512,23 @@ def verify_article(
                 "verdict": "not_verifiable",
                 "reason": route["reason"],
                 "documents_searched": [],
+                "evidence_as_of": as_of,
                 "review_required": True,
                 "key_fact_ids": [],
                 "retrieved_evidence_ids": [],
                 "evidence": [],
             }
             continue
+        retrieval = retrieve_claim(index, claim, route, article)
+        if not retrieval["passages"]:
+            route = {**route, "review_required": True}
         prepared.append(
             {
                 "claim_id": f"C{number}",
                 "claim": claim,
                 "route": route,
-                "retrieval": retrieve_claim(index, claim, route),
+                "retrieval": retrieval,
+                "evidence_as_of": as_of,
             }
         )
 

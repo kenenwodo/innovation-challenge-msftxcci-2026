@@ -20,7 +20,7 @@ DEFAULT_INPUT = NEWS_DIR / "gdelt_news_articles_v3-112.csv"
 DEFAULT_OUTPUT_DIR = NEWS_DIR / "output" / "fact_check"
 
 # Intentionally simple: enough to collapse obvious syndicated copies without
-# introducing embeddings or a separate deduplication service.
+# introducing a separate deduplication service.
 SHINGLE_SIZE = 5
 MIN_SHINGLES = 12
 NEAR_DUPLICATE_THRESHOLD = 0.85
@@ -50,6 +50,11 @@ Never label an opinion, interpretation, or prediction as a policy claim merely
 because it discusses the rule. Extract a viewpoint only when the article attributes
 it to a named person or organization. Preserve the stated stance, target provision,
 and reason; do not infer a reason that is absent.
+
+A court decision changing whether the rule can take effect is a policy claim. A
+lawsuit filing, appeal, or party allegation is an outside fact unless the sentence
+also states the rule's legal status. Split a court-status assertion from any separate
+assertion about what the rule requires so each can be checked against the right source.
 
 For every item, copy the smallest useful continuous source_quote exactly from the
 article. Do not repair, paraphrase, or normalize source quotes. The application
@@ -534,9 +539,7 @@ def run(
         if index is None:
             from evidence_index import EvidenceIndex
 
-            # Keyword retrieval keeps the demo fast and avoids downloading a
-            # sentence-transformer model at run time.
-            index = EvidenceIndex.load(use_embeddings=False)
+            index = EvidenceIndex.load()
         from verify_claims import verify_articles
 
         verify_articles(

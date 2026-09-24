@@ -1,13 +1,11 @@
 # fetch_regulations.py uses only the Python standard library (3.9+).
 # Add third-party packages here as the project grows.
 
-# news_analysis: evidence index (keyword + embedding search over the rule text)
+# News fact-checker prototype
+openai>=2,<3
+python-dotenv
+pytest
+pypdf
+
+# news_analysis: BM25 evidence search
 rank-bm25
-# sentence-transformers 6 needs transformers 5, which needs a newer PyTorch
-# than Intel Macs can install, so both stay one major version back.
-sentence-transformers>=5,<6
-transformers<5
-# PyTorch stopped publishing Intel-Mac (x86_64) wheels after 2.2.2, and
-# torch 2.2 is built against NumPy 1.x.
-torch==2.2.2; sys_platform == "darwin" and platform_machine == "x86_64"
-numpy<2; sys_platform == "darwin" and platform_machine == "x86_64"

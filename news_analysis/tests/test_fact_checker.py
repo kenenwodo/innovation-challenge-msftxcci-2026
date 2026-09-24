@@ -193,7 +193,7 @@ def test_repeated_quote_uses_first_exact_occurrence():
     assert warnings == []
 
 
-def test_claim_routing_prefers_explicit_wording_and_flags_court_status():
+def test_claim_routing_prefers_explicit_wording_and_uses_court_sources():
     article = {"window": "final_rule"}
     proposed = verify_claims.route_claim(
         {
@@ -205,22 +205,45 @@ def test_claim_routing_prefers_explicit_wording_and_flags_court_status():
     court = verify_claims.route_claim(
         {"claim_text": "A judge blocked the rule.", "source_quote": ""}, article
     )
+    reasoning = verify_claims.route_claim(
+        {
+            "claim_text": "The court found that DHS was likely to have acted arbitrarily.",
+            "source_quote": "",
+        },
+        article,
+    )
+    mixed = verify_claims.route_claim(
+        {
+            "claim_text": "A judge blocked the final rule's four-year cap.",
+            "source_quote": "",
+        },
+        article,
+    )
+    lawsuit = verify_claims.route_claim(
+        {"claim_text": "Several organizations filed a lawsuit.", "source_quote": ""},
+        article,
+    )
 
     assert proposed["documents"] == ["proposed"]
     assert proposed["review_required"] is False
-    assert court["documents"] == []
-    assert court["review_required"] is True
+    assert court["documents"] == ["court_order"]
+    assert court["review_required"] is False
+    assert reasoning["documents"] == ["court_memo"]
+    assert reasoning["review_required"] is False
+    assert mixed["documents"] == ["court_order", "final"]
+    assert mixed["review_required"] is True
+    assert lawsuit["documents"] == []
+    assert lawsuit["review_required"] is True
 
 
 def test_policy_retrieval_covers_demo_edge_cases():
     from evidence_index import EvidenceIndex
 
-    index = EvidenceIndex.load(use_embeddings=False)
+    index = EvidenceIndex.load()
 
     lifetime = index.search_facts(
         "Students face a hard lifetime cap of four years and cannot extend their stay",
         k=6,
-        mode="bm25",
     )
     assert {"KF-ADMIT-01", "KF-EOS-01"} <= {
         fact["fact_id"] for fact in lifetime
@@ -229,7 +252,6 @@ def test_policy_retrieval_covers_demo_edge_cases():
     grace = index.search_facts(
         "Students get 30 days to leave, but transitioning students keep 60 days",
         k=5,
-        mode="bm25",
     )
     assert {"KF-GRACE-01", "KF-TRANS-01"} <= {
         fact["fact_id"] for fact in grace
@@ -239,9 +261,83 @@ def test_policy_retrieval_covers_demo_edge_cases():
         "post-completion practical training requires additional admission time",
         docs=["final"],
         k=8,
-        mode="bm25",
     )
     assert any(hit["evidence_id"] == "final:8 CFR 214.2/p65" for hit in opt)
+
+
+def test_court_retrieval_is_citable_and_time_aware():
+    from evidence_index import EvidenceIndex
+
+    index = EvidenceIndex.load()
+    before_ruling = index.search(
+        "the effective date was postponed",
+        docs=["court_order"],
+        tiers=["J"],
+        as_of="2026-09-10",
+    )
+    after_ruling = index.search(
+        "the effective date was postponed and implementation was enjoined",
+        docs=["court_order"],
+        tiers=["J"],
+        as_of="2026-09-20",
+        k=2,
+    )
+
+    assert before_ruling == []
+    assert after_ruling[0]["evidence_id"] == "court_order:dkt51:p2"
+    assert "Dkt. 51 at 2" in after_ruling[0]["court_citation"]
+
+
+def test_court_claim_is_verified_against_the_order(tmp_path: Path):
+    from evidence_index import EvidenceIndex
+
+    def fake_model_call(_system, prompt, _schema, *_args, **_kwargs):
+        payload = json.loads(prompt.split("\n", 1)[1])
+        claim = payload["claims"][0]
+        evidence_id = next(
+            passage["evidence_id"]
+            for passage in claim["primary_passages"]
+            if passage["evidence_id"] == "court_order:dkt51:p2"
+        )
+        return {
+            "results": [
+                {
+                    "claim_id": claim["claim_id"],
+                    "verdict": "supported",
+                    "evidence_ids": [evidence_id],
+                    "reason": "The operative order postponed the effective date.",
+                }
+            ]
+        }
+
+    article = {
+        "title": "Judge postpones DHS rule",
+        "window": "injunction",
+        "seendate": "20260920T084500Z",
+        "claims": [
+            {
+                "claim_text": "A judge postponed the final rule's effective date.",
+                "claim_type": "policy",
+                "source_quote": "A judge postponed the final rule's effective date.",
+                "sentence_ids": [1],
+            }
+        ],
+    }
+
+    verify_claims.verify_article(
+        article,
+        EvidenceIndex.load(),
+        tmp_path,
+        fake_model_call,
+    )
+
+    verification = article["claims"][0]["verification"]
+    assert verification["status"] == "complete"
+    assert verification["verdict"] == "supported"
+    assert verification["documents_searched"] == ["court_order"]
+    assert verification["evidence_as_of"] == "2026-09-20"
+    assert verification["review_required"] is False
+    assert "Dkt. 51 at 2" in verification["evidence"][0]["citation"]
 
 
 def test_verifier_removes_unretrieved_evidence_ids(tmp_path: Path):
@@ -339,6 +435,7 @@ def test_numeric_guard_and_weighted_article_score():
         },
     )
     assert item["claim"]["verification"]["verdict"] == "partially_supported"
+    assert item["claim"]["verification"]["review_required"] is True
 
     article = {
         "title": "Rule sets four year limit",

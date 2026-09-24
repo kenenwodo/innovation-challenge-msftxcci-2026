@@ -2,23 +2,20 @@
 Step 0 of the news fact-checker: build the evidence index.
 
 Parses both versions of the rule (proposed 2025-16554 and final 2026-14439)
-into paragraphs, tags each paragraph with an evidence tier and a voice,
-embeds them for semantic search, and verifies the hand-written key-facts
-sheet against the parsed text.
+and the September 14, 2026 preliminary-injunction ruling. It tags each record
+with an evidence tier and voice, and verifies the hand-written key-facts sheet
+against the parsed rule text.
 
 Run from the repo root:
   .venv/bin/python news_analysis/src/build_evidence_index.py
-  .venv/bin/python news_analysis/src/build_evidence_index.py --no-embeddings
 
 Outputs (news_analysis/output/evidence/):
   proposed_rule_sections.jsonl/.md   parsed section tree of each version
   final_rule_sections.jsonl/.md
-  evidence_paragraphs.jsonl          one record per citable paragraph, both versions
-  embeddings.npy, embeddings_meta.json
+  evidence_paragraphs.jsonl          citable rule paragraphs and court pages
   key_facts_verified.json            key facts with the paragraph each quote was found in
 """
 
-import argparse
 import json
 import re
 import sys
@@ -39,13 +36,24 @@ import extract_html  # noqa: E402  (policy_analysis/src/extract_html.py)
 EVIDENCE_DIR = NEWS_DIR / "output" / "evidence"
 KEY_FACTS_PATH = NEWS_DIR / "key_facts.json"
 RULE_VERSIONS_PATH = REPO_DIR / "data" / "ICEB-2025-0001-21962" / "rule_versions.json"
+COURT_DIR = REPO_DIR / "data" / "court" / "1-26-cv-13799-FDS"
+COURT_SOURCE_PATH = COURT_DIR / "source.json"
 
 HTML_PATHS = {
     "proposed": REPO_DIR / "data" / "ICEB-2025-0001-0001" / "document" / "content.html",
     "final": REPO_DIR / "data" / "ICEB-2025-0001-21962" / "document" / "content.html",
 }
 
-EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
+COURT_DOCUMENTS = {
+    "court_memo": {
+        "document_number": 50,
+        "source_type": "judicial_reasoning",
+    },
+    "court_order": {
+        "document_number": 51,
+        "source_type": "operative_court_order",
+    },
+}
 
 # How much weight a paragraph carries as evidence for a claim about the rule.
 TIERS = {
@@ -53,6 +61,7 @@ TIERS = {
     "B": "agency statement: DHS's description of the rule, its dates, rationale and process",
     "C": "agency estimate: DHS's cost-benefit and regulatory flexibility analysis",
     "D": "comment record: what commenters said and how DHS responded",
+    "J": "judicial evidence: the court's memorandum and operative order",
     "X": "reference only: headers, contacts, acronym lists, signature",
 }
 
@@ -184,47 +193,94 @@ def section_records(section, doc, meta, volume):
         }
 
 
+def clean_court_page(text):
+    """Remove PDF page furniture while preserving the court's extracted wording."""
+    lines = [line.strip() for line in text.splitlines()]
+    if lines and lines[0].isdigit():
+        lines = lines[1:]
+    lines = [
+        line
+        for line in lines
+        if not re.match(r"^Case 1:26-cv-13799-FDS\s+Document \d+\s+Filed ", line)
+    ]
+    text = " ".join(line for line in lines if line)
+    text = re.sub(r"-\s+(?=[a-z])", "-", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def court_records():
+    """Return one citable record per page of the two court documents."""
+    from pypdf import PdfReader
+
+    if not COURT_SOURCE_PATH.is_file():
+        raise FileNotFoundError(f"court source metadata does not exist: {COURT_SOURCE_PATH}")
+    source = json.loads(COURT_SOURCE_PATH.read_text(encoding="utf-8"))
+    by_number = {item["document_number"]: item for item in source["documents"]}
+    records = []
+
+    for doc, config in COURT_DOCUMENTS.items():
+        meta = by_number[config["document_number"]]
+        pdf_path = COURT_DIR / meta["filename"]
+        if not pdf_path.is_file():
+            raise FileNotFoundError(f"court PDF does not exist: {pdf_path}")
+
+        reader = PdfReader(pdf_path)
+        for page_number, page in enumerate(reader.pages, start=1):
+            text = clean_court_page(page.extract_text() or "")
+            if not text:
+                continue
+            court_citation = (
+                "Presidents' Alliance v. DHS, "
+                f"No. {source['case_number']}, Dkt. {meta['document_number']} at {page_number}"
+            )
+            records.append(
+                {
+                    "evidence_id": f"{doc}:dkt{meta['document_number']}:p{page_number}",
+                    "doc": doc,
+                    "fr_doc": None,
+                    "section_id": f"DKT_{meta['document_number']}",
+                    "section_path": [meta["title"]],
+                    "heading": meta["title"],
+                    "tier": "J",
+                    "source_type": config["source_type"],
+                    "available_date": source["filed_date"],
+                    "filed_date": source["filed_date"],
+                    "case_number": source["case_number"],
+                    "document_number": meta["document_number"],
+                    "page": page_number,
+                    "court_citation": court_citation,
+                    "source_url": meta["url"],
+                    "para_id": f"dkt{meta['document_number']}:p{page_number}",
+                    "kind": "court_page",
+                    "voice": "court",
+                    "comment_block": None,
+                    "cfr_citation": None,
+                    "fr_page_start": None,
+                    "fr_page_end": None,
+                    "fr_cite": None,
+                    "text": text,
+                }
+            )
+    return records
+
+
 def build_records(parsed, versions):
     records = []
     for doc, (sections, volume) in parsed.items():
         for section in sections:
             records.extend(section_records(section, doc, versions[doc], volume))
+    records.extend(court_records())
     return records
 
 
 def search_text(record):
-    """What gets embedded and keyword-indexed: the text plus where it sits."""
-    context = record["cfr_citation"] or record["heading"]
+    """What gets indexed for BM25: the text plus where it sits."""
+    context = record.get("court_citation") or record["cfr_citation"] or record["heading"]
     return f"{context}: {record['text']}"
 
 
 # --------------------------------------------------
-# 4. EMBEDDINGS
-# --------------------------------------------------
-
-def build_embeddings(records):
-    import numpy as np
-    from sentence_transformers import SentenceTransformer
-
-    print(f"\nEmbedding {len(records):,} paragraphs with {EMBEDDING_MODEL} ...")
-    model = SentenceTransformer(EMBEDDING_MODEL)
-    vectors = model.encode(
-        [search_text(r) for r in records],
-        batch_size=32, normalize_embeddings=True, show_progress_bar=True,
-    )
-    np.save(EVIDENCE_DIR / "embeddings.npy", vectors.astype(np.float32))
-
-    meta = {
-        "model": EMBEDDING_MODEL,
-        "dimensions": int(vectors.shape[1]),
-        "created": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "evidence_ids": [r["evidence_id"] for r in records],
-    }
-    (EVIDENCE_DIR / "embeddings_meta.json").write_text(json.dumps(meta), encoding="utf-8")
-
-
-# --------------------------------------------------
-# 5. VERIFY THE KEY FACTS
+# 4. VERIFY THE KEY FACTS
 # --------------------------------------------------
 
 def normalize(text):
@@ -276,17 +332,17 @@ def verify_key_facts(records):
 
 
 # --------------------------------------------------
-# 6. MAIN PROGRAM
+# 5. MAIN PROGRAM
 # --------------------------------------------------
 
 def print_summary(records):
     print(f"\nEvidence records: {len(records):,}")
-    for doc in HTML_PATHS:
+    for doc in (*HTML_PATHS, *COURT_DOCUMENTS):
         counts = {}
         for record in records:
             if record["doc"] == doc:
                 counts[record["tier"]] = counts.get(record["tier"], 0) + 1
-        print(f"  {doc:<9}" + "  ".join(f"{tier}={counts.get(tier, 0)}" for tier in TIERS))
+        print(f"  {doc:<12}" + "  ".join(f"{tier}={counts.get(tier, 0)}" for tier in TIERS))
 
     voices = {}
     for record in records:
@@ -298,11 +354,6 @@ def print_summary(records):
 
 
 def main():
-    arg_parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    arg_parser.add_argument("--no-embeddings", action="store_true",
-                            help="skip the embedding step (keyword search still works)")
-    args = arg_parser.parse_args()
-
     EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
     versions = load_rule_versions()
     parsed = parse_versions()
@@ -313,9 +364,6 @@ def main():
             fh.write(json.dumps(record, ensure_ascii=False) + "\n")
     (EVIDENCE_DIR / "rule_versions.json").write_text(json.dumps(versions, indent=2), encoding="utf-8")
     print_summary(records)
-
-    if not args.no_embeddings:
-        build_embeddings(records)
 
     failures = verify_key_facts(records)
     print(f"\nSaved to {EVIDENCE_DIR}")
