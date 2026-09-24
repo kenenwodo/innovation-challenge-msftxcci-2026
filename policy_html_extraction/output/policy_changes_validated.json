@@ -1,0 +1,537 @@
+{
+  "source_comparison_file": "policy_changes.json",
+  "total_policy_areas": 23,
+  "validated": 19,
+  "review_required": 4,
+  "changes": [
+    {
+      "policy_area": "Removal of D/S References for F, J, and I Nonimmigrants",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        1
+      ],
+      "v2_provision_ids": [
+        1
+      ],
+      "v1_rule": "Striking all references to D/S for F, J, and I nonimmigrants",
+      "v2_rule": "Striking all references to D/S for F, J, and I nonimmigrants",
+      "v1_evidence": [
+        "Striking all references to D/S for F, J, and I nonimmigrants;"
+      ],
+      "v2_evidence": [
+        "Striking all references to D/S for F, J, and I nonimmigrants;"
+      ],
+      "what_changed": "No material change identified; both versions strike all references to D/S for F, J, and I nonimmigrants.",
+      "practical_effect": "Continued removal of D/S references for these classifications.",
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Admission requirements and EOS procedures for F, J, and I Nonimmigrants",
+      "change_type": "modified",
+      "v1_provision_ids": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "v2_provision_ids": [
+        2
+      ],
+      "v1_rule": "Describing requirements for F and J nonimmigrants seeking admission, including after travel abroad and those approved for OPT and academic training; Updating the cross reference and clarifying the standards for admission in the automatic extension visa validity provisions that cover F and J nonimmigrants applying at a POE after an absence not exceeding 30 days solely in a contiguous territory or adjacent islands; Outlining the process for EOS applications for F, J, and I nonimmigrants; Specifying the effect of departure while an F or J nonimmigrant's application for an EOS in F or J status and/or employment authorization is pending; Providing procedures specific to the transition from D/S to admission for a fixed time period of authorized stay for these nonimmigrants",
+      "v2_rule": "Describing requirements for F and J nonimmigrants seeking admission, including after travel abroad and those approved for OPT and academic training; Updating cross references and clarifying admission standards for automatic extension visa validity provisions covering F and J nonimmigrants applying at POE after absence not exceeding 30 days solely in contiguous territory or adjacent islands; Outlining EOS application process for F, J, and I nonimmigrants; Providing short-term reprieve for filing EOS during first 6 months after rule takes effect for OPT/STEM OPT; Specifying effect of departure while EOS and/or employment authorization applications are pending; Providing transition procedures from D/S to fixed time period admission; Codifying authorization for F-1 students who timely file EOS to continue full course of study after admission period expiration until EOS adjudicated.",
+      "v1_evidence": [
+        "Describing requirements for F and J nonimmigrants seeking admission, including after travel abroad and those approved for OPT and academic training;",
+        "Updating the cross reference and clarifying the standards for admission in the automatic extension visa validity provisions that cover F and J nonimmigrants applying at a port of entry (POE) after an absence not exceeding 30 days solely in a contiguous territory or adjacent islands;",
+        "Outlining the process for EOS applications for F, J, and I nonimmigrants;",
+        "Specifying the effect of departure while an F or J nonimmigrant's application for an EOS in F or J nonimmigrant status and/or employment authorization (and an associated employment authorization document (EAD)) is pending;",
+        "Providing procedures specific to the transition from D/S to admission for a fixed time period of authorized stay for F, J, and I nonimmigrants;"
+      ],
+      "v2_evidence": [
+        "Describing requirements for F and J nonimmigrants seeking admission, including after travel abroad and those approved for OPT and academic training; Updating the cross reference and clarifying the standards for admission in the automatic extension visa validity provisions that cover F and J nonimmigrants applying at a Port of Entry (POE) after an absence not exceeding 30 days solely in a contiguous territory or adjacent islands; Outlining the process for EOS applications for F, J, and I nonimmigrants; Providing a short-term reprieve from filing for EOS during the first 6 months after the rule takes effect if applying for employment authorization for either post-completion OPT or STEM OPT; Specifying the effect of departure while an F, J, or I nonimmigrant's application for an EOS and/or employment authorization is pending; Providing procedures specific to the transition from D/S to admission for a fixed time period of authorized stay for F, J, and I nonimmigrants; Codifying that an F-1 student who has timely filed an EOS application will be authorized to continue full course of study after admission period expiration until USCIS adjudicates the EOS application."
+      ],
+      "what_changed": "V2 consolidates several V1 provisions into one; adds a short-term 6 month reprieve for filing EOS for OPT/STEM OPT beneficiaries; clarifies that F-1 students with timely filed EOS can continue full course study until EOS adjudication; adds more details on departure effect and transition from D/S to fixed period admission.",
+      "practical_effect": "Beneficiaries of post-completion OPT/STEM OPT get transitional relief; F-1 students with timely EOS can continue studies pending decision; more detailed rules on admission and EOS process.",
+      "confidence": "medium",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Authorized admission and extension periods for F and J nonimmigrants",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        8
+      ],
+      "v2_provision_ids": [
+        3
+      ],
+      "v1_rule": "Setting the authorized admission and extension periods for F and J nonimmigrants up to the program length, not to exceed a 4-year period",
+      "v2_rule": "Setting the authorized admission and extension periods for F and J nonimmigrants up to the program length, not to exceed a 4-year period",
+      "v1_evidence": [
+        "Setting the authorized admission and extension periods for F and J nonimmigrants up to the program length, not to exceed a 4-year period;"
+      ],
+      "v2_evidence": [
+        "Setting the authorized admission and extension periods for F and J nonimmigrants up to the program length, not to exceed a 4-year period;"
+      ],
+      "what_changed": "No material change identified; both versions set admission and extension periods up to program length max 4 years.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "First academic year completion requirement before F-1 transfer or change in educational objective",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        9
+      ],
+      "v2_provision_ids": [
+        4
+      ],
+      "v1_rule": "For F-1 students changing educational objectives or transferring to an SEVP-certified school, requiring completion of first academic year at initial school unless SEVP authorizes exception",
+      "v2_rule": "For F-1 students changing educational objectives or transferring to an SEVP-certified school, requiring completion of first academic year at initial school unless exception authorized by SEVP",
+      "v1_evidence": [
+        "For F-1 students changing educational objectives or transferring to an SEVP-certified school, requiring that the student complete his or her first academic year of a program of study at the school that initially issued his or her Form I-20 or successor form, unless an exception is authorized by SEVP;"
+      ],
+      "v2_evidence": [
+        "For F-1 students changing educational objectives or transferring to an SEVP-certified school, requiring that the student complete his or her first academic year of a program of study at the school that initially issued his or her Form I-20 or successor form, unless an exception is authorized by SEVP;"
+      ],
+      "what_changed": "No material change identified; same requirement and exception retained.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Prohibition on graduate-level F-1 students changing programs or transferring without exception",
+      "change_type": "modified",
+      "v1_provision_ids": [
+        10
+      ],
+      "v2_provision_ids": [
+        5
+      ],
+      "v1_rule": "Prohibiting F-1 students at graduate education level from changing programs at any point during study",
+      "v2_rule": "Prohibiting graduate level F-1 students from changing educational objectives or transferring during study unless exception authorized by SEVP for extenuating circumstances",
+      "v1_evidence": [
+        "Prohibiting F-1 students at the graduate education level from changing programs at any point during a program of study."
+      ],
+      "v2_evidence": [
+        "Prohibiting F-1 students at the graduate education level or above from changing educational objectives at any point during a program of study; Prohibiting F-1 students at the graduate education level or above from transferring at any point during their program of study, unless an exception is authorized by SEVP for extenuating circumstances;"
+      ],
+      "what_changed": "V2 expands prohibition to include transfers in addition to program changes and allows limited exceptions authorized by SEVP for extenuating circumstances.",
+      "practical_effect": "Graduate F-1 students have restricted transfer and program change options but may seek SEVP exceptions.",
+      "confidence": "medium",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Restriction on educational level changes for F-1 nonimmigrants",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        12
+      ],
+      "v2_provision_ids": [
+        6
+      ],
+      "v1_rule": "Requiring new program to be at higher education level than completed program; prohibiting change to same or lower level while in F-1 status",
+      "v2_rule": "Requiring any nonimmigrant who has completed a program at one educational level to only be allowed to begin another program at a higher educational level and prohibiting change to same or lower level while F-1 student",
+      "v1_evidence": [
+        "Requiring any nonimmigrant who has completed a program at one educational level to only be allowed to begin another program at a higher educational level while in F-1 status and prohibiting a change to the same or a lower educational level while in F-1 status;"
+      ],
+      "v2_evidence": [
+        "Requiring any nonimmigrant who has completed a program at one educational level to only be allowed to begin another program at a higher educational level as an F-1 student and prohibiting a change to the same or a lower educational level while an F-1 student;"
+      ],
+      "what_changed": "No material change identified; requirement to only advance to higher educational level remains consistent.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Reduction of allowed departure preparation period for F-1 nonimmigrants",
+      "change_type": "modified",
+      "v1_provision_ids": [
+        13
+      ],
+      "v2_provision_ids": [
+        7
+      ],
+      "v1_rule": "Decreasing allowed period for F-1 nonimmigrants to prepare to depart after completion from 60 to 30 days",
+      "v2_rule": "Decreasing allowed period to 30 days; adding requirement to depart or maintain lawful status within 30 days if study or training ends early",
+      "v1_evidence": [
+        "Decreasing from 60 to 30 days the allowed period for F-1 nonimmigrants to prepare to depart from the United States after completion of a course of study or authorized period of post-completion practical training;"
+      ],
+      "v2_evidence": [
+        "Decreasing the period allowed for F-1 nonimmigrants to prepare to depart from the United States after completion of a course of study or an authorized period of post-completion practical training from 60 to 30 days; Requiring that if an F-1 student ends study or training early, the student and eligible dependents must depart the U.S. or take action to maintain lawful status within 30 days of the end date;"
+      ],
+      "what_changed": "V2 adds explicit obligation to depart or maintain lawful status within 30 days if study or training ends early, beyond reduction from 60 to 30 days.",
+      "practical_effect": "F-1 students ending studies earlier than programmed must depart or act to maintain status within 30 days, enhancing compliance enforcement.",
+      "confidence": "medium",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Biometric collection for EOS applications",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        14
+      ],
+      "v2_provision_ids": [
+        8
+      ],
+      "v1_rule": "Providing for collection of biometric information in conjunction with an EOS application for F, J, and I nonimmigrants as may be required by 8 CFR 103.16",
+      "v2_rule": "Providing for collection of biometric information in conjunction with an EOS application for F, J, and I nonimmigrants as may be required by 8 CFR 103.16",
+      "v1_evidence": [
+        "Providing for collection of biometric information in conjunction with an EOS application for F, J, and I nonimmigrants as may be required by 8 CFR 103.16;"
+      ],
+      "v2_evidence": [
+        "Providing for collection of biometric information in conjunction with an EOS application for F, J, and I nonimmigrants as may be required by 8 CFR 103.16;"
+      ],
+      "what_changed": "No material change identified; biometric collection provision maintained.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Aggregate stay limit for language training students",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        15
+      ],
+      "v2_provision_ids": [
+        9
+      ],
+      "v1_rule": "Limiting language training students to an aggregate 24-month period of stay, including breaks and an annual vacation",
+      "v2_rule": "Limiting language training students to an aggregate 24-month period of stay, including breaks and an annual vacation",
+      "v1_evidence": [
+        "Limiting language training students to an aggregate 24-month period of stay, including breaks and an annual vacation;"
+      ],
+      "v2_evidence": [
+        "Limiting language training students to an aggregate 24-month period of stay, including breaks and an annual vacation;"
+      ],
+      "what_changed": "No material change identified; stay limit remains at 24 months including breaks.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Unacceptable reasons for F program extensions",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        16
+      ],
+      "v2_provision_ids": [
+        10
+      ],
+      "v1_rule": "Delays caused by academic probation, suspension, or student's repeated inability or unwillingness to complete course are unacceptable reasons for program extensions for F nonimmigrants",
+      "v2_rule": "Delays caused by academic probation, suspension, or student's repeated inability or unwillingness to complete course of study is generally unacceptable reason for program extensions for F nonimmigrants",
+      "v1_evidence": [
+        "Providing that a delay in completing one's program by the program end date specified on the Form I-20, which includes but is not limited to delays caused by academic probation or suspension or a student's repeated inability or unwillingness to complete his or her course of study, generally is an unacceptable reason for program extensions for F nonimmigrants;"
+      ],
+      "v2_evidence": [
+        "Providing that a delay in completing one's program by the program end date specified on the Form I-20, which includes but is not limited to delays caused by academic probation or suspension or a student's repeated inability or unwillingness to complete his or her course of study, is generally an unacceptable reason for program extensions for F nonimmigrants;"
+      ],
+      "what_changed": "No substantive change; provisions are consistent on unacceptable reasons for program extensions.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Auto-extension of employment authorization for F nonimmigrants with pending EOS due to severe economic hardship",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        17
+      ],
+      "v2_provision_ids": [
+        11
+      ],
+      "v1_rule": "Allowing F nonimmigrants with timely filed EOS applications pending after admission period expiration to receive auto-extension of employment authorization up to 240 days or Federal Register notice end date due to severe economic hardship from emergent circumstances",
+      "v2_rule": "Allowing F nonimmigrants with timely filed EOS applications pending after admission period expiration to receive auto-extension of employment authorization up to 240 days or Federal Register notice end date due to severe economic hardship from emergent circumstances",
+      "v1_evidence": [
+        "Allowing F nonimmigrants whose timely filed EOS applications remain pending after their admission period has expired to receive an auto-extension of their current authorization for on-campus and off-campus employment based on severe economic hardship resulting from emergent circumstances under existing 8 CFR 214.2(f)(5)(v). The length of the auto-extension of employment authorization would be up to 240 days or the end date of the Federal Register notice announcing the suspension of certain regulatory requirements, whichever is earlier;"
+      ],
+      "v2_evidence": [
+        "Allowing F nonimmigrants whose timely filed EOS applications remain pending after their admission period has expired to receive an auto-extension of their current authorization for on-campus and off-campus employment based on severe economic hardship resulting from emergent circumstances under existing 8 CFR 214.2(f)(5)(v). The length of the auto-extension of employment authorization will be up to 240 days or the end date of the Federal Register notice announcing the suspension of certain regulatory requirements, whichever is earlier;"
+      ],
+      "what_changed": "No material change identified; auto-extension provisions with same conditions and limits.",
+      "practical_effect": null,
+      "confidence": "medium",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Replacement of D/S with fixed time period admission for I nonimmigrants with exceptions for PRC nationals",
+      "change_type": "modified",
+      "v1_provision_ids": [
+        18
+      ],
+      "v2_provision_ids": [
+        12
+      ],
+      "v1_rule": "Replacing D/S for I nonimmigrants with admission for fixed time period not exceeding 240 days (except some PRC nationals), with EOS available for those meeting requirements",
+      "v2_rule": "Replacing D/S for I nonimmigrants with admission for fixed time period until activities completed, not to exceed 240 days (except some PRC nationals), with EOS available for those meeting requirements",
+      "v1_evidence": [
+        "Replacing D/S for I nonimmigrants with admission for a fixed time period until they complete the activities or assignments consistent with the I classification, not to exceed 240 days (with the exception of some I aliens from the People's Republic of China), with an EOS available for I nonimmigrants who can meet specified EOS requirements;"
+      ],
+      "v2_evidence": [
+        "Replacing D/S for I nonimmigrants with admission for a fixed time period until they complete the activities or assignments consistent with the I classification, not to exceed 240 days (with the exception of some I nonimmigrants from PRC), with an EOS available for those meeting requirements;"
+      ],
+      "what_changed": "V2 clarifies admission lasts until activities or assignments completed and explicitly excludes certain PRC nationals from 240-day max except for exceptions; similar EOS availability provision.",
+      "practical_effect": "I nonimmigrants, including some PRC nationals, have limited fixed admission period with possibility of EOS.",
+      "confidence": "medium",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Codification of foreign media organization definition and updated evidence for I status eligibility",
+      "change_type": "modified",
+      "v1_provision_ids": [
+        19,
+        20
+      ],
+      "v2_provision_ids": [
+        13
+      ],
+      "v1_rule": "Codifying foreign media organization definition for I nonimmigrants; Updating evidence required to demonstrate eligibility",
+      "v2_rule": "Codifying definition of foreign media organization consistent with USCIS and DoS practice; updating evidence required to demonstrate eligibility for I classification",
+      "v1_evidence": [
+        "Codifying the definition of a foreign media organization for I nonimmigrant status, consistent with long-standing USCIS and DOS practice;",
+        "Updating the evidence an alien must submit to demonstrate eligibility for the I nonimmigrant classification;"
+      ],
+      "v2_evidence": [
+        "Codifying the definition of a foreign media organization for I nonimmigrant status, consistent with long-standing USCIS and DoS practice; Updating the evidence an alien must submit to demonstrate eligibility for the I nonimmigrant classification;"
+      ],
+      "what_changed": "V2 combines codification of definition and updated evidence for I nonimmigrants into one provision.",
+      "practical_effect": "Clarifies criteria and evidence for I nonimmigrant eligibility related to foreign media organizations.",
+      "confidence": "medium",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Continued employment authorization for J-1 and I nonimmigrants with pending EOS",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        21,
+        22
+      ],
+      "v2_provision_ids": [
+        14,
+        18
+      ],
+      "v1_rule": "J-1 nonimmigrants employment authorized with specific employer incident to status continue up to 240 days if EOS pending; J-2 dependents lose authorization after EAD expires; I nonimmigrants authorized to continue working up to 240 days (90 days for some PRC passport holders) while EOS pending",
+      "v2_rule": "J-1 nonimmigrants employment authorized with specific employer incident to status continue for up to 240 days if EOS pending; J-2 dependents lose authorization after EAD expires; I nonimmigrants authorized to continue working for up to 240 days (90 days for PRC nationals) while EOS pending",
+      "v1_evidence": [
+        "Clarifying that J-1 nonimmigrants who are employment authorized with a specific employer incident to status, continue to be authorized for such employment for up to 240 days under 8 CFR 274a.12(b)(20) if status expires while their timely filed EOS application is pending, whereas J-2 dependents, who must apply for employment authorization as evidenced by an EAD, do not have the benefit of continued work authorization once the EAD expires;",
+        "Clarifying that I nonimmigrants are authorized to continue working in the United States for their foreign employer, under 8 CFR 274a.12(b)(20), while their timely filed EOS application is pending for up to 240 days; \\22\\\n---------------------------------------------------------------------------\n\\22\\ This time period is limited to up to 90 days for I nonimmigrants with a passport from the People's Republic of China but does not include those with a Hong Kong Special Administrative Region passport or a Macau Special Administrative Region passport.\n---------------------------------------------------------------------------"
+      ],
+      "v2_evidence": [
+        "Clarifying that J-1 nonimmigrants who are employment authorized with a specific employer incident to status continue to be authorized for such employment for up to 240 days under the existing regulatory provision at 8 CFR 274a.12(b)(20) if their status expires while their timely filed EOS application is pending, whereas J-2 dependents, who must apply for employment authorization as evidenced by an EAD, do not have the benefit of continued work authorization once the EAD expires;",
+        "Clarifying that I nonimmigrants are authorized to continue working in the United States for their foreign employer, under 8 CFR 274a.12(b)(20), for up to 240 days (with the exception of I nonimmigrants from the PRC who may continue working for up to 90 days) while their timely filed EOS application is pending;"
+      ],
+      "what_changed": "No material change; V2 clarifies same conditions and time limits for J-1 and I nonimmigrants' continued employment authorization pending EOS.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Striking all D/S and duration of employment references for F, J, and I classifications",
+      "change_type": "modified",
+      "v1_provision_ids": [
+        23
+      ],
+      "v2_provision_ids": [
+        19
+      ],
+      "v1_rule": "Striking all references to 'duration of status' and/or 'duration of employment' for F, J, and I classifications",
+      "v2_rule": "Striking all references to 'duration of status' and/or 'duration of employment' for F, J, and I classifications with explicit restriction on references",
+      "v1_evidence": [
+        "Striking all references to “duration of status” and/or “duration of employment” for the F, J, and I nonimmigrant classifications;"
+      ],
+      "v2_evidence": [
+        "Striking all references to ``duration of status'' and/or ``duration of employment'' for the F, J, and I nonimmigrant classifications;"
+      ],
+      "what_changed": "V2 explicitly adds a restriction forbidding references to duration of status/employment, clarifying prohibition; V1 states striking references generally.",
+      "practical_effect": "Clearer restriction on usage of D/S and duration of employment terms for these classifications.",
+      "confidence": "medium",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Severability clause for regulatory provisions",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        24
+      ],
+      "v2_provision_ids": [
+        20
+      ],
+      "v1_rule": "Including a severability clause so if any provision is not implemented, remaining provisions can still be implemented",
+      "v2_rule": "Including a severability clause so if any provision is not implemented, remaining provisions can still be implemented",
+      "v1_evidence": [
+        "Including a severability clause. In the event that any provision of this rule is not implemented for whatever reason, DHS proposes that the remaining provisions be implemented in accordance with the stated purposes of this rule."
+      ],
+      "v2_evidence": [
+        "Including a severability clause. In the event that any provision of this rule is not implemented for whatever reason, the remaining provisions can be implemented in accordance with the stated purposes of this rule."
+      ],
+      "what_changed": "No change; severability clause retained unchanged.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Establishment of period of stay for F or J nonimmigrants changing status prior to final rule",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        25
+      ],
+      "v2_provision_ids": [
+        22
+      ],
+      "v1_rule": "Establishing requirements to determine period of stay for F or J nonimmigrants whose change of status approved before Final Rule effective date and who depart US then seek admission after effective date",
+      "v2_rule": "Establishing requirements to determine period of stay for F or J nonimmigrants whose change of status approved before Final Rule effective date and who depart US then seek admission after effective date",
+      "v1_evidence": [
+        "Establishing requirements to determine the period of stay for F or J nonimmigrants whose change of status application was approved before the Final Rule's effective date and who depart the United States, then seek admission after the Final Rule's effective date;"
+      ],
+      "v2_evidence": [
+        "Establishing requirements to determine the period of stay for F or J nonimmigrants whose change of status application was approved before the final rule's effective date and who depart the United States, then seek admission after the final rule's effective date;"
+      ],
+      "what_changed": "No substantial change; both versions clarify treatment of pre-rule change of status approvals.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Abandonment of change of status applications upon departure",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        26
+      ],
+      "v2_provision_ids": [
+        23
+      ],
+      "v1_rule": "Codifying policy that DHS deems abandoned any application to change nonimmigrant status if applicant departs US while application pending",
+      "v2_rule": "Codifying policy that DHS deems abandoned any application to change nonimmigrant status if applicant departs US while application pending",
+      "v1_evidence": [
+        "Codifying the long-standing policy under which DHS deems abandoned an application to change to another nonimmigrant status, including F or J status, if the alien who timely filed the application departs the United States while the application is pending."
+      ],
+      "v2_evidence": [
+        "Codifying the long-standing policy under which DHS deems abandoned an application to change to another nonimmigrant status, including F or J status, if the alien who timely filed the application departs the United States while the application is pending."
+      ],
+      "what_changed": "No change; abandonment policy maintained.",
+      "practical_effect": null,
+      "confidence": "high",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Updating employment authorization provisions to incorporate 8 CFR 214.2 revisions",
+      "change_type": "unchanged",
+      "v1_provision_ids": [
+        27
+      ],
+      "v2_provision_ids": [
+        24
+      ],
+      "v1_rule": "Updating employment authorization provisions to incorporate the revisions in 8 CFR 214.2",
+      "v2_rule": "Amending 8 CFR 274a.12 to incorporate the revisions in 8 CFR 214.2 regarding employment authorization",
+      "v1_evidence": [
+        "Amend 8 CFR 274a.12, Classes of aliens authorized to accept employment, by updating the employment authorization provisions to incorporate the revisions in 8 CFR 214.2."
+      ],
+      "v2_evidence": [
+        "Amending 8 CFR 274a.12, Classes of aliens authorized to accept employment, by updating the employment authorization provisions to incorporate the revisions in 8 CFR 214.2."
+      ],
+      "what_changed": "No material change; employment authorization provisions updated consistently in both versions.",
+      "practical_effect": null,
+      "confidence": "medium",
+      "validation_status": "validated",
+      "validation_reason": null
+    },
+    {
+      "policy_area": "Additional provisions limiting implementation delay for certain F and J nonimmigrants",
+      "change_type": "added",
+      "v1_provision_ids": [],
+      "v2_provision_ids": [
+        21
+      ],
+      "v1_rule": null,
+      "v2_rule": "Amending 8 CFR 214.2(f)(5)(ii)(E) to limit ability to delay or suspend implementation of provisions (214.2(f)(5)(ii)(A)-(C)) for two years from effective date",
+      "v1_evidence": [],
+      "v2_evidence": [
+        "Amending 8 CFR 214.2(f)(5)(ii)(E) to limit the ability to delay or suspend the implementation of 8 CFR 214.2(f)(5)(ii)(A) through (C) for a period of two years from the effective date of the rule since this provision is not needed indefinitely."
+      ],
+      "what_changed": "This limitation on delay/suspension implementation for a 2-year period appears only in the final rule.",
+      "practical_effect": "Limits how long certain provisions can be delayed/suspended, preventing indefinite postponements.",
+      "confidence": "high",
+      "validation_status": "review_required",
+      "validation_reason": "Appears only in V2 extraction. Full V1 source must be checked before confirming that the provision was added."
+    },
+    {
+      "policy_area": "Temporary reprieve for J-1s with D/S expiration allowing EOS filing and continued work",
+      "change_type": "added",
+      "v1_provision_ids": [],
+      "v2_provision_ids": [
+        15
+      ],
+      "v1_rule": null,
+      "v2_rule": "Providing temporary reprieve for J-1s whose D/S expires shortly after rule takes effect allowing EOS filing and continued work for duration on new Form DS-2019 regardless of adjudication time",
+      "v1_evidence": [],
+      "v2_evidence": [
+        "Providing a temporary reprieve for those J-1s whose D/S status expires shortly after the rule takes effect by allowing them to apply for EOS and continue to work for the duration of the time on their new Form DS-2019 regardless of how long the EOS application takes to adjudicate;"
+      ],
+      "what_changed": "New provision providing transitional relief for certain J-1s after rule effective date, absent in proposed rule.",
+      "practical_effect": "J-1 nonimmigrants with imminent D/S expiration can file EOS and continue working during processing.",
+      "confidence": "high",
+      "validation_status": "review_required",
+      "validation_reason": "Appears only in V2 extraction. Full V1 source must be checked before confirming that the provision was added."
+    },
+    {
+      "policy_area": "Require J-1 exchange visitors and dependents to depart or maintain status within 30 days if program end date shortens",
+      "change_type": "added",
+      "v1_provision_ids": [],
+      "v2_provision_ids": [
+        16
+      ],
+      "v1_rule": null,
+      "v2_rule": "If J-1 program end date is shortened, J-1 exchange visitors and J-2 dependents must leave US within 30 days or take action to maintain lawful status",
+      "v1_evidence": [],
+      "v2_evidence": [
+        "Requiring that if the program end date is shortened, the J-1 exchange visitor and any J-2 accompanying dependents must leave the United States within 30 days from the new program end date or otherwise seek to maintain lawful status in that 30-day period;"
+      ],
+      "what_changed": "New explicit requirement on departure or status maintenance within 30 days when program end date is shortened appears only in final rule.",
+      "practical_effect": "J-1 and J-2 must act quickly within 30 days if program end date changes, limit unlawful presence.",
+      "confidence": "high",
+      "validation_status": "review_required",
+      "validation_reason": "Appears only in V2 extraction. Full V1 source must be checked before confirming that the provision was added."
+    },
+    {
+      "policy_area": "Responsibilities of Responsible Officer for late program extension requests",
+      "change_type": "added",
+      "v1_provision_ids": [],
+      "v2_provision_ids": [
+        17
+      ],
+      "v1_rule": null,
+      "v2_rule": "Specifies responsibilities of responsible officer when submitting late requests for extension of exchange visitor program end date",
+      "v1_evidence": [],
+      "v2_evidence": [
+        "Providing the responsibilities of the responsible officer (RO) when submitting late requests for extension of current program end date for exchange visitors;"
+      ],
+      "what_changed": "New detailed RO responsibilities provision absent from proposed rule.",
+      "practical_effect": "Clarifies RO duties regarding late extension requests to improve compliance.",
+      "confidence": "high",
+      "validation_status": "review_required",
+      "validation_reason": "Appears only in V2 extraction. Full V1 source must be checked before confirming that the provision was added."
+    }
+  ]
+}

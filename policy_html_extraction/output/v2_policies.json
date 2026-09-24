@@ -1,0 +1,587 @@
+{
+  "version": "V2",
+  "document_number": "2026-14439",
+  "source_type": "official Federal Register HTML",
+  "source_section": "Summary of Changes",
+  "provision_count": 24,
+  "evidence_verified_count": 18,
+  "provisions": [
+    {
+      "policy_name": "Removal of D/S for F, J, and I nonimmigrants",
+      "affected_groups": [
+        "F nonimmigrants",
+        "J nonimmigrants",
+        "I nonimmigrants"
+      ],
+      "current_rule": "Use of Duration of Status (D/S) for these nonimmigrants",
+      "proposed_rule": "Striking all references to D/S for F, J, and I nonimmigrants",
+      "plain_english": "References to Duration of Status will be removed for F, J, and I visa holders.",
+      "requirements": [],
+      "restrictions": [
+        "No use of D/S for F, J, and I nonimmigrants"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 214.1",
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.1 and 214.2",
+      "evidence_quote": "Striking all references to D/S for F, J, and I nonimmigrants;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Fixed time admission and EOS procedure for F, J, and I nonimmigrants",
+      "affected_groups": [
+        "F nonimmigrants",
+        "J nonimmigrants",
+        "I nonimmigrants"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Describing requirements for F and J nonimmigrants seeking admission, including after travel abroad and those approved for OPT and academic training; Updating cross references and clarifying standards for admission in the automatic extension visa validity provisions that cover F and J nonimmigrants applying at a POE after an absence not exceeding 30 days solely in a contiguous territory or adjacent islands; Outlining the process for EOS applications for F, J, and I nonimmigrants; Providing a short-term reprieve from filing for EOS during the first 6 months after the rule takes effect if applying for employment authorization for either post-completion OPT or STEM OPT; Specifying the effect of departure while an F, J, or I nonimmigrant's application for an EOS and/or employment authorization is pending; Providing procedures specific to the transition from D/S to admission for a fixed time period of authorized stay for these nonimmigrants; Codifying that an F-1 student who has timely filed an EOS application will be authorized to continue full course of study after admission period expiration until USCIS adjudicates the EOS application.",
+      "plain_english": "Admission and extension of stay for F, J, and I visa holders will have fixed time periods with an outlined process for extension and protections for timely filers.",
+      "requirements": [
+        "Requirements for F and J admissions",
+        "EOS procedures for F, J, and I nonimmigrants",
+        "Timely EOS filing to continue study"
+      ],
+      "restrictions": [
+        "Departure affects pending EOS or employment authorization applications"
+      ],
+      "exceptions": [
+        "Short-term reprieve for post-completion OPT or STEM OPT workers in first 6 months of rule implementation"
+      ],
+      "time_limits_or_durations": [
+        "6 months short-term reprieve",
+        "30 day absence rule for automatic extension",
+        "Continuation until USCIS adjudicates EOS"
+      ],
+      "cfr_references": [
+        "8 CFR 214.1"
+      ],
+      "source_section": "Amend 8 CFR 214.1",
+      "evidence_quote": "Describing requirements for F and J nonimmigrants seeking admission, including after travel abroad and those approved for OPT and academic training; Updating the cross reference and clarifying the standards for admission in the automatic extension visa validity provisions that cover F and J nonimmigrants applying at a Port of Entry (POE) after an absence not exceeding 30 days solely in a contiguous territory or adjacent islands; Outlining the process for EOS applications for F, J, and I nonimmigrants; Providing a short-term reprieve from filing for EOS during the first 6 months after the rule takes effect if applying for employment authorization for either post-completion OPT or STEM OPT; Specifying the effect of departure while an F, J, or I nonimmigrant's application for an EOS in F, J, or I nonimmigrant status and/or employment authorization (and an associated employment authorization document (EAD)) is pending; Providing procedures specific to the transition from D/S to admission for a fixed time period of authorized stay for F, J, and I nonimmigrants; Codifying that an F-1 student who has timely filed an EOS application, will be authorized to continue pursuing a full course of study after the expiration of the admission period until USCIS adjudicates the EOS application.",
+      "evidence_verified": false
+    },
+    {
+      "policy_name": "Setting authorized admission and extension periods for F and J nonimmigrants",
+      "affected_groups": [
+        "F nonimmigrants",
+        "J nonimmigrants"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Setting the authorized admission and extension periods for F and J nonimmigrants up to the program length, not to exceed a 4-year period",
+      "plain_english": "F and J visa holders can be admitted or extended for up to the length of their program, but no more than 4 years.",
+      "requirements": [
+        "Admissions/extensions limited to program length up to 4 years"
+      ],
+      "restrictions": [
+        "Maximum 4-year period"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [
+        "4-year maximum"
+      ],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Setting the authorized admission and extension periods for F and J nonimmigrants up to the program length, not to exceed a 4-year period;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Require F-1 students to complete first academic year at initial school before transfer or change in educational objective",
+      "affected_groups": [
+        "F-1 students transferring schools or changing educational objectives"
+      ],
+      "current_rule": null,
+      "proposed_rule": "For F-1 students changing educational objectives or transferring to an SEVP-certified school, requiring that the student complete his or her first academic year of a program of study at the school that initially issued his or her Form I-20 or successor form, unless an exception is authorized by SEVP",
+      "plain_english": "F-1 students must finish their first academic year at their original school before transferring or changing educational goals, unless SEVP allows an exception.",
+      "requirements": [
+        "Complete first academic year at initial school"
+      ],
+      "restrictions": [],
+      "exceptions": [
+        "Exception authorized by SEVP"
+      ],
+      "time_limits_or_durations": [
+        "First academic year"
+      ],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "For F-1 students changing educational objectives or transferring to an SEVP-certified school, requiring that the student complete his or her first academic year of a program of study at the school that initially issued his or her Form I-20 or successor form, unless an exception is authorized by SEVP;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Prohibit graduate-level F-1 students from changing educational objectives or transferring without exception",
+      "affected_groups": [
+        "Graduate level or above F-1 students"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Prohibiting F-1 students at the graduate education level or above from changing educational objectives at any point during a program of study; Prohibiting such students from transferring during their program unless an exception is authorized by SEVP for extenuating circumstances",
+      "plain_english": "Graduate-level F-1 students cannot change their educational goals or transfer schools during their program unless SEVP grants an exception for extenuating circumstances.",
+      "requirements": [
+        "No changes in objectives or transfers unless SEVP authorizes exception"
+      ],
+      "restrictions": [
+        "Prohibition on changes and transfers during program for graduate students"
+      ],
+      "exceptions": [
+        "Exception authorized by SEVP for extenuating circumstances"
+      ],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Prohibiting F-1 students at the graduate education level or above from changing educational objectives at any point during a program of study; Prohibiting F-1 students at the graduate education level or above from transferring at any point during their program of study, unless an exception is authorized by SEVP for extenuating circumstances;",
+      "evidence_verified": false
+    },
+    {
+      "policy_name": "Require F-1 nonimmigrants to begin higher education programs at higher levels only",
+      "affected_groups": [
+        "F-1 nonimmigrants changing program levels"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Requiring any nonimmigrant who has completed a program at one educational level to only be allowed to begin another program at a higher educational level as an F-1 student and prohibiting a change to the same or a lower educational level while an F-1 student",
+      "plain_english": "F-1 students can only start a new program at a higher education level after completing one; they can't move to the same or lower level.",
+      "requirements": [
+        "Must begin new program at higher level only"
+      ],
+      "restrictions": [
+        "No change to same or lower educational level allowed"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Requiring any nonimmigrant who has completed a program at one educational level to only be allowed to begin another program at a higher educational level as an F-1 student and prohibiting a change to the same or a lower educational level while an F-1 student;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Decrease grace period for F-1 nonimmigrants after program or training completion",
+      "affected_groups": [
+        "F-1 nonimmigrants"
+      ],
+      "current_rule": "60 days grace period after completion",
+      "proposed_rule": "Decreasing the period allowed for F-1 nonimmigrants to prepare to depart from the U.S. after completion of a course of study or authorized post-completion practical training from 60 to 30 days; Requiring departure or action to maintain lawful status within 30 days if study or training ends early",
+      "plain_english": "F-1 students now have 30 days (instead of 60) to prepare to leave the U.S. after finishing their program or training, and must leave or maintain status within 30 days if they end early.",
+      "requirements": [
+        "Depart U.S. or maintain lawful status within 30 days after course completion or early end"
+      ],
+      "restrictions": [],
+      "exceptions": [],
+      "time_limits_or_durations": [
+        "30 days"
+      ],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Decreasing the period allowed for F-1 nonimmigrants to prepare to depart from the United States after completion of a course of study or an authorized period of post-completion practical training from 60 to 30 days; Requiring that if an F-1 student ends study or training early, the student and eligible dependents must depart the U.S. or take action to maintain lawful status within 30 days of the end date;",
+      "evidence_verified": false
+    },
+    {
+      "policy_name": "Provide for biometric collection for EOS applications",
+      "affected_groups": [
+        "F nonimmigrants",
+        "J nonimmigrants",
+        "I nonimmigrants"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Providing for collection of biometric information in conjunction with an EOS application for F, J, and I nonimmigrants as may be required by 8 CFR 103.16",
+      "plain_english": "Biometric data may be collected when F, J, or I visa holders file extension of stay applications.",
+      "requirements": [
+        "Biometric info collection with EOS applications"
+      ],
+      "restrictions": [],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 214.2",
+        "8 CFR 103.16"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Providing for collection of biometric information in conjunction with an EOS application for F, J, and I nonimmigrants as may be required by 8 CFR 103.16;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Limit language training students to 24 months aggregate period of stay",
+      "affected_groups": [
+        "Language training F nonimmigrants"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Limiting language training students to an aggregate 24-month period of stay, including breaks and an annual vacation",
+      "plain_english": "Students in language training programs can stay for no more than 24 months total including breaks.",
+      "requirements": [
+        "Maximum 24 months aggregate stay"
+      ],
+      "restrictions": [
+        "Includes breaks and annual vacation"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [
+        "24 months"
+      ],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Limiting language training students to an aggregate 24-month period of stay, including breaks and an annual vacation;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Disallow program extensions for delays caused by academic probation or repeated inability to complete program",
+      "affected_groups": [
+        "F nonimmigrants seeking program extensions"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Providing that a delay in completing one's program by the program end date, including delays caused by academic probation or suspension or a student's repeated inability or unwillingness to complete course of study, is generally an unacceptable reason for program extensions for F nonimmigrants",
+      "plain_english": "Extending the program due to academic probation, suspension, or failure to complete studies is usually not allowed.",
+      "requirements": [],
+      "restrictions": [
+        "No extensions for delays caused by academic probation, suspension, or inability/unwillingness to complete studies"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Providing that a delay in completing one's program by the program end date specified on the Form I-20, which includes but is not limited to delays caused by academic probation or suspension or a student's repeated inability or unwillingness to complete his or her course of study, is generally an unacceptable reason for program extensions for F nonimmigrants;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Auto-extension of employment authorization for F nonimmigrants with severe economic hardship",
+      "affected_groups": [
+        "F nonimmigrants with pending timely filed EOS applications"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Allowing F nonimmigrants whose timely filed EOS applications remain pending after their admission period has expired to receive an auto-extension of current authorization for on-campus and off-campus employment based on severe economic hardship resulting from emergent circumstances under existing 8 CFR 214.2(f)(5)(v). The auto-extension will be up to 240 days or the end date of the Federal Register notice announcing suspension of certain regulatory requirements, whichever is earlier.",
+      "plain_english": "F students waiting for extension approval can automatically extend work authorization for up to 240 days if facing serious economic hardship.",
+      "requirements": [
+        "Timely filed EOS application",
+        "Severe economic hardship from emergent circumstances"
+      ],
+      "restrictions": [
+        "Auto-extension limited to 240 days or Federal Register suspension end date"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [
+        "up to 240 days"
+      ],
+      "cfr_references": [
+        "8 CFR 214.2(f)(5)(v)"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Allowing F nonimmigrants whose timely filed EOS applications remain pending after their admission period has expired to receive an auto-extension of their current authorization for on-campus and off-campus employment based on severe economic hardship resulting from emergent circumstances under existing 8 CFR 214.2(f)(5)(v). The length of the auto-extension of employment authorization will be up to 240 days or the end date of the Federal Register notice announcing the suspension of certain regulatory requirements, whichever is earlier;",
+      "evidence_verified": false
+    },
+    {
+      "policy_name": "Limiting I nonimmigrants admission to fixed time period not exceeding 240 days",
+      "affected_groups": [
+        "I nonimmigrants"
+      ],
+      "current_rule": "Duration of Status (D/S) applies to I nonimmigrants",
+      "proposed_rule": "Replacing D/S for I nonimmigrants with admission for a fixed time period until they complete activities or assignments consistent with the I classification, not to exceed 240 days (except some I nonimmigrants from PRC), with an EOS available for those meeting specified requirements",
+      "plain_english": "I visa holders will have fixed admission periods up to 240 days; extensions of stay are allowed under conditions; shorter terms apply for PRC nationals.",
+      "requirements": [
+        "Admission limited to fixed period not exceeding 240 days",
+        "EOS available if requirements met"
+      ],
+      "restrictions": [
+        "Max 240 days except some PRC I nonimmigrants"
+      ],
+      "exceptions": [
+        "Some Chinese PRC nationals max 90 days work extension"
+      ],
+      "time_limits_or_durations": [
+        "240 days max admission period",
+        "90 days for some PRC I nonimmigrants"
+      ],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Replacing D/S for I nonimmigrants with admission for a fixed time period until they complete the activities or assignments consistent with the I classification, not to exceed 240 days (with the exception of some I nonimmigrants from the PRC), with an EOS available for I nonimmigrants who can meet specified EOS requirements;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Codifying definition and evidence for I nonimmigrant foreign media organizations",
+      "affected_groups": [
+        "I nonimmigrants representing foreign media"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Codifying the definition of a foreign media organization for I nonimmigrant status, consistent with USCIS and DoS practice; Updating the evidence an alien must submit to demonstrate eligibility for the I classification",
+      "plain_english": "Officially defining foreign media organizations for I visa eligibility and updating evidence requirements.",
+      "requirements": [
+        "Submit updated evidence demonstrating I classification eligibility"
+      ],
+      "restrictions": [],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Codifying the definition of a foreign media organization for I nonimmigrant status, consistent with long-standing U.S. Citizenship and Immigration Services (USCIS) and U.S. Department of State (DoS) practice; Updating the evidence an alien must submit to demonstrate eligibility for the I nonimmigrant classification;",
+      "evidence_verified": false
+    },
+    {
+      "policy_name": "Continue work authorization for J-1 nonimmigrants with specific employer up to 240 days pending EOS",
+      "affected_groups": [
+        "J-1 nonimmigrants with employment authorization incident to status"
+      ],
+      "current_rule": "Work authorization linked to status expiration without automatic extension longer than existing provisions",
+      "proposed_rule": "Clarifying that J-1 nonimmigrants employment authorized with a specific employer incident to status continue to be authorized for up to 240 days under existing 8 CFR 274a.12(b)(20) if status expires while timely filed EOS application is pending; J-2 dependents applying for employment authorization via EAD do not have continued work authorization once EAD expires",
+      "plain_english": "J-1 workers can continue working for up to 240 days if their extension is pending, but their J-2 dependents cannot if their work authorization expires.",
+      "requirements": [
+        "Timely filed EOS application",
+        "Employment authorization incident to status for J-1"
+      ],
+      "restrictions": [
+        "J-2 dependents lose work authorization after EAD expiration"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [
+        "240 days extension"
+      ],
+      "cfr_references": [
+        "8 CFR 274a.12(b)(20)"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Clarifying that J-1 nonimmigrants who are employment authorized with a specific employer incident to status continue to be authorized for such employment for up to 240 days under the existing regulatory provision at 8 CFR 274a.12(b)(20) if their status expires while their timely filed EOS application is pending, whereas J-2 dependents, who must apply for employment authorization as evidenced by an EAD, do not have the benefit of continued work authorization once the EAD expires;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Temporary reprieve for J-1s with D/S expiration allowing EOS filing and continued work",
+      "affected_groups": [
+        "J-1 nonimmigrants whose D/S expires shortly after rule takes effect"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Providing a temporary reprieve for J-1s whose D/S expires shortly after the rule takes effect by allowing them to apply for EOS and continue to work for the duration on their new Form DS-2019 regardless of how long the EOS adjudication takes",
+      "plain_english": "J-1 visa holders with soon-expiring D/S can file for extension and work for the entire new program period even if extension adjudication is delayed.",
+      "requirements": [
+        "Ability to file EOS application",
+        "Continuation of work authorization during processing"
+      ],
+      "restrictions": [],
+      "exceptions": [
+        "Limited to those expiring shortly after rule effective date"
+      ],
+      "time_limits_or_durations": [
+        "Duration on new Form DS-2019"
+      ],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Providing a temporary reprieve for those J-1s whose D/S status expires shortly after the rule takes effect by allowing them to apply for EOS and continue to work for the duration of the time on their new Form DS-2019 regardless of how long the EOS application takes to adjudicate;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Require J-1 exchange visitors and dependents to depart or maintain status within 30 days if program end date shortens",
+      "affected_groups": [
+        "J-1 nonimmigrants",
+        "J-2 dependents"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Requiring that if the program end date is shortened, J-1 exchange visitors and any J-2 dependents must leave the U.S. within 30 days from the new program end date or otherwise seek to maintain lawful status in that 30-day period",
+      "plain_english": "If J-1 program ends earlier than expected, the J-1 and dependents have 30 days to depart or maintain lawful status.",
+      "requirements": [
+        "Depart or maintain lawful status within 30 days of shortened program end date"
+      ],
+      "restrictions": [],
+      "exceptions": [],
+      "time_limits_or_durations": [
+        "30 days"
+      ],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Requiring that if the program end date is shortened, the J-1 exchange visitor and any J-2 accompanying dependents must leave the United States within 30 days from the new program end date or otherwise seek to maintain lawful status in that 30-day period;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Responsibilities of Responsible Officer (RO) for late program extension requests",
+      "affected_groups": [
+        "Responsible Officers for exchange visitors"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Providing the responsibilities of the responsible officer when submitting late requests for extension of current program end date for exchange visitors",
+      "plain_english": "Clear rules on what ROs must do if they file late extension requests for exchange visitors’ program end dates.",
+      "requirements": [
+        "Responsible officer must fulfill specified responsibilities for late extension requests"
+      ],
+      "restrictions": [],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Providing the responsibilities of the responsible officer (RO) when submitting late requests for extension of current program end date for exchange visitors;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Allow I nonimmigrants to work up to 240 days (90 days for PRC) pending EOS application",
+      "affected_groups": [
+        "I nonimmigrants",
+        "I nonimmigrants from PRC"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Clarifying that I nonimmigrants are authorized to continue working in the U.S. for their foreign employer under 8 CFR 274a.12(b)(20) for up to 240 days (except I nonimmigrants from the PRC who may continue working for up to 90 days) while their timely filed EOS application is pending",
+      "plain_english": "I visa holders can continue working up to 240 days while extension is pending; PRC nationals get up to 90 days.",
+      "requirements": [
+        "Timely filed EOS application"
+      ],
+      "restrictions": [
+        "240 days max (90 days for PRC)"
+      ],
+      "exceptions": [
+        "PRC nationals limited to 90 days"
+      ],
+      "time_limits_or_durations": [
+        "240 days or 90 days"
+      ],
+      "cfr_references": [
+        "8 CFR 274a.12(b)(20)"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Clarifying that I nonimmigrants are authorized to continue working in the United States for their foreign employer, under 8 CFR 274a.12(b)(20), for up to 240 days (with the exception of I nonimmigrants from the PRC who may continue working for up to 90 days) while their timely filed EOS application is pending;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Strike all references to 'duration of status' or 'duration of employment' for F, J, and I classifications",
+      "affected_groups": [
+        "F nonimmigrants",
+        "J nonimmigrants",
+        "I nonimmigrants"
+      ],
+      "current_rule": "Use of duration of status or duration of employment terminology",
+      "proposed_rule": "Striking all references to 'duration of status' and/or 'duration of employment' for the F, J, and I nonimmigrant classifications",
+      "plain_english": "All mentions of 'duration of status' or 'duration of employment' are removed for F, J, and I visa categories.",
+      "requirements": [],
+      "restrictions": [
+        "No references to duration of status or employment"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 214.1",
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 214.1, 214.2",
+      "evidence_quote": "Striking all references to ``duration of status'' and/or ``duration of employment'' for the F, J, and I nonimmigrant classifications;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Including severability clause in the final rule",
+      "affected_groups": [
+        "All affected nonimmigrants and DHS implementation"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Including a severability clause so if any provision of the rule is not implemented, remaining provisions can still be implemented",
+      "plain_english": "If part of this rule isn’t implemented, the rest can still be put into effect.",
+      "requirements": [],
+      "restrictions": [],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [],
+      "source_section": "Amend 8 CFR 214.1, 214.2",
+      "evidence_quote": "Including a severability clause. In the event that any provision of this rule is not implemented for whatever reason, the remaining provisions can be implemented in accordance with the stated purposes of this rule.",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Limiting ability to delay or suspend implementation of provisions 8 CFR 214.2(f)(5)(ii)(A)-(C) to two years",
+      "affected_groups": [
+        "F, J nonimmigrants subject to 8 CFR 214.2(f)(5)(ii)(A)-(C)"
+      ],
+      "current_rule": "Indefinite ability to delay or suspend implementation of these provisions",
+      "proposed_rule": "Amending 8 CFR 214.2(f)(5)(ii)(E) to limit the ability to delay or suspend implementation of 8 CFR 214.2(f)(5)(ii)(A) through (C) for two years from the effective date of the rule",
+      "plain_english": "Delays or suspensions of certain regulatory provisions can only last two years, not indefinitely.",
+      "requirements": [],
+      "restrictions": [
+        "Delay/suspension limited to two years from rule effective date"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [
+        "2 years"
+      ],
+      "cfr_references": [
+        "8 CFR 214.2(f)(5)(ii)(E)"
+      ],
+      "source_section": "Amend 8 CFR 214.2",
+      "evidence_quote": "Amending 8 CFR 214.2(f)(5)(ii)(E) to limit the ability to delay or suspend the implementation of 8 CFR 214.2(f)(5)(ii)(A) through (C) for a period of two years from the effective date of the rule since this provision is not needed indefinitely.",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Rules for F or J nonimmigrants changing status before effective date and seeking admission after",
+      "affected_groups": [
+        "F nonimmigrants with pre-rule change of status approvals",
+        "J nonimmigrants with same"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Establishing requirements to determine the period of stay for F or J nonimmigrants whose change of status application was approved before the final rule's effective date and who depart the U.S. then seek admission after the final rule's effective date",
+      "plain_english": "New rules define their period of authorized stay for F or J visa holders approved before the rule who travel abroad and return after the rule takes effect.",
+      "requirements": [
+        "Determine period of stay according to new requirements upon re-admission"
+      ],
+      "restrictions": [],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 248.1"
+      ],
+      "source_section": "Amend 8 CFR 248.1",
+      "evidence_quote": "Establishing requirements to determine the period of stay for F or J nonimmigrants whose change of status application was approved before the final rule's effective date and who depart the United States, then seek admission after the final rule's effective date;",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Deeming change of status applications abandoned upon departure",
+      "affected_groups": [
+        "Aliens with pending change of status applications, including F or J status"
+      ],
+      "current_rule": null,
+      "proposed_rule": "Codifying the policy that DHS deems abandoned any application to change to another nonimmigrant status, including F or J status, if the alien who timely filed the application departs the U.S. while the application is pending",
+      "plain_english": "If someone leaves the U.S. while their change of status request is pending, DHS will treat the application as abandoned.",
+      "requirements": [],
+      "restrictions": [
+        "Departure during pending application causes abandonment"
+      ],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 248.1"
+      ],
+      "source_section": "Amend 8 CFR 248.1",
+      "evidence_quote": "Codifying the long-standing policy under which DHS deems abandoned an application to change to another nonimmigrant status, including F or J status, if the alien who timely filed the application departs the United States while the application is pending.",
+      "evidence_verified": true
+    },
+    {
+      "policy_name": "Update employment authorization provisions to align with revisions in 8 CFR 214.2",
+      "affected_groups": [
+        "F, J, I nonimmigrants authorized to accept employment"
+      ],
+      "current_rule": "Existing employment authorization provisions prior to revision",
+      "proposed_rule": "Amending 8 CFR 274a.12 to incorporate the revisions in 8 CFR 214.2 regarding employment authorization",
+      "plain_english": "Updating employment authorization rules to reflect changes made in visa admission and extension provisions.",
+      "requirements": [],
+      "restrictions": [],
+      "exceptions": [],
+      "time_limits_or_durations": [],
+      "cfr_references": [
+        "8 CFR 274a.12",
+        "8 CFR 214.2"
+      ],
+      "source_section": "Amend 8 CFR 274a.12",
+      "evidence_quote": "Amending 8 CFR 274a.12, Classes of aliens authorized to accept employment, by updating the employment authorization provisions to incorporate the revisions in 8 CFR 214.2.",
+      "evidence_verified": false
+    }
+  ]
+}
