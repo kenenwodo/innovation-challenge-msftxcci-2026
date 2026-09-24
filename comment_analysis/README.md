@@ -2,6 +2,49 @@
 
 This folder contains the outputs from the comment analysis pipeline. The analysis includes **sentiment analysis, emotion detection, toxicity analysis, TF-IDF analysis, word/phrase frequency analysis, and BERTopic topic modeling**.
 
+## Comment Analysis Scripts
+
+This folder contains two scripts for analyzing cleaned comment data.
+
+### `comment_sentiment_emotion_toxicity.py`
+
+Runs transformer-based analysis on each comment and produces:
+
+* Sentiment scores and labels
+* Emotion scores and labels
+* Toxicity scores
+* A combined comment-level CSV containing all model outputs
+* Summary CSV files for sentiment, emotion, and toxicity
+
+The script is GPU-enabled and will automatically use CUDA when available.
+
+**Input:**
+`comments_no_pii_clean.csv`
+
+**Main output:**
+[`comments_analysis_output.csv`](https://github.com/kenenwodo/innovation-challenge-msftxcci-2026/blob/main/comment_analysis/comments_analysis_output.csv)
+
+---
+
+### `comment_words_phrases_bertopic.py`
+
+Performs lexical and topic analysis on the cleaned comments and produces:
+
+* Most frequent words
+* Most frequent bigrams and trigrams
+* TF-IDF term rankings
+* BERTopic topic information
+* BERTopic topic assignments for each comment
+
+**Input:**
+`comments_no_pii_clean.csv`
+
+**Main outputs:**
+
+* `top_words_and_phrases.csv`
+* `bertopic_topic_info.csv`
+* `comments_with_bertopic_categories.csv`
+
 ## Files
 
 ### `comments_analysis_output.csv`
