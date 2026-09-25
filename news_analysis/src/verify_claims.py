@@ -11,6 +11,8 @@ from typing import Any, Callable
 CHECKABLE_TYPES = {"policy", "government_position", "interpretation"}
 VERDICTS = {"supported", "partially_supported", "contradicted", "not_verifiable"}
 VERIFY_BATCH_SIZE = 8
+CONTENT_FILTER_RESULT_KEY = "_content_filter"
+MODEL_ERROR_RESULT_KEY = "_model_error"
 
 POLICY_TIMELINE = [
     {
@@ -428,6 +430,63 @@ def apply_model_result(item: dict[str, Any], result: dict[str, Any] | None) -> N
     }
 
 
+def apply_content_filter_result(
+    item: dict[str, Any], details: dict[str, Any]
+) -> None:
+    """Keep a filtered verification visible and require analyst review."""
+    claim = item["claim"]
+    route = item["route"]
+    retrieval = item["retrieval"]
+    claim["verification"] = {
+        "status": "content_filtered",
+        "verdict": "not_verifiable",
+        "reason": (
+            "Azure OpenAI blocked the verification prompt with its content filter; "
+            "no model verdict was generated. Human review is required."
+        ),
+        "documents_searched": route["documents"],
+        "evidence_as_of": item.get("evidence_as_of"),
+        "review_required": True,
+        "key_fact_ids": [fact["fact_id"] for fact in retrieval["key_facts"]],
+        "retrieved_evidence_ids": [
+            passage["evidence_id"] for passage in retrieval["passages"]
+        ],
+        "evidence": [],
+        "content_filter": details,
+    }
+
+
+def apply_model_error_result(item: dict[str, Any], details: dict[str, Any]) -> None:
+    """Record malformed model output without treating it as a verdict."""
+    claim = item["claim"]
+    route = item["route"]
+    retrieval = item["retrieval"]
+    if details.get("type") == "request_timeout":
+        reason = (
+            "The Azure OpenAI verification request timed out; no model verdict "
+            "was generated. Human review is required."
+        )
+    else:
+        reason = (
+            "Azure OpenAI returned invalid JSON twice; no model verdict was "
+            "generated. Human review is required."
+        )
+    claim["verification"] = {
+        "status": "model_error",
+        "verdict": "not_verifiable",
+        "reason": reason,
+        "documents_searched": route["documents"],
+        "evidence_as_of": item.get("evidence_as_of"),
+        "review_required": True,
+        "key_fact_ids": [fact["fact_id"] for fact in retrieval["key_facts"]],
+        "retrieved_evidence_ids": [
+            passage["evidence_id"] for passage in retrieval["passages"]
+        ],
+        "evidence": [],
+        "model_error": details,
+    }
+
+
 def claim_weight(article: dict[str, Any], claim: dict[str, Any]) -> int:
     title_words = set(re.findall(r"[a-z0-9]+", article["title"].lower()))
     claim_words = set(re.findall(r"[a-z0-9]+", claim["claim_text"].lower()))
@@ -489,6 +548,7 @@ def verify_article(
     model: str | None = None,
 ) -> None:
     prepared = []
+    article.setdefault("verification_warnings", [])
     as_of = article_date(article)
     for number, claim in enumerate(article.get("claims", []), start=1):
         if claim["claim_type"] not in CHECKABLE_TYPES:
@@ -534,6 +594,13 @@ def verify_article(
 
     for start in range(0, len(prepared), VERIFY_BATCH_SIZE):
         batch = prepared[start : start + VERIFY_BATCH_SIZE]
+        batch_number = start // VERIFY_BATCH_SIZE + 1
+        batch_total = (len(prepared) + VERIFY_BATCH_SIZE - 1) // VERIFY_BATCH_SIZE
+        print(
+            f"  VERIFY {article.get('article_id', article['title'])}: "
+            f"batch {batch_number}/{batch_total} ({len(batch)} claims)",
+            flush=True,
+        )
         raw = model_call(
             VERIFICATION_SYSTEM_PROMPT,
             verification_prompt(article, batch),
@@ -542,6 +609,37 @@ def verify_article(
             client=client,
             model=model,
         )
+        if CONTENT_FILTER_RESULT_KEY in raw:
+            details = raw[CONTENT_FILTER_RESULT_KEY]
+            for item in batch:
+                apply_content_filter_result(item, details)
+            categories = details.get("filtered_categories", {})
+            category_text = ", ".join(
+                f"{category}={severity}"
+                for category, severity in sorted(categories.items())
+            )
+            suffix = f" ({category_text})" if category_text else ""
+            article["verification_warnings"].append(
+                f"content filter blocked {len(batch)} claim(s){suffix}; marked for review"
+            )
+            continue
+        if MODEL_ERROR_RESULT_KEY in raw:
+            details = raw[MODEL_ERROR_RESULT_KEY]
+            for item in batch:
+                apply_model_error_result(item, details)
+            if details.get("type") == "request_timeout":
+                warning = f"request timed out for {len(batch)} claim(s)"
+            else:
+                status = details.get("response_status") or "unknown"
+                reason = details.get("incomplete_reason") or "unknown"
+                warning = (
+                    f"invalid JSON for {len(batch)} claim(s) "
+                    f"(status={status}; reason={reason})"
+                )
+            article["verification_warnings"].append(
+                f"{warning}; marked for review"
+            )
+            continue
         returned = {
             result.get("claim_id"): result
             for result in raw.get("results", [])
@@ -562,8 +660,16 @@ def verify_articles(
     client: Any | None = None,
     model: str | None = None,
 ) -> None:
+    total = sum(article.get("extraction_status") == "complete" for article in articles)
+    current = 0
     for article in articles:
         if article.get("extraction_status") == "complete":
+            current += 1
+            print(
+                f"VERIFY story {current}/{total}: "
+                f"{article.get('article_id', article['title'])}",
+                flush=True,
+            )
             verify_article(
                 article,
                 index,

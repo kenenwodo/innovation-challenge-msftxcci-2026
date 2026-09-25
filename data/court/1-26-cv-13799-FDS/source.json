@@ -1,0 +1,26 @@
+{
+  "case_name": "Presidents' Alliance on Higher Education and Immigration, et al. v. United States Department of Homeland Security, et al.",
+  "court": "United States District Court for the District of Massachusetts",
+  "case_number": "1:26-cv-13799-FDS",
+  "filed_date": "2026-09-14",
+  "retrieved_date": "2026-09-24",
+  "source": "CourtListener RECAP",
+  "documents": [
+    {
+      "document_number": 50,
+      "title": "Memorandum and Order on Motion for Preliminary Injunction",
+      "filename": "document-50-memorandum-and-order.pdf",
+      "pages": 48,
+      "url": "https://storage.courtlistener.com/recap/gov.uscourts.mad.305059/gov.uscourts.mad.305059.50.0.pdf",
+      "sha256": "d1c4e0325e04a470da50e69e8a79714e853a067e537cc162300f21e7a3c047ba"
+    },
+    {
+      "document_number": 51,
+      "title": "Preliminary Injunction Order Postponing Effective Date of Final Rule",
+      "filename": "document-51-preliminary-injunction-order.pdf",
+      "pages": 2,
+      "url": "https://storage.courtlistener.com/recap/gov.uscourts.mad.305059/gov.uscourts.mad.305059.51.0.pdf",
+      "sha256": "d9aa7b278e151235b781a63034eda2001367fd97bf5f68af94a41b704253b192"
+    }
+  ]
+}

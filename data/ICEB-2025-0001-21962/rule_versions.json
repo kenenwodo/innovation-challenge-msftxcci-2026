@@ -1,0 +1,18 @@
+{
+  "docketId": "ICEB-2025-0001",
+  "proposed": {
+    "id": "ICEB-2025-0001-0001",
+    "documentType": "Proposed Rule",
+    "frDocNum": "2025-16554",
+    "postedDate": "2025-08-28T04:00:00Z",
+    "dir": "data/ICEB-2025-0001-0001"
+  },
+  "final": {
+    "id": "ICEB-2025-0001-21962",
+    "documentType": "Rule",
+    "frDocNum": "2026-14439",
+    "postedDate": "2026-07-17T04:00:00Z",
+    "dir": "data/ICEB-2025-0001-21962",
+    "effectiveDate": "2026-09-15T07:00:00Z"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "data": {
+    "id": "ICEB-2025-0001-21962",
+    "type": "documents",
+    "links": {
+      "self": "https://api.regulations.gov/v4/documents/ICEB-2025-0001-21962"
+    },
+    "attributes": {
+      "additionalRins": null,
+      "allowLateComments": false,
+      "authorDate": null,
+      "authors": null,
+      "cfrPart": null,
+      "commentEndDate": null,
+      "commentStartDate": null,
+      "effectiveDate": "2026-09-15T07:00:00Z",
+      "exhibitLocation": null,
+      "exhibitType": null,
+      "frDocNum": "2026-14439",
+      "frVolNum": "91 FR 44976",
+      "implementationDate": null,
+      "media": null,
+      "ombApproval": null,
+      "paperLength": 0,
+      "paperWidth": 0,
+      "regWriterInstruction": null,
+      "sourceCitation": null,
+      "startEndPage": null,
+      "subject": "Administrative Practice and Procedure, Aliens, Cultural Exchange Program, Employment, Foreign Officials, Health Professions, Reporting and Recordkeeping Requirements, Students, Penalties",
+      "topics": [
+        "Administrative Practices and Procedures",
+        "Aliens",
+        "Cultural Exchange Programs",
+        "Employment",
+        "Foreign Officials",
+        "Health Professions",
+        "Reporting and Recordkeeping Requirements",
+        "Students",
+        "Penalties"
+      ],
+      "address1": null,
+      "address2": null,
+      "agencyId": "ICEB",
+      "city": null,
+      "category": null,
+      "comment": null,
+      "country": null,
+      "displayProperties": null,
+      "docAbstract": null,
+      "docketId": "ICEB-2025-0001",
+      "documentType": "Rule",
+      "email": null,
+      "fax": null,
+      "field1": null,
+      "field2": null,
+      "fileFormats": [
+        {
+          "fileUrl": "https://downloads.regulations.gov/ICEB-2025-0001-21962/content.pdf",
+          "format": "pdf",
+          "size": 1130666
+        },
+        {
+          "fileUrl": "https://downloads.regulations.gov/ICEB-2025-0001-21962/content.html",
+          "format": "html",
+          "size": 1234612
+        }
+      ],
+      "firstName": null,
+      "govAgency": null,
+      "govAgencyType": null,
+      "objectId": "09000064b93a5ed8",
+      "lastName": null,
+      "legacyId": null,
+      "modifyDate": "2026-07-17T16:32:06Z",
+      "organization": null,
+      "originalDocumentId": "ICEB_FRDOC_0001-0323",
+      "pageCount": 0,
+      "phone": null,
+      "postedDate": "2026-07-17T04:00:00Z",
+      "postmarkDate": null,
+      "reasonWithdrawn": null,
+      "receiveDate": "2026-07-17T04:00:00Z",
+      "restrictReason": null,
+      "restrictReasonType": null,
+      "stateProvinceRegion": null,
+      "submitterRep": null,
+      "submitterRepAddress": null,
+      "submitterRepCityState": null,
+      "subtype": null,
+      "title": "Establishing a Fixed Time Period of Admission and an Extension of Stay Procedure for Nonimmigrant Academic Students, Exchange Visitors, and Representatives of Foreign Information Media",
+      "trackingNbr": null,
+      "withdrawn": false,
+      "zip": null,
+      "openForComment": false,
+      "withinCommentPeriod": false
+    },
+    "relationships": {
+      "attachments": {
+        "data": [],
+        "links": {
+          "self": "https://api.regulations.gov/v4/documents/ICEB-2025-0001-21962/relationships/attachments",
+          "related": "https://api.regulations.gov/v4/documents/ICEB-2025-0001-21962/attachments"
+        }
+      }
+    }
+  },
+  "links": {
+    "self": "https://regulations.gov/v4/documents/ICEB-2025-0001-21962?include=attachments"
+  }
+}
