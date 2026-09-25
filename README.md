@@ -2,7 +2,38 @@
 
 **Evidence-grounded regulatory intelligence connecting policy text, public response, and news coverage.**
 
-PolicyLens is a solution for the Microsoft x CCI 2026 Innovation Challenge Hackathon. It brings together five evidence streams that are usually reviewed separately:
+**Built on Microsoft Foundry:** policy extraction, version comparison and claim checking run on Azure OpenAI (`gpt-4.1-mini`) deployed in Microsoft Foundry.
+
+| | |
+| --- | --- |
+| **Challenge** | Policy and Public Sentiment Analyst: turn legislation, regulations, news, and public feedback into transparent, evidence-grounded policy insights |
+| **Hackathon** | Microsoft x CCI Innovation Challenge 2026 |
+
+## Project description
+
+Government analysts reviewing a new regulation have to read the rule itself, compare
+it with earlier drafts, work through thousands of public comments, and track how news
+outlets and online videos describe it, usually by hand, over weeks. PolicyLens brings
+these sources into one evidence-grounded view.
+
+For a live case study, the DHS rule replacing "duration of status" for international
+students, exchange visitors and foreign media (docket ICEB-2025-0001), PolicyLens:
+
+- **compares the proposed and final rule** provision by provision, showing what was
+  unchanged, modified or added, with the exact rule text as evidence;
+- **analyzes about 10,000 de-identified public comments** for sentiment, emotion and
+  the main concerns people raised, keeping minority viewpoints visible;
+- **fact-checks news articles and news videos** claim by claim against the official
+  rule text (news also against the court order); for videos it separates whether a
+  claim was accurate when published from whether it is still current after the court
+  postponed the rule;
+- **produces a downloadable analyst briefing** that pulls the findings together with
+  citations.
+
+Every output keeps official policy text, what sources said, and AI interpretation
+apart, shows confidence and review flags, and leaves the final call to a human analyst.
+
+PolicyLens is a research prototype built for the Microsoft x CCI 2026 Innovation Challenge. It brings together five evidence streams that are usually reviewed separately:
 
 - official proposed and final rule text;
 - structured, source-linked policy provisions and version changes;
@@ -63,6 +94,7 @@ intermediate output, or audit material.
 | **Public comments** | Scores de-identified comments for sentiment, emotion and toxicity, and groups them into topics labeled by primary concern. | `comment_analysis/` | `comments_analysis_output.csv`, `bertopic_topic_info.csv`, `comments_with_bertopic.csv` |
 | **News articles** | Collects coverage from GDELT, extracts claims and stakeholder viewpoints, and checks claims against the rules and court order. | `news_analysis/` | `articles_ui.csv`, `claims_ui.csv`, `claim_evidence_ui.csv`, `viewpoints_ui.csv` |
 | **Video news** | Finds and transcribes news and explainer videos, then checks each claim against V1 and V2: accuracy when published, plus a Still current / Outdated badge. | `video_analysis/` | `video_claims_for_ui.csv` |
+| **Analyst briefing** | Combines the four components into a downloadable PDF briefing with key points, citations and limits (no model calls). | `download_briefing_document/` | `PolicyLens_briefing_ICEB-2025-0001.pdf` |
 
 ## What the UI loads
 
@@ -113,6 +145,15 @@ collection file `gdelt_news_articles_v3-112.csv`. A blank `grounding_score` mean
 Group rows by `video_key` for the video list. The file is privacy-cleaned; the other
 files in the folder (`claim_results.csv`, `transcripts/`) are not and are kept only
 for reproducibility. Details: [`video_analysis/README.md`](video_analysis/README.md).
+
+### Analyst briefing: `download_briefing_document/`
+
+| File | Use in the UI |
+| --- | --- |
+| `PolicyLens_briefing_ICEB-2025-0001.pdf` | **"Download briefing" button:** a 6-page PDF with key points, the rule timeline, what changed, comment concerns, news and video accuracy, and limits. |
+| `generate_briefing.py` | Regenerates the PDF from the files above; `build_briefing_bytes()` builds it on click for a download button. |
+
+Details: [`download_briefing_document/README.md`](download_briefing_document/README.md).
 
 ### Shown across all panels
 
@@ -173,10 +214,14 @@ An `added` result is a review candidate, not proof that the language was absent 
 │   ├── output/
 │   ├── gdelt_wide_search_v2.py
 │   └── README.md
-└── video_analysis/               # Video discovery, transcription, and claim checking
-    ├── transcripts/
-    ├── rule_text/
-    ├── video_claims_for_ui.csv
+├── video_analysis/               # Video discovery, transcription, and claim checking
+│   ├── transcripts/
+│   ├── rule_text/
+│   ├── video_claims_for_ui.csv
+│   └── README.md
+└── download_briefing_document/   # Analyst briefing PDF generator
+    ├── generate_briefing.py
+    ├── PolicyLens_briefing_ICEB-2025-0001.pdf
     └── README.md
 ```
 
@@ -344,6 +389,18 @@ python claim_check.py transcripts/transcripts.csv
 ```
 
 Discovery is optional. Transcription runs locally with Whisper; claim extraction and verdict generation use the configured Azure model. The presentation-facing output is `video_claims_for_ui.csv`, which removes email addresses and phone numbers and separates accuracy at publication from whether a supported claim is still current. See [`video_analysis/README.md`](video_analysis/README.md) for setup, output fields, and review guidance.
+
+### 7. Build the analyst briefing
+
+From the repository root, after the outputs above exist:
+
+```bash
+python -m pip install reportlab pandas
+python download_briefing_document/generate_briefing.py
+```
+
+Writes `download_briefing_document/PolicyLens_briefing_ICEB-2025-0001.pdf`. No API keys
+are needed; every figure is computed from the committed outputs.
 
 ## Design principles
 
