@@ -33,7 +33,7 @@ students, exchange visitors and foreign media (docket ICEB-2025-0001), PolicyLen
 Every output keeps official policy text, what sources said, and AI interpretation
 apart, shows confidence and review flags, and leaves the final call to a human analyst.
 
-PolicyLens is a research prototype built for the Microsoft x CCI 2026 Innovation Challenge. It brings together five evidence streams that are usually reviewed separately:
+PolicyLens is a solution built for the Microsoft x CCI 2026 Innovation Challenge Hackathon. It brings together five evidence streams that are usually reviewed separately:
 
 - official proposed and final rule text;
 - structured, source-linked policy provisions and version changes;
@@ -94,7 +94,7 @@ intermediate output, or audit material.
 | **Public comments** | Scores de-identified comments for sentiment, emotion and toxicity, and groups them into topics labeled by primary concern. | `comment_analysis/` | `comments_analysis_output.csv`, `bertopic_topic_info.csv`, `comments_with_bertopic.csv` |
 | **News articles** | Collects coverage from GDELT, extracts claims and stakeholder viewpoints, and checks claims against the rules and court order. | `news_analysis/` | `articles_ui.csv`, `claims_ui.csv`, `claim_evidence_ui.csv`, `viewpoints_ui.csv` |
 | **Video news** | Finds and transcribes news and explainer videos, then checks each claim against V1 and V2: accuracy when published, plus a Still current / Outdated badge. | `video_analysis/` | `video_claims_for_ui.csv` |
-| **Analyst briefing** | Combines the four components into a downloadable PDF briefing with key points, citations and limits (no model calls). | `download_briefing_document/` | `PolicyLens_briefing_ICEB-2025-0001.pdf` |
+| **Analyst briefing** | Combines the four components into a downloadable one-page PDF briefing with key points, what to review next, and limits (no model calls). | `download_briefing/` | `PolicyLens_briefing_ICEB-2025-0001.pdf` |
 
 ## What the UI loads
 
@@ -146,14 +146,15 @@ Group rows by `video_key` for the video list. The file is privacy-cleaned; the o
 files in the folder (`claim_results.csv`, `transcripts/`) are not and are kept only
 for reproducibility. Details: [`video_analysis/README.md`](video_analysis/README.md).
 
-### Analyst briefing: `download_briefing_document/`
+### Analyst briefing: `download_briefing/`
 
 | File | Use in the UI |
 | --- | --- |
-| `PolicyLens_briefing_ICEB-2025-0001.pdf` | **"Download briefing" button:** a 6-page PDF with key points, the rule timeline, what changed, comment concerns, news and video accuracy, and limits. |
-| `generate_briefing.py` | Regenerates the PDF from the files above; `build_briefing_bytes()` builds it on click for a download button. |
+| `PolicyLens_briefing_ICEB-2025-0001.pdf` | **"Download briefing" button:** a one-page PDF with the rule status, key points, four panels (policy changes, comments, news, video), what the analyst should review next, and limits. |
+| `PolicyLens_briefing_ICEB-2025-0001_full.pdf` | Optional detailed version (about 6 pages) with full tables and citations. |
+| `generate_briefing.py` | Regenerates both PDFs; `build_briefing_bytes()` builds the one-pager on click for a download button. |
 
-Details: [`download_briefing_document/README.md`](download_briefing_document/README.md).
+Details: [`download_briefing/README.md`](download_briefing/README.md).
 
 ### Shown across all panels
 
@@ -219,9 +220,10 @@ An `added` result is a review candidate, not proof that the language was absent 
 │   ├── rule_text/
 │   ├── video_claims_for_ui.csv
 │   └── README.md
-└── download_briefing_document/   # Analyst briefing PDF generator
+└── download_briefing/   # Analyst briefing PDF generator
     ├── generate_briefing.py
     ├── PolicyLens_briefing_ICEB-2025-0001.pdf
+    ├── PolicyLens_briefing_ICEB-2025-0001_full.pdf
     └── README.md
 ```
 
@@ -396,11 +398,12 @@ From the repository root, after the outputs above exist:
 
 ```bash
 python -m pip install reportlab pandas
-python download_briefing_document/generate_briefing.py
+python download_briefing/generate_briefing.py
 ```
 
-Writes `download_briefing_document/PolicyLens_briefing_ICEB-2025-0001.pdf`. No API keys
-are needed; every figure is computed from the committed outputs.
+Writes the one-page `download_briefing/PolicyLens_briefing_ICEB-2025-0001.pdf`;
+add `--full` for the detailed version. No API keys are needed; every figure is computed
+from the committed outputs.
 
 ## Design principles
 
