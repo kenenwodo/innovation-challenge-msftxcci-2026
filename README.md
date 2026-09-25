@@ -4,10 +4,12 @@
 
 **Built on Microsoft Foundry:** policy extraction, version comparison and claim checking run on Azure OpenAI (`gpt-4.1-mini`) deployed in Microsoft Foundry.
 
-| | |
-| --- | --- |
+
+|               |                                                                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Challenge** | Policy and Public Sentiment Analyst: turn legislation, regulations, news, and public feedback into transparent, evidence-grounded policy insights |
-| **Hackathon** | Microsoft x CCI Innovation Challenge 2026 |
+| **Hackathon** | Microsoft x CCI Innovation Challenge 2026                                                                                                         |
+
 
 ## Project description
 
@@ -20,15 +22,15 @@ For a live case study, the DHS rule replacing "duration of status" for internati
 students, exchange visitors and foreign media (docket ICEB-2025-0001), PolicyLens:
 
 - **compares the proposed and final rule** provision by provision, showing what was
-  unchanged, modified or added, with the exact rule text as evidence;
+unchanged, modified or added, with the exact rule text as evidence;
 - **analyzes about 10,000 de-identified public comments** for sentiment, emotion and
-  the main concerns people raised, keeping minority viewpoints visible;
+the main concerns people raised, keeping minority viewpoints visible;
 - **fact-checks news articles and news videos** claim by claim against the official
-  rule text (news also against the court order); for videos it separates whether a
-  claim was accurate when published from whether it is still current after the court
-  postponed the rule;
+rule text (news also against the court order); for videos it separates whether a
+claim was accurate when published from whether it is still current after the court
+postponed the rule;
 - **produces a downloadable analyst briefing** that pulls the findings together with
-  citations.
+citations.
 
 Every output keeps official policy text, what sources said, and AI interpretation
 apart, shows confidence and review flags, and leaves the final call to a human analyst.
@@ -43,15 +45,19 @@ PolicyLens is a solution built for the Microsoft x CCI 2026 Innovation Challenge
 
 The current case study follows DHS/ICE rulemaking for F, J, and I nonimmigrants:
 
-| Source | Identifier |
-| --- | --- |
-| Docket | `ICEB-2025-0001` |
-| Regulations.gov document | `ICEB-2025-0001-0001` |
-| Proposed rule | Federal Register document `2025-16554` |
-| Final rule | Federal Register document `2026-14439` |
+
+| Source                   | Identifier                             |
+| ------------------------ | -------------------------------------- |
+| Docket                   | `ICEB-2025-0001`                       |
+| Regulations.gov document | `ICEB-2025-0001-0001`                  |
+| Proposed rule            | Federal Register document `2025-16554` |
+| Final rule               | Federal Register document `2026-14439` |
+
 
 > [!IMPORTANT]
 > PolicyLens supports research and analyst review. Its model-generated interpretations, classifications, and summaries are not legal advice, official agency findings, or substitutes for the underlying Federal Register text.
+
+
 
 ## How the system fits together
 
@@ -88,101 +94,121 @@ Each component runs on its own and writes a small set of **UI files**: the final
 outputs the app loads. Everything else in a component folder is source data,
 intermediate output, or audit material.
 
-| Component | What it does | Folder | UI files |
-| --- | --- | --- | --- |
-| **Policy versions** | Extracts provisions from the proposed rule (V1) and final rule (V2) and compares them: unchanged, modified, added/removed, with evidence, confidence and review flags. | `policy_html_extraction/` | `v1_policies.json`, `v2_policies.json`, `policy_changes_validated.json` |
-| **Public comments** | Scores de-identified comments for sentiment, emotion and toxicity, and groups them into topics labeled by primary concern. | `comment_analysis/` | `comments_analysis_output.csv`, `bertopic_topic_info.csv`, `comments_with_bertopic.csv` |
-| **News articles** | Collects coverage from GDELT, extracts claims and stakeholder viewpoints, and checks claims against the rules and court order. | `news_analysis/` | `articles_ui.csv`, `claims_ui.csv`, `claim_evidence_ui.csv`, `viewpoints_ui.csv` |
-| **Video news** | Finds and transcribes news and explainer videos, then checks each claim against V1 and V2: accuracy when published, plus a Still current / Outdated badge. | `video_analysis/` | `video_claims_for_ui.csv` |
-| **Analyst briefing** | Combines the four components into a downloadable one-page PDF briefing with key points, what to review next, and limits (no model calls). | `download_briefing/` | `PolicyLens_briefing_ICEB-2025-0001.pdf` |
+
+| Component            | What it does                                                                                                                                                           | Folder                    | UI files                                                                                |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | --------------------------------------------------------------------------------------- |
+| **Policy versions**  | Extracts provisions from the proposed rule (V1) and final rule (V2) and compares them: unchanged, modified, added/removed, with evidence, confidence and review flags. | `policy_html_extraction/` | `v1_policies.json`, `v2_policies.json`, `policy_changes_validated.json`                 |
+| **Public comments**  | Scores de-identified comments for sentiment, emotion and toxicity, and groups them into topics labeled by primary concern.                                             | `comment_analysis/`       | `comments_analysis_output.csv`, `bertopic_topic_info.csv`, `comments_with_bertopic.csv` |
+| **News articles**    | Collects coverage from GDELT, extracts claims and stakeholder viewpoints, and checks claims against the rules and court order.                                         | `news_analysis/`          | `articles_ui.csv`, `claims_ui.csv`, `claim_evidence_ui.csv`, `viewpoints_ui.csv`        |
+| **Video news**       | Finds and transcribes news and explainer videos, then checks each claim against V1 and V2: accuracy when published, plus a Still current / Outdated badge.             | `video_analysis/`         | `video_claims_for_ui.csv`                                                               |
+| **Analyst briefing** | Combines the four components into a downloadable one-page PDF briefing with key points, what to review next, and limits (no model calls).                              | `download_briefing/`      | `PolicyLens_briefing_ICEB-2025-0001.pdf`                                                |
+
+
+
 
 ## What the UI loads
 
+
+
 ### Policy versions: `policy_html_extraction/output/`
 
-| File | Use in the UI |
-| --- | --- |
-| `v1_policies.json` | **Proposed rule (V1):** 27 structured provisions. The "what was proposed" view. |
-| `v2_policies.json` | **Final rule (V2):** 24 structured provisions after the comment period. The "what the final rule says" view. |
+
+| File                            | Use in the UI                                                                                                                                            |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v1_policies.json`              | **Proposed rule (V1):** 27 structured provisions. The "what was proposed" view.                                                                          |
+| `v2_policies.json`              | **Final rule (V2):** 24 structured provisions after the comment period. The "what the final rule says" view.                                             |
 | `policy_changes_validated.json` | **What changed:** 23 policy areas with change type, explanation, practical effect, evidence, confidence and review status (19 validated, 4 need review). |
 
+
 Markdown versions of all three (`.md`) are in the same folder for reading. Details:
-[`policy_html_extraction/README.md`](policy_html_extraction/README.md).
+`[policy_html_extraction/README.md](policy_html_extraction/README.md)`.
 
 ### Public comments: `comment_analysis/`
 
-| File | Use in the UI |
-| --- | --- |
+
+| File                           | Use in the UI                                                                                                                             |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `comments_analysis_output.csv` | **Sentiment and emotion breakdown:** one row per comment (9,999) with `sentiment_label`, `emotion_label`, confidence scores and toxicity. |
-| `bertopic_topic_info.csv` | **Topic clusters:** one row per topic. `Primary_Concern` is the readable label to display; `Count` is the cluster size. |
-| `comments_with_bertopic.csv` | **Comments per topic:** each comment's `Topic` and `Primary_Concern`; join to the scores on `comment_id`. |
+| `bertopic_topic_info.csv`      | **Topic clusters:** one row per topic. `Primary_Concern` is the readable label to display; `Count` is the cluster size.                   |
+| `comments_with_bertopic.csv`   | **Comments per topic:** each comment's `Topic` and `Primary_Concern`; join to the scores on `comment_id`.                                 |
+
 
 Display `Primary_Concern`, not the raw BERTopic `Name`. Topic `-1` is the
 mixed/unclassified group, and topic `7` is comments whose content is in an attached
 file. Do not display the `title` column of `comments_analysis_output.csv`: many
 titles contain the commenter's name. Details:
-[`comment_analysis/README.md`](comment_analysis/README.md).
+`[comment_analysis/README.md](comment_analysis/README.md)`.
 
 ### News articles: `news_analysis/output/fact_check/`
 
-| File | Use in the UI | Join key |
-| --- | --- | --- |
-| `articles_ui.csv` | **Article cards:** 20 articles with title, URL, publisher, policy stage, grounding score and claim counts. | `article_id` |
-| `claims_ui.csv` | **Claims per article:** up to 6 featured claims each (93) with verdict and explanation. | `article_id`, `claim_id` |
-| `claim_evidence_ui.csv` | **Evidence per claim:** citations and source excerpts (354). | `claim_id` |
-| `viewpoints_ui.csv` | **Stakeholder viewpoints:** attributed stances with source quotes (40). | `article_id` |
+
+| File                    | Use in the UI                                                                                              | Join key                 |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------ |
+| `articles_ui.csv`       | **Article cards:** 20 articles with title, URL, publisher, policy stage, grounding score and claim counts. | `article_id`             |
+| `claims_ui.csv`         | **Claims per article:** up to 6 featured claims each (93) with verdict and explanation.                    | `article_id`, `claim_id` |
+| `claim_evidence_ui.csv` | **Evidence per claim:** citations and source excerpts (354).                                               | `claim_id`               |
+| `viewpoints_ui.csv`     | **Stakeholder viewpoints:** attributed stances with source quotes (40).                                    | `article_id`             |
+
 
 Use `articles_ui.csv` (20 articles) for article titles and URLs, not the 112-row
 collection file `gdelt_news_articles_v3-112.csv`. A blank `grounding_score` means
-"not scored", not 0%. Details: [`news_analysis/README.md`](news_analysis/README.md).
+"not scored", not 0%. Details: `[news_analysis/README.md](news_analysis/README.md)`.
 
 ### Video news: `video_analysis/`
 
-| File | Use in the UI |
-| --- | --- |
+
+| File                      | Use in the UI                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `video_claims_for_ui.csv` | **Video claim cards:** one row per claim (111 claims from 10 videos) with speaker type, publish date, timestamp, quote, evidence from V1/V2 with Federal Register links, and two badges: `verdict_at_publish` (Supported, Partly supported, Contradicted, Not in rule text, Different rule, Not checked) and `currency_status` (Still current / Outdated, an AI suggestion the analyst can change). |
+
 
 Group rows by `video_key` for the video list. The file is privacy-cleaned; the other
 files in the folder (`claim_results.csv`, `transcripts/`) are not and are kept only
-for reproducibility. Details: [`video_analysis/README.md`](video_analysis/README.md).
+for reproducibility. Details: `[video_analysis/README.md](video_analysis/README.md)`.
 
 ### Analyst briefing: `download_briefing/`
 
-| File | Use in the UI |
-| --- | --- |
-| `PolicyLens_briefing_ICEB-2025-0001.pdf` | **"Download briefing" button:** a one-page PDF with the rule status, key points, four panels (policy changes, comments, news, video), what the analyst should review next, and limits. |
-| `PolicyLens_briefing_ICEB-2025-0001_full.pdf` | Optional detailed version (about 6 pages) with full tables and citations. |
-| `generate_briefing.py` | Regenerates both PDFs; `build_briefing_bytes()` builds the one-pager on click for a download button. |
 
-Details: [`download_briefing/README.md`](download_briefing/README.md).
+| File                                          | Use in the UI                                                                                                                                                                          |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PolicyLens_briefing_ICEB-2025-0001.pdf`      | **"Download briefing" button:** a one-page PDF with the rule status, key points, four panels (policy changes, comments, news, video), what the analyst should review next, and limits. |
+| `PolicyLens_briefing_ICEB-2025-0001_full.pdf` | Optional detailed version (about 6 pages) with full tables and citations.                                                                                                              |
+| `generate_briefing.py`                        | Regenerates both PDFs; `build_briefing_bytes()` builds the one-pager on click for a download button.                                                                                   |
+
+
+Details: `[download_briefing/README.md](download_briefing/README.md)`.
 
 ### Shown across all panels
 
 - Label each layer: **official rule text**, **what a source said** (article, video,
-  comment), and **AI interpretation** (verdicts, labels, topics).
+comment), and **AI interpretation** (verdicts, labels, topics).
 - Show review flags and unresolved states rather than hiding them, and keep the final
-  call with the analyst.
+call with the analyst.
+
+
 
 ## Current results
 
 The committed artifacts currently contain:
 
-| Evidence stream | Result |
-| --- | ---: |
-| Comments listed for the example Regulations.gov document | 21,923 |
-| Comments in the working corpus | 10,000 |
-| Nonblank comments analyzed | 9,999 |
-| Consolidated proposed-rule policy areas | 13 |
-| Proposed-rule provisions extracted | 27 |
-| Final-rule provisions extracted | 24 |
-| Policy areas compared | 23 |
-| Comparison outcomes | 13 unchanged, 6 modified, 4 added candidates |
-| Comparisons passing automated validation | 19 of 23 |
-| Comparisons requiring analyst review | 4 of 23 |
-| Unique news URLs collected | 112 |
-| Canonical news articles fact-checked | 88 |
-| News claims / viewpoints / evidence citations | 1,188 / 196 / 3,489 |
-| Videos analyzed / claims prepared for the UI | 10 / 111 |
+
+| Evidence stream                                          | Result                                       |
+| -------------------------------------------------------- | -------------------------------------------- |
+| Comments listed for the example Regulations.gov document | 21,923                                       |
+| Comments in the working corpus                           | 10,000                                       |
+| Nonblank comments analyzed                               | 9,999                                        |
+| Consolidated proposed-rule policy areas                  | 13                                           |
+| Proposed-rule provisions extracted                       | 27                                           |
+| Final-rule provisions extracted                          | 24                                           |
+| Policy areas compared                                    | 23                                           |
+| Comparison outcomes                                      | 13 unchanged, 6 modified, 4 added candidates |
+| Comparisons passing automated validation                 | 19 of 23                                     |
+| Comparisons requiring analyst review                     | 4 of 23                                      |
+| Unique news URLs collected                               | 112                                          |
+| Canonical news articles fact-checked                     | 88                                           |
+| News claims / viewpoints / evidence citations            | 1,188 / 196 / 3,489                          |
+| Videos analyzed / claims prepared for the UI             | 10 / 111                                     |
+
 
 An `added` result is a review candidate, not proof that the language was absent from the earlier rule. See [Responsible use and limitations](#responsible-use-and-limitations).
 
@@ -234,17 +260,21 @@ The official proposed rule, final rule, and court-order snapshots used by the ev
 You do not need API credentials or a GPU to inspect the results. Besides the UI files
 above, these are useful for reading, auditing or debugging:
 
-| Artifact | Purpose |
-| --- | --- |
-| [`policy_analysis/output/proposed_policies_final.json`](policy_analysis/output/proposed_policies_final.json) | Earlier proposed-rule policy areas (13), from the PDF pipeline |
-| [`policy_html_extraction/output/policy_changes_validated.md`](policy_html_extraction/output/policy_changes_validated.md) | Human-readable comparison with review flags |
-| [`comment_analysis/top_words_and_phrases.csv`](comment_analysis/top_words_and_phrases.csv) | Frequent terms and phrases |
-| [`comment_analysis/tfidf_top_terms_overall.csv`](comment_analysis/tfidf_top_terms_overall.csv) | Corpus-level TF-IDF terms |
-| [`news_analysis/gdelt_news_articles_v3-112.csv`](news_analysis/gdelt_news_articles_v3-112.csv) | All 112 collected news rows with article text |
-| [`news_analysis/output/fact_check/results.json`](news_analysis/output/fact_check/results.json) | Complete news fact-check for all 88 canonical articles |
-| [`news_analysis/output/fact_check/report.md`](news_analysis/output/fact_check/report.md) | Human-readable news fact-check summary |
-| [`video_analysis/claim_results.csv`](video_analysis/claim_results.csv) | Full internal video results (not privacy-cleaned) |
-| [`video_analysis/transcripts/`](video_analysis/transcripts/) | Video transcripts with timestamps |
+
+| Artifact                                                                                                                 | Purpose                                                        |
+| ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
+| `[policy_analysis/output/proposed_policies_final.json](policy_analysis/output/proposed_policies_final.json)`             | Earlier proposed-rule policy areas (13), from the PDF pipeline |
+| `[policy_html_extraction/output/policy_changes_validated.md](policy_html_extraction/output/policy_changes_validated.md)` | Human-readable comparison with review flags                    |
+| `[comment_analysis/top_words_and_phrases.csv](comment_analysis/top_words_and_phrases.csv)`                               | Frequent terms and phrases                                     |
+| `[comment_analysis/tfidf_top_terms_overall.csv](comment_analysis/tfidf_top_terms_overall.csv)`                           | Corpus-level TF-IDF terms                                      |
+| `[news_analysis/gdelt_news_articles_v3-112.csv](news_analysis/gdelt_news_articles_v3-112.csv)`                           | All 112 collected news rows with article text                  |
+| `[news_analysis/output/fact_check/results.json](news_analysis/output/fact_check/results.json)`                           | Complete news fact-check for all 88 canonical articles         |
+| `[news_analysis/output/fact_check/report.md](news_analysis/output/fact_check/report.md)`                                 | Human-readable news fact-check summary                         |
+| `[video_analysis/claim_results.csv](video_analysis/claim_results.csv)`                                                   | Full internal video results (not privacy-cleaned)              |
+| `[video_analysis/transcripts/](video_analysis/transcripts/)`                                                             | Video transcripts with timestamps                              |
+
+
+
 
 ## Setup
 
@@ -292,6 +322,8 @@ The version-comparison scripts load Azure settings from `policy_html_extraction/
 Never commit either `.env` file. The ingestion utility otherwise looks for `misc/.env`; the command below explicitly points it to the root file. If no Regulations.gov key is configured, it falls back to `DEMO_KEY`, which has strict rate limits.
 
 ## Run the pipelines
+
+
 
 ### 1. Fetch a rule document and public comments
 
@@ -343,7 +375,7 @@ python src/validate_changes.py
 python src/generate_comparison_markdown.py
 ```
 
-See [`policy_html_extraction/README.md`](policy_html_extraction/README.md) for the evidence-verification rules, output schema, and validation behavior.
+See `[policy_html_extraction/README.md](policy_html_extraction/README.md)` for the evidence-verification rules, output schema, and validation behavior.
 
 ### 4. Analyze de-identified comments
 
@@ -356,7 +388,7 @@ python comment_topics_bertopic.py --input comments_no_pii.csv
 
 The first script runs sentiment, emotion, and toxicity classifiers and automatically uses CUDA when available. The second produces TF-IDF, NMF, and BERTopic results; LLooM is optional and requires `OPENAI_API_KEY` plus the `--lloom` flag.
 
-Use `--help` on either script for output-directory, batch-size, and skip options. See [`comment_analysis/README.md`](comment_analysis/README.md) for the output columns.
+Use `--help` on either script for output-directory, batch-size, and skip options. See `[comment_analysis/README.md](comment_analysis/README.md)` for the output columns.
 
 ### 5. Collect and fact-check news coverage
 
@@ -374,11 +406,12 @@ From the repository root, rebuild the evidence index and run the policy-grounded
 python news_analysis/src/build_evidence_index.py
 python news_analysis/src/eval_retrieval.py
 python news_analysis/src/run_fact_checker.py --verify
+python news_analysis/src/export_ui_csvs.py --max-articles N
 python news_analysis/src/flatten_results_csv.py
 python -m pytest -c misc/pytest.ini news_analysis/tests -q
 ```
 
-The fact checker extracts claims and viewpoints, retrieves proposed-rule, final-rule, and court evidence with BM25, and preserves citations plus unresolved/review states. To regenerate exports from an existing completed run without model calls, use `python news_analysis/src/run_fact_checker.py --export-existing`. See [`news_analysis/README.md`](news_analysis/README.md) for the UI contract and audit artifacts.
+The fact checker extracts claims and viewpoints, retrieves proposed-rule, final-rule, and court evidence with BM25, and preserves citations plus unresolved/review states. To regenerate exports from an existing completed run without model calls, use `python news_analysis/src/run_fact_checker.py --export-existing`. See `[news_analysis/README.md](news_analysis/README.md)` for the UI contract and audit artifacts.
 
 ### 6. Analyze video claims
 
@@ -390,7 +423,7 @@ python transcribe_videos.py --file video_urls.txt
 python claim_check.py transcripts/transcripts.csv
 ```
 
-Discovery is optional. Transcription runs locally with Whisper; claim extraction and verdict generation use the configured Azure model. The presentation-facing output is `video_claims_for_ui.csv`, which removes email addresses and phone numbers and separates accuracy at publication from whether a supported claim is still current. See [`video_analysis/README.md`](video_analysis/README.md) for setup, output fields, and review guidance.
+Discovery is optional. Transcription runs locally with Whisper; claim extraction and verdict generation use the configured Azure model. The presentation-facing output is `video_claims_for_ui.csv`, which removes email addresses and phone numbers and separates accuracy at publication from whether a supported claim is still current. See `[video_analysis/README.md](video_analysis/README.md)` for setup, output fields, and review guidance.
 
 ### 7. Build the analyst briefing
 
@@ -413,6 +446,8 @@ from the committed outputs.
 - **Human review is part of the system:** automated checks support, but do not replace, policy or legal judgment.
 - **Privacy is a pipeline boundary:** comment models consume `comment_clean`, and the video UI consumes the privacy-cleaned claim export rather than internal debugging output.
 
+
+
 ## Responsible use and limitations
 
 - The policy outputs are AI-assisted interpretations. Confirm conclusions against the official Federal Register documents.
@@ -423,6 +458,8 @@ from the committed outputs.
 - GDELT results reflect the configured queries, dates, indexing, and article availability; they are not a complete census of coverage.
 - News verdicts depend on claim extraction and the available evidence index. Unresolved, conflicting, and review-required states must remain visible in downstream interfaces.
 - The video analysis is a small English-language sample. Transcripts, claim boundaries, verdicts, and currency labels require analyst review.
+
+
 
 ## Technology
 

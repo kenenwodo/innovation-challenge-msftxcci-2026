@@ -1,0 +1,17 @@
+# fetch_regulations.py uses only the Python standard library (3.9+).
+# Add third-party packages here as the project grows.
+
+# News fact-checker prototype
+openai>=2,<3
+python-dotenv
+pytest
+pypdf
+
+# news_analysis: GDELT search and article extraction
+beautifulsoup4
+pandas
+requests
+trafilatura
+
+# news_analysis: BM25 evidence search
+rank-bm25
