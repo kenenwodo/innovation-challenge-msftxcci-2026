@@ -1,6 +1,6 @@
 # PolicyLens
 
-**Evidence-grounded regulatory intelligence connecting policy text, public response, and news coverage.**
+**Evidence-grounded regulatory intelligence connecting policy text, public response, news and media coverage.**
 
 **Built on Microsoft Foundry:** policy extraction, version comparison and claim checking run on Azure OpenAI (`gpt-4.1-mini`) deployed in Microsoft Foundry.
 
