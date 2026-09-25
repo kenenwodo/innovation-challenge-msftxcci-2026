@@ -1,0 +1,259 @@
+{
+  "about": "Retrieval test cases for evidence_index.py. Each query is a sentence copied from an article in gdelt_news_articles_v3-112.csv. A case passes at k if any of the top-k hits is one of evidence_ids or has a CFR citation starting with one of cfr_prefixes. These only test whether the right paragraph is found, not whether the claim is true; notes flag claims that are useful later as verification test cases. key_facts lists the key facts (key_facts.json) that should come back from search_facts.",
+  "cases": [
+    {
+      "id": "grace-60-30",
+      "query": "Shorter grace period: F-1 students will have only 30 days after completing their studies, down from the current 60 days, to prepare for departure or transition.",
+      "evidence_ids": [
+        "final:II.C/p21",
+        "proposed:III.B/p16"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(f)(5)(v)"
+      ],
+      "key_facts": [
+        "KF-GRACE-01"
+      ]
+    },
+    {
+      "id": "four-years-or-program",
+      "query": "For 'F' visas of international students, the proposed regulation would limit the visa period to four years or the program end date, whichever is shorter, plus a 30-day grace period.",
+      "evidence_ids": [
+        "final:II.C/p13",
+        "proposed:III.B/p11"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(f)(5)(i)"
+      ],
+      "key_facts": [
+        "KF-ADMIT-01"
+      ]
+    },
+    {
+      "id": "four-years-then-extension",
+      "query": "Fixed admission periods: F and J visa holders will now be admitted for a maximum of four years, after which they must apply to DHS for an extension of stay.",
+      "evidence_ids": [
+        "final:II.C/p13",
+        "proposed:III.B/p11"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(f)(5)(i)",
+        "8 CFR 214.2(j)(1)(ii)",
+        "8 CFR 214.2(f)(7)"
+      ],
+      "key_facts": [
+        "KF-ADMIT-01",
+        "KF-ADMIT-02",
+        "KF-EOS-01"
+      ]
+    },
+    {
+      "id": "extension-uscis",
+      "query": "If anyone needs to stay longer, they would have to apply for an extension through US Citizenship and Immigration Services (USCIS).",
+      "evidence_ids": [
+        "final:II.C/p6",
+        "proposed:III.B/p6"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(f)(7)",
+        "8 CFR 214.2(j)(1)(iv)",
+        "8 CFR 214.1(c)(2)"
+      ],
+      "key_facts": [
+        "KF-EOS-01"
+      ]
+    },
+    {
+      "id": "i-visa-240",
+      "query": "Cap on I visa holders: Representatives of foreign information media will be restricted to a 240-day stay, with some exceptions for those from the People's Republic of China.",
+      "evidence_ids": [
+        "final:II.C/p27",
+        "proposed:III.B/p21"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(i)(3)"
+      ],
+      "key_facts": [
+        "KF-I-01"
+      ]
+    },
+    {
+      "id": "china-90",
+      "query": "Chinese nationals on journalist visas would face an even stricter cap of 90 days.",
+      "evidence_ids": [],
+      "cfr_prefixes": [
+        "8 CFR 214.2(i)(3)(ii)",
+        "8 CFR 214.2(i)(5)(iii)"
+      ],
+      "key_facts": [
+        "KF-I-02"
+      ]
+    },
+    {
+      "id": "language-24-hs-12",
+      "query": "English language students would be allowed a maximum of 24 months, while public high school students would be limited to 12 months, as reported by Fragomen.",
+      "evidence_ids": [
+        "final:II.C/p24",
+        "proposed:III.B/p18"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(f)(5)(i)(A)",
+        "8 CFR 214.2(f)(5)(i)(C)"
+      ],
+      "key_facts": [
+        "KF-LANG-01",
+        "KF-HS-01"
+      ]
+    },
+    {
+      "id": "transfer-limits",
+      "query": "Berger notes that, under the rule, a student's ability to transfer to a new school in the first year of a program or to another graduation program will become limited.",
+      "evidence_ids": [
+        "final:II.C/p14",
+        "final:II.C/p15",
+        "final:II.C/p16",
+        "proposed:III.B/p12",
+        "proposed:III.B/p13"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(f)(5)(ii)",
+        "8 CFR 214.2(f)(8)(i)"
+      ],
+      "key_facts": [
+        "KF-PROG-01",
+        "KF-PROG-02"
+      ]
+    },
+    {
+      "id": "transition-current-holders",
+      "query": "Current non-immigrant visa holders will transition to the new system automatically, with their stay generally remaining valid until the conclusion of their current program, not exceeding four years from the effective date.",
+      "evidence_ids": [
+        "final:II.C/p9"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.1(m)(1)"
+      ],
+      "key_facts": [
+        "KF-TRANS-01"
+      ]
+    },
+    {
+      "id": "unlawful-presence-immediate",
+      "query": "Under the new rule, unlawful presence would start immediately after the fixed admission period ends.",
+      "docs": [
+        "final"
+      ],
+      "evidence_ids": [
+        "final:II.A/p10",
+        "final:V.B/p12",
+        "final:V.E.2/p3",
+        "final:V.F.3/p7",
+        "final:V.F.5/p24",
+        "final:V.H.3/p4"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(f)(7)(vii)",
+        "8 CFR 214.2(f)(5)(viii)"
+      ],
+      "key_facts": [
+        "KF-EOS-06",
+        "KF-UP-01"
+      ],
+      "note": "Later verification case: omits that a timely filed extension keeps the student in authorized stay (KF-EOS-04)."
+    },
+    {
+      "id": "congressional-review",
+      "query": "The rule, which still requires congressional review before taking effect, is expected to significantly impact students enrolled in longer academic programmes.",
+      "docs": [
+        "final"
+      ],
+      "evidence_ids": [
+        "final:FRONT.DATES/p1",
+        "final:VI.D/p1"
+      ],
+      "cfr_prefixes": [],
+      "key_facts": [
+        "KF-DATE-03"
+      ],
+      "note": "Herald Goa, 2026-07-16. Later verification case: largely supported by FRONT.DATES (major rule subject to congressional review)."
+    },
+    {
+      "id": "effective-60-days",
+      "query": "The rule will go into effect 60 days after publication in the Federal Register.",
+      "docs": [
+        "final"
+      ],
+      "evidence_ids": [
+        "final:FRONT.DATES/p1",
+        "final:VI.D/p1"
+      ],
+      "cfr_prefixes": [],
+      "key_facts": [
+        "KF-DATE-03"
+      ]
+    },
+    {
+      "id": "comments-22000",
+      "query": "The rule was proposed in August 2025 and changed little in the final rule, despite receiving almost 22,000 comments.",
+      "docs": [
+        "final"
+      ],
+      "tiers": [
+        "A",
+        "B",
+        "D"
+      ],
+      "evidence_ids": [
+        "final:II.B/p1",
+        "final:II.C/p1"
+      ],
+      "cfr_prefixes": [],
+      "key_facts": [
+        "KF-COMM-01"
+      ]
+    },
+    {
+      "id": "opt-no-extension",
+      "query": "People working on OPT or STEM OPT before the rule becomes final will not have to file for an extension of stay to remain on OPT or STEM OPT.",
+      "evidence_ids": [
+        "final:II.C/p7"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.1(m)(1)(i)",
+        "8 CFR 214.1(m)(2)"
+      ],
+      "key_facts": [
+        "KF-OPT-01"
+      ]
+    },
+    {
+      "id": "depart-30-after-opt",
+      "query": "International students would be allowed 30 days to depart from the date they complete their coursework, authorized practical training or four-year maximum admission period, or the end date of Optional Practical Training or STEM OPT.",
+      "evidence_ids": [
+        "final:II.C/p21",
+        "proposed:III.B/p16"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(f)(5)(v)"
+      ],
+      "key_facts": [
+        "KF-GRACE-01"
+      ]
+    },
+    {
+      "id": "four-years-including-opt",
+      "query": "For F-1 students, the maximum stay would be four years, including optional practical training, followed by a 30-day grace period.",
+      "evidence_ids": [
+        "final:II.C/p13",
+        "proposed:III.B/p11"
+      ],
+      "cfr_prefixes": [
+        "8 CFR 214.2(f)(5)(i)"
+      ],
+      "key_facts": [
+        "KF-ADMIT-01"
+      ],
+      "note": "Later verification case: the rule grants OPT as additional time (214.2(f)(5)(i)), so 'including OPT' looks like a misreading."
+    }
+  ]
+}
