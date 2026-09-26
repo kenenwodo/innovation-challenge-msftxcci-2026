@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Policy & Public Sentiment Analyst</title>
+  <style>
+    :root {
+      --navy-950: #0a1120;
+      --navy-900: #0f1c34;
+      --navy-800: #1a2d52;
+      --blue-600: #2563eb;
+      --blue-500: #3b82f6;
+      --blue-50: #eff6ff;
+      --crimson-600: #dc2626;
+      --crimson-50: #fef2f2;
+      --emerald-600: #059669;
+      --emerald-50: #ecfdf5;
+      --amber-600: #d97706;
+      --amber-50: #fffbeb;
+      --purple-600: #7c3aed;
+      --purple-50: #f5f3ff;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-700: #334155;
+      --gray-900: #0f172a;
+      --card-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.35), 0 6px 12px -4px rgba(0, 0, 0, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    
+    body {
+      background: linear-gradient(180deg, rgba(10, 17, 32, 0.65) 0%, rgba(15, 28, 52, 0.82) 40%, rgba(10, 17, 32, 0.94) 100%),
+                  url('virginiacapitalbuilding.jpg') center top / cover no-repeat fixed;
+      color: var(--gray-900);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    .gov-banner {
+      background: rgba(10, 17, 32, 0.95);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      padding: 12px 36px;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--blue-600);
+      position: relative;
+      z-index: 10;
+    }
+    .gov-badge {
+      background: var(--blue-600);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 11px;
+      margin-right: 8px;
+    }
+
+    .view-page { display: none; padding: 0 0 100px 0; width: 100%; flex: 1; }
+    .view-page.active-page { display: block; }
+
+    /* Scroll Float-In Animations */
+    .float-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .float-on-scroll.is-visible { 
+      opacity: 1 !important; 
+      transform: translateY(0) !important; 
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    /* HERO */
+    .hero-container {
+      position: relative;
+      background: transparent;
+      color: #fff;
+      padding: 80px 24px 60px 24px;
+      text-align: center;
+    }
+    .hero { 
+      max-width: 900px; 
+      margin: 0 auto; 
+      position: relative; 
+      z-index: 2; 
+      opacity: 1;
+    }
+    .hero-eyebrow {
+      color: #93c5fd;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+    .hero h1 {
+      font-size: 46px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.8);
+    }
+    .hero p {
+      font-size: 18px;
+      color: #e2e8f0;
+      line-height: 1.7;
+      max-width: 780px;
+      margin: 0 auto;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+
+    .home-content {
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 3;
+    }
+    
+    .problem-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+      width: 100%;
+    }
+    .problem-card {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: left;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .problem-card:hover {
+      background: #ffffff;
+      border-color: var(--blue-600);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.45);
+    }
+    .problem-tag { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--blue-600); }
+    .problem-card h3 { font-size: 17px; font-weight: 800; color: var(--navy-900); }
+    .problem-card p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+
+    .solution-section {
+      max-width: 1100px;
+      margin: 0 auto 60px auto;
+      text-align: center;
+    }
+    .solution-header-text { max-width: 860px; margin: 0 auto 28px auto; }
+    .solution-eyebrow {
+      font-size: 12.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #93c5fd;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+    .solution-header-text h3 {
+      font-size: 32px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+    }
+    .solution-header-text p {
+      font-size: 16px;
+      color: #e2e8f0;
+      line-height: 1.7;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .solution-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      text-align: left;
+    }
+    @media (max-width: 1024px) { .solution-pillars-grid { grid-template-columns: 1fr; } }
+    .solution-pillar-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(14px);
+      border: none;
+      border-radius: 12px;
+      padding: 24px 22px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+    .solution-pillar-card:hover {
+      background: #ffffff;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.45);
+    }
+    .solution-pillar-card strong { font-size: 14.5px; font-weight: 800; color: var(--navy-950); line-height: 1.35; }
+    .solution-pillar-card p { font-size: 13px; color: var(--gray-500); line-height: 1.55; }
+
+    .docket-select-section { width: 100%; margin-bottom: 60px; }
+    .docket-select-section h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      text-align: center;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+    .docket-subheading {
+      font-size: 14.5px;
+      color: #cbd5e1;
+      text-align: center;
+      margin-bottom: 26px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+    .docket-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      width: 100%;
+    }
+    @media (max-width: 1024px) {
+      .docket-grid { grid-template-columns: 1fr; }
+      .problem-box { grid-template-columns: 1fr; }
+    }
+
+    .docket-card {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+      padding: 28px 24px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 330px;
+    }
+    .docket-card:hover:not(.locked-card) {
+      background: #ffffff;
+      border-color: var(--blue-600);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.45);
+    }
+    .locked-card { opacity: 0.88; cursor: not-allowed; }
+    
+    .docket-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .status-tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
+    .tag-blocked { background: var(--crimson-50); color: var(--crimson-600); border: 1px solid rgba(220,38,38,0.2); }
+    .tag-open { background: var(--emerald-50); color: var(--emerald-600); border: 1px solid rgba(5,150,105,0.2); }
+    
+    .btn-inspect {
+      margin-top: 22px;
+      background: var(--navy-900);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-inspect:hover:not(.btn-locked) { background: var(--blue-600); }
+    .btn-locked { background: var(--gray-500); cursor: not-allowed; }
+
+    /* WORKBENCH VIEW */
+    .workbench-wrap { max-width: 1280px; margin: 0 auto; padding: 40px 24px 0 24px; }
+    .workbench-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-back { background: transparent; border: none; color: #93c5fd; font-size: 14px; font-weight: 700; cursor: pointer; margin-bottom: 10px; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-back:hover { text-decoration: underline; }
+
+    /* FIXED LAYOUT: align-items: start keeps height strictly governed by the left column */
+    .workbench-layout { 
+      display: grid; 
+      grid-template-columns: 1.8fr 1.2fr; 
+      gap: 32px; 
+      align-items: start; 
+      margin-bottom: 40px; 
+      position: relative;
+    }
+    .modules-container { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 28px; 
+      min-width: 0; 
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: var(--card-shadow);
+      min-width: 0;
+    }
+    .panel-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; border-bottom: 1px solid var(--gray-100); padding-bottom: 12px; }
+    .panel-tagline { font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--blue-600); letter-spacing: 0.05em; margin-bottom: 4px; }
+    .panel-header h3 { font-size: 18px; font-weight: 800; color: var(--navy-900); }
+
+    .provision-item { border: 1px solid var(--gray-200); border-left: 4px solid var(--navy-900); padding: 14px 18px; border-radius: 8px; margin-bottom: 10px; background: var(--gray-50); }
+    .provision-item strong { color: var(--navy-950); font-size: 13.5px; }
+    .provision-item p { font-size: 13px; color: var(--gray-500); margin-top: 4px; line-height: 1.5; }
+
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .stat-card { background: var(--gray-100); padding: 16px 12px; border-radius: 10px; text-align: center; }
+    .stat-val { font-size: 24px; font-weight: 900; }
+    .stat-desc { font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--gray-500); margin-top: 4px; }
+
+    /* SECTION 3: INGESTED NEWS ARTICLES FEED & ROLLING STREAM */
+    .article-filter-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-art-filter {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      padding: 5px 12px;
+      border-radius: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-art-filter.active-art-filter {
+      background: var(--navy-900);
+      color: #fff;
+      border-color: var(--navy-900);
+    }
+    
+    .articles-stream-viewport {
+      height: 310px;
+      overflow: hidden;
+      position: relative;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .articles-stream-track {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 14px;
+      animation: articleStreamRoll 65s linear infinite;
+    }
+    .articles-stream-viewport:hover .articles-stream-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes articleStreamRoll {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    .article-card-stream {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .article-card-stream:hover {
+      border-color: var(--blue-600);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.08);
+      transform: translateY(-2px);
+    }
+
+    .article-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+    .article-source {
+      font-weight: 800;
+      color: var(--navy-950);
+      text-transform: uppercase;
+      font-size: 10.5px;
+    }
+
+    /* ARTICLE GROUNDING SCORE PILL (RENAMED TO Grounding Score, IN %) */
+    .article-score-pill {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 5px;
+      background: #eff6ff;
+      color: var(--blue-600);
+      border: 1px solid rgba(37,99,235,0.25);
+      letter-spacing: 0.02em;
+    }
+
+    /* THE STRICT 4 LABELS USED ON CLAIMS/EVIDENCE */
+    .article-pill {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .pill-contradicted { background: var(--crimson-50); color: var(--crimson-600); border: 1px solid rgba(220,38,38,0.25); }
+    .pill-supported { background: var(--emerald-50); color: var(--emerald-600); border: 1px solid rgba(5,150,105,0.25); }
+    .pill-partially { background: var(--amber-50); color: var(--amber-600); border: 1px solid rgba(217,119,6,0.25); }
+    .pill-unresolved { background: var(--purple-50); color: var(--purple-600); border: 1px solid rgba(124,58,237,0.25); }
+
+    .article-title-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy-900);
+      text-decoration: none;
+      line-height: 1.4;
+    }
+    .article-title-link:hover {
+      color: var(--blue-600);
+      text-decoration: underline;
+    }
+    .article-claim {
+      font-size: 12px;
+      color: var(--gray-600);
+      line-height: 1.45;
+    }
+    .btn-detail-analysis {
+      align-self: flex-start;
+      margin-top: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue-600);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+    }
+    .btn-detail-analysis:hover {
+      text-decoration: underline;
+      color: var(--navy-900);
+    }
+
+    /* SECTION 4: MULTIMODAL VIDEO & SPEECH VERIFICATION */
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      background: var(--gray-100);
+      padding: 4px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--gray-700);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .tab-btn.active-tab {
+      background: #fff;
+      color: var(--navy-950);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+    .tab-content { display: none; width: 100%; min-width: 0; }
+    .tab-content.active-content { display: block; }
+
+    .verdict-pill {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .verdict-supported { background: var(--emerald-50); color: var(--emerald-600); border: 1px solid rgba(5,150,105,0.25); }
+    .verdict-partly { background: var(--amber-50); color: var(--amber-600); border: 1px solid rgba(217,119,6,0.25); }
+    .verdict-contradicted { background: var(--crimson-50); color: var(--crimson-600); border: 1px solid rgba(220,38,38,0.25); }
+    .verdict-norule { background: var(--purple-50); color: var(--purple-600); border: 1px solid rgba(124,58,237,0.25); }
+    .verdict-other { background: var(--gray-100); color: var(--gray-500); border: 1px solid var(--gray-200); }
+
+    .currency-pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .curr-current { background: #eff6ff; color: var(--blue-600); border: 1px solid rgba(37,99,235,0.2); }
+    .curr-outdated { background: #fef3c7; color: #b45309; border: 1px solid rgba(180,83,9,0.25); }
+
+    .claims-filter-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .filter-chip {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      color: var(--gray-700);
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.15s;
+    }
+    .filter-chip.active-chip {
+      background: var(--navy-900);
+      color: #fff;
+      border-color: var(--navy-900);
+    }
+
+    .claims-stream-viewport {
+      height: 380px;
+      overflow: hidden;
+      position: relative;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .claims-stream-track {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 14px;
+      animation: claimsStreamRoll 70s linear infinite;
+    }
+    .claims-stream-viewport:hover .claims-stream-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes claimsStreamRoll {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    .claim-card {
+      background: #ffffff;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .claim-card:hover {
+      background: #fff;
+      border-color: var(--blue-600);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.08);
+    }
+    .claim-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .claim-badges {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .claim-video-source {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--navy-900);
+      text-transform: uppercase;
+    }
+    .claim-statement {
+      font-size: 13px;
+      color: var(--navy-950);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    .claim-quote {
+      font-size: 12px;
+      color: var(--gray-700);
+      font-style: italic;
+      background: rgba(0,0,0,0.02);
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+    .claim-statute-match {
+      font-size: 11.5px;
+      color: var(--gray-600);
+      line-height: 1.4;
+      background: #fff;
+      border-left: 3px solid var(--blue-600);
+      padding: 6px 10px;
+      border-radius: 0 4px 4px 0;
+      margin-top: 2px;
+    }
+
+    .url-input-container {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .url-input {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--gray-200);
+      font-size: 13px;
+      outline: none;
+    }
+    .url-input:focus { border-color: var(--blue-600); }
+    .btn-url-run {
+      background: var(--navy-900);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
+
+    .live-mic-terminal {
+      background: var(--navy-950);
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .mic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-mic-toggle {
+      background: var(--crimson-600);
+      border: none;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .btn-mic-toggle.recording-active {
+      background: #047857;
+    }
+    .rec-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      display: inline-block;
+    }
+    .recording-active .rec-dot {
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.25; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .mic-controls-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background: rgba(255,255,255,0.06);
+      padding: 8px 12px;
+      border-radius: 8px;
+      flex-wrap: wrap;
+    }
+    .mic-select {
+      background: var(--navy-900);
+      color: #fff;
+      border: 1px solid var(--navy-800);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      outline: none;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    /* RIGHT COLUMN: RIGIDLY CLAMPED TO LEFT COLUMN HEIGHT */
+    .comments-column-panel {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+    .comments-col-header {
+      padding: 22px 24px 16px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      background: rgba(255, 255, 255, 0.98);
+      z-index: 10;
+      flex-shrink: 0;
+    }
+    .comments-col-meta {
+      font-size: 12px;
+      color: var(--gray-500);
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+
+    .comments-col-viewport {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      position: relative;
+      background: rgba(248, 250, 252, 0.7);
+      cursor: pointer;
+    }
+    .comments-rolling-track {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 16px 20px;
+      animation: streamRoll 150s linear infinite;
+    }
+    .comments-col-viewport:hover .comments-rolling-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes streamRoll {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    .comment-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .comment-card:hover {
+      border-color: var(--blue-600);
+      transform: translateY(-2px);
+    }
+    .comment-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+    .comment-text { font-size: 13px; line-height: 1.5; color: var(--gray-700); }
+    .badge-emotion {
+      background: #f1f5f9;
+      color: var(--gray-700);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 13px; line-height: 1.5; }
+    .diff-v1 { background: var(--crimson-50); border: 1px solid rgba(220,38,38,0.2); padding: 16px; border-radius: 8px; }
+    .diff-v2 { background: var(--emerald-50); border: 1px solid rgba(5,150,105,0.2); padding: 16px; border-radius: 8px; }
+
+    .section-citation {
+      margin-top: 16px;
+      padding: 10px 14px;
+      background: var(--blue-50);
+      border-left: 3px solid var(--blue-600);
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+    }
+    .citation-label { font-weight: 800; color: var(--blue-600); text-transform: uppercase; font-size: 10.5px; margin-right: 8px; letter-spacing: 0.04em; }
+
+    /* DETAIL ANALYSIS MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10, 17, 32, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-overlay.modal-open {
+      display: flex;
+    }
+    .modal-card {
+      background: #ffffff;
+      border-radius: 14px;
+      max-width: 760px;
+      width: 100%;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalPop {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: var(--gray-50);
+    }
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-weight: 700;
+    }
+    .modal-close-btn:hover { color: var(--navy-950); }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(10, 17, 32, 0.92);
+      backdrop-filter: blur(12px);
+      padding: 36px 24px;
+      text-align: center;
+      color: var(--gray-400);
+      font-size: 13px;
+      margin-top: auto;
+    }
+    .creators-tag { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; font-weight: 700; letter-spacing: 0.15em; color: #fff; }
+    .creators-bullet { color: var(--blue-500); }
+  </style>
+</head>
+<body>
+
+  <div class="gov-banner">
+    <div><span class="gov-badge">Microsoft & CCI Hackathon</span> Official Policy Intelligence Sandbox</div>
+    <div>Azure AI Foundry • GDELT Ingestion • Regulations.gov API</div>
+  </div>
+
+  <!-- PAGE 1: HOME SCREEN -->
+  <main id="page-home" class="view-page active-page">
+    
+    <div class="hero-container">
+      <div class="hero">
+        <div class="hero-eyebrow">Commonwealth & Federal Regulatory Engine</div>
+        <h1 style="color: #ffffff;">Policy and Public Sentiment Analyst</h1>
+        <p>Bridging authoritative statutory language with citizen feedback, investigative journalism, and multimodal live speech to evaluate regulatory impacts objectively.</p>
+      </div>
+    </div>
+
+    <div class="home-content">
+      <div class="problem-box">
+        <div class="problem-card">
+          <div class="problem-tag">Challenge • Complexity</div>
+          <h3>The Regulatory Volume Gap</h3>
+          <p>Federal registers contain hundreds of pages of legal text. Analysts spend weeks parsing changes manually while public commenting windows tick away.</p>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-tag">Challenge • Granularity</div>
+          <h3>Misleading Sentiment Scores</h3>
+          <p>Simple positive/negative scores obscure legal rationale. We classify core emotional drivers, explicit stances, and preserved minority viewpoints.</p>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-tag">Challenge • Integrity</div>
+          <h3>Fact-Checking Media & Speech</h3>
+          <p>News reports and verbal commentary regularly distort legal mandates. We evaluate claims against codified statutes in real-time.</p>
+        </div>
+      </div>
+
+      <div class="solution-section float-on-scroll">
+        <div class="solution-header-text">
+          <div class="solution-eyebrow">Our Solution • The Intelligence Pipeline</div>
+          <h3>An Evidence-Grounded Regulatory Analyst</h3>
+          <p>
+            Our platform integrates large language model statutory extraction with fine-grained public sentiment and real-time multimodal fact-checking, transforming dense regulatory proceedings into traceable, data-backed insights.
+          </p>
+        </div>
+
+        <div class="solution-pillars-grid">
+          <div class="solution-pillar-card">
+            <strong>1. Automated Statutory Extraction</strong>
+            <p>Azure AI Foundry synthesizes hundreds of regulatory pages into plain-language codified provisions with legal cross-references.</p>
+          </div>
+          <div class="solution-pillar-card">
+            <strong>2. Nuanced Emotional Stance Analysis</strong>
+            <p>HuggingFace transformers cluster thousands of citizen comments into emotional drivers (Anxiety, Frustration, Support) and core concerns.</p>
+          </div>
+          <div class="solution-pillar-card">
+            <strong>3. Multimodal Speech & Video Verification</strong>
+            <p>Evaluates 111 extracted claims across 10 external video broadcasts against codified CFR rules with dual currency tags.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="docket-select-section float-on-scroll">
+        <h2>Get Started: Choose an Active Regulatory Docket</h2>
+        <p class="docket-subheading">Select a live regulatory docket below to launch the deep-dive analysis workbench.</p>
+        
+        <div class="docket-grid">
+          <div class="docket-card" onclick="goToDocket('ICEB-2025-0001-0001')">
+            <div>
+              <div class="docket-meta">
+                <span style="font-size:12px; font-weight:700; color:var(--gray-500);">DHS • ICEB-2025-0001-0001</span>
+                <span class="status-tag tag-blocked">Preliminary Injunction</span>
+              </div>
+              <h3 style="font-size:18px; color:var(--navy-950); margin-bottom:10px;">Fixed Time Period of Admission (F, J, I Visas)</h3>
+              <p style="font-size:13.5px; color:var(--gray-500); line-height:1.6;">
+                Replaces "Duration of Status" with 2-to-4 year fixed periods for nonimmigrant academic students, requiring formal USCIS extension filings.
+              </p>
+            </div>
+            <button class="btn-inspect">View Analysis Workbench →</button>
+          </div>
+
+          <div class="docket-card locked-card" onclick="alert('This Commonwealth docket is locked for demo evaluation. Please select the DHS ICEB docket.')">
+            <div>
+              <div class="docket-meta">
+                <span style="font-size:12px; font-weight:700; color:var(--gray-500);">VA DEQ • 9 VAC 25-260-185</span>
+                <span class="status-tag tag-open">Public Comment Open</span>
+              </div>
+              <h3 style="font-size:18px; color:var(--navy-950); margin-bottom:10px;">Chesapeake Bay Nutrient & Dissolved Oxygen Standards</h3>
+              <p style="font-size:13.5px; color:var(--gray-500); line-height:1.6;">
+                Proposed numeric chlorophyll-a criteria and total nitrogen allocation caps for municipal dischargers across lower James and Potomac basins.
+              </p>
+            </div>
+            <button class="btn-inspect btn-locked">Locked (Demo Only)</button>
+          </div>
+
+          <div class="docket-card locked-card" onclick="alert('This Commonwealth docket is locked for demo evaluation. Please select the DHS ICEB docket.')">
+            <div>
+              <div class="docket-meta">
+                <span style="font-size:12px; font-weight:700; color:var(--gray-500);">VA DEQ • 9 VAC 5-140-5100</span>
+                <span class="status-tag tag-blocked">In Litigation / Stayed</span>
+              </div>
+              <h3 style="font-size:18px; color:var(--navy-950); margin-bottom:10px;">Regional Greenhouse Gas Initiative (RGGI) Compliance</h3>
+              <p style="font-size:13.5px; color:var(--gray-500); line-height:1.6;">
+                State Air Pollution Control Board regulatory proceedings regarding carbon allowance auctions and compliance obligations for power plants.
+              </p>
+            </div>
+            <button class="btn-inspect btn-locked">Locked (Demo Only)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- PAGE 2: ANALYSIS WORKBENCH -->
+  <main id="page-workbench" class="view-page">
+    <div class="workbench-wrap">
+      <div class="workbench-header float-on-scroll">
+        <div>
+          <button class="btn-back" onclick="goToHome()">← Return to Docket Catalog</button>
+          <h1 style="font-size: 26px; color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.6);">DHS ICEB-2025-0001-0001: Policy Workbench</h1>
+          <p style="font-size: 14px; color: #cbd5e1; margin-top: 4px;">Fixed Admission Periods & Extension Procedures • 8 CFR 214.2(f)</p>
+        </div>
+        <span class="status-tag tag-blocked" style="font-size: 12px; padding: 6px 14px;">Preliminary Injunction Granted</span>
+      </div>
+
+      <!-- WORKBENCH 2-COLUMN LAYOUT -->
+      <div class="workbench-layout">
+        
+        <!-- LEFT COLUMN: MAIN POLICY & FACT-CHECKING PANELS -->
+        <div class="modules-container">
+          
+          <!-- Consolidated Policy Provisions -->
+          <div class="panel float-on-scroll">
+            <div class="panel-header">
+              <div>
+                <div class="panel-tagline">Codified Provisions • Legal Baseline</div>
+                <h3>Consolidated Policy Provisions</h3>
+              </div>
+              <span style="font-size: 12px; color: var(--blue-600); font-weight: 700;">13 Provisions Ingested</span>
+            </div>
+            <div class="provision-item">
+              <strong>Provision 1: Maximum 4-Year Admission Limit</strong>
+              <p>Abolishes continuous "Duration of Status" (D/S). Standard foreign students admitted for length of program not to exceed 4 years.</p>
+            </div>
+            <div class="provision-item">
+              <strong>Provision 2: 2-Year Limited Admission Cap</strong>
+              <p>Applies 24-month limits to nationals born in countries with student overstay rates above 10% or state sponsors of terrorism.</p>
+            </div>
+            <div class="provision-item">
+              <strong>Provision 3: Reduction of Departure Grace Period</strong>
+              <p>Reduces F-1 post-graduation departure grace period from 60 calendar days down to 30 days.</p>
+            </div>
+
+            <div class="section-citation">
+              <span class="citation-label">Evidence Citation:</span>
+              <a href="https://www.federalregister.gov/d/2025-16554" target="_blank" rel="noopener noreferrer" style="color:var(--gray-700); font-weight:700; text-decoration:none;">Proposed Rule FR Doc. 2025-16554 ↗</a>
+            </div>
+          </div>
+
+          <!-- SECTION 2: SENTIMENT BREAKDOWN (PRESERVED EXACTLY) -->
+          <div class="panel float-on-scroll">
+            <div class="panel-header">
+              <div>
+                <div class="panel-tagline">Sentiment Breakdown</div>
+                <h3>Public Consensus & Emotional Impact</h3>
+              </div>
+              <span style="font-size: 12px; color: var(--blue-600); font-weight: 700;">~10,000 Comments Ingested</span>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-card">
+                <div class="stat-val" style="color: var(--crimson-600);">94.8%</div>
+                <div class="stat-desc">Opposition Stance</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-val" style="color: var(--navy-900);">68.4%</div>
+                <div class="stat-desc">Dominant: Anxiety & Frustration</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-val" style="color: var(--emerald-600);">3.2%</div>
+                <div class="stat-desc">National Oversight (Support)</div>
+              </div>
+            </div>
+
+            <div style="background: var(--gray-50); border-left: 4px solid var(--navy-900); padding: 14px 16px; border-radius: 6px; font-size: 13px;">
+              <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--blue-600); margin-bottom: 4px;">Primary Concern (BERTopic ID 0 • 7,152 Comments):</div>
+              <strong style="color: var(--navy-950);">"Fixed visa limits and loss of duration of status"</strong>
+              <p style="color: var(--gray-600); margin-top: 4px; font-size: 12.5px; line-height: 1.5;">
+                Commenters emphasize that USCIS Form I-539 adjudication delays regularly exceed 6–8 months. Forcing mandatory renewals mid-program creates critical research disruptions and accidental status violations.
+              </p>
+            </div>
+
+            <div class="section-citation">
+              <span class="citation-label">Evidence Citation:</span>
+              <a href="https://www.regulations.gov/document/ICEB-2025-0001-0001" target="_blank" rel="noopener noreferrer" style="color:var(--gray-700); font-weight:700; text-decoration:none;">Regulations.gov Docket ICEB-2025-0001 ↗</a>
+            </div>
+          </div>
+
+          <!-- SECTION 3: INGESTED NEWS MEDIA ARTICLES (STRICT 4 LABELS & % GROUNDING SCORE) -->
+          <div class="panel float-on-scroll">
+            <div class="panel-header">
+              <div>
+                <div class="panel-tagline">News Article Integrity Analysis</div>
+                <h3>Media Alignment & Reporting</h3>
+              </div>
+              <span style="font-size: 12px; color: var(--blue-600); font-weight: 700;" id="articleStreamStatus">Hover to Pause</span>
+            </div>
+
+            <!-- STRICT 4 LABELS FILTER BAR -->
+            <div class="article-filter-bar">
+              <button class="btn-art-filter active-art-filter" onclick="filterRollingArticles('all', this)">All (75)</button>
+              <button class="btn-art-filter" onclick="filterRollingArticles('Supported', this)">Supported (44)</button>
+              <button class="btn-art-filter" onclick="filterRollingArticles('Partially supported', this)">Partially Supported (29)</button>
+              <button class="btn-art-filter" onclick="filterRollingArticles('Contradicted', this)">Contradicted (5)</button>
+              <button class="btn-art-filter" onclick="filterRollingArticles('Unresolved', this)">Unresolved (15)</button>
+            </div>
+
+            <!-- CONTINUOUS ROLLING STREAM -->
+            <div class="articles-stream-viewport" id="articleRollingViewport">
+              <div class="articles-stream-track" id="articlesStreamContainer"></div>
+            </div>
+
+            <div class="section-citation">
+              <span class="citation-label">Evidence Citation:</span>
+              <a href="https://www.gdeltproject.org" target="_blank" rel="noopener noreferrer" style="color:var(--gray-700); font-weight:700; text-decoration:none;">The GDELT Project Global Media Feed & Ingested Articles Dataset ↗</a>
+            </div>
+          </div>
+
+          <!-- SECTION 4: MULTIMODAL VIDEO & SPEECH FACT-CHECKER (AUTO-SCROLLING) -->
+          <div class="panel float-on-scroll">
+            <div class="panel-header">
+              <div>
+                <div class="panel-tagline">Video & Audio Integrity Analysis</div>
+                <h3>Claims and Speech Fact-Checker</h3>
+              </div>
+              <span style="font-size: 12px; color: var(--blue-600); font-weight: 700;" id="claimsStreamStatus">Hover to Pause</span>
+            </div>
+
+            <div class="tabs-bar">
+              <button class="tab-btn active-tab" onclick="switchMediaTab('tab-batch', this)">Ingested Videos</button>
+              <button class="tab-btn" onclick="switchMediaTab('tab-url', this)">Video URL Ingestion</button>
+              <button class="tab-btn" onclick="switchMediaTab('tab-mic', this)">Live Microphone Stream</button>
+            </div>
+
+            <div id="tab-batch" class="tab-content active-content">
+              <div class="claims-filter-row">
+                <span class="filter-chip active-chip" onclick="filterClaimsStream('all', this)">All (111)</span>
+                <span class="filter-chip" onclick="filterClaimsStream('Supported', this)">Supported (67)</span>
+                <span class="filter-chip" onclick="filterClaimsStream('Not in rule text', this)">Not in Rule (19)</span>
+                <span class="filter-chip" onclick="filterClaimsStream('Partly supported', this)">Partly Supported (11)</span>
+                <span class="filter-chip" onclick="filterClaimsStream('Contradicted', this)">Contradicted (3)</span>
+                <span class="filter-chip" onclick="filterClaimsStream('Different rule', this)">Different Rule / Not Checked (11)</span>
+              </div>
+
+              <div class="claims-stream-viewport" id="claimsRollingViewport">
+                <div class="claims-stream-track" id="claimsStreamContainer"></div>
+              </div>
+            </div>
+
+            <div id="tab-url" class="tab-content">
+              <p style="font-size: 13px; color: var(--gray-500); margin-bottom: 12px;">
+                Enter a YouTube or Facebook news video URL to trigger automated Whisper transcription and factual claim verification against 8 CFR regulations:
+              </p>
+              <div class="url-input-container">
+                <input type="url" id="customVideoUrl" class="url-input" placeholder="https://www.youtube.com/watch?v=..." value="https://www.youtube.com/watch?v=pm9dk_1i4Jc" />
+                <button class="btn-url-run" onclick="analyzeSingleUrl()">Analyze Video Source</button>
+              </div>
+              <div id="urlAnalysisResult" style="display:none; background:var(--gray-50); border:1px solid var(--gray-200); border-radius:8px; padding:14px;">
+                <div style="font-size:11px; font-weight:800; color:var(--blue-600); margin-bottom:4px;">PARSED VIDEO SOURCE • LEGAL COMMENTARY ARCHIVE</div>
+                <div style="font-size:13px; color:var(--navy-950); font-weight:700;">"New F-1 Visa Rules: What happens to students already in the U.S.?"</div>
+                <div style="margin-top:8px; display:flex; gap:8px;">
+                  <span class="verdict-pill verdict-supported">Supported (5)</span>
+                  <span class="verdict-pill verdict-partly">Partly Supported (1)</span>
+                  <span class="currency-pill curr-outdated">Outdated · AI Suggestion</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="tab-mic" class="tab-content">
+              <div class="live-mic-terminal">
+                <div class="mic-header">
+                  <div>
+                    <strong style="font-size: 14px;">Live Microphone Speech Verifier</strong>
+                    <div style="font-size: 11px; opacity: 0.8; margin-top: 3px;">
+                      Click <strong>"Start Live Listening"</strong> to speak live, or select a preset statement below.
+                    </div>
+                  </div>
+                  <button class="btn-mic-toggle" id="micBtn" onclick="toggleLiveMic()">
+                    <span class="rec-dot"></span>
+                    <span id="micBtnText">Start Live Listening</span>
+                  </button>
+                </div>
+
+                <div class="mic-controls-row">
+                  <span style="font-size:11px; font-weight:700; text-transform:uppercase; color:#93c5fd;">Preset Test:</span>
+                  <select id="presetSpeechSelect" class="mic-select" onchange="loadPresetSpeech()">
+                    <option value="">-- Choose A Spoken Test Scenario --</option>
+                    <option value="max_stay">Test A (Supported): 4-year fixed admission periods capped for university programs.</option>
+                    <option value="work_ext">Test B (Contradicted): Students with extensions barred from continuing assistantships.</option>
+                    <option value="grace_pd">Test C (Contradicted): International students only get 10 days to depart after graduation.</option>
+                  </select>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; font-size: 12.5px; line-height: 1.5; min-height: 50px;" id="liveTranscriptBox">
+                  <span style="opacity: 0.6;" id="micPlaceholder">Click "Start Live Listening" and allow microphone access, or pick a preset above...</span>
+                </div>
+
+                <div id="liveVerdictOutput" style="display:none; background:#fff; color:var(--navy-950); padding:12px; border-radius:8px; font-size:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 5: REGULATORY EVOLUTION DIFF -->
+          <div class="panel float-on-scroll">
+            <div class="panel-header">
+              <div>
+                <div class="panel-tagline">Policy Responsiveness • Version Traceability</div>
+                <h3>Regulatory Evolution & Responsiveness</h3>
+              </div>
+              <span style="font-size: 12px; color: var(--emerald-600); font-weight: 700;">Public Impact Attributed</span>
+            </div>
+            <div class="diff-grid">
+              <div class="diff-v1">
+                <strong style="color: var(--crimson-600); font-size: 11px; text-transform: uppercase;">Proposed Rule (v1)</strong>
+                <p style="margin-top: 6px;">Students with pending Extension of Stay lose on-campus work eligibility the day their Form I-94 expires.</p>
+              </div>
+              <div class="diff-v2">
+                <strong style="color: var(--emerald-600); font-size: 11px; text-transform: uppercase;">Amended Final Rule (v2)</strong>
+                <p style="margin-top: 6px;">Granted automatic 240-day employment authorization extensions for timely filed Extension of Stay applications.</p>
+              </div>
+            </div>
+
+            <div class="section-citation">
+              <span class="citation-label">Evidence Citation:</span>
+              <a href="https://www.federalregister.gov/d/2026-14439" target="_blank" rel="noopener noreferrer" style="color:var(--gray-700); font-weight:700; text-decoration:none;">Final Rule FR Doc. 2026-14439 ↗</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: CLAMPED EXACTLY TO LEFT COLUMN HEIGHT (TERMINATES AT SECTION 5) -->
+        <div class="comments-column-panel float-on-scroll delay-1" id="commentsSidePanel">
+          <div class="comments-col-header">
+            <div class="panel-tagline">Ingested Citizen Evidence</div>
+            <h3 style="font-size: 18px; font-weight: 800; color: var(--navy-900);">Live Public Comment Stream</h3>
+            <div class="comments-col-meta">
+              <span style="color: var(--blue-600); font-weight: 700;" id="rollingStatusText">Hover to Pause</span>
+            </div>
+          </div>
+
+          <div class="comments-col-viewport" id="rollingViewport">
+            <div class="comments-rolling-track" id="rollingCommentsContainer"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- DETAIL ANALYSIS MODAL -->
+  <div class="modal-overlay" id="articleDetailModal" onclick="closeArticleModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <div style="font-size: 11px; font-weight: 800; color: var(--blue-600); text-transform: uppercase;" id="modalOutletName">MEDIA GROUNDING PROFILE</div>
+          <h3 style="font-size: 17px; color: var(--navy-950); margin-top: 4px;" id="modalArticleTitle">Article Sample Detail</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeArticleModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalArticleBody"></div>
+    </div>
+  </div>
+
+  <!-- Creator Footer -->
+  <footer>
+    <div>Microsoft & CCI Virtual Hackathon • Policy & Sentiment Analyst</div>
+    <div class="creators-tag">
+      <span>POLICY INTELLIGENCE PIPELINE</span>
+      <span class="creators-bullet">•</span>
+      <span>AUTOMATED STATUTORY GROUNDING ENGINE</span>
+    </div>
+  </footer>
+
+  <script>
+    // ARTICLES DATASET (Grounding % per Article, Claims & Evidence with 4 Labels)
+    const pragyaArticlesData = [
+      {
+        id: "art-1",
+        outlet: "Washington Examiner",
+        title: "DHS Mandates Immediate Expulsion of All International Academic Scholars After 24 Months",
+        groundingScore: 38, // 38%
+        link: "https://www.federalregister.gov/d/2025-16554",
+        claims: [
+          {
+            statement: "DHS mandates immediate expulsion of all international academic scholars after 24 months.",
+            evidence: "Distorts 8 CFR 214.2(f)(5). The 2-year cap is limited strictly to nationals with student overstay rates exceeding 10% or state sponsors of terrorism, not a universal expulsion mandate.",
+            evidenceLabel: "Contradicted"
+          },
+          {
+            statement: "No extensions permitted under any circumstances for graduate researchers.",
+            evidence: "Contradicted by USCIS Form I-539 extension procedures codified in 8 CFR 214.2(f)(7).",
+            evidenceLabel: "Contradicted"
+          }
+        ]
+      },
+      {
+        id: "art-2",
+        outlet: "National Law Review",
+        title: "Federal District Court Issues Preliminary Injunction Halting Duration of Status Rule",
+        groundingScore: 94, // 94%
+        link: "https://www.regulations.gov/document/ICEB-2025-0001-0001",
+        claims: [
+          {
+            statement: "Federal District Court Issues Preliminary Injunction Halting Duration of Status Rule.",
+            evidence: "Verified against court docket (No. 1:26-cv-13799-FDS, D. Mass). Injunction halts nationwide enforcement pending judicial review.",
+            evidenceLabel: "Supported"
+          }
+        ]
+      },
+      {
+        id: "art-3",
+        outlet: "Higher Ed Policy Wire",
+        title: "Universities Calculate Administrative Burden of USCIS Form I-539 Student Extension Filings",
+        groundingScore: 82, // 82%
+        link: "https://www.govinfo.gov/content/pkg/FR-2025-08-28/pdf/2025-16554.pdf",
+        claims: [
+          {
+            statement: "Institutions anticipate up to 340,000 additional annual Form I-539 filings nationwide.",
+            evidence: "Partially aligns with RIA regulatory burden disclosures in Federal Register Doc. 2025-16554 Section V, though university association models project higher peak volume.",
+            evidenceLabel: "Partially supported"
+          }
+        ]
+      },
+      {
+        id: "art-4",
+        outlet: "Immigration Current",
+        title: "Students Given 10 Days to Liquidate Leases and Exit Country Following Thesis Defenses",
+        groundingScore: 24, // 24%
+        link: "https://www.federalregister.gov/d/2026-14439",
+        claims: [
+          {
+            statement: "Students are required to liquidate leases and exit the country within 10 days of graduation.",
+            evidence: "Directly refuted by 8 CFR 214.2(f)(5)(iv), which establishes a 30-day post-completion departure grace period.",
+            evidenceLabel: "Contradicted"
+          }
+        ]
+      },
+      {
+        id: "art-5",
+        outlet: "Seyfarth Shaw Insights",
+        title: "Final Rule Incorporates 240-Day Automatic Work Authorization Extension for Timely EOS Filings",
+        groundingScore: 98, // 98%
+        link: "https://www.federalregister.gov/d/2026-14439",
+        claims: [
+          {
+            statement: "Final Rule incorporates automatic 240-day work authorization extension while EOS is pending.",
+            evidence: "Fully verified against Final Rule FR Doc. 2026-14439 amendment Section IV.B and 8 CFR 274a.12(b)(20).",
+            evidenceLabel: "Supported"
+          }
+        ]
+      },
+      {
+        id: "art-6",
+        outlet: "Chronicle of Higher Education",
+        title: "Court Order Compliance Scope Remains Uncertain Across Designated SEVIS Programs",
+        groundingScore: null, // Left as null: displays blank, NOT 0%
+        link: "https://www.regulations.gov/document/ICEB-2025-0001-0001",
+        claims: [
+          {
+            statement: "SEVIS field offices have received mixed operational instructions during the injunction window.",
+            evidence: "Cannot be verified from the published rule text or preliminary injunction order alone; pending agency compliance memorandum.",
+            evidenceLabel: "Unresolved"
+          }
+        ]
+      }
+    ];
+
+    function getLabelClass(label) {
+      if (!label) return 'pill-unresolved';
+      const clean = label.toLowerCase();
+      if (clean.includes('contradicted')) return 'pill-contradicted';
+      if (clean.includes('partially') || clean.includes('partly')) return 'pill-partially';
+      if (clean.includes('supported')) return 'pill-supported';
+      return 'pill-unresolved';
+    }
+
+    // RENAMED TO Grounding Score (IN %)
+    function formatGroundingScore(score) {
+      if (score === null || score === undefined || score === '' || isNaN(score)) {
+        return '';
+      }
+      return `${score}% Grounding Score`;
+    }
+
+    function renderRollingArticles(filter = 'all') {
+      const container = document.getElementById('articlesStreamContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      let filtered = pragyaArticlesData;
+      if (filter !== 'all') {
+        filtered = pragyaArticlesData.filter(art => {
+          return art.claims.some(c => c.evidenceLabel.toLowerCase() === filter.toLowerCase());
+        });
+      }
+
+      const streamList = [...filtered, ...filtered];
+
+      streamList.forEach(art => {
+        const scoreLabel = formatGroundingScore(art.groundingScore);
+        const scorePillHtml = scoreLabel 
+          ? `<span class="article-score-pill">${scoreLabel}</span>` 
+          : ``;
+
+        const primaryClaim = art.claims[0] ? art.claims[0].statement : art.title;
+
+        const card = document.createElement('div');
+        card.className = 'article-card-stream';
+        card.innerHTML = `
+          <div class="article-top-row">
+            <span class="article-source">${art.outlet}</span>
+            ${scorePillHtml}
+          </div>
+          <a href="${art.link}" target="_blank" rel="noopener noreferrer" class="article-title-link">
+            "${art.title}"
+          </a>
+          <div class="article-claim">
+            <strong>Claim Highlight:</strong> ${primaryClaim}
+          </div>
+          <button class="btn-detail-analysis" onclick="openArticleModal('${art.id}')">
+            Click for Detailed Analysis (${art.claims.length} Claims & Evidence) →
+          </button>
+        `;
+        container.appendChild(card);
+      });
+      syncPanelHeight();
+    }
+
+    function filterRollingArticles(category, btn) {
+      document.querySelectorAll('.btn-art-filter').forEach(b => b.classList.remove('active-art-filter'));
+      btn.classList.add('active-art-filter');
+      renderRollingArticles(category);
+    }
+
+    function openArticleModal(articleId) {
+      const art = pragyaArticlesData.find(a => a.id === articleId);
+      if (!art) return;
+
+      document.getElementById('modalOutletName').innerText = `${art.outlet} • MEDIA GROUNDING PROFILE`;
+      document.getElementById('modalArticleTitle').innerText = art.title;
+
+      const scoreDisplay = formatGroundingScore(art.groundingScore);
+
+      let claimsHtml = '';
+      art.claims.forEach((c, idx) => {
+        const labelClass = getLabelClass(c.evidenceLabel);
+
+        claimsHtml += `
+          <div style="background:var(--gray-50); border:1px solid var(--gray-200); border-radius:8px; padding:14px; display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:11px; font-weight:800; color:var(--gray-500); text-transform:uppercase;">Claim ${idx + 1}</span>
+              <span class="article-pill ${labelClass}">${c.evidenceLabel}</span>
+            </div>
+            <div style="font-size:13px; font-weight:700; color:var(--navy-950);">
+              "${c.statement}"
+            </div>
+            <div style="font-size:12px; color:var(--gray-600); background:#fff; padding:10px 12px; border-left:3px solid var(--blue-600); border-radius:0 6px 6px 0;">
+              <strong style="color:var(--navy-900);">Evidence:</strong> ${c.evidence}
+            </div>
+          </div>
+        `;
+      });
+
+      const modalScoreHtml = scoreDisplay 
+        ? `<span class="article-score-pill" style="font-size:12px; padding:4px 10px;">${scoreDisplay}</span>` 
+        : `<span style="font-size:12px; color:var(--gray-400); font-style:italic;">No Grounding Score Available</span>`;
+
+      document.getElementById('modalArticleBody').innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; background:#f8fafc; padding:12px 16px; border-radius:8px; border:1px solid var(--gray-200);">
+          <div>
+            <div style="font-size:11px; text-transform:uppercase; color:var(--gray-500); font-weight:700;">Article Grounding Score</div>
+            <div style="margin-top:4px;">${modalScoreHtml}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:11px; text-transform:uppercase; color:var(--gray-500); font-weight:700;">Analyzed Claims</div>
+            <strong style="font-size:13px; color:var(--navy-900);">${art.claims.length} Extracted Claims</strong>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size:13px; font-weight:800; text-transform:uppercase; color:var(--navy-900); letter-spacing:0.04em; margin-bottom:10px;">
+            Individual Claims & Verified Evidence
+          </h4>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            ${claimsHtml}
+          </div>
+        </div>
+      `;
+
+      document.getElementById('articleDetailModal').classList.add('modal-open');
+    }
+
+    function closeArticleModal(e) {
+      document.getElementById('articleDetailModal').classList.remove('modal-open');
+    }
+
+    const artViewport = document.getElementById('articleRollingViewport');
+    const artStatus = document.getElementById('articleStreamStatus');
+    if (artViewport && artStatus) {
+      artViewport.addEventListener('mouseenter', () => {
+        artStatus.innerText = "Paused (Hovered) · Inspecting";
+        artStatus.style.color = "var(--crimson-600)";
+      });
+      artViewport.addEventListener('mouseleave', () => {
+        artStatus.innerText = "Hover to Pause";
+        artStatus.style.color = "var(--blue-600)";
+      });
+    }
+
+    // -------------------------------------------------------------
+    // CITIZEN COMMENTS STREAM (AUTHENTIC SYDNEY / BERTopic FEED)
+    // -------------------------------------------------------------
+    const rawCommentsFeed = [
+      {
+        stance: "Oppose",
+        emotion: "Anxiety (0.89)",
+        topic: "Topic 0: Fixed visa limits",
+        id: "ICEB-2025-0001-0842",
+        text: "As a graduate researcher at UVA, my PhD program is slated for five years. Forcing biometrics and repeated I-539 filings every two years creates severe friction with international grant compliance."
+      },
+      {
+        stance: "Support",
+        emotion: "Approval (0.76)",
+        topic: "Topic 5: Program integrity",
+        id: "ICEB-2025-0001-0914",
+        text: "Mandatory fixed-term evaluations give law enforcement verifiable check-in intervals, closing long-standing overstay enforcement gaps that existed under open-ended duration of status."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Fear (0.84)",
+        topic: "Topic 0: Fixed visa limits",
+        id: "ICEB-2025-0001-1022",
+        text: "USCIS processing times for I-539 extensions currently exceed seven months. If students must file extensions mid-degree, processing backlogs will inadvertently push law-abiding scholars into unlawful status."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Frustration (0.91)",
+        topic: "Topic 1: Second degree restrictions",
+        id: "ICEB-2025-0001-2401",
+        text: "Prohibiting second degrees at the same level prevents career transitions in vital STEM specialties like data analytics and bioinformatics where rapid re-skilling is needed."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Frustration (0.88)",
+        topic: "Topic 0: Fixed visa limits",
+        id: "ICEB-2025-0001-0431",
+        text: "Reducing the grace departure period from 60 to 30 days is punitive. Graduating students cannot wrap up residential leases, sell vehicles, and ship belongings within 30 days of thesis defense."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Anxiety (0.85)",
+        topic: "Topic 4: Medical training disruption",
+        id: "ICEB-2025-0001-3180",
+        text: "Foreign medical residents on J-1 visas are critical to safety-net hospital staffing. A rigid 2-year cap without automatic extensions risks immediate patient care delivery during residency rotations."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Sadness (0.81)",
+        topic: "Topic 3: Global talent & competitiveness",
+        id: "ICEB-2025-0001-4402",
+        text: "International scholars contribute Billions to American research labs. If fixed-term barriers disincentivize top talent, researchers will choose Canadian and European academic institutions instead."
+      },
+      {
+        stance: "Support",
+        emotion: "Confidence (0.72)",
+        topic: "Topic 5: Security & domestic oversight",
+        id: "ICEB-2025-0001-5120",
+        text: "Continuous enrollment without USCIS review has allowed bad-faith visa mills to operate undetected. Setting explicit checkpoints ensures academic status remains genuine."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Frustration (0.93)",
+        topic: "Topic 2: Economic & institutional impacts",
+        id: "ICEB-2025-0001-6029",
+        text: "Small university international offices will be inundated with thousands of extension filings each semester, diverting critical advisory resources away from student advising."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Anxiety (0.87)",
+        topic: "Topic 8: Clean energy research",
+        id: "ICEB-2025-0001-6891",
+        text: "Multi-year battery storage and materials research rely on nonimmigrant doctoral candidates. Forcing biennial renewals threatens project delivery milestones under federal grants."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Fear (0.89)",
+        topic: "Topic 0: Fixed visa limits",
+        id: "ICEB-2025-0001-7214",
+        text: "Graduate dissertations inherently encounter experimental setbacks. Imposing a blanket 4-year limit ignores standard PhD time-to-degree realities across STEM disciplines."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Frustration (0.86)",
+        topic: "Topic 6: Foreign journalist limits",
+        id: "ICEB-2025-0001-7540",
+        text: "Restricting I-visa journalist stays to 240 days curtails investigative journalism and compromises press freedom by forcing foreign reporters to regularly navigate complex renewals."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Anxiety (0.83)",
+        topic: "Topic 1: Degree changes & transfers",
+        id: "ICEB-2025-0001-8105",
+        text: "Students transferring from a Master's program into a PhD program within the same institution face unnecessary visa re-adjudication hurdles despite uninterrupted lawful study."
+      },
+      {
+        stance: "Support",
+        emotion: "Approval (0.69)",
+        topic: "Topic 5: Immigration enforcement",
+        id: "ICEB-2025-0001-8340",
+        text: "Standardizing expiration dates across visas creates transparency. Students know their timeline, and DHS maintains reliable national overstay records."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Fear (0.92)",
+        topic: "Topic 0: 2-year overstay country caps",
+        id: "ICEB-2025-0001-8902",
+        text: "Penalizing students based strictly on their country of birth rather than their personal compliance history is arbitrary and discriminates against deserving scholars."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Frustration (0.89)",
+        topic: "Topic 2: Tuition & economic loss",
+        id: "ICEB-2025-0001-9122",
+        text: "Higher education is one of the United States' top service exports. Adding administrative instability will shrink international enrollment and hurt local college economies."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Anxiety (0.84)",
+        topic: "Topic 0: USCIS backlog delays",
+        id: "ICEB-2025-0001-9450",
+        text: "If biometric appointments are backlogged, students cannot travel to attend international academic conferences without abandoning their pending extension applications."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Frustration (0.90)",
+        topic: "Topic 3: U.S. competitive edge",
+        id: "ICEB-2025-0001-9721",
+        text: "Artificial intelligence and semiconductor research in American universities rely heavily on international graduate scholars. Rigid limits actively weaken technological competitiveness."
+      },
+      {
+        stance: "Support",
+        emotion: "Confidence (0.75)",
+        topic: "Topic 5: National security",
+        id: "ICEB-2025-0001-9844",
+        text: "Setting clear timeframes allows DHS to periodically reassess whether nonimmigrant visitors continue to fulfill the legitimate purposes of their admission category."
+      },
+      {
+        stance: "Oppose",
+        emotion: "Anxiety (0.88)",
+        topic: "Topic 0: Fixed visa limits",
+        id: "ICEB-2025-0001-9988",
+        text: "International undergraduate programs frequently require five years for dual majors or co-op internships. A four-year ceiling creates unwarranted financial and status insecurity."
+      }
+    ];
+
+    function renderRollingComments() {
+      const container = document.getElementById('rollingCommentsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const fullList = [...rawCommentsFeed, ...rawCommentsFeed];
+
+      fullList.forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'comment-card';
+        const tagClass = c.stance === 'Support' ? 'tag-open' : 'tag-blocked';
+        card.innerHTML = `
+          <div class="comment-card-top">
+            <span class="status-tag ${tagClass}" style="font-size:10px;">${c.stance}</span>
+            <span class="badge-emotion">${c.emotion}</span>
+          </div>
+          <p class="comment-text">"${c.text}"</p>
+          <span style="font-size:11px; color:var(--gray-400);">${c.topic} • ID: ${c.id}</span>
+        `;
+        container.appendChild(card);
+      });
+      syncPanelHeight();
+    }
+
+    // STRICT HEIGHT CLAMP: Locks Right Column Height to Left Column Height (Section 5)
+    function syncPanelHeight() {
+      const leftCol = document.querySelector('.modules-container');
+      const rightPanel = document.getElementById('commentsSidePanel');
+      if (leftCol && rightPanel) {
+        const targetHeight = leftCol.offsetHeight;
+        if (targetHeight > 0) {
+          rightPanel.style.height = targetHeight + 'px';
+          rightPanel.style.maxHeight = targetHeight + 'px';
+        }
+      }
+    }
+
+    const resizeObserver = new ResizeObserver(() => {
+      syncPanelHeight();
+    });
+
+    const viewport = document.getElementById('rollingViewport');
+    const statusText = document.getElementById('rollingStatusText');
+
+    if (viewport && statusText) {
+      viewport.addEventListener('mouseenter', () => {
+        statusText.innerText = "Paused (Hovered) · Inspecting";
+        statusText.style.color = "var(--crimson-600)";
+      });
+
+      viewport.addEventListener('mouseleave', () => {
+        statusText.innerText = "Hover to Pause";
+        statusText.style.color = "var(--blue-600)";
+      });
+    }
+
+    // -------------------------------------------------------------
+    // VIDEO CLAIMS DATASET
+    // -------------------------------------------------------------
+    const claimsDataset = [
+      {
+        speaker: "Bloomberg Television",
+        platform: "YouTube",
+        timestamp: "1:14",
+        video_link: "https://www.youtube.com/watch?v=ONXytyxMyoM&t=74s",
+        quote: "The Department of Homeland Security today finalized regulations setting fixed admission periods of up to four years for international students.",
+        claim: "DHS finalized a rule replacing duration of status with a maximum 4-year fixed admission period for standard academic students.",
+        verdict: "Supported",
+        currency: "Still current",
+        source: "AI suggestion",
+        evaluation: "8 CFR 214.2(f)(5)(i) in Final Rule FR 2026-14439 sets the standard period of admission to the program end date not to exceed 4 years."
+      },
+      {
+        speaker: "Law Office of Louis S. Haskell",
+        platform: "YouTube",
+        timestamp: "3:42",
+        video_link: "https://www.youtube.com/watch?v=pm9dk_1i4Jc&t=222s",
+        quote: "Students born in countries designated with overstay rates above 10 percent will only be permitted a two-year initial visa stay.",
+        claim: "Nationals from countries with student overstay rates above 10% receive a maximum 2-year admission period.",
+        verdict: "Supported",
+        currency: "Still current",
+        source: "AI suggestion",
+        evaluation: "Confirmed in 8 CFR 214.2(f)(5)(vi). Overstay thresholds restrict standard 4-year admission to 24 months."
+      },
+      {
+        speaker: "CSULB CIE",
+        platform: "YouTube",
+        timestamp: "2:05",
+        video_link: "https://www.youtube.com/watch?v=8wwO343OOzI&t=125s",
+        quote: "The new DHS fixed time rule is scheduled to take full legal effect across universities on September 15, 2026.",
+        claim: "The DHS fixed admission period final rule takes effect on September 15, 2026.",
+        verdict: "Supported",
+        currency: "Outdated",
+        source: "AI suggestion",
+        evaluation: "Accurate when published (FR 2026-14439 DATES section), but rendered outdated on Sept 14, 2026 when a federal court issued a preliminary injunction."
+      },
+      {
+        speaker: "Visa Guide USA",
+        platform: "YouTube",
+        timestamp: "0:48",
+        video_link: "https://www.youtube.com/watch?v=BpgN9dlK3es&t=48s",
+        quote: "All international students will be forced to leave the country permanently within 10 days of graduation.",
+        claim: "Students must depart the United States within 10 days of completing their academic degree.",
+        verdict: "Contradicted",
+        currency: "",
+        source: "",
+        evaluation: "Contradicted by 8 CFR 214.2(f)(5)(iv), which reduces the post-completion grace period from 60 days to 30 days, not 10 days."
+      },
+      {
+        speaker: "Bethel Law Group",
+        platform: "Facebook",
+        timestamp: "1:30",
+        video_link: "",
+        quote: "Judge Saylor indicated during oral arguments that DHS failed to provide adequate procedural notice under the APA.",
+        claim: "The federal judge found the DHS rulemaking rationale procedurally deficient under the Administrative Procedure Act.",
+        verdict: "Not in rule text",
+        currency: "",
+        source: "",
+        evaluation: "The text of the Federal Register rule cannot verify judicial courtroom statements or oral argument proceedings."
+      },
+      {
+        speaker: "Individual creator",
+        platform: "Facebook",
+        timestamp: "4:12",
+        video_link: "",
+        quote: "This rule also eliminates the standard 60-day grace period for H-1B specialty workers when employment ends.",
+        claim: "The DHS rule eliminates the 60-day grace period for H-1B nonimmigrant workers.",
+        verdict: "Different rule",
+        currency: "",
+        source: "",
+        evaluation: "Governed separately under 8 CFR 214.1(l)(2). ICEB-2025-0001 pertains exclusively to F, J, and I academic/exchange categories."
+      },
+      {
+        speaker: "Nova Law Group",
+        platform: "Facebook",
+        timestamp: "2:18",
+        video_link: "",
+        quote: "The final rule provides 240 days of automatic work authorization while an extension of stay application is pending with USCIS.",
+        claim: "Students who timely file for an extension of stay receive 240 days of continued on-campus work authorization.",
+        verdict: "Supported",
+        currency: "Still current",
+        source: "AI suggestion",
+        evaluation: "Verified against Final Rule amendment Section IV.B, addressing public comments on USCIS processing backlogs."
+      }
+    ];
+
+    function renderRollingClaims(filter = 'all') {
+      const container = document.getElementById('claimsStreamContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      let filtered = claimsDataset;
+      if (filter !== 'all') {
+        filtered = claimsDataset.filter(c => c.verdict === filter);
+      }
+
+      let streamList = [...filtered, ...filtered];
+      if (streamList.length < 8) {
+        streamList = [...streamList, ...filtered, ...filtered];
+      }
+
+      streamList.forEach(c => {
+        let vClass = 'verdict-other';
+        if (c.verdict === 'Supported') vClass = 'verdict-supported';
+        else if (c.verdict === 'Partly supported') vClass = 'verdict-partly';
+        else if (c.verdict === 'Contradicted') vClass = 'verdict-contradicted';
+        else if (c.verdict === 'Not in rule text') vClass = 'verdict-norule';
+
+        let currHtml = '';
+        if (c.currency) {
+          const cClass = c.currency === 'Still current' ? 'curr-current' : 'curr-outdated';
+          currHtml = `<span class="currency-pill ${cClass}">${c.currency} · ${c.source}</span>`;
+        }
+
+        const linkHtml = c.video_link 
+          ? `<a href="${c.video_link}" target="_blank" rel="noopener noreferrer" style="color:var(--blue-600); text-decoration:underline;">[${c.timestamp}] ↗</a>` 
+          : `<span>[${c.timestamp}]</span>`;
+
+        const card = document.createElement('div');
+        card.className = 'claim-card';
+        card.innerHTML = `
+          <div class="claim-meta-row">
+            <span class="claim-video-source">${c.speaker} • ${c.platform} ${linkHtml}</span>
+            <div class="claim-badges">
+              <span class="verdict-pill ${vClass}">${c.verdict}</span>
+              ${currHtml}
+            </div>
+          </div>
+          <div class="claim-statement">"${c.claim}"</div>
+          <div class="claim-quote">Quote: "${c.quote}"</div>
+          <div class="claim-statute-match">
+            <strong>Rule Verification:</strong> ${c.evaluation}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      syncPanelHeight();
+    }
+
+    function filterClaimsStream(category, chip) {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active-chip'));
+      chip.classList.add('active-chip');
+      renderRollingClaims(category);
+    }
+
+    const claimsViewport = document.getElementById('claimsRollingViewport');
+    const claimsStatus = document.getElementById('claimsStreamStatus');
+    if (claimsViewport && claimsStatus) {
+      claimsViewport.addEventListener('mouseenter', () => {
+        claimsStatus.innerText = "Paused (Hovered) · Inspecting";
+        claimsStatus.style.color = "var(--crimson-600)";
+      });
+      claimsViewport.addEventListener('mouseleave', () => {
+        claimsStatus.innerText = "Hover to Pause";
+        claimsStatus.style.color = "var(--blue-600)";
+      });
+    }
+
+    function switchMediaTab(tabId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active-tab'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active-content'));
+      btn.classList.add('active-tab');
+      document.getElementById(tabId).classList.add('active-content');
+      syncPanelHeight();
+    }
+
+    function analyzeSingleUrl() {
+      document.getElementById('urlAnalysisResult').style.display = 'block';
+      syncPanelHeight();
+    }
+
+    // -------------------------------------------------------------
+    // LIVE MICROPHONE ENGINE
+    // -------------------------------------------------------------
+    let isListening = false;
+    let recognition = null;
+    let recordedTranscript = "";
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    function initSpeechEngine() {
+      if (!SpeechRecognition) return;
+      recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+
+      recognition.onstart = () => {
+        isListening = true;
+        const btn = document.getElementById('micBtn');
+        const text = document.getElementById('micBtnText');
+        btn.classList.add('recording-active');
+        text.innerText = "Stop & Verify Speech";
+        document.getElementById('micPlaceholder').innerText = "Listening to your microphone... Speak clearly into your mic now.";
+      };
+
+      recognition.onresult = (event) => {
+        let interimText = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            recordedTranscript += event.results[i][0].transcript + ' ';
+          } else {
+            interimText += event.results[i][0].transcript;
+          }
+        }
+        document.getElementById('liveTranscriptBox').innerHTML = `
+          <span style="color:#93c5fd; font-weight:700;">[Live Voice Stream]:</span> 
+          "${recordedTranscript || interimText}"
+        `;
+        syncPanelHeight();
+      };
+
+      recognition.onerror = (event) => {
+        console.warn("Speech recognition notice:", event.error);
+      };
+
+      recognition.onend = () => {
+        isListening = false;
+        const btn = document.getElementById('micBtn');
+        const text = document.getElementById('micBtnText');
+        btn.classList.remove('recording-active');
+        text.innerText = "Start Live Listening";
+        evaluateSpokenText(recordedTranscript);
+      };
+    }
+
+    function toggleLiveMic() {
+      const verdict = document.getElementById('liveVerdictOutput');
+      verdict.style.display = 'none';
+
+      if (!SpeechRecognition) {
+        simulateFallbackRecording();
+        return;
+      }
+      if (!recognition) initSpeechEngine();
+
+      if (!isListening) {
+        recordedTranscript = "";
+        try {
+          recognition.start();
+        } catch (e) {
+          simulateFallbackRecording();
+        }
+      } else {
+        recognition.stop();
+      }
+    }
+
+    function evaluateSpokenText(spoken) {
+      const lower = spoken.toLowerCase();
+      const verdict = document.getElementById('liveVerdictOutput');
+      verdict.style.display = 'block';
+
+      if (lower.includes("four years") || lower.includes("4 years") || lower.includes("fixed admission")) {
+        verdict.style.borderLeft = "5px solid var(--emerald-600)";
+        verdict.innerHTML = `
+          <div style="font-weight:800; color:var(--emerald-600); margin-bottom:4px; font-size:12px;">
+            STATUTORY EVALUATION: SUPPORTED · STILL CURRENT
+          </div>
+          <div><strong>Codified Match:</strong> 8 CFR 214.2(f)(5)(i) establishes standard period of admission to program end date not to exceed 4 years.</div>
+        `;
+      } else if (lower.includes("10 days") || lower.includes("ten days") || lower.includes("graduation")) {
+        verdict.style.borderLeft = "5px solid var(--crimson-600)";
+        verdict.innerHTML = `
+          <div style="font-weight:800; color:var(--crimson-600); margin-bottom:4px; font-size:12px;">
+            STATUTORY EVALUATION: CONTRADICTED
+          </div>
+          <div><strong>Rule Correction:</strong> 8 CFR 214.2(f)(5)(iv) codifies a 30-day post-completion grace departure window, directly contradicting claims of a 10-day limit.</div>
+        `;
+      } else {
+        verdict.style.borderLeft = "5px solid var(--amber-600)";
+        verdict.innerHTML = `
+          <div style="font-weight:800; color:var(--amber-600); margin-bottom:4px; font-size:12px;">
+            STATUTORY EVALUATION: PARTLY SUPPORTED / CONTEXT DEPENDENT
+          </div>
+          <div><strong>Regulatory Check:</strong> Evaluated statement against codified Docket ICEB-2025-0001 (8 CFR 214.2). Key term matches identified across admission and extension procedures.</div>
+        `;
+      }
+      syncPanelHeight();
+    }
+
+    function loadPresetSpeech() {
+      const sel = document.getElementById('presetSpeechSelect').value;
+      const trans = document.getElementById('liveTranscriptBox');
+      const verdict = document.getElementById('liveVerdictOutput');
+      verdict.style.display = 'none';
+
+      if (sel === 'max_stay') {
+        trans.innerHTML = `<span style="color:#93c5fd; font-weight:700;">[Preset Stream Loaded]:</span> "The new regulation replaces open-ended duration of status with fixed admission periods capped at four years for university programs."`;
+        evaluateSpokenText("The new regulation replaces open-ended duration of status with fixed admission periods capped at four years for university programs.");
+      } else if (sel === 'work_ext') {
+        trans.innerHTML = `<span style="color:#93c5fd; font-weight:700;">[Preset Stream Loaded]:</span> "Students who submit extension papers on time are completely prohibited from continuing their graduate lab assistantships while awaiting approval."`;
+        evaluateSpokenText("Students who submit extension papers on time are completely prohibited from continuing their graduate lab assistantships while awaiting approval.");
+      } else if (sel === 'grace_pd') {
+        trans.innerHTML = `<span style="color:#93c5fd; font-weight:700;">[Preset Stream Loaded]:</span> "Under the new rule, international students only get 10 days to pack up and leave the country after graduation."`;
+        evaluateSpokenText("Under the new rule, international students only get 10 days to pack up and leave the country after graduation.");
+      }
+      syncPanelHeight();
+    }
+
+    function simulateFallbackRecording() {
+      const btn = document.getElementById('micBtn');
+      const text = document.getElementById('micBtnText');
+      const trans = document.getElementById('liveTranscriptBox');
+
+      if (!isListening) {
+        isListening = true;
+        text.innerText = "Stop & Verify Speech";
+        btn.classList.add('recording-active');
+        trans.innerHTML = `<span style="color:#93c5fd; font-weight:700;">[Simulated Audio Stream]:</span> "The new regulation replaces open-ended duration of status with fixed admission periods capped at four years for university programs."`;
+      } else {
+        isListening = false;
+        text.innerText = "Start Live Listening";
+        btn.classList.remove('recording-active');
+        evaluateSpokenText("The new regulation replaces open-ended duration of status with fixed admission periods capped at four years for university programs.");
+      }
+      syncPanelHeight();
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.05 });
+
+    function initScrollAnimation() {
+      document.querySelectorAll('.float-on-scroll').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('is-visible');
+        } else {
+          observer.observe(el);
+        }
+      });
+    }
+
+    function goToDocket(docketId) {
+      document.getElementById('page-home').classList.remove('active-page');
+      document.getElementById('page-workbench').classList.add('active-page');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      initScrollAnimation();
+      renderRollingClaims('all');
+      renderRollingComments();
+      renderRollingArticles('all');
+
+      const leftCol = document.querySelector('.modules-container');
+      if (leftCol) resizeObserver.observe(leftCol);
+      setTimeout(syncPanelHeight, 100);
+    }
+
+    function goToHome() {
+      document.getElementById('page-workbench').classList.remove('active-page');
+      document.getElementById('page-home').classList.add('active-page');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      initScrollAnimation();
+      resizeObserver.disconnect();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initScrollAnimation();
+      renderRollingClaims('all');
+      renderRollingComments();
+      renderRollingArticles('all');
+
+      const leftCol = document.querySelector('.modules-container');
+      if (leftCol) resizeObserver.observe(leftCol);
+      setTimeout(syncPanelHeight, 150);
+    });
+
+    window.addEventListener("resize", syncPanelHeight);
+  </script>
+</body>
+</html>
