@@ -246,14 +246,27 @@ An `added` result is a review candidate, not proof that the language was absent 
 │   ├── rule_text/
 │   ├── video_claims_for_ui.csv
 │   └── README.md
-└── download_briefing/   # Analyst briefing PDF generator
-    ├── generate_briefing.py
-    ├── PolicyLens_briefing_ICEB-2025-0001.pdf
-    ├── PolicyLens_briefing_ICEB-2025-0001_full.pdf
-    └── README.md
+├── download_briefing/            # Analyst briefing PDF generator
+│   ├── generate_briefing.py
+│   ├── PolicyLens_briefing_ICEB-2025-0001.pdf
+│   ├── PolicyLens_briefing_ICEB-2025-0001_full.pdf
+│   └── README.md
+├── presentation/                 # Hackathon slide decks
+│   └── PolicyLens_VT_slides.pptx
+└── project_demo/                 # Standalone browser demo (no backend)
+    └── PolicyLens.html           # Open locally to explore the analyst UI on committed outputs
 ```
 
 The official proposed rule, final rule, and court-order snapshots used by the evidence pipelines are committed under `data/`. Runtime caches, local environments, logs, and secrets remain excluded by `.gitignore`.
+
+### Presentation and demo
+
+| Deliverable | Path |
+| ----------- | ---- |
+| Slide deck | [`presentation/PolicyLens_VT_slides.pptx`](presentation/PolicyLens_VT_slides.pptx) |
+| Interactive demo UI | [`project_demo/PolicyLens.html`](project_demo/PolicyLens.html) — open in a browser |
+
+The demo page is self-contained HTML for reviewing policy changes, comments, news, and video panels with the same evidence-first layout as the hackathon walkthrough.
 
 ## Other committed outputs
 
@@ -272,6 +285,8 @@ above, these are useful for reading, auditing or debugging:
 | `[news_analysis/output/fact_check/report.md](news_analysis/output/fact_check/report.md)`                                 | Human-readable news fact-check summary                         |
 | `[video_analysis/claim_results.csv](video_analysis/claim_results.csv)`                                                   | Full internal video results (not privacy-cleaned)              |
 | `[video_analysis/transcripts/](video_analysis/transcripts/)`                                                             | Video transcripts with timestamps                              |
+| [`presentation/PolicyLens_VT_slides.pptx`](presentation/PolicyLens_VT_slides.pptx)                                       | Hackathon presentation slides                                  |
+| [`project_demo/PolicyLens.html`](project_demo/PolicyLens.html)                                                             | Standalone demo UI for the four evidence panels                |
 
 
 
@@ -463,6 +478,8 @@ from the committed outputs.
 
 ## Technology
 
-Python, pandas, PyTorch, Hugging Face Transformers, BERTopic, scikit-learn, Sentence Transformers, Whisper, BM25, BeautifulSoup, GDELT DOC API, Regulations.gov API, Federal Register source documents, Azure OpenAI, Pydantic, JSON, CSV, and Markdown.
+Python, pandas, PyTorch, Hugging Face Transformers, BERTopic, scikit-learn, Sentence Transformers, Whisper, BM25, BeautifulSoup, GDELT DOC API, Regulations.gov API, Federal Register source documents, Azure OpenAI, Pydantic, JSON, CSV, and Markdown. 
 
-Presentation and Demo completed. :D
+## Project Presentation and Demo
+The hackathon **presentation** is under [`presentation/`](presentation/). 
+The **demo** is [`project_demo/PolicyLens.html`](project_demo/PolicyLens.html).
